@@ -3,10 +3,9 @@ import vercel from '@astrojs/vercel';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
 
   adapter: vercel({
-    imageService: true,
     webAnalytics: {
       enabled: true,
     },

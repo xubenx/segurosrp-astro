@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: [
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+    './public/**/*.html'
+  ],
   theme: {
     extend: {
       colors: {
@@ -10,6 +13,9 @@ export default {
         'rp-gray': '#F5F5F5',
         'rp-white': '#FFFFFF',
         'rp-black': '#000000',
+      },
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },

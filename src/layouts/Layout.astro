@@ -28,9 +28,6 @@ const { title, description } = Astro.props as Props;
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		
-		<!-- Preload critical resources -->
-		<link rel="modulepreload" href="/_astro/index.js" as="script">
-		
 		<!-- Critical CSS inlined -->
 		<style>
 			/* Critical CSS - Base styles only for above-the-fold content */
@@ -86,9 +83,6 @@ const { title, description } = Astro.props as Props;
 		<!-- Preload critical fonts -->
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
-		
-		<!-- Load non-critical CSS asynchronously -->
-		<!-- Tailwind CSS is now loaded via the import in the component -->
 		
 		<!-- Meta tags -->
 		{description && <meta name="description" content={description} />}
