@@ -1,0 +1,407 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/Contact.astro';
+---
+
+<Layout title="Contacto - Seguros RP">
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16 lg:py-24">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span class="text-yellow-400">Contáctanos</span>
+          </h1>
+          <p class="text-xl lg:text-2xl mb-8 text-blue-100">
+            Estamos aquí para ayudarte a encontrar la protección perfecta para ti y tu familia
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <!-- Formulario - Columna izquierda (8 columnas en desktop) -->
+          <div class="lg:col-span-8">
+            <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg">
+              <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
+                Envíanos un mensaje
+              </h2>
+              <ContactForm />
+            </div>
+          </div>
+
+          <!-- Métodos de Contacto - Columna derecha (4 columnas en desktop) -->
+          <div class="lg:col-span-4">
+            <div class="space-y-6">
+              <!-- WhatsApp -->
+              <div class="contact-method-card bg-gradient-to-br from-green-500 to-green-600 p-6 rounded-2xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold">WhatsApp</h3>
+                </div>
+                <p class="text-green-100 mb-4">
+                  ¡Chatea con nosotros al instante! Respuesta inmediata en horario laboral.
+                </p>
+                <a href="https://wa.me/524425958912?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20seguros" 
+                   target="_blank" 
+                   class="bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-50 transition-all duration-300 inline-flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                  </svg>
+                  Abrir Chat
+                </a>
+              </div>
+
+              <!-- Teléfono -->
+              <div class="contact-method-card bg-gradient-to-br from-blue-600 to-blue-700 p-6 rounded-2xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold">Llamada Directa</h3>
+                </div>
+                <p class="text-blue-100 mb-2">
+                  <strong>Querétaro:</strong> (442) 595 8912
+                </p>
+                <p class="text-blue-100 mb-4">
+                  <strong>Celaya:</strong> (461) 614 4326
+                </p>
+                <a href="tel:+524425958912" 
+                   class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 inline-flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+                  Llamar Ahora
+                </a>
+              </div>
+
+              <!-- Email -->
+              <div class="contact-method-card bg-gradient-to-br from-purple-600 to-purple-700 p-6 rounded-2xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold">Correo Electrónico</h3>
+                </div>
+                <p class="text-purple-100 mb-4">
+                  Envíanos un correo y te responderemos en menos de 24 horas.
+                </p>
+                <a href="mailto:contacto@segurosrp.com" 
+                   class="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-50 transition-all duration-300 inline-flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Enviar Email
+                </a>
+              </div>
+
+              <!-- Oficinas -->
+              <div class="contact-method-card bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-2xl text-white shadow-lg">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold">Visítanos</h3>
+                </div>
+                <div class="space-y-4">
+                  <div>
+                    <p class="font-semibold text-gray-200 mb-1">Querétaro</p>
+                    <p class="text-gray-300 text-sm">Nouvalia, Local 106 Planta Baja, Piso 6</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-gray-200 mb-1">Celaya</p>
+                    <p class="text-gray-300 text-sm">Av. Ferrocarril central #709, Los Laureles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            ¿Cómo podemos ayudarte?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Nuestro equipo de expertos está listo para asesorarte
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Asesoría Personalizada</h3>
+            <p class="text-gray-600 mb-6">
+              Analizamos tu perfil y necesidades para recomendarte el seguro ideal para tu situación específica.
+            </p>
+            <a href="tel:+524425958912" class="text-blue-600 hover:text-blue-800 font-semibold">
+              Llamar ahora →
+            </a>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Cotizaciones Gratis</h3>
+            <p class="text-gray-600 mb-6">
+              Obten cotizaciones sin compromiso de todos nuestros productos. Comparamos opciones para encontrar la mejor para ti.
+            </p>
+            <span class="text-green-600 font-semibold">
+              Sin costo ni compromiso
+            </span>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Atención Continua</h3>
+            <p class="text-gray-600 mb-6">
+              No solo te vendemos un seguro, te acompañamos durante toda la vigencia de tu póliza con atención personalizada.
+            </p>
+            <span class="text-purple-600 font-semibold">
+              Soporte de por vida
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horarios de Atención -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+              Horarios de Atención
+            </h2>
+            <p class="text-xl text-gray-600">
+              Estamos disponibles para atenderte en los siguientes horarios
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl">
+              <h3 class="text-2xl font-bold text-blue-800 mb-6">Oficina</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Lunes - Viernes</span>
+                  <span class="text-gray-600">9:00 AM - 6:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Sábados</span>
+                  <span class="text-gray-600">9:00 AM - 2:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Domingos</span>
+                  <span class="text-gray-600">Cerrado</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
+              <h3 class="text-2xl font-bold text-green-800 mb-6">WhatsApp y Teléfono</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Lunes - Viernes</span>
+                  <span class="text-gray-600">8:00 AM - 8:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Sábados</span>
+                  <span class="text-gray-600">9:00 AM - 5:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-700">Emergencias</span>
+                  <span class="text-gray-600">24/7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Preguntas Frecuentes
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Respuestas a las dudas más comunes sobre nuestros seguros
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">¿Cuánto tiempo toma obtener una cotización?</h3>
+            <p class="text-gray-600">
+              Podemos generar una cotización en menos de 24 horas. Para casos urgentes, ofrecemos cotizaciones express en el mismo día.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">¿Necesito examen médico para contratar un seguro?</h3>
+            <p class="text-gray-600">
+              Depende del tipo de seguro y la suma asegurada. Para muchos productos hasta cierto monto, no se requiere examen médico.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">¿Puedo cambiar mi plan después de contratarlo?</h3>
+            <p class="text-gray-600">
+              Sí, ofrecemos flexibilidad para ajustar tu cobertura según cambien tus necesidades. Nuestro equipo te asesorará en el proceso.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">¿Qué documentos necesito para contratar?</h3>
+            <p class="text-gray-600">
+              Generalmente necesitas identificación oficial, comprobante de domicilio e ingresos. Los requisitos específicos varían según el producto.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">¿Cómo reporto un siniestro?</h3>
+            <p class="text-gray-600">
+              Puedes reportar siniestros las 24 horas por teléfono, WhatsApp o correo electrónico. Te guiaremos paso a paso en todo el proceso.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+          ¿Tienes dudas? ¡Contáctanos!
+        </h2>
+        <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+          Nuestro equipo de expertos está listo para ayudarte a encontrar la solución perfecta
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+524425958912" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+            Llamar Ahora
+          </a>
+          <a href="https://wa.me/524425958912" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botón flotante de WhatsApp -->
+    <div class="fixed bottom-6 right-6 z-50 floating-whatsapp">
+      <a href="https://wa.me/524425958912?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20seguros" 
+         target="_blank" 
+         class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group">
+        <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+        <div class="absolute -top-2 -left-2 w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Animaciones personalizadas */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .contact-card {
+    animation: slideInUp 0.6s ease-out;
+  }
+
+  .contact-card:nth-child(1) { animation-delay: 0.1s; }
+  .contact-card:nth-child(2) { animation-delay: 0.2s; }
+  .contact-card:nth-child(3) { animation-delay: 0.3s; }
+  .contact-card:nth-child(4) { animation-delay: 0.4s; }
+
+  /* Mejoras responsivas */
+  @media (max-width: 1024px) {
+    .grid.lg\\:grid-cols-12 {
+      grid-template-columns: 1fr;
+    }
+    
+    .lg\\:col-span-8,
+    .lg\\:col-span-4 {
+      grid-column: span 1;
+    }
+  }
+
+  /* Efectos hover mejorados */
+  .contact-method-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .contact-method-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* Botón flotante animado */
+  .floating-whatsapp {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Responsive text sizing */
+  @media (max-width: 640px) {
+    .text-4xl { font-size: 2rem; }
+    .text-6xl { font-size: 3rem; }
+    .text-xl { font-size: 1.125rem; }
+  }
+</style>

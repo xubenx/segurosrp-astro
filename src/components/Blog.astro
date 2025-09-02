@@ -1,0 +1,50 @@
+---
+// Blog section component
+const blogPosts = [
+  {
+    title: "¿Cómo elegir el mejor seguro de vida?",
+    description: "Guía completa para tomar la mejor decisión en seguros de vida que se adapte a tus necesidades y presupuesto...",
+    image: "https://via.placeholder.com/400x250/F5F5F5/003366?text=Blog+Post+1",
+    link: "#"
+  },
+  {
+    title: "Gastos médicos mayores: Lo que debes saber",
+    description: "Todo sobre la cobertura de gastos médicos mayores y cómo puede proteger tu patrimonio familiar...",
+    image: "https://via.placeholder.com/400x250/F5F5F5/003366?text=Blog+Post+2",
+    link: "#"
+  },
+  {
+    title: "Seguros para jóvenes: ¿Vale la pena?",
+    description: "Descubre por qué es importante asegurarse desde joven y los beneficios a largo plazo...",
+    image: "https://via.placeholder.com/400x250/F5F5F5/003366?text=Blog+Post+3",
+    link: "#"
+  }
+];
+---
+
+<section id="blog" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-4xl font-bold text-rp-blue">Temas de interés</h2>
+      <a href="/blog" class="text-rp-orange hover:text-orange-600 font-semibold">Ver más</a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {blogPosts.map((post) => (
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <img 
+            src={post.image} 
+            alt={post.title} 
+            class="w-full h-48 object-cover"
+            loading="lazy"
+          />
+          <div class="p-4 md:p-6">
+            <h3 class="text-lg md:text-xl font-semibold text-rp-blue mb-3">{post.title}</h3>
+            <p class="text-gray-600 mb-4 text-sm md:text-base">{post.description}</p>
+            <a href={post.link} class="text-rp-orange hover:text-orange-600 font-semibold text-sm md:text-base">Leer más</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

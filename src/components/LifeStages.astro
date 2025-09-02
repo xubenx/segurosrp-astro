@@ -1,0 +1,66 @@
+---
+// Life stages section component
+import { Image } from 'astro:assets';
+import cdmxImage from '../../public/cdmx.webp';
+---
+
+<section class="h-[65vh] bg-gradient-to-br from-rp-blue to-rp-light-blue relative overflow-hidden">
+    <!-- Desktop Layout -->
+    <div class="hidden md:block container mx-auto px-4 h-full flex flex-col justify-center">
+        <div class="mt-20">
+            <h2 class="text-4xl font-bold text-white">Tenemos el plan ideal para cada etapa de tu vida</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center h-full relative">
+            <div class="z-10">
+                <h3 class="text-3xl font-bold text-white mb-6">Tu vida, tus planes. Nuestra protección.</h3>
+                <p class="text-lg text-gray-200 mb-8">
+                    En cada etapa, desde la soltería hasta la jubilación, te acompañamos con planes
+                    de protección diseñados para ti y tu familia.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Layout -->
+    <div class="md:hidden container mx-auto px-4 h-full flex flex-col relative">
+        <div class="z-10">
+            <h2 class="text-2xl font-bold text-white mb-6">Tenemos el plan ideal para cada etapa de tu vida</h2>
+            <h3 class="text-xl font-bold text-white mb-4">Tu vida, tus planes. Nuestra protección.</h3>
+            <p class="text-base text-gray-200 mb-8">
+                En cada etapa, desde la soltería hasta la jubilación, te acompañamos con planes
+                de protección diseñados para ti y tu familia.
+            </p>
+
+        </div>
+    </div>
+    
+    <!-- Imagen móvil posicionada absolutamente pegada al borde inferior de la sección -->
+    <div class="md:hidden absolute bottom-0 right-0">
+        <Image 
+          src={cdmxImage} 
+          alt="Etapas de vida" 
+          class="h-[40vh] w-auto object-contain object-bottom" 
+          width={300}
+          height={400}
+          format="webp"
+          loading="lazy"
+          quality={85}
+        />
+    </div>
+    
+    <!-- Imagen desktop posicionada absolutamente en la esquina inferior derecha -->
+    <div class="hidden md:block absolute bottom-0 right-0">
+        <Image 
+          src={cdmxImage} 
+          alt="Etapas de vida" 
+          class="h-[65vh] w-auto object-contain object-bottom" 
+          width={500}
+          height={650}
+          format="webp"
+          loading="lazy"
+          quality={85}
+        />
+    </div>
+</section>

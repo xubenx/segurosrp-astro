@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageTitle = "Alfa Medical Flex - Seguro de Gastos Médicos Mayores | RP Seguros";
+const pageDescription = "Toma el control de tu salud con Alfa Medical Flex. Elige dónde atenderte y cuánto pagarás en cada evento. Libre elección de hospitales y coberturas personalizables.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">Alfa Medical Flex</h1>
+          <p class="text-2xl mb-8 opacity-90">Haz que tu vida marche conforme a tus planes</p>
+          <p class="text-lg mb-8 opacity-80">
+            Tienes la oportunidad de administrar tu presupuesto, tú decides dónde atenderte dependiendo de ello será tu contribución, tendrás acceso a todos nuestros proveedores médicos en convenio.
+          </p>
+          <a href="/contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Me interesa
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Considera Alfa Medical Flex si estás buscando:</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">Libre elección de hospitales</h3>
+              <p class="text-gray-600">Acceso a toda nuestra red de hospitales y proveedores médicos</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">Coberturas personalizables</h3>
+              <p class="text-gray-600">Elige qué coberturas añadir o restar para crear tu producto ideal</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">Uso inteligente</h3>
+              <p class="text-gray-600">Administra tu participación de manera inteligente según tus necesidades</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coberturas -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Qué coberturas tiene Alfa Medical Flex?</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Cobertura Básica -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
+              <h3 class="text-2xl font-bold mb-6 text-gray-800">Cobertura Básica</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Servicios de hospital</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Honorarios médicos</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Medicamentos</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Tratamientos de rehabilitación</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Servicios de Laboratorio, Gabinete e Imagenología</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Maternidad</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Ambulancia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coberturas Adicionales -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-green-500">
+              <h3 class="text-2xl font-bold mb-6 text-gray-800">Coberturas Adicionales</h3>
+              <p class="text-gray-600 mb-4">Puedes agregar coberturas específicas según tus necesidades:</p>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Cobertura dental</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Cobertura de visión</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Cobertura en el extranjero</span>
+                </div>
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Deportes peligrosos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿Cómo funciona? -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
+          
+          <!-- Ejemplo práctico -->
+          <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Ejemplo práctico</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-xl font-bold text-blue-600">1</span>
+                </div>
+                <p class="text-gray-700">El costo total de tu atención médica es de <strong>$80,000.00</strong></p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-xl font-bold text-blue-600">2</span>
+                </div>
+                <p class="text-gray-700">Tú pagarás el Copago de <strong>$5,500.00</strong> y la participación 10%: <strong>$7,450.00</strong></p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-xl font-bold text-green-600">3</span>
+                </div>
+                <p class="text-gray-700">Tú pagas <strong>$12,950.00</strong> y nosotros pagamos <strong>$67,050.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conceptos importantes -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h4 class="text-lg font-semibold mb-3 text-gray-800">Copago</h4>
+              <p class="text-gray-600">Es la cantidad fija que aportarás del total de los gastos médicos amparados por cada servicio a consecuencia de un accidente o enfermedad.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h4 class="text-lg font-semibold mb-3 text-gray-800">Participación</h4>
+              <p class="text-gray-600">Es el porcentaje que deberás cubrir del total de los gastos médicos amparados, una vez descontado el Copago.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h4 class="text-lg font-semibold mb-3 text-gray-800">Hospitalización</h4>
+              <p class="text-gray-600">Son los servicios médicos que otorga el hospital donde se requiere el uso de una habitación por más de 24 hrs.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h4 class="text-lg font-semibold mb-3 text-gray-800">Servicios de Corta Estancia</h4>
+              <p class="text-gray-600">Atención médica o quirúrgica que no necesita habitación en hospitalización y la estancia es menor a 24 hrs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos relacionados -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Te podría interesar</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-bold mb-3 text-gray-800">Alfa Medical</h3>
+              <p class="text-gray-600 mb-4">Con este Seguro de Gastos Médicos Mayores podrás cubrir los gastos de atención médica que se generen por enfermedad o accidente.</p>
+              <a href="/seguros-salud/alfa-medical" class="text-blue-600 hover:text-blue-800 font-semibold">Ver más →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-bold mb-3 text-gray-800">Alfa Medical Internacional</h3>
+              <p class="text-gray-600 mb-4">Este Seguro de Gastos Médicos Mayores es para ti viajero, ya que te ofrece la posibilidad de recibir atención médica en todo el mundo.</p>
+              <a href="/seguros-salud/alfa-medical-internacional" class="text-blue-600 hover:text-blue-800 font-semibold">Ver más →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">¿No sabes qué Seguro te conviene más?</h2>
+        <p class="text-xl mb-8 opacity-90">Deja tus datos y un experto te ayudará a elegir uno de acuerdo a tus necesidades.</p>
+        <a href="/contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          Me interesa
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

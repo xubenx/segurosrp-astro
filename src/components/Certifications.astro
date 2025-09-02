@@ -1,0 +1,140 @@
+---
+// Certifications section component
+import { Image } from 'astro:assets';
+
+// Importar todas las imágenes de certificaciones
+import asociacion1 from '../../public/asociacion (1).png';
+import asociacion2 from '../../public/asociacion (2).png';
+import asociacion3 from '../../public/asociacion (3).png';
+import asociacion4 from '../../public/asociacion (4).png';
+import asociacion5 from '../../public/asociacion (5).png';
+import asociacion6 from '../../public/asociacion (6).png';
+import asociacion7 from '../../public/asociacion (7).png';
+
+const certifications = [
+  {
+    name: "AMIS",
+    logo: asociacion1
+  },
+  {
+    name: "CNSF",
+    logo: asociacion2
+  },
+  {
+    name: "AMASFAC",
+    logo: asociacion3
+  },
+  {
+    name: "ISO",
+    logo: asociacion4
+  },
+  {
+    name: "CNSF",
+    logo: asociacion5
+  },
+  {
+    name: "AMASFAC",
+    logo: asociacion6
+  },
+  {
+    name: "ISO",
+    logo: asociacion7
+  }
+];
+---
+
+<section class="py-20 bg-rp-gray overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-rp-blue text-center mb-12">Nuestras certificaciones</h2>
+    
+    <!-- Carrusel automático -->
+    <div class="relative">
+      <div class="carousel-container">
+        <div class="carousel-track">
+          {/* Primera fila de imágenes */}
+          {certifications.map((cert) => (
+            <div class="carousel-item">
+              <Image 
+                src={cert.logo} 
+                alt={cert.name} 
+                class="w-24 h-24 md:w-40 md:h-40 object-contain transition-all duration-300" 
+                loading="lazy"
+                width={160}
+                height={160}
+                format="png"
+                quality={90}
+              />
+            </div>
+          ))}
+          {/* Duplicamos las imágenes para efecto infinito */}
+          {certifications.map((cert) => (
+            <div class="carousel-item">
+              <Image 
+                src={cert.logo} 
+                alt={cert.name} 
+                class="w-24 h-24 md:w-40 md:h-40 object-contain transition-all duration-300" 
+                loading="lazy"
+                width={160}
+                height={160}
+                format="png"
+                quality={90}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  width: calc(200%);
+}
+
+.carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 100px;
+  margin: 0 1.5rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .carousel-item {
+    min-width: 200px;
+    height: 180px;
+    margin: 0 2.5rem;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pausar animación al hacer hover */
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .carousel-track {
+    animation-duration: 15s;
+  }
+}
+</style>

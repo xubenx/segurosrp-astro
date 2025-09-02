@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageTitle = "Seguros de Gastos Médicos Mayores - RP Seguros";
+const pageDescription = "Protege tu salud y la de tus seres queridos con nuestros seguros de gastos médicos mayores. Alfa Medical, Alfa Medical Flex, Alfa Medical Internacional y más.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">Seguros de Gastos Médicos Mayores</h1>
+          <p class="text-xl mb-8 opacity-90">Protege tu salud y la de tus seres queridos ante el impacto económico que puede representar un gasto médico</p>
+          <a href="#productos" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Ver Nuestros Productos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿Qué es un Seguro de Gastos Médicos Mayores? -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">¿Qué es un Seguro de Gastos Médicos Mayores?</h2>
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              Es un instrumento que permite protegerte a ti y tus seres queridos ante el impacto económico que puede representar un gasto en salud. La protección de un Seguro les ayudará a solventar los costos de atención médica, para que ustedes solo se concentren en estar bien.
+            </p>
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">¿Cómo funciona?</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Contratarás el producto que mejor se ajuste a tu estilo y etapa de vida, de tal manera que decidas tu participación por evento, el nivel hospitalario al que te gustaría tener acceso y si lo deseas, beneficios adicionales que pueden mejorar tu cobertura. En caso de requerir atención por algún accidente o enfermedad, se cubrirán los gastos médicos derivados de la atención.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos" class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Encuentra el Seguro de Gastos Médicos Mayores ideal para ti</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <!-- Alfa Medical Flex -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Alfa Medical Flex</h3>
+              </div>
+              <p class="text-gray-600 mb-4">Toma el control de tu salud acorde a tus necesidades. Es el Seguro de Gastos Médicos Mayores con el que puedes elegir dónde atenderte y cuánto pagarás en cada evento.</p>
+              <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                <li>• Libre elección de hospitales</li>
+                <li>• Administra tu participación</li>
+                <li>• Coberturas personalizables</li>
+              </ul>
+              <a href="/seguros-salud/alfa-medical-flex" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Me interesa
+              </a>
+            </div>
+          </div>
+
+          <!-- Alfa Medical -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Alfa Medical</h3>
+              </div>
+              <p class="text-gray-600 mb-4">Accede a los mejores hospitales de México para ti y tu familia. Cuenta con diversos planes que se ajustan a las necesidades de tu familia.</p>
+              <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                <li>• Atención en los mejores hospitales</li>
+                <li>• Cobertura de maternidad completa</li>
+                <li>• Planes familiares</li>
+              </ul>
+              <a href="/seguros-salud/alfa-medical" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                Me interesa
+              </a>
+            </div>
+          </div>
+
+          <!-- Alfa Medical Internacional -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Alfa Medical Internacional</h3>
+              </div>
+              <p class="text-gray-600 mb-4">Extiende tu protección en México y el mundo. Ideal para viajeros que buscan atención médica internacional con los mejores especialistas.</p>
+              <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                <li>• Protección internacional</li>
+                <li>• Servicio Concierge</li>
+                <li>• Cobertura más amplia</li>
+              </ul>
+              <a href="/seguros-salud/alfa-medical-internacional" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                Me interesa
+              </a>
+            </div>
+          </div>
+
+          <!-- Accidentes Personales -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Accidentes Personales</h3>
+              </div>
+              <p class="text-gray-600 mb-4">Es el producto básico para la cobertura de imprevistos. Te ayuda a solventar los gastos por atención médica a bajo costo, protegiendo tu economía.</p>
+              <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                <li>• Protección accesible</li>
+                <li>• Respaldo financiero</li>
+                <li>• Complementa otros seguros</li>
+              </ul>
+              <a href="/seguros-salud/accidentes-personales" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors">
+                Me interesa
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">¿No sabes qué Seguro te conviene más?</h2>
+        <p class="text-xl mb-8 opacity-90">Deja tus datos y un experto te ayudará a elegir uno de acuerdo a tus necesidades.</p>
+        <a href="/contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          Quiero que me contacten
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

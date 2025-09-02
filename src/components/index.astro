@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Plans from '../components/Plans.astro';
+import PlanesDetalle from '../components/PlanesDetalle.astro';
+import LifeStages from '../components/LifeStages.astro';
+import Services from '../components/Services.astro';
+import Statistics from '../components/Statistics.astro';
+import About from '../components/About.astro';
+import Blog from '../components/Blog.astro';
+import Certifications from '../components/Certifications.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Seguros RP - Tu Tranquilidad es Nuestro Compromiso";
+const pageDescription = "Especialistas en seguros de vida, gastos médicos mayores, autos y más. Con más de 25 años de experiencia, protegemos lo que más valoras.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  <Hero />
+  <Plans />
+  <LifeStages />
+  <Statistics />
+  {/*<About />
+   <Blog /> */}
+  <Certifications />
+  <Contact />
+  <Footer />
+</Layout>

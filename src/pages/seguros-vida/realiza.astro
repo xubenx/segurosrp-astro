@@ -1,0 +1,397 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageTitle = "Realiza - Seguro de Vida con Inversión | RP Seguros";
+const pageDescription = "Seguro de vida que combina protección con opciones de inversión. Obtén rendimientos según el desempeño del mercado con tu perfil de riesgo.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-orange-500 to-red-600 text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">Realiza</h1>
+          <p class="text-2xl mb-8 opacity-90">Protección + Inversión inteligente</p>
+          <p class="text-lg mb-8 opacity-80">
+            Realiza es un Seguro de Vida que combina protección para tu familia con opciones de inversión. 
+            Obtén rendimientos según el comportamiento del mercado, adaptándose a tu perfil de riesgo y objetivos financieros.
+          </p>
+          <a href="/contacto" class="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Realiza tus sueños
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concepto principal -->
+    <section class="py-16 bg-gradient-to-r from-orange-50 to-red-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6 text-gray-800">Lo mejor de dos mundos</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Con Realiza no tienes que elegir entre proteger a tu familia o hacer crecer tu dinero. 
+            <strong>Obtienes ambos beneficios en un solo producto</strong>, con la flexibilidad de ajustar 
+            tu estrategia de inversión según cambien tus necesidades.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opciones de inversión -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Elige tu estrategia de inversión</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Conservador -->
+            <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-green-500">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Conservador</h3>
+              <p class="text-gray-600 mb-4">Para quienes buscan estabilidad y crecimiento constante.</p>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Instrumentos gubernamentales
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Bonos de alta calificación
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Rendimiento esperado: 5-7%
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Riesgo: Bajo
+                </li>
+              </ul>
+            </div>
+
+            <!-- Moderado -->
+            <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-orange-500">
+              <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Moderado</h3>
+              <p class="text-gray-600 mb-4">Equilibrio entre crecimiento y estabilidad.</p>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                  60% renta fija, 40% variable
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                  Fondos mixtos diversificados
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                  Rendimiento esperado: 7-10%
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                  Riesgo: Medio
+                </li>
+              </ul>
+            </div>
+
+            <!-- Agresivo -->
+            <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-red-500">
+              <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Agresivo</h3>
+              <p class="text-gray-600 mb-4">Para inversionistas que buscan máximo crecimiento.</p>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                  Principalmente acciones
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                  Mercados emergentes
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                  Rendimiento esperado: 10-15%
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                  Riesgo: Alto
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios únicos -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Qué hace único a Realiza?</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-orange-500">
+              <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">Flexibilidad total</h3>
+              <p class="text-gray-600 text-sm">Cambia tu estrategia de inversión sin penalizaciones</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-red-500">
+              <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">Transparencia total</h3>
+              <p class="text-gray-600 text-sm">Conoce exactamente dónde está invertido tu dinero</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-purple-500">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">Protección asegurada</h3>
+              <p class="text-gray-600 text-sm">La suma asegurada nunca disminuye por el desempeño de las inversiones</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-blue-500">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">Rebalanceo automático</h3>
+              <p class="text-gray-600 text-sm">Tu portafolio se ajusta automáticamente para mantener la estrategia</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-green-500">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">Beneficios fiscales</h3>
+              <p class="text-gray-600 text-sm">Aportaciones adicionales deducibles de impuestos</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-indigo-500">
+              <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">Rendimientos potenciales</h3>
+              <p class="text-gray-600 text-sm">Aprovecha las oportunidades del mercado para hacer crecer tu dinero</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona Realiza?</h2>
+          
+          <div class="grid md:grid-cols-4 gap-6 mb-12">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl font-bold text-orange-600">1</span>
+              </div>
+              <h3 class="font-semibold mb-2 text-gray-800">Elige tu perfil</h3>
+              <p class="text-gray-600 text-sm">Selecciona la estrategia de inversión que mejor se adapte a tu perfil de riesgo</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl font-bold text-red-600">2</span>
+              </div>
+              <h3 class="font-semibold mb-2 text-gray-800">Invierte automáticamente</h3>
+              <p class="text-gray-600 text-sm">Una parte de tu prima se destina a protección y otra a inversión</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl font-bold text-purple-600">3</span>
+              </div>
+              <h3 class="font-semibold mb-2 text-gray-800">Monitorea tu progreso</h3>
+              <p class="text-gray-600 text-sm">Recibe reportes detallados del desempeño de tus inversiones</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl font-bold text-green-600">4</span>
+              </div>
+              <h3 class="font-semibold mb-2 text-gray-800">Ajusta cuando quieras</h3>
+              <p class="text-gray-600 text-sm">Cambia tu estrategia según cambien tus objetivos o situación</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparativa de rendimientos -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Potencial de crecimiento por perfil</h2>
+          
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-6 text-gray-800 text-center">Proyección a 20 años con $5,000 mensuales</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="text-center">
+                <div class="bg-green-100 p-6 rounded-lg">
+                  <h4 class="font-bold text-lg mb-2 text-green-800">Conservador</h4>
+                  <p class="text-3xl font-bold text-green-600 mb-2">$1.6M</p>
+                  <p class="text-sm text-green-600">6% promedio anual</p>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="bg-orange-100 p-6 rounded-lg">
+                  <h4 class="font-bold text-lg mb-2 text-orange-800">Moderado</h4>
+                  <p class="text-3xl font-bold text-orange-600 mb-2">$2.1M</p>
+                  <p class="text-sm text-orange-600">8.5% promedio anual</p>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="bg-red-100 p-6 rounded-lg">
+                  <h4 class="font-bold text-lg mb-2 text-red-800">Agresivo</h4>
+                  <p class="text-3xl font-bold text-red-600 mb-2">$2.8M</p>
+                  <p class="text-sm text-red-600">12% promedio anual</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-gray-500 text-center mt-4">*Proyecciones basadas en rendimientos históricos. Los rendimientos pasados no garantizan resultados futuros.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplo de cliente -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Caso de éxito</h2>
+          
+          <div class="bg-gradient-to-r from-orange-500 to-red-600 text-white p-8 rounded-lg">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-bold mb-4">Roberto, 35 años</h3>
+                <p class="mb-4">Ejecutivo que busca hacer crecer su patrimonio</p>
+                <ul class="space-y-2 text-sm">
+                  <li><strong>Prima mensual:</strong> $7,500</li>
+                  <li><strong>Protección:</strong> $1,500,000</li>
+                  <li><strong>Perfil:</strong> Moderado</li>
+                  <li><strong>Objetivo:</strong> Retiro complementario</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-4">Sus resultados en 3 años</h3>
+                <div class="space-y-4">
+                  <div class="bg-white/10 p-4 rounded-lg">
+                    <p class="text-lg font-bold">$285,000</p>
+                    <p class="text-sm">Valor acumulado</p>
+                  </div>
+                  <div class="bg-white/10 p-4 rounded-lg">
+                    <p class="text-lg font-bold">15.2%</p>
+                    <p class="text-sm">Rendimiento promedio anual obtenido</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gestión profesional -->
+    <section class="py-16 bg-gradient-to-r from-orange-50 to-red-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6 text-gray-800">Gestión profesional de inversiones</h2>
+          <p class="text-lg text-gray-700 mb-8">
+            Tu dinero es manejado por expertos en inversiones con amplia experiencia en mercados financieros. 
+            No necesitas ser un experto para obtener resultados profesionales.
+          </p>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="font-bold text-lg mb-2 text-gray-800">25+ años</h3>
+              <p class="text-gray-600 text-sm">De experiencia en gestión de portafolios</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="font-bold text-lg mb-2 text-gray-800">$50B+ MXN</h3>
+              <p class="text-gray-600 text-sm">En activos bajo administración</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="font-bold text-lg mb-2 text-gray-800">Diversificación</h3>
+              <p class="text-gray-600 text-sm">En múltiples instrumentos y mercados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos relacionados -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Compara con otros productos</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-bold mb-3 text-gray-800">Nuevo Plenitud</h3>
+              <p class="text-gray-600 mb-4">Si prefieres certeza total con monto garantizado sin riesgos de mercado.</p>
+              <a href="/seguros-vida/nuevo-plenitud" class="text-orange-600 hover:text-orange-800 font-semibold">Ver más →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-bold mb-3 text-gray-800">Imagina Ser</h3>
+              <p class="text-gray-600 mb-4">Para retiro con rendimientos garantizados en dólares o UDI sin riesgos de mercado.</p>
+              <a href="/seguros-vida/imagina-ser" class="text-orange-600 hover:text-orange-800 font-semibold">Ver más →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">¿Listo para hacer crecer tu patrimonio?</h2>
+        <p class="text-xl mb-8 opacity-90">Combina protección familiar con el potencial de los mercados financieros.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Conocer mi perfil
+          </a>
+          <a href="tel:5555555555" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors">
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
