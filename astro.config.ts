@@ -13,4 +13,15 @@ export default defineConfig({
   }),
 
   integrations: [tailwind()],
+
+  vite: {
+    ssr: {
+      external: ['nodemailer', 'firebase/app', 'firebase/firestore']
+    },
+    build: {
+      rollupOptions: {
+        external: ['nodemailer']
+      }
+    }
+  }
 });
