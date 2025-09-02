@@ -1,0 +1,42 @@
+/* Componentes y utilidades no críticas de Tailwind */
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos adicionales para componentes específicos */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Estilos para componentes below-the-fold */
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Optimización de componentes pesados */
+.contact-form {
+  contain: layout style;
+}
+
+.statistics-section {
+  contain: layout;
+}

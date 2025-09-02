@@ -12,16 +12,16 @@ export default defineConfig({
     },
   }),
 
-  integrations: [tailwind()],
+  integrations: [
+    tailwind({
+      // Habilitar estilos base de Tailwind
+      applyBaseStyles: true,
+    })
+  ],
 
   vite: {
     ssr: {
       external: ['nodemailer', 'firebase/app', 'firebase/firestore']
-    },
-    build: {
-      rollupOptions: {
-        external: ['nodemailer']
-      }
     }
-  }
+  },
 });

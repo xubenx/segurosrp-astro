@@ -1,14 +1,14 @@
 ---
+import OptimizedLoading from '../components/OptimizedLoading.astro';
+import '../styles/global.css';
+
 export interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props as Props;
+const { title, description } = Astro.props as Props;
 ---
-
-<script>
-import "../styles/global.css";
-</script>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,74 +17,116 @@ import "../styles/global.css";
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
+		<!-- DNS prefetch for external domains -->
+		<link rel="dns-prefetch" href="//www.googletagmanager.com">
+		<link rel="dns-prefetch" href="//connect.facebook.net">
+		<link rel="dns-prefetch" href="//fonts.googleapis.com">
+		
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://www.googletagmanager.com">
+		<link rel="preconnect" href="https://connect.facebook.net">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+		<!-- Preload critical resources -->
+		<link rel="modulepreload" href="/_astro/index.js" as="script">
+		
+		<!-- Critical CSS inlined -->
+		<style>
+			/* Critical CSS - Base styles only for above-the-fold content */
+			:root {
+				--rp-blue: #00305C;
+				--rp-light-blue: #1A75CF;
+				--rp-orange: #FF6600;
+				--rp-gray: #F5F5F5;
+				--rp-white: #FFFFFF;
+				--rp-black: #000000;
+				--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+				--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+				--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+				--color-text: hsl(12, 5%, 4%);
+				--color-bg: hsl(10, 21%, 95%);
+				--color-border: hsl(17, 24%, 90%);
+			}
+			html {
+				font-family: system-ui, -apple-system, sans-serif;
+				font-size: var(--font-size-base);
+				color: var(--color-text);
+				background-color: var(--rp-white);
+				scroll-behavior: smooth;
+			}
+			body {
+				margin: 0;
+				line-height: 1.6;
+			}
+			h1 { font-size: var(--font-size-xl); margin: 0; }
+			h2 { font-size: var(--font-size-lg); margin: 0; }
+			
+			/* Critical header styles */
+			header {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 50;
+				background: rgba(255, 255, 255, 0.95);
+				backdrop-filter: blur(10px);
+			}
+			
+			/* Critical hero styles */
+			.hero-section {
+				min-height: 100vh;
+				background: linear-gradient(135deg, var(--rp-blue) 0%, var(--rp-light-blue) 100%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+			}
+		</style>
+		
+		<!-- Preload critical fonts -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+		
+		<!-- Load non-critical CSS asynchronously -->
+		<!-- Tailwind CSS is now loaded via the import in the component -->
+		
+		<!-- Meta tags -->
+		{description && <meta name="description" content={description} />}
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y67F0BJRHL"></script>
 		<script is:inline>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
-
 		  gtag('config', 'G-Y67F0BJRHL');
 		</script>
 
-		<!-- Meta Pixel Code -->
+		<!-- Meta Pixel Code - Load async -->
 		<script is:inline>
-		!function(f,b,e,v,n,t,s)
-		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-		n.queue=[];t=b.createElement(e);t.async=!0;
-		t.src=v;s=b.getElementsByTagName(e)[0];
-		s.parentNode.insertBefore(t,s)}(window, document,'script',
-		'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '292484572612457');
-		fbq('track', 'PageView');
+		setTimeout(function() {
+			!function(f,b,e,v,n,t,s)
+			{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+			if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+			n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t,s)}(window, document,'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '292484572612457');
+			fbq('track', 'PageView');
+		}, 1000);
 		</script>
 		<noscript><img height="1" width="1" style="display:none"
 		src="https://www.facebook.com/tr?id=292484572612457&ev=PageView&noscript=1"
 		/></noscript>
 		<!-- End Meta Pixel Code -->
-		
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
+		<OptimizedLoading />
 	</body>
 </html>
-<style>
-	:root {
-		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-
-		--color-text: hsl(12, 5%, 4%);
-		--color-bg: hsl(10, 21%, 95%);
-		--color-border: hsl(17, 24%, 90%);
-	}
-
-	html {
-		font-family: system-ui, sans-serif;
-		font-size: var(--font-size-base);
-		color: var(--color-text);
-		background-color: var(--color-bg);
-	}
-
-	body {
-		margin: 0;
-	}
-
-	:global(h1) {
-		font-size: var(--font-size-xl);
-	}
-
-	:global(h2) {
-		font-size: var(--font-size-lg);
-	}
-
-	:global(code) {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>

@@ -1,8 +1,9 @@
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+/* Variables CSS personalizadas */
 :root {
   --rp-blue: #00305C;
   --rp-light-blue: #1A75CF;
@@ -10,4 +11,15 @@
   --rp-gray: #F5F5F5;
   --rp-white: #FFFFFF;
   --rp-black: #000000;
+}
+
+/* Componentes personalizados */
+@layer components {
+  .btn-primary {
+    @apply bg-rp-blue hover:bg-rp-light-blue text-white font-semibold py-2 px-4 rounded transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-rp-orange hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-200;
+  }
 }

@@ -1,0 +1,52 @@
+---
+// Componente para cargar CSS de forma optimizada
+---
+
+<script>
+  // Función para cargar CSS de forma asíncrona
+  function loadCSS(href, media = 'all') {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.media = media;
+    
+    // Usar requestIdleCallback si está disponible
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        document.head.appendChild(link);
+      });
+    } else {
+      // Fallback para navegadores sin soporte
+      setTimeout(() => {
+        document.head.appendChild(link);
+      }, 100);
+    }
+  }
+
+  // Cargar CSS no crítico después de que la página se haya cargado
+  window.addEventListener('load', () => {
+    // Usar requestIdleCallback para cargar recursos no críticos
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        // Aquí se pueden cargar recursos adicionales si es necesario
+        console.log('CSS no crítico cargado');
+      });
+    }
+  });
+
+  // Precargar recursos importantes al hacer hover en enlaces
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="/"]');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const href = link.getAttribute('href');
+        if (href && !document.querySelector(`link[rel="prefetch"][href="${href}"]`)) {
+          const prefetchLink = document.createElement('link');
+          prefetchLink.rel = 'prefetch';
+          prefetchLink.href = href;
+          document.head.appendChild(prefetchLink);
+        }
+      });
+    });
+  });
+</script>
