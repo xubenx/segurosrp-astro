@@ -33,10 +33,13 @@ async function getLeadInfo(documentId: string) {
   try {
     await ensureFirebaseInitialized();
     const db = getFirestoreInstance();
-    const doc = await db.collection('clientes').doc(documentId).get();
+    const { doc, getDoc } = await import('firebase/firestore');
     
-    if (doc.exists) {
-      return doc.data();
+    const leadRef = doc(db, 'leads', documentId);
+    const leadSnap = await getDoc(leadRef);
+    
+    if (leadSnap.exists()) {
+      return leadSnap.data();
     } else {
       console.log('Lead no encontrado:', documentId);
       return null;
@@ -179,7 +182,7 @@ export async function POST(request: Request) {
       
       if (newStatus) {
         // Intentar obtener el ID del documento desde el mensaje
-        let documentId = null;
+        let documentId: string | null = null;
         const messageText = callbackQuery.message?.text;
         
         if (messageText) {
