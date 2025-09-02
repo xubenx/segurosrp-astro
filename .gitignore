@@ -43,3 +43,5 @@ Thumbs.db
 # macOS-specific files
 .DS_Store
 .vercel
+# Agregar este archivo a .gitignore inmediatamente
+.env
