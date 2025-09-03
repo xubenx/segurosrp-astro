@@ -46,7 +46,7 @@ const { title, description } = Astro.props as Props;
 				--color-border: hsl(17, 24%, 90%);
 			}
 			html {
-				font-family: system-ui, -apple-system, sans-serif;
+				font-family: 'Inter', system-ui, -apple-system, sans-serif;
 				font-size: var(--font-size-base);
 				color: var(--color-text);
 				background-color: var(--rp-white);
@@ -77,6 +77,39 @@ const { title, description } = Astro.props as Props;
 				align-items: center;
 				justify-content: center;
 				color: white;
+			}
+
+			/* Critical button styles for immediate visibility */
+			.btn-primary {
+				background: linear-gradient(135deg, var(--rp-orange) 0%, #FF8533 100%);
+				color: white;
+				font-weight: 600;
+				padding: 0.5rem 1rem;
+				border-radius: 0.375rem;
+				transition: all 0.3s ease;
+				border: none;
+				cursor: pointer;
+				display: inline-block;
+				text-decoration: none;
+			}
+			
+			.btn-primary:hover {
+				background: linear-gradient(135deg, #E55A00 0%, var(--rp-orange) 100%);
+				transform: translateY(-2px);
+				box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+			}
+
+			/* Critical layout styles */
+			.container-custom {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 0 1rem;
+			}
+
+			@media (min-width: 768px) {
+				.container-custom { 
+					padding: 0 2rem; 
+				}
 			}
 		</style>
 		

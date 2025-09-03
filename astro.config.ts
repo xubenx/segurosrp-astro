@@ -9,6 +9,7 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
+    isr: false,
   }),
 
   integrations: [
@@ -21,6 +22,15 @@ export default defineConfig({
   vite: {
     ssr: {
       external: ['nodemailer', 'firebase/app', 'firebase/firestore']
+    },
+    build: {
+      // Asegurar que el CSS se inline correctamente
+      cssCodeSplit: false,
     }
   },
+
+  // Configuración específica para build
+  build: {
+    inlineStylesheets: 'always',
+  }
 });
