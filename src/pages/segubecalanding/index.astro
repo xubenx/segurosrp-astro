@@ -1,0 +1,234 @@
+---
+import Contact from '../../components/Contact.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Segubeca | Asegura el futuro educativo de tus hijos</title>
+  <meta name="description" content="Segubeca te ayuda a asegurar la educación universitaria de tus hijos. Garantiza su futuro con capital disponible a los 18 años y protección en caso de fallecimiento." />
+  <meta name="keywords" content="Segubeca, seguro educativo, futuro hijos, educación universitaria, ahorro educación, financiamiento educativo" />
+  <meta name="author" content="Segubeca" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; color: #1f2937; background: #f8fafc; margin: 0; padding: 0; }
+    .btn-pill { border-radius: 50px; padding: 0.9rem 1.5rem; font-weight: 600; }
+    .hero { 
+      background: linear-gradient(180deg, #e6f2ff, #ffffff); 
+      height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+    }
+    .hero .container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .hero-logos {
+      flex-shrink: 0;
+      margin-bottom: 20px;
+    }
+    .hero-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-height: 0;
+    }
+    .hero h1 { 
+      font-weight: 700; 
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero p { 
+      color: #475569; 
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin-bottom: 1.5rem;
+    }
+    .hero-logos img {
+      height: clamp(40px, 8vw, 80px);
+      max-width: clamp(120px, 25vw, 200px);
+      object-fit: contain;
+    }
+    .hero-image {
+      max-height: 70vh;
+      object-fit: contain;
+      width: 100%;
+    }
+    .benefit { border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; background: #fff; height: 100%; }
+    .cta-band { background: linear-gradient(90deg, #1e88e5, #1565c0); color: #fff; padding: 50px 0; }
+    .cta-band h2 { font-size: 2rem; font-weight: 700; }
+    .footer { background: #0b1324; color: #cbd5e1; padding: 40px 0; }
+    .footer a { color: #93c5fd; text-decoration: none; }
+    .section { padding: 60px 0; }
+    
+    /* Responsivo para móviles */
+    @media (max-width: 768px) {
+      .hero {
+        height: 100vh;
+        padding: 0;
+      }
+      .hero .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .hero-logos {
+        margin-bottom: 15px;
+      }
+      .hero-logos img {
+        height: clamp(35px, 10vw, 60px);
+        max-width: clamp(100px, 30vw, 150px);
+      }
+      .hero h1 {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        margin-bottom: 0.8rem;
+      }
+      .hero p {
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        margin-bottom: 1.2rem;
+      }
+      .btn-pill {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .hero-content .row {
+        height: 100%;
+      }
+      .hero-image {
+        max-height: 50vh;
+        margin-top: 1rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-logos img {
+        height: clamp(30px, 12vw, 50px);
+        max-width: clamp(80px, 35vw, 120px);
+      }
+      .d-flex.flex-wrap {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+      .btn-pill {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <!-- Logos en la parte superior -->
+      <div class="row justify-content-between align-items-center hero-logos">
+        <div class="col-auto">
+          <img src="/Logo_New_York_Life.svg" alt="New York Life" class="img-fluid" />
+        </div>  
+        <div class="col-auto">
+          <img src="/ryp.svg" alt="Ramírez y Plascencia" class="img-fluid" />
+        </div>
+      </div>
+      
+      <!-- Contenido principal del hero -->
+      <div class="hero-content">
+        <div class="row align-items-center g-4 h-100">
+          <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <h1>🎓 Asegura el FUTURO de tus hijos con <span style="color:#1e88e5">Segubeca</span></h1>
+            <p>La educación universitaria es la mejor herencia que puedes darles. Con <strong>Segubeca</strong>, tendrás la tranquilidad de que, pase lo que pase, tus hijos contarán con los recursos necesarios para cumplir sus sueños.</p>
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <a href="#form" class="btn btn-pill btn-primary" style="background:#1e88e5; border-color:#1e88e5"><i class="fa-solid fa-graduation-cap me-2"></i>Quiero asegurar su educación</a>
+              <a href="#form" class="btn btn-pill btn-outline-primary"><i class="fa-solid fa-calculator me-2"></i>Simular mi plan Segubeca</a>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center d-flex align-items-center justify-content-center">
+            <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="img-fluid hero-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BENEFICIOS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h1 mb-4">Beneficios de Segubeca</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="benefit text-center">
+            <i class="fa-solid fa-book fa-2x text-primary mb-3"></i>
+            <h3 class="h5">Educación garantizada</h3>
+            <p>Capital disponible al cumplir 18 años para cubrir la universidad de tus hijos.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="benefit text-center">
+            <i class="fa-solid fa-shield-heart fa-2x text-primary mb-3"></i>
+            <h3 class="h5">Protección</h3>
+            <p>En caso de fallecimiento, tus hijos reciben la suma asegurada contratada.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="benefit text-center">
+            <i class="fa-solid fa-users fa-2x text-primary mb-3"></i>
+            <h3 class="h5">Cobertura familiar</h3>
+            <p>Posibilidad de incluir a la pareja o abuelos como contratantes.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="benefit text-center">
+            <i class="fa-solid fa-piggy-bank fa-2x text-primary mb-3"></i>
+            <h3 class="h5">Ahorro planificado</h3>
+            <p>Asegura hoy el costo de la educación al valor actual, sin sorpresas futuras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band text-center">
+    <div class="container">
+      <h2>👨‍👩‍👧 Imagina ver a tus hijos graduarse gracias a tu decisión de HOY</h2>
+      <p class="mb-4">Cada año las colegiaturas aumentan. Hoy puedes asegurar su educación con Segubeca.</p>
+      <a href="#form" class="btn btn-light btn-pill"><i class="fa-solid fa-file-pen me-2"></i>Solicitar información</a>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+   <div id="form">  <Contact />
+</div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>© <span id="year"></span> Segubeca. Todos los derechos reservados.</p>
+      <p class="small">Consulta términos, condiciones, coberturas, exclusiones y requisitos en el manual SeguBeca. La disponibilidad y beneficios están sujetos a evaluación.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear().toString();
+    }
+  </script>
+</body>
+</html>
