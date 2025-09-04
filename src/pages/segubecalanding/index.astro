@@ -9,6 +9,10 @@ import Contact from '../../components/Contact.astro';
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+  <!-- Bloquear indexación -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
 
   <title>Segubeca | Asegura el futuro educativo de tus hijos | Asesores Seguros Monterrey</title>
   <meta name="description" content="Segubeca te ayuda a asegurar la educación universitaria de tus hijos. Garantiza su futuro con capital disponible a los 18 años y protección en caso de fallecimiento." />
@@ -138,12 +142,18 @@ import Contact from '../../components/Contact.astro';
     <div class="container">
       <!-- Logos en la parte superior -->
       <div class="row justify-content-between align-items-center hero-logos">
-        <div class="col-auto">
+        <a class="col-auto" href="/"><div >
           <img src="/Logo_New_York_Life.svg" alt="New York Life" class="img-fluid" />
-        </div>  
-        <div class="col-auto">
+        </div></a>
+
+
+        <a class="col-auto" href="/"><div >
           <img src="/ryp.svg" alt="Ramírez y Plascencia" class="img-fluid" />
-        </div>
+        </div></a>
+         
+
+          
+        
       </div>
       
       <!-- Contenido principal del hero -->
@@ -168,7 +178,7 @@ import Contact from '../../components/Contact.astro';
   <!-- BENEFICIOS -->
   <section class="section">
     <div class="container">
-      <h2 class="h1 mb-4">Beneficios de Segubeca</h2>
+      <h2 class="h1 mb-4 mt-4">Beneficios de Segubeca</h2>
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
           <div class="benefit text-center">
@@ -219,7 +229,7 @@ import Contact from '../../components/Contact.astro';
   <footer class="footer">
     <div class="container text-center">
       <p>© <span id="year"></span> Segubeca. Todos los derechos reservados.</p>
-      <p class="small">Consulta términos, condiciones, coberturas, exclusiones y requisitos en el manual SeguBeca. La disponibilidad y beneficios están sujetos a evaluación.</p>
+      <p class="small">Consulta términos, condiciones, coberturas, exclusiones y requisitos con nuestros asesores. La disponibilidad y beneficios están sujetos a evaluación.</p>
     </div>
   </footer>
 

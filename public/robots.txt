@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear indexación de landing pages específicas
+Disallow: /segubecalanding/
+
+# Sitemap
+Sitemap: https://segurosrp.com/sitemap.xml
