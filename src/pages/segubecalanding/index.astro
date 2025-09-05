@@ -34,8 +34,42 @@ import Contact from '../../components/Contact.astro';
       flex-direction: column;
       margin: 0;
       padding: 0;
+      position: relative;
+      overflow: hidden;
     }
+    
+    /* Elementos de fondo espaciales */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        url('/segubecalanding/stars.png'),
+        url('/segubecalanding/moon.png'),
+        url('/segubecalanding/planet.png');
+      background-position: 
+        center center,
+        top 10% right 10%,
+        bottom 20% left 15%;
+      background-repeat: 
+        repeat,
+        no-repeat,
+        no-repeat;
+      background-size: 
+        auto,
+        clamp(80px, 15vw, 150px),
+        clamp(100px, 20vw, 200px);
+      opacity: 0.3;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
     .hero .container {
+      position: relative;
+      z-index: 2;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -87,35 +121,61 @@ import Contact from '../../components/Contact.astro';
         height: 100vh;
         padding: 0;
       }
+      
+      /* Ajustar elementos espaciales en móviles */
+      .hero::before {
+        background-position: 
+          center center,
+          top 5% right 5%,
+          bottom 10% left 5%;
+        background-size: 
+          auto,
+          clamp(60px, 12vw, 100px),
+          clamp(80px, 16vw, 120px);
+        opacity: 0.2;
+      }
+      
       .hero .container {
         padding-top: 15px;
         padding-bottom: 15px;
       }
+      
       .hero-logos {
         margin-bottom: 15px;
       }
+      
       .hero-logos img {
         height: clamp(35px, 10vw, 60px);
         max-width: clamp(100px, 30vw, 150px);
       }
+      
       .hero h1 {
         font-size: clamp(1.5rem, 6vw, 2.2rem);
         margin-bottom: 0.8rem;
       }
+      
       .hero p {
         font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         margin-bottom: 1.2rem;
       }
+      
       .btn-pill {
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
       }
+      
       .hero-content .row {
         height: 100%;
       }
+      
+      /* Ajustar imagen hero para móviles */
       .hero-image {
-        max-height: 50vh;
-        margin-top: 1rem;
+        position: absolute !important;
+        top: -15rem !important;
+        right: 0 !important;
+        width: clamp(300px, 70vw, 800px) !important;
+        max-height: 80vh !important;
+        object-fit: contain !important;
       }
     }
     
@@ -124,13 +184,99 @@ import Contact from '../../components/Contact.astro';
         height: clamp(30px, 12vw, 50px);
         max-width: clamp(80px, 35vw, 120px);
       }
+      
+      /* Elementos espaciales más sutiles en móviles pequeños */
+      .hero::before {
+        background-position: 
+          center center,
+          top 3% right 3%,
+          bottom 5% left 3%;
+        background-size: 
+          auto,
+          clamp(40px, 10vw, 70px),
+          clamp(60px, 14vw, 90px);
+        opacity: 0.15;
+      }
+      
       .d-flex.flex-wrap {
         flex-direction: column !important;
         gap: 0.5rem !important;
       }
+      
       .btn-pill {
         width: 100%;
         text-align: center;
+      }
+      
+      /* Imagen más pequeña en móviles muy pequeños */
+      .hero-image {
+        position: absolute !important;
+        top: -12rem !important;
+        right: 0 !important;
+        width: clamp(250px, 65vw, 600px) !important;
+        max-height: 70vh !important;
+        object-fit: contain !important;
+      }
+      
+      /* Ajustar texto para móviles pequeños */
+      .hero h1 {
+        font-size: clamp(1.3rem, 5.5vw, 2rem);
+        line-height: 1.1;
+      }
+      
+      .hero p {
+        font-size: clamp(0.85rem, 3.2vw, 1rem);
+      }
+    }
+    
+    /* Para pantallas muy pequeñas (landscape en móviles) */
+    @media (max-width: 480px) {
+      .hero-image {
+        position: absolute !important;
+        top: -10rem !important;
+        right: 0 !important;
+        width: clamp(220px, 60vw, 500px) !important;
+        max-height: 65vh !important;
+        object-fit: contain !important;
+      }
+    }
+
+    /* Estilos para la sección de universidades */
+    .university-logo img:hover {
+      filter: brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(1500%) hue-rotate(200deg) brightness(80%) contrast(110%) !important;
+      transform: scale(1.05);
+    }
+
+    .cost-amount:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(20, 89, 149, 0.4) !important;
+    }
+
+    @media (max-width: 768px) {
+      .universities-section {
+        padding: 60px 0 !important;
+      }
+      
+      .university-logo {
+        height: 100px !important;
+      }
+      
+      .cost-amount p {
+        font-size: clamp(1.3rem, 2.5vw, 1.8rem) !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .universities-section {
+        padding: 40px 0 !important;
+      }
+      
+      .university-logo {
+        height: 80px !important;
+      }
+      
+      .cost-amount {
+        padding: 15px !important;
       }
     }
   </style>
@@ -138,75 +284,98 @@ import Contact from '../../components/Contact.astro';
 
 <body>
   <!-- HERO -->
-  <header class="hero">
+<header class="hero" style="background: linear-gradient(90deg, #145995, #0f1f32);">
     <div class="container">
-      <!-- Logos en la parte superior -->
-      <div class="row justify-content-between align-items-center hero-logos">
-        <a class="col-auto" href="/"><div >
-          <img src="/Logo_New_York_Life.svg" alt="New York Life" class="img-fluid" />
-        </div></a>
+        <!-- Logos en la parte superior -->
+        <div class="row justify-content-between align-items-center hero-logos">
+            <a class="col-auto" href="/">
+              <div>
+                <img src="/segubecalanding/Logo_New_York_Life.webp" alt="New York Life" class="img-fluid" style="width:clamp(100px,28vw,280px);height:auto;max-height:none;" />
+              </div>
+            </a>
 
-
-        <a class="col-auto" href="/"><div >
-          <img src="/ryp.svg" alt="Ramírez y Plascencia" class="img-fluid" />
-        </div></a>
-         
-
-          
+            <!--<a class="col-auto" href="/"><div >
+                <img src="/ryp.svg" alt="Ramírez y Plascencia" class="img-fluid" />
+            </div></a>-->
+        </div>
         
+        <!-- Contenido principal del hero -->
+        <div class="hero-content">
+            <div class="row align-items-center g-4 h-100">
+                <div class="col-lg-6 d-flex flex-column justify-content-center">
+                    <h1 style="color: #FFDE59;">🎓 Asegura el FUTURO de tus hijos con <span style="color:#1e88e5">Segubeca</span></h1>
+                    <p style="color: white;">La educación universitaria es la mejor herencia que puedes darles. Con <strong>Segubeca</strong>, tendrás la tranquilidad de que, pase lo que pase, tus hijos contarán con los recursos necesarios para cumplir sus sueños.</p>
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <a href="#form" class="btn btn-pill btn-primary" style="background:#FFDE59; border-color:#1e88e5; color:black"><i class="fa-solid fa-graduation-cap me-2 text-dark"></i>Quiero asegurar su educación</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center position-relative" style="min-height:1px;">
+                    <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="img-fluid hero-image" style="position:absolute; top:-23rem; right:0; width:clamp(400px,75vw,1200px); max-height:95vh; object-fit:contain;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+  <!-- UNIVERSIDADES SECTION -->
+  <section class="universities-section" style="background: linear-gradient(135deg, #FFDE59, #FFD700); padding: 80px 0;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="h1 mb-4" style="color: #145995; font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);">
+          ¿Cuánto cuesta estudiar en las mejores universidades de México?
+        </h2>
+        <p style="color: #0f1f32; font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 800px; margin: 0 auto;">
+          Conoce el costo real de una educación de calidad y planifica el futuro de tus hijos
+        </p>
       </div>
       
-      <!-- Contenido principal del hero -->
-      <div class="hero-content">
-        <div class="row align-items-center g-4 h-100">
-          <div class="col-lg-6 d-flex flex-column justify-content-center">
-            <h1>🎓 Asegura el FUTURO de tus hijos con <span style="color:#1e88e5">Segubeca</span></h1>
-            <p>La educación universitaria es la mejor herencia que puedes darles. Con <strong>Segubeca</strong>, tendrás la tranquilidad de que, pase lo que pase, tus hijos contarán con los recursos necesarios para cumplir sus sueños.</p>
-            <div class="d-flex flex-wrap gap-2 mt-4">
-              <a href="#form" class="btn btn-pill btn-primary" style="background:#1e88e5; border-color:#1e88e5"><i class="fa-solid fa-graduation-cap me-2"></i>Quiero asegurar su educación</a>
-              <a href="#form" class="btn btn-pill btn-outline-primary"><i class="fa-solid fa-calculator me-2"></i>Simular mi plan Segubeca</a>
+      <div class="row g-5 justify-content-center">
+        <!-- Universidad Anáhuac -->
+        <div class="col-md-4 col-lg-3">
+          <div class="text-center">
+            <div class="university-logo mb-3" style="height: 120px; display: flex; align-items: center; justify-content: center;">
+              <img src="/segubecalanding/anahuac.png" alt="Universidad Anáhuac" style="max-height: 100%; max-width: 100%; object-fit: contain; filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%); transition: filter 0.3s ease;" />
+            </div>
+            <div class="cost-amount" style="background: #145995; color: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(20, 89, 149, 0.3);">
+              <p style="margin: 0; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.2rem);">$2,350,000</p>
             </div>
           </div>
-          <div class="col-lg-6 text-center d-flex align-items-center justify-content-center">
-            <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="img-fluid hero-image" />
+        </div>
+
+        <!-- Universidad Panamericana -->
+        <div class="col-md-4 col-lg-3">
+          <div class="text-center">
+            <div class="university-logo mb-3" style="height: 120px; display: flex; align-items: center; justify-content: center;">
+              <img src="/segubecalanding/panamericana.png" alt="Universidad Panamericana" style="max-height: 100%; max-width: 100%; object-fit: contain; filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%); transition: filter 0.3s ease;" />
+            </div>
+            <div class="cost-amount" style="background: #145995; color: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(20, 89, 149, 0.3);">
+              <p style="margin: 0; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.2rem);">$2,000,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tecnológico de Monterrey -->
+        <div class="col-md-4 col-lg-3">
+          <div class="text-center">
+            <div class="university-logo mb-3" style="height: 120px; display: flex; align-items: center; justify-content: center;">
+              <img src="/segubecalanding/tec.png" alt="Tecnológico de Monterrey" style="max-height: 100%; max-width: 100%; object-fit: contain; filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%); transition: filter 0.3s ease;" />
+            </div>
+            <div class="cost-amount" style="background: #145995; color: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 25px rgba(20, 89, 149, 0.3);">
+              <p style="margin: 0; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.2rem);">$1,500,000</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
 
-  <!-- BENEFICIOS -->
-  <section class="section">
-    <div class="container">
-      <h2 class="h1 mb-4 mt-4">Beneficios de Segubeca</h2>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-          <div class="benefit text-center">
-            <i class="fa-solid fa-book fa-2x text-primary mb-3"></i>
-            <h3 class="h5">Educación garantizada</h3>
-            <p>Capital disponible al cumplir 18 años para cubrir la universidad de tus hijos.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="benefit text-center">
-            <i class="fa-solid fa-shield-heart fa-2x text-primary mb-3"></i>
-            <h3 class="h5">Protección</h3>
-            <p>En caso de fallecimiento, tus hijos reciben la suma asegurada contratada.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="benefit text-center">
-            <i class="fa-solid fa-users fa-2x text-primary mb-3"></i>
-            <h3 class="h5">Cobertura familiar</h3>
-            <p>Posibilidad de incluir a la pareja o abuelos como contratantes.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="benefit text-center">
-            <i class="fa-solid fa-piggy-bank fa-2x text-primary mb-3"></i>
-            <h3 class="h5">Ahorro planificado</h3>
-            <p>Asegura hoy el costo de la educación al valor actual, sin sorpresas futuras.</p>
-          </div>
+      <!-- Call to Action dentro de la sección -->
+      <div class="text-center mt-5">
+        <div style=" padding: 30px;">
+          <a href="#form" class="btn btn-pill" style="background: #145995; color: white; border: none; padding: 12px 30px; font-weight: 600;">
+            <i class="fa-solid fa-shield-heart me-2"></i>Proteger su futuro ahora
+          </a>
         </div>
       </div>
     </div>
