@@ -1,5 +1,5 @@
 ---
-import Contact from '../../components/Contact.astro';
+import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
 ---
 
 <!DOCTYPE html>
@@ -279,6 +279,86 @@ import Contact from '../../components/Contact.astro';
         padding: 15px !important;
       }
     }
+
+    /* Estilos para la sección de testimonios */
+    .carousel-indicators button {
+      transition: all 0.3s ease !important;
+    }
+    
+    .carousel-indicators button.active {
+      background-color: #FFDE59 !important;
+      transform: scale(1.2) !important;
+    }
+
+    /* Responsividad para dos imágenes por slide */
+    @media (max-width: 768px) {
+      .carousel-inner .carousel-item .row {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      
+      .carousel-inner .carousel-item .col-lg-5 {
+        margin-bottom: 1rem;
+      }
+      
+      .carousel-inner .carousel-item .col-lg-5:last-child {
+        margin-bottom: 0;
+      }
+      
+      .carousel-indicators {
+        margin-bottom: -20px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .carousel-inner .carousel-item img {
+        max-width: 300px !important;
+      }
+      
+      .carousel-indicators {
+        margin-bottom: -15px !important;
+      }
+      
+      .carousel-indicators button {
+        width: 10px !important;
+        height: 10px !important;
+      }
+    }
+
+    /* Estilos para la sección de información Segubeca */
+    @media (max-width: 768px) {
+      .segubeca-info-section {
+        padding: 60px 0 !important;
+      }
+      
+      .segubeca-step {
+        padding: 1rem !important;
+        margin-bottom: 2rem !important;
+      }
+      
+      .segubeca-step img {
+        max-width: 400px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .segubeca-info-section {
+        padding: 40px 0 !important;
+      }
+      
+      .segubeca-step {
+        padding: 0.75rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .segubeca-step img {
+        max-width: 320px !important;
+      }
+      
+      .segubeca-cta {
+        padding: 1.5rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -288,15 +368,16 @@ import Contact from '../../components/Contact.astro';
     <div class="container">
         <!-- Logos en la parte superior -->
         <div class="row justify-content-between align-items-center hero-logos">
+                   <a class="col-auto" href="/"><div >
+                <img src="/seguros-monterrey-new-york-life-logo.png" alt="Ramírez y Plascencia" class="img-fluid" />
+            </div></a>
             <a class="col-auto" href="/">
               <div>
                 <img src="/segubecalanding/rp_blanco.png" alt="New York Life" class="img-fluid" style="width:clamp(100px,28vw,280px);height:auto;max-height:none;" />
               </div>
             </a>
 
-            <!--<a class="col-auto" href="/"><div >
-                <img src="/ryp.svg" alt="Ramírez y Plascencia" class="img-fluid" />
-            </div></a>-->
+     
         </div>
         
         <!-- Contenido principal del hero -->
@@ -310,7 +391,7 @@ import Contact from '../../components/Contact.astro';
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-center position-relative" style="min-height:1px;">
-                    <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="img-fluid hero-image" style="position:absolute; top:-23rem; right:0; width:clamp(400px,75vw,1200px); max-height:95vh; object-fit:contain;" />
+                    <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="img-fluid hero-image" style="position:absolute; top:-10rem; right:0; width:clamp(400px,75vw,1200px); max-height:100vh; object-fit:contain;" />
                 </div>
             </div>
         </div>
@@ -321,7 +402,7 @@ import Contact from '../../components/Contact.astro';
 
 
   <!-- UNIVERSIDADES SECTION -->
-  <section class="universities-section" style="background: linear-gradient(135deg, #FFDE59, #FFD700); padding: 80px 0;">
+<section class="universities-section" style="background: url('/segubecalanding/bg-moon.png'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 80px 0;">
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="h1 mb-4" style="color: #145995; font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);">
@@ -380,19 +461,379 @@ import Contact from '../../components/Contact.astro';
       </div>
     </div>
   </section>
+<!-- SECCIÓN INFORMACIÓN SEGUBECA -->
+<section style="
+    background: linear-gradient(135deg, #145995 0%, #0f1f32 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+">
+    <!-- Elementos de fondo espaciales -->
+    <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('/segubecalanding/stars.png');
+        background-position: center center;
+        background-repeat: repeat;
+        background-size: auto;
+        opacity: 0.3;
+        z-index: 1;
+        pointer-events: none;
+    "></div>
 
-  <!-- CTA BAND -->
-  <section class="cta-band text-center">
-    <div class="container">
-      <h2>👨‍👩‍👧 Imagina ver a tus hijos graduarse gracias a tu decisión de HOY</h2>
-      <p class="mb-4">Cada año las colegiaturas aumentan. Hoy puedes asegurar su educación con Segubeca.</p>
-      <a href="#form" class="btn btn-light btn-pill"><i class="fa-solid fa-file-pen me-2"></i>Solicitar información</a>
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="text-center ">
+            <h2 style="
+                color: #FFDE59;
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 700;
+                margin-bottom: 1rem;
+            ">
+                ✨ Cómo funciona Segubeca
+            </h2>
+            <p style="
+                color: white;
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
+                max-width: 800px;
+                margin: 0 auto;
+            ">
+                Asegurar el futuro educativo de tus hijos es más simple de lo que imaginas. 
+                Sigue estos 4 pasos y garantiza su educación universitaria.
+            </p>
+        </div>
+
+        <!-- Pasos del proceso -->
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-xl-8">
+                <div class="d-flex flex-column gap-0">
+                    
+                    <!-- Paso 1 -->
+                    <div style="margin-top: -1rem;
+                    ">
+                        <div class="text-center">
+                            <img 
+                                src="/segubecalanding/paso_1.png" 
+                                alt="Paso 1: Define tu plan"
+                                style="
+                                    width: 100%;
+                                    max-width: 900px;
+                                    height: auto;
+                                "
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div style="
+                    margin-top: -2rem
+                    ">
+                        <div class="text-center">
+                            <img 
+                                src="/segubecalanding/paso_2.png" 
+                                alt="Paso 2: Estás protegido"
+                                style="
+                                    width: 100%;
+                                    max-width: 900px;
+                                    height: auto;
+                                "
+                            />
+                        </div>
+                    </div>
+                    <!-- Beneficios paso  2 imagenes horizontales -->
+                     <p style="
+                        color: white;
+                        font-size: clamp(1rem, 2.5vw, 1.2rem);
+                        max-width: 800px;
+                        margin: 1rem auto 0 auto;
+                        text-align: center;
+                    ">
+                        Y obtienes los siguientes beneficios:
+                    </p>
+                    
+                    <!-- Sección de Beneficios después del Paso 2 -->
+                    <div style="margin: 2rem 0;">
+                        <div class="row g-2">
+                            <!-- Beneficio 1 -->
+                            <div class="col-lg-3 col-6">
+                                <div class="text-center">
+                                    <img 
+                                        src="/segubecalanding/beneficio_1.png" 
+                                        alt="Beneficio 1"
+                                        style="
+                                            width: 100%;
+                                            max-width: 200px;
+                                            height: auto;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                            
+                            <!-- Beneficio 2 -->
+                            <div class="col-lg-3 col-6">
+                                <div class="text-center">
+                                    <img 
+                                        src="/segubecalanding/beneficio_2.png" 
+                                        alt="Beneficio 2"
+                                        style="
+                                            width: 100%;
+                                            max-width: 200px;
+                                            height: auto;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                            
+                            <!-- Beneficio 3 -->
+                            <div class="col-lg-3 col-6">
+                                <div class="text-center">
+                                    <img 
+                                        src="/segubecalanding/beneficio_3.png" 
+                                        alt="Beneficio 3"
+                                        style="
+                                            width: 100%;
+                                            max-width: 200px;
+                                            height: auto;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                            
+                            <!-- Beneficio 4 -->
+                            <div class="col-lg-3 col-6">
+                                <div class="text-center">
+                                    <img 
+                                        src="/segubecalanding/beneficio_4.png" 
+                                        alt="Beneficio 4"
+                                        style="
+                                            width: 100%;
+                                            max-width: 200px;
+                                            height: auto;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div style="
+                    margin-top: -1rem
+                    ">
+                        <div class="text-center">
+                            <img 
+                                src="/segubecalanding/paso_3.png" 
+                                alt="Paso 3: Ahorro"
+                                style="
+                                    width: 100%;
+                                    max-width: 900px;
+                                    height: auto;
+                                "
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div style="
+                    ">
+                        <div class="text-center">
+                            <img 
+                                src="/segubecalanding/paso_4.png" 
+                                alt="Paso 4: Recibes tu dinero"
+                                style="
+                                    width: 100%;
+                                    max-width: 900px;
+                                    height: auto;
+                                "
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action de la sección -->
+        <div class="text-center mt-4">
+            <div style="
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 1.5rem;
+                max-width: 600px;
+                margin: 0 auto;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            ">
+                <h3 style="
+                    color: #145995;
+                    font-weight: 700;
+                    margin-bottom: 1rem;
+                    font-size: clamp(1.3rem, 3vw, 1.8rem);
+                ">✨ ¡Es así de simple!</h3>
+                <p style="
+                    color: #0f1f32;
+                    margin-bottom: 1rem;
+                    font-size: clamp(0.9rem, 2vw, 1.05rem);
+                ">
+                    Con Segubeca, aseguras que tu hijo tenga el capital necesario para su educación universitaria, 
+                    sin importar lo que pase. Es la mejor inversión que puedes hacer hoy.
+                </p>
+                <a href="#form" style="
+                    display: inline-block;
+                    background: linear-gradient(135deg, #FFDE59, #FFD700);
+                    color: #145995;
+                    padding: 0.9rem 1.6rem;
+                    border-radius: 25px;
+                    text-decoration: none;
+                    font-weight: 700;
+                    transition: transform 0.2s ease;
+                    box-shadow: 0 8px 25px rgba(255, 222, 89, 0.3);
+                "
+                onmouseover="this.style.transform='scale(1.03)';"
+                onmouseout="this.style.transform='scale(1)';"
+                >
+                    🚀 Empezar mi plan ahora
+                </a>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
+
+  <!-- TESTIMONIOS SECTION -->
+    <section style="
+        background: linear-gradient(135deg, #0f1f32 0%, #145995 100%);
+        position: relative;
+        overflow: hidden;
+        padding: 60px 0;
+    ">
+        <!-- Elementos de fondo espaciales -->
+        <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/segubecalanding/bg-moon.png');
+            background-position: center center;
+            background-repeat: repeat;
+            background-size: auto;
+            z-index: 1;
+            pointer-events: none;
+        "></div>
+        <p style="
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #000000;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        ">💬 Testimonios de clientes satisfechos</p
+        >
+
+        <div class="container" style="position: relative; z-index: 2;">
+            <!-- Carrusel de Testimonios - Solo imágenes (2 por slide) -->
+            <div id="testimoniosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
+                <div class="carousel-indicators" style="margin-bottom: -40px;">
+                    <button type="button" data-bs-target="#testimoniosCarousel" data-bs-slide-to="0" class="active" style="
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        background-color: #FFDE59;
+                        border: none;
+                    "></button>
+                    <button type="button" data-bs-target="#testimoniosCarousel" data-bs-slide-to="1" style="
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        background-color: #FFDE59;
+                        border: none;
+                    "></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <!-- Slide 1 - Testimonios 1 y 2 -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-lg-5 col-md-6 col-sm-10 col-12 d-flex justify-content-center">
+                                <img 
+                                    src="/segubecalanding/testimonio_15.png" 
+                                    alt="Comprobante de retiro 1"
+                                    style="
+                                        width: 100%;
+                                        max-width: clamp(600px, 90vw, 1000px);
+                                        height: auto;
+                                        border: none;
+                                        box-shadow: none;
+                                        border-radius: 0;
+                                        display: block;
+                                    "
+                                />
+                            </div>
+                            <div class="col-lg-5 col-md-6 col-sm-10 col-12 d-flex justify-content-center">
+                                <img 
+                                    src="/segubecalanding/testimonio_16.png" 
+                                    alt="Comprobante de retiro 2"
+                                    style="
+                                        width: 100%;
+                                        max-width: clamp(600px, 90vw, 1000px);
+                                        height: auto;
+                                        border: none;
+                                        box-shadow: none;
+                                        border-radius: 0;
+                                        display: block;
+                                    "
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 - Testimonios 3 y 4 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-lg-5 col-md-6 col-sm-10 col-12 d-flex justify-content-center">
+                                <img 
+                                    src="/segubecalanding/testimonio_17.png" 
+                                    alt="Comprobante de retiro 3"
+                                    style="
+                                        width: 100%;
+                                        max-width: clamp(600px, 90vw, 1000px);
+                                        height: auto;
+                                        border: none;
+                                        box-shadow: none;
+                                        border-radius: 0;
+                                        display: block;
+                                    "
+                                />
+                            </div>
+                            <div class="col-lg-5 col-md-6 col-sm-10 col-12 d-flex justify-content-center">
+                                <img 
+                                    src="/segubecalanding/testimonio_18.png" 
+                                    alt="Comprobante de retiro 4"
+                                    style="
+                                        width: 100%;
+                                        max-width: clamp(600px, 90vw, 1000px);
+                                        height: auto;
+                                        border: none;
+                                        box-shadow: none;
+                                        border-radius: 0;
+                                        display: block;
+                                    "
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
   <!-- FORMULARIO -->
-   <div id="form">  <Contact />
-</div>
+   <div id="form"><ContactSeguBeca /></div>
 
   <!-- FOOTER -->
   <footer class="footer">
