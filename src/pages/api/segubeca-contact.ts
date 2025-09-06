@@ -31,6 +31,12 @@ const transporter = nodemailer.createTransport({
 
 // Función para enviar notificación a Telegram con botón de WhatsApp personalizado
 async function sendTelegramNotification(leadData: any, documentId: string) {
+  // Verificar si las variables de Telegram están configuradas
+  if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
+    console.log('⚠️ Variables de Telegram no configuradas, saltando notificación');
+    return false;
+  }
+
   const message = `🎓 *NUEVO LEAD - SEGUBECA*
 
 👨‍👩‍👧‍👦 *Padre/Madre:* ${leadData.parentName}
@@ -117,6 +123,12 @@ Equipo Segubeca - Seguros RP`
 
 // Función para enviar email de confirmación al cliente
 async function sendClientEmail(leadData: any) {
+  // Verificar si las variables de email están configuradas
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.log('⚠️ Variables de email no configuradas, saltando email al cliente');
+    return false;
+  }
+
   const subject = `🎓 ¡Gracias por confiar en nosotros para asegurar el futuro de ${leadData.childName}! - Segubeca`;
   
   const htmlContent = `
@@ -190,6 +202,12 @@ async function sendClientEmail(leadData: any) {
 
 // Función para enviar email interno
 async function sendInternalEmail(leadData: any) {
+  // Verificar si las variables de email están configuradas
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.RECIPIENT_EMAIL) {
+    console.log('⚠️ Variables de email no configuradas, saltando email interno');
+    return false;
+  }
+
   const subject = '🎓 NUEVO LEAD SEGUBECA - Seguros Educativos';
   
   const htmlContent = `
