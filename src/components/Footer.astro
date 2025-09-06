@@ -1,7 +1,7 @@
 ---
 // Footer component
 import { Image } from 'astro:assets';
-import logoImage from '../../public/logo.png';
+import logoImage from '../../public/rp_blancos.png';
 
 const socialLinks = [
   {
@@ -12,7 +12,7 @@ const socialLinks = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/ramirezplascencia_/",
-    icon: "M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C3.85 14.81 3.85 12.939 4.729 12.061L12.017 4.773l7.288 7.288c.878.878.878 2.749 0 3.628-.875.807-2.026 1.297-3.323 1.297H8.449z"
+    icon: "M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.33 3.608 1.304.975.975 1.243 2.242 1.304 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.33 2.633-1.304 3.608-.975.975-2.242 1.243-3.608 1.304-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.33-3.608-1.304-.975-.975-1.243-2.242-1.304-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.33-2.633 1.304-3.608.975-.975 2.242-1.243 3.608-1.304C8.416 2.175 8.796 2.163 12 2.163zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2zM18.406 4.594a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"
   },
   {
     name: "YouTube",
@@ -31,13 +31,12 @@ const socialLinks = [
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       <div class="text-center md:text-left">
-        <div class="bg-white p-2 rounded-lg inline-block mb-4">
+        <div class=" p-2 rounded-lg inline-block mb-4">
           <Image 
             src={logoImage} 
             alt="Seguros RP" 
-            class="h-8 md:h-10"
-            width={120}
-            height={40}
+            class="w-40 h-auto"
+            
             format="png"
             loading="lazy"
             quality={95}
@@ -47,21 +46,21 @@ const socialLinks = [
       </div>
       
      
-      <div class="text-center md:text-left">
+      <div class="text-center md:text-right md:col-start-3">
         <h3 class="text-base md:text-lg font-semibold mb-4">Síguenos</h3>
-        <div class="flex justify-center md:justify-start space-x-4">
+        <div class="flex justify-center md:justify-end space-x-4">
           {socialLinks.map((social) => (
-            <a 
-              href={social.href} 
-              class="text-gray-300 hover:text-white hover:-translate-y-1 transition-all duration-300"
-              aria-label={social.name}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d={social.icon}></path>
-              </svg>
-            </a>
+        <a 
+          href={social.href} 
+          class="text-gray-300 hover:text-white hover:-translate-y-1 transition-all duration-300"
+          aria-label={social.name}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d={social.icon}></path>
+          </svg>
+        </a>
           ))}
         </div>
       </div>
