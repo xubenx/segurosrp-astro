@@ -270,6 +270,16 @@ async function sendInternalEmail(leadData: any) {
 }
 
 export const POST: APIRoute = async ({ request }) => {
+  let leadSaved = false;
+  let documentId: string | null = null;
+  let results = {
+    firebase: false,
+    clientEmail: false,
+    internalEmail: false,
+    telegram: false,
+    errors: [] as string[]
+  };
+
   try {
     console.log('🎓 Procesando formulario de Segubeca...');
     
@@ -293,7 +303,7 @@ export const POST: APIRoute = async ({ request }) => {
       userAgent: request.headers.get('user-agent') || 'unknown',
     };
 
-    // Validaciones
+    // Validaciones básicas
     if (!leadData.parentName || !leadData.childName || !leadData.parentAge || 
         !leadData.childAge || !leadData.monthlySavings || !leadData.email || !leadData.whatsapp) {
       return new Response(JSON.stringify({
@@ -317,7 +327,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Validar WhatsApp (debe ser exactamente 10 dígitos)
+    // Validar WhatsApp
     if (leadData.whatsapp.length !== 10 || !/^\d{10}$/.test(leadData.whatsapp)) {
       return new Response(JSON.stringify({
         success: false,
@@ -354,82 +364,120 @@ export const POST: APIRoute = async ({ request }) => {
 
     console.log('✅ Validaciones pasadas');
 
-    // Inicializar Firebase y guardar en Firestore
-    let documentId: string | null = null;
+    // PASO 1: GUARDAR EN FIREBASE (CRÍTICO - SI FALLA AQUÍ, DEVOLVER ERROR)
     try {
-      console.log('🔥 Inicializando Firebase...');
+      console.log('🔥 PASO 1: Guardando en Firebase...');
       await ensureFirebaseInitialized();
-      
-      console.log('💾 Guardando en Firestore...');
       documentId = await saveLeadToFirestore(leadData);
       
       if (documentId) {
-        console.log('✅ Lead guardado en Firestore con ID:', documentId);
+        leadSaved = true;
+        results.firebase = true;
+        console.log('✅ PASO 1 EXITOSO: Lead guardado con ID:', documentId);
       } else {
         throw new Error('No se pudo obtener el ID del documento');
       }
     } catch (error) {
-      console.error('❌ Error con Firebase:', error);
-      return new Response(JSON.stringify({
-        success: false,
-        error: 'Error al guardar en la base de datos'
-      }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-
-    // Enviar notificaciones
-    try {
-      console.log('📧 Enviando notificaciones...');
+      console.error('❌ PASO 1 FALLÓ: Error guardando en Firebase:', error);
+      results.errors.push(`Firebase: ${error.message}`);
       
-      const [clientEmailResult, internalEmailResult, telegramResult] = await Promise.allSettled([
-        sendClientEmail(leadData),
-        sendInternalEmail(leadData),
-        sendTelegramNotification(leadData, documentId!)
-      ]);
-
-      console.log('📊 Resultados de notificaciones:', {
-        clientEmail: clientEmailResult.status,
-        internalEmail: internalEmailResult.status,
-        telegram: telegramResult.status
-      });
-
-      // Si Telegram falla, es crítico
-      if (telegramResult.status === 'rejected') {
-        console.error('❌ Error crítico en Telegram:', telegramResult.reason);
-        throw new Error('Error enviando notificación a Telegram');
-      }
-
-    } catch (error) {
-      console.error('❌ Error enviando notificaciones:', error);
+      // Si Firebase falla, devolver error inmediatamente
       return new Response(JSON.stringify({
         success: false,
-        error: 'Error enviando notificaciones'
+        error: 'Error al guardar en la base de datos. Por favor, intenta de nuevo.',
+        details: results
       }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
     }
 
-    console.log('🎉 Proceso completado exitosamente');
+    // PASO 2: ENVIAR EMAIL AL CLIENTE (NO CRÍTICO)
+    try {
+      console.log('📧 PASO 2: Enviando email al cliente...');
+      await sendClientEmail(leadData);
+      results.clientEmail = true;
+      console.log('✅ PASO 2 EXITOSO: Email al cliente enviado');
+    } catch (error) {
+      console.error('⚠️ PASO 2 FALLÓ: Error enviando email al cliente:', error);
+      results.errors.push(`Client Email: ${error.message}`);
+      // Continuar aunque falle
+    }
+
+    // PASO 3: ENVIAR EMAIL INTERNO (NO CRÍTICO)
+    try {
+      console.log('📨 PASO 3: Enviando email interno...');
+      await sendInternalEmail(leadData);
+      results.internalEmail = true;
+      console.log('✅ PASO 3 EXITOSO: Email interno enviado');
+    } catch (error) {
+      console.error('⚠️ PASO 3 FALLÓ: Error enviando email interno:', error);
+      results.errors.push(`Internal Email: ${error.message}`);
+      // Continuar aunque falle
+    }
+
+    // PASO 4: ENVIAR NOTIFICACIÓN A TELEGRAM (NO CRÍTICO)
+    try {
+      console.log('🤖 PASO 4: Enviando notificación a Telegram...');
+      await sendTelegramNotification(leadData, documentId!);
+      results.telegram = true;
+      console.log('✅ PASO 4 EXITOSO: Notificación a Telegram enviada');
+    } catch (error) {
+      console.error('⚠️ PASO 4 FALLÓ: Error enviando a Telegram:', error);
+      results.errors.push(`Telegram: ${error.message}`);
+      // Continuar aunque falle
+    }
+
+    // RESULTADO FINAL
+    console.log('🎉 PROCESO COMPLETADO');
+    console.log('📊 Resumen de resultados:', results);
+
+    // Si el lead se guardó exitosamente, considerar como éxito
+    // aunque fallen las notificaciones
+    const successMessage = `¡Perfecto! Nuestro asesor especializado en seguros educativos te contactará en las próximas 24 horas para diseñar el plan ideal para ${leadData.childName}.`;
 
     return new Response(JSON.stringify({
       success: true,
-      message: `¡Perfecto! Nuestro asesor especializado en seguros educativos te contactará en las próximas 24 horas para diseñar el plan ideal para ${leadData.childName}.`,
-      documentId: documentId
+      message: successMessage,
+      documentId: documentId,
+      details: {
+        leadSaved: leadSaved,
+        firebase: results.firebase,
+        notifications: {
+          clientEmail: results.clientEmail,
+          internalEmail: results.internalEmail,
+          telegram: results.telegram
+        },
+        errors: results.errors.length > 0 ? results.errors : undefined
+      }
     }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
 
   } catch (error) {
-    console.error('❌ Error general procesando formulario de Segubeca:', error);
+    console.error('❌ ERROR GENERAL procesando formulario de Segubeca:', error);
+    
+    // Si llegamos aquí y el lead no se guardó, es un error crítico
+    if (!leadSaved) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Error interno del servidor. Por favor, intenta de nuevo.',
+        details: results
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Si el lead se guardó pero hay otro error, devolver éxito con advertencias
     return new Response(JSON.stringify({
-      success: false,
-      error: 'Error interno del servidor'
+      success: true,
+      message: 'Lead guardado exitosamente, pero algunas notificaciones fallaron.',
+      documentId: documentId,
+      details: results
     }), {
-      status: 500,
+      status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
   }

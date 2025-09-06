@@ -507,15 +507,34 @@ const advisors = [
         if (response.ok) {
           // Éxito
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-          formMessage.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span style="font-size: 1.2rem;">🎉</span>
-              <div>
-                <strong>¡Perfecto, ${data.parentName}!</strong><br>
-                <span style="font-size: 0.875rem;">Nuestro asesor especializado en seguros educativos te contactará en las próximas 24 horas para diseñar el plan ideal para ${data.childName}.</span>
+          
+          // Mostrar mensaje personalizado según el resultado
+          if (result.details && result.details.errors && result.details.errors.length > 0) {
+            // Éxito con advertencias
+            formMessage.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.2rem;">✅</span>
+                <div>
+                  <strong>¡Perfecto, ${data.parentName}!</strong><br>
+                  <span style="font-size: 0.875rem;">Tu información fue guardada exitosamente. Nuestro asesor te contactará en las próximas 24 horas para diseñar el plan ideal para ${data.childName}.</span>
+                  <br><br>
+                  <span style="font-size: 0.75rem; color: #d97706;">ℹ️ Nota: Algunas notificaciones automáticas fallaron, pero tu solicitud fue procesada correctamente.</span>
+                </div>
               </div>
-            </div>
-          `;
+            `;
+          } else {
+            // Éxito completo
+            formMessage.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.2rem;">🎉</span>
+                <div>
+                  <strong>¡Perfecto, ${data.parentName}!</strong><br>
+                  <span style="font-size: 0.875rem;">Nuestro asesor especializado en seguros educativos te contactará en las próximas 24 horas para diseñar el plan ideal para ${data.childName}.</span>
+                </div>
+              </div>
+            `;
+          }
+          
           formMessage.classList.remove('hidden');
           
           // Limpiar el formulario
@@ -527,17 +546,38 @@ const advisors = [
         } else {
           // Error del servidor
           formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
-          formMessage.textContent = result.error || result.message || 'Error al enviar el formulario. Por favor, intenta de nuevo.';
+          
+          // Mostrar error específico o genérico
+          const errorMessage = result.error || result.message || 'Error al enviar el formulario. Por favor, intenta de nuevo.';
+          formMessage.innerHTML = `
+            <div>
+              <strong>❌ Error</strong><br>
+              <span style="font-size: 0.875rem;">${errorMessage}</span>
+              ${result.details && result.details.errors ? `<br><br><span style="font-size: 0.75rem; color: #991b1b;">Detalles técnicos: ${result.details.errors.join(', ')}</span>` : ''}
+            </div>
+          `;
           formMessage.classList.remove('hidden');
         }
       } catch (error) {
-        // Error de red
-        console.error('Network error:', error);
+        // Error de red o conexión
+        console.error('Network/Connection error:', error);
         formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
+        
+        // Determinar tipo de error
+        let errorMessage = '';
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+          errorMessage = 'Error de conexión. Verifica tu conexión a internet e intenta de nuevo.';
+        } else if (error.name === 'AbortError') {
+          errorMessage = 'La solicitud fue cancelada. Por favor, intenta de nuevo.';
+        } else {
+          errorMessage = 'Error de comunicación con el servidor. Por favor, intenta de nuevo.';
+        }
+        
         formMessage.innerHTML = `
           <div>
-            <strong>Error de conexión</strong><br>
-            <span style="font-size: 0.875rem;">Por favor, verifica tu conexión a internet e intenta de nuevo. Si el problema persiste, contáctanos por WhatsApp.</span>
+            <strong>🌐 Error de Conexión</strong><br>
+            <span style="font-size: 0.875rem;">${errorMessage}</span><br><br>
+            <span style="font-size: 0.75rem;">Si el problema persiste, contáctanos directamente por WhatsApp usando el botón verde en la parte inferior.</span>
           </div>
         `;
         formMessage.classList.remove('hidden');
