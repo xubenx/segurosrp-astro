@@ -1,0 +1,70 @@
+---
+// Componente para tracking de Google Ads y Analytics
+export interface Props {
+  conversionId?: string;
+  conversionLabel?: string;
+}
+
+const { conversionId, conversionLabel } = Astro.props;
+---
+
+<!-- Google Ads Conversion Tracking -->
+{conversionId && (
+  <script type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${conversionId}`}></script>
+)}
+
+<script type="text/partytown" define:vars={{ conversionId, conversionLabel }}>
+  if (conversionId) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', conversionId);
+    
+    // Función global para tracking de conversiones
+    window.trackConversion = function(value = 1.0) {
+      if (conversionLabel) {
+        gtag('event', 'conversion', {
+          'send_to': `${conversionId}/${conversionLabel}`,
+          'value': value,
+          'currency': 'MXN'
+        });
+      }
+    };
+  }
+</script>
+
+<!-- Schema.org para mejor SEO local -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Asesores Seguros Monterrey - New York Life",
+  "description": "Asesores especializados en seguros New York Life en Monterrey. Cotizaciones gratuitas y atención personalizada.",
+  "url": "https://mnyl.com.mx/asesores-seguros-monterrey-nyl/",
+  "telephone": "+52-81-8388-6050",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Monterrey",
+    "addressRegion": "Nuevo León",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates", 
+    "latitude": "25.6866",
+    "longitude": "-100.3161"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Monterrey"
+  },
+  "serviceType": [
+    "Seguros de Vida",
+    "Seguros de Salud", 
+    "Seguros de Auto",
+    "Seguros de Hogar",
+    "Seguros Empresariales"
+  ],
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "$$"
+}
+</script>

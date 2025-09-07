@@ -2,6 +2,9 @@ import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 import { initializeFirebase, saveLeadToFirestore } from '../../lib/firebase-config';
 
+// Make this endpoint server-rendered
+export const prerender = false;
+
 // Inicializar Firebase
 let firebaseInitialized = false;
 
@@ -31,28 +34,7 @@ const transporter = nodemailer.createTransport({
 
 // Función para enviar notificación a Telegram con botones interactivos
 async function sendTelegramNotification(leadData: any, documentId: string) {
-  // Determinar si es un lead de Segubeca o formulario general
-  const isSegubeca = leadData.parentName || leadData.childName || leadData.monthlySavings;
-  
-  let message = '';
-  
-  if (isSegubeca) {
-    message = `🎓 *NUEVO LEAD - SEGUBECA*
-
-👨‍👩‍👧‍👦 *Padre/Madre:* ${leadData.parentName || 'No proporcionado'}
-🧒 *Hijo/a:* ${leadData.childName || 'No proporcionado'}
-👤 *Edad padre/madre:* ${leadData.parentAge || 'No proporcionado'} años
-👶 *Edad hijo/a:* ${leadData.childAge || 'No proporcionado'} años
-💰 *Ahorro mensual deseado:* ${leadData.monthlySavings || 'No especificado'}
-📧 *Email:* ${leadData.email}
-📱 *WhatsApp:* ${leadData.whatsapp || 'No proporcionado'}
-
-📅 *Fecha:* ${new Date().toLocaleString('es-MX')}
-📊 *Estado:* 🟡 Pendiente
-🔗 *Fuente:* ${leadData.source || 'Segubeca Landing'}
-🆔 *ID:* ${documentId}`;
-  } else {
-    message = `🔔 *NUEVO LEAD - Seguros RP*
+  const message = `🔔 *NUEVO LEAD - Seguros RP*
 
 👤 *Nombre:* ${leadData.name}
 📧 *Email:* ${leadData.email}
@@ -62,7 +44,6 @@ async function sendTelegramNotification(leadData: any, documentId: string) {
 📅 *Fecha:* ${new Date().toLocaleString('es-MX')}
 📊 *Estado:* 🟡 Pendiente
 🆔 *ID:* ${documentId}`;
-  }
 
   const keyboard = {
     inline_keyboard: [
@@ -112,68 +93,11 @@ async function sendTelegramNotification(leadData: any, documentId: string) {
 
 // Función para enviar email de confirmación al cliente
 async function sendClientEmail(leadData: any) {
-  // Determinar si es un lead de Segubeca
-  const isSegubeca = leadData.parentName || leadData.childName || leadData.monthlySavings;
-  
-  let subject = '';
-  let htmlContent = '';
-  
-  if (isSegubeca) {
-    subject = `🎓 ¡Gracias por confiar en nosotros para asegurar el futuro de ${leadData.childName}! - Segubeca`;
-    htmlContent = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: linear-gradient(135deg, #145995 0%, #0f1f32 100%); padding: 30px; text-align: center; position: relative;">
-          <h1 style="color: #FFDE59; margin: 0; font-size: 2rem;">🎓 Segubeca</h1>
-          <p style="color: #FFDE59; margin: 10px 0 0 0;">Asegurando el futuro educativo de tus hijos</p>
-        </div>
-        
-        <div style="padding: 30px; background-color: #f9f9f9;">
-          <h2 style="color: #145995;">¡Hola ${leadData.parentName}!</h2>
-          
-          <p style="color: #333; line-height: 1.6;">
-            Gracias por contactarnos para asegurar el futuro educativo de <strong>${leadData.childName}</strong>. 
-            Nuestro equipo de asesores especialistas en seguros educativos se pondrá en contacto contigo 
-            en las próximas <strong>24 horas</strong> para diseñar el plan perfecto para tu familia.
-          </p>
-          
-          <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #FFDE59;">
-            <h3 style="color: #145995; margin-top: 0;">📋 Resumen de tu consulta:</h3>
-            <p style="margin: 5px 0;"><strong>👨‍👩‍👧‍👦 Padre/Madre:</strong> ${leadData.parentName}</p>
-            <p style="margin: 5px 0;"><strong>🧒 Hijo/a:</strong> ${leadData.childName}</p>
-            <p style="margin: 5px 0;"><strong>👤 Tu edad:</strong> ${leadData.parentAge} años</p>
-            <p style="margin: 5px 0;"><strong>👶 Edad de ${leadData.childName}:</strong> ${leadData.childAge} años</p>
-            <p style="margin: 5px 0;"><strong>💰 Ahorro mensual deseado:</strong> ${leadData.monthlySavings}</p>
-            <p style="margin: 5px 0;"><strong>📧 Email:</strong> ${leadData.email}</p>
-            ${leadData.whatsapp ? `<p style="margin: 5px 0;"><strong>📱 WhatsApp:</strong> ${leadData.whatsapp}</p>` : ''}
-          </div>
-
-          <div style="background: linear-gradient(135deg, #FFDE59, #FFD700); padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
-            <h3 style="color: #145995; margin-top: 0;">🎯 ¿Sabías que...?</h3>
-            <p style="color: #145995; margin: 0; font-weight: 600;">
-              El costo de una carrera universitaria puede llegar hasta $2,350,000 MXN. 
-              Con Segubeca, puedes asegurar que ${leadData.childName} tenga garantizado su futuro educativo.
-            </p>
-          </div>
-          
-          <p style="color: #333; line-height: 1.6;">
-            Mientras tanto, puedes contactarnos directamente:
-          </p>
-          
-          <div style="background: white; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <h4 style="color: #145995; margin-top: 0;">📞 Contacto Directo</h4>
-            <p style="margin: 5px 0;">📱 WhatsApp: <a href="https://wa.me/524425958912?text=Hola,%20me%20interesa%20Segubeca%20para%20${leadData.childName}" style="color: #25D366; text-decoration: none; font-weight: bold;">+52 (442) 595 8912</a></p>
-            <p style="margin: 5px 0;">☎️ Teléfono: <a href="tel:+524425958912" style="color: #145995;">+52 (442) 595 8912</a></p>
-          </div>
-          
-          <p style="color: #666; font-size: 14px; text-align: center; margin-top: 30px;">
-            © ${new Date().getFullYear()} Segubeca - Seguros RP. El futuro educativo de ${leadData.childName} está asegurado.
-          </p>
-        </div>
-      </div>
-    `;
-  } else {
-    subject = '¡Gracias por contactarnos! - Seguros RP';
-    htmlContent = `
+  const mailOptions = {
+    from: `"Seguros RP" <${process.env.FROM_EMAIL}>`,
+    to: leadData.email,
+    subject: '¡Gracias por contactarnos! - Seguros RP',
+    html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #00305C 0%, #1A75CF 100%); padding: 30px; text-align: center;">
           <h1 style="color: white; margin: 0;">Seguros RP</h1>
@@ -215,14 +139,7 @@ async function sendClientEmail(leadData: any) {
           </p>
         </div>
       </div>
-    `;
-  }
-
-  const mailOptions = {
-    from: `"Seguros RP" <${process.env.FROM_EMAIL}>`,
-    to: leadData.email,
-    subject: subject,
-    html: htmlContent,
+    `,
   };
 
   try {
@@ -236,107 +153,48 @@ async function sendClientEmail(leadData: any) {
 
 // Función para enviar email interno
 async function sendInternalEmail(leadData: any) {
-  // Determinar si es un lead de Segubeca
-  const isSegubeca = leadData.parentName || leadData.childName || leadData.monthlySavings;
-  
-  let subject = '';
-  let tableRows = '';
-  
-  if (isSegubeca) {
-    subject = `🎓 NUEVO LEAD SEGUBECA: ${leadData.parentName} para ${leadData.childName}`;
-    tableRows = `
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">👨‍👩‍👧‍👦 Padre/Madre:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.parentName}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">🧒 Hijo/a:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.childName}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">👤 Edad padre/madre:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.parentAge} años</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">👶 Edad hijo/a:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.childAge} años</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">💰 Ahorro mensual deseado:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.monthlySavings}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">📧 Email:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="mailto:${leadData.email}">${leadData.email}</a></td>
-      </tr>
-      ${leadData.whatsapp ? `
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">📱 WhatsApp:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="https://wa.me/52${leadData.whatsapp}">${leadData.whatsapp}</a></td>
-      </tr>` : ''}
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">🔗 Fuente:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.source || 'Segubeca Landing'}</td>
-      </tr>
-    `;
-  } else {
-    subject = `🔔 NUEVO LEAD: ${leadData.name}`;
-    tableRows = `
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Nombre:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.name}</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Email:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="mailto:${leadData.email}">${leadData.email}</a></td>
-      </tr>
-      ${leadData.phone ? `
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Teléfono:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="tel:${leadData.phone}">${leadData.phone}</a></td>
-      </tr>` : ''}
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Mensaje:</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.message}</td>
-      </tr>
-    `;
-  }
-
   const mailOptions = {
     from: `"Sistema Seguros RP" <${process.env.FROM_EMAIL}>`,
     to: process.env.RECIPIENT_EMAIL,
-    subject: subject,
+    subject: `🔔 NUEVO LEAD: ${leadData.name}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: ${isSegubeca ? 'linear-gradient(135deg, #145995, #FFDE59)' : '#FF6600'}; padding: 20px; text-align: center;">
-          <h1 style="color: white; margin: 0;">${isSegubeca ? '🎓 NUEVO LEAD SEGUBECA' : 'NUEVO LEAD RECIBIDO'}</h1>
+        <div style="background: #FF6600; padding: 20px; text-align: center;">
+          <h1 style="color: white; margin: 0;">NUEVO LEAD RECIBIDO</h1>
         </div>
         
         <div style="padding: 20px; background-color: #f9f9f9;">
-          <h2 style="color: ${isSegubeca ? '#145995' : '#00305C'};">Detalles del Cliente</h2>
+          <h2 style="color: #00305C;">Detalles del Cliente</h2>
           
           <table style="width: 100%; border-collapse: collapse;">
-            ${tableRows}
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Nombre:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Email:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="mailto:${leadData.email}">${leadData.email}</a></td>
+            </tr>
+            ${leadData.phone ? `
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Teléfono:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd;"><a href="tel:${leadData.phone}">${leadData.phone}</a></td>
+            </tr>` : ''}
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Mensaje:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #ddd;">${leadData.message}</td>
+            </tr>
             <tr>
               <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Fecha:</td>
               <td style="padding: 10px; border-bottom: 1px solid #ddd;">${new Date().toLocaleString('es-MX')}</td>
             </tr>
           </table>
           
-          <div style="margin-top: 20px; padding: 15px; background: #fff; border-radius: 5px; border-left: 4px solid ${isSegubeca ? '#FFDE59' : '#FF6600'};">
+          <div style="margin-top: 20px; padding: 15px; background: #fff; border-radius: 5px; border-left: 4px solid #FF6600;">
             <p style="margin: 0; color: #666;">
-              <strong>Acción requerida:</strong> ${isSegubeca ? 'Contactar al cliente en las próximas 24 horas para asesoría sobre Segubeca' : 'Contactar al cliente en las próximas 24 horas'}.
+              <strong>Acción requerida:</strong> Contactar al cliente en las próximas 24 horas.
             </p>
           </div>
-
-          ${isSegubeca ? `
-          <div style="margin-top: 15px; padding: 15px; background: #e6f2ff; border-radius: 5px; border-left: 4px solid #145995;">
-            <p style="margin: 0; color: #145995; font-weight: bold;">
-              💡 Este lead es específico de SEGUBECA - Seguros Educativos. 
-              El cliente busca asegurar el futuro educativo de ${leadData.childName}.
-            </p>
-          </div>
-          ` : ''}
         </div>
       </div>
     `,
@@ -352,105 +210,37 @@ async function sendInternalEmail(leadData: any) {
 }
 
 export const POST: APIRoute = async ({ request }) => {
+  console.log('🚀 API /contact POST iniciado');
+  
   try {
     const jsonData = await request.json();
+    console.log('📝 Datos recibidos:', jsonData);
     
-    // Detectar si es formulario de Segubeca o formulario general
-    const isSegubeca = jsonData.parentName || jsonData.childName || jsonData.monthlySavings;
-    
-    let leadData: any = {
+    // Sanitizar datos para evitar undefined values en Firestore
+    const leadData = {
+      name: jsonData.name ? jsonData.name.toString().trim() : null,
+      email: jsonData.email ? jsonData.email.toString().trim() : null,
+      phone: jsonData.phone ? jsonData.phone.toString().trim() : null,
+      message: jsonData.message ? jsonData.message.toString().trim() : null,
       timestamp: new Date(),
       ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
       userAgent: request.headers.get('user-agent') || 'unknown',
     };
 
-    if (isSegubeca) {
-      // Formulario de Segubeca
-      leadData = {
-        ...leadData,
-        parentName: jsonData.parentName?.toString().trim(),
-        childName: jsonData.childName?.toString().trim(),
-        parentAge: jsonData.parentAge?.toString().trim(),
-        childAge: jsonData.childAge?.toString().trim(),
-        monthlySavings: jsonData.monthlySavings?.toString().trim(),
-        email: jsonData.email?.toString().trim(),
-        whatsapp: jsonData.whatsapp?.toString().trim(),
-        source: jsonData.source?.toString().trim() || 'Segubeca Landing',
-        campaign: jsonData.campaign?.toString().trim() || 'Seguros Educativos',
-        type: 'segubeca'
-      };
+    console.log('💾 Datos sanitizados para Firestore:', leadData);
 
-      // Validaciones específicas para Segubeca
-      if (!leadData.parentName || !leadData.childName || !leadData.parentAge || 
-          !leadData.childAge || !leadData.monthlySavings || !leadData.email || !leadData.whatsapp) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'Todos los campos son obligatorios para Segubeca'
-        }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-
-      // Validar WhatsApp (debe ser exactamente 10 dígitos)
-      if (leadData.whatsapp.length !== 10 || !/^\d{10}$/.test(leadData.whatsapp)) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'El número de WhatsApp debe tener exactamente 10 dígitos'
-        }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-
-      // Validar edades
-      const parentAge = parseInt(leadData.parentAge);
-      const childAge = parseInt(leadData.childAge);
-      
-      if (parentAge < 18 || parentAge > 80) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'La edad del padre/madre debe estar entre 18 y 80 años'
-        }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-
-      if (childAge < 0 || childAge > 17) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'La edad del hijo/a debe estar entre 0 y 17 años'
-        }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-
-    } else {
-      // Formulario general
-      leadData = {
-        ...leadData,
-        name: jsonData.name?.toString().trim(),
-        email: jsonData.email?.toString().trim(),
-        phone: jsonData.phone?.toString().trim(),
-        message: jsonData.message?.toString().trim(),
-        type: 'general'
-      };
-
-      // Validaciones para formulario general
-      if (!leadData.name || !leadData.email || !leadData.message) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'Faltan campos obligatorios'
-        }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
+    // Validaciones básicas
+    if (!leadData.name || !leadData.email || !leadData.message) {
+      return new Response(JSON.stringify({
+        success: false,
+        message: 'Faltan campos obligatorios'
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    // Validar email (común para ambos formularios)
+    // Validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(leadData.email)) {
       return new Response(JSON.stringify({
@@ -466,8 +256,13 @@ export const POST: APIRoute = async ({ request }) => {
     let documentId: string | null = null;
     let firebaseSaved = false;
     
+    console.log('🔍 Verificando datos antes de guardar en Firestore:');
+    console.log('- Datos completos:', JSON.stringify(leadData, null, 2));
+    console.log('- Valores undefined:', Object.entries(leadData).filter(([k, v]) => v === undefined));
+    
     try {
       await ensureFirebaseInitialized();
+      console.log('📤 Enviando a Firestore...');
       documentId = await saveLeadToFirestore(leadData);
       if (documentId) {
         firebaseSaved = true;
@@ -475,6 +270,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     } catch (error) {
       console.error('❌ Error guardando en Firestore:', error);
+      console.error('❌ Stack trace:', error.stack);
       // Continuar sin Firebase si hay error
       documentId = `temp-${Date.now()}`;
     }
@@ -483,8 +279,7 @@ export const POST: APIRoute = async ({ request }) => {
     console.log('🔥 Estado Firebase:', {
       inicializado: firebaseInitialized,
       guardado: firebaseSaved,
-      documentId: documentId,
-      tipoFormulario: isSegubeca ? 'Segubeca' : 'General'
+      documentId: documentId
     });
 
     // Enviar emails y notificación a Telegram en paralelo
@@ -499,21 +294,15 @@ export const POST: APIRoute = async ({ request }) => {
       internalEmail: internalEmailSent.status === 'fulfilled' ? internalEmailSent.value : false,
       telegram: telegramSent.status === 'fulfilled' ? telegramSent.value : false,
       firebase: firebaseSaved,
-      documentId: documentId,
-      tipo: isSegubeca ? 'Segubeca' : 'General'
+      documentId: documentId
     });
-
-    const successMessage = isSegubeca 
-      ? `¡Perfecto! Nuestro asesor especializado en seguros educativos te contactará en las próximas 24 horas para diseñar el plan ideal para ${leadData.childName}.`
-      : 'Mensaje enviado correctamente. Te contactaremos pronto.';
 
     return new Response(JSON.stringify({
       success: true,
-      message: successMessage,
+      message: 'Mensaje enviado correctamente. Te contactaremos pronto.',
       details: {
         firebase: firebaseSaved,
         documentId: documentId,
-        type: isSegubeca ? 'segubeca' : 'general',
         notifications: {
           email: clientEmailSent.status === 'fulfilled' ? clientEmailSent.value : false,
           telegram: telegramSent.status === 'fulfilled' ? telegramSent.value : false

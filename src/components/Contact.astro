@@ -52,7 +52,7 @@ const advisors = [
         <div class="space-y-6">
           {advisors.map((advisor) => (
         <div class="flex items-start space-x-4">
-          <div class="w-auto h-[8rem] md:w-auto md:h-24 lg:w-auto lg:h-32 overflow-hidden rounded-lg">
+          <div class="w-auto h-[7rem] md:w-auto md:h-24 lg:w-auto lg:h-32 overflow-hidden rounded-lg">
             <img 
           src={advisor.image} 
           alt={advisor.name}
@@ -176,6 +176,8 @@ const advisors = [
         message: formData.get('message') as string
       };
 
+      console.log('📤 Enviando datos del formulario:', data);
+
       try {
         const response = await fetch('/api/contact', {
           method: 'POST',
@@ -185,7 +187,10 @@ const advisors = [
           body: JSON.stringify(data)
         });
 
+        console.log('📥 Respuesta recibida:', response.status, response.statusText);
+
         const result = await response.json();
+        console.log('📋 Resultado parseado:', result);
 
         if (response.ok) {
           // Éxito
@@ -197,12 +202,14 @@ const advisors = [
           form.reset();
         } else {
           // Error del servidor
+          console.error('❌ Error del servidor:', result);
           formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
-          formMessage.textContent = result.error || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+          formMessage.textContent = result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
           formMessage.classList.remove('hidden');
         }
       } catch (error) {
         // Error de red
+        console.error('❌ Error de red:', error);
         formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
         formMessage.textContent = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
         formMessage.classList.remove('hidden');

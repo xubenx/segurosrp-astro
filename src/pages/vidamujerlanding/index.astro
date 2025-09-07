@@ -1,0 +1,818 @@
+---
+// src/pages/index.astro
+// Mockup de Landing Page optimizada SEO/SEM para "Vida Mujer"
+// Variante femenina (rosa) + más CTAs, basada en el Manual Vida Mujer®
+
+const site = {
+  name: 'SegurosRP',
+  url: 'https://www.ejemplo.com/vida-mujer',
+  phone: '+52 55 0000 0000',
+  whatsapp: 'https://wa.me/525500000000',
+  email: 'contacto@ejemplo.com',
+  address: 'CDMX, México',
+  brandLogo: '/logo.svg',
+  brandLogoDark: '/logo-dark.svg',
+};
+
+const page = {
+  title: 'Seguro Vida Mujer | Protección y Ahorro para Mujeres en México',
+  description:
+    'Contrata Seguro Vida Mujer: protección por fallecimiento, cáncer femenino, embarazo y más. Cotiza en minutos y protege a tu familia hoy mismo.',
+  keywords:
+    'vida mujer, seguros mujer, seguros de vida mujer, seguro cáncer femenino, seguro mujeres México, seguro para mujeres',
+};
+---
+
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{page.title}</title>
+    <meta name="description" content={page.description} />
+    <meta name="keywords" content={page.keywords} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={page.title} />
+    <meta property="og:description" content={page.description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:image" content="/og-vida-mujer.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={page.title} />
+    <meta name="twitter:description" content={page.description} />
+    <meta name="twitter:image" content="/og-vida-mujer.jpg" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={site.url} />
+
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: site.name,
+        url: site.url,
+        logo: site.brandLogo,
+        contactPoint: [{ '@type': 'ContactPoint', telephone: site.phone, contactType: 'sales', areaServed: 'MX', availableLanguage: ['es'] }],
+      })}
+    </script>
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Seguro Vida Mujer',
+        serviceType: 'Seguro de Vida para Mujeres',
+        provider: { '@type': 'Organization', name: site.name },
+        areaServed: 'MX',
+        offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
+        brand: site.name,
+      })}
+    </script>
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: '¿Qué cubre el Seguro Vida Mujer?', acceptedAnswer: { '@type': 'Answer', text: 'Protección por fallecimiento, respaldo por cáncer femenino, generación de ahorro en vida y apoyos por matrimonio, nacimiento o adopción; coberturas opcionales para complicaciones de embarazo, padecimientos femeninos, invalidez, muerte accidental y más.' } },
+          { '@type': 'Question', name: '¿Para quién está diseñado?', acceptedAnswer: { '@type': 'Answer', text: 'Mujeres entre 25 y 45 años, solteras o casadas, responsables y previsoras que desean proteger su salud y a su familia, con ingresos medios a altos.' } },
+          { '@type': 'Question', name: '¿Cómo solicito una cotización?', acceptedAnswer: { '@type': 'Answer', text: 'Completa el formulario de la página o escríbenos por WhatsApp. Un asesor certificado te contactará el mismo día hábil.' } },
+        ],
+      })}
+    </script>
+
+    <style>
+      /* Paleta femenina suave y elegante */
+      :root { 
+        --bg: linear-gradient(135deg, #fef7ff 0%, #fff1f2 50%, #fdf2f8 100%); 
+        --bg-dark: #faf5ff;
+        --card: rgba(255, 255, 255, 0.9); 
+        --card-border: rgba(236, 72, 153, 0.1);
+        --text-primary: #831843; 
+        --text-secondary: #a855f7; 
+        --muted: #9d174d; 
+        --brand: #ec4899; /* rosa vibrante */
+        --brand-2: #f472b6; /* rosa medio */
+        --brand-3: #fbcfe8; /* rosa pastel */
+        --brand-4: #fdf2f8; /* rosa muy claro */
+        --accent: #fbbf24; /* dorado suave */
+        --accent-2: #f59e0b; /* dorado más vibrante */
+        --white: #ffffff;
+        --shadow-soft: 0 4px 20px rgba(236, 72, 153, 0.15);
+        --shadow-medium: 0 8px 25px rgba(236, 72, 153, 0.2);
+        --shadow-strong: 0 12px 30px rgba(236, 72, 153, 0.25);
+      }
+      
+      body { 
+        margin: 0; 
+        font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; 
+        color: var(--text-primary); 
+        background: var(--bg);
+        background-attachment: fixed;
+        line-height: 1.6;
+      }
+      
+      .container { 
+        max-width: 1200px; 
+        padding: 0 1.5rem; 
+        margin: 0 auto; 
+      }
+      
+      .btn { 
+        display: inline-flex; 
+        gap: .6rem; 
+        align-items: center; 
+        background: linear-gradient(135deg, var(--brand), var(--brand-2)); 
+        color: var(--white); 
+        padding: 1rem 1.5rem; 
+        border-radius: 25px; 
+        font-weight: 600; 
+        text-decoration: none; 
+        box-shadow: var(--shadow-medium);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+      
+      .btn:hover { 
+        transform: translateY(-2px); 
+        box-shadow: var(--shadow-strong);
+        background: linear-gradient(135deg, #db2777, var(--brand));
+      }
+      
+      .btn-outline { 
+        border: 2px solid var(--brand-3); 
+        color: var(--text-primary); 
+        background: var(--white);
+        padding: .9rem 1.3rem; 
+        border-radius: 25px; 
+        text-decoration: none; 
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .btn-outline:hover {
+        border-color: var(--brand);
+        background: var(--brand-4);
+        transform: translateY(-1px);
+      }
+      
+      .btn-light { 
+        background: var(--white); 
+        color: var(--text-primary); 
+        border-radius: 25px; 
+        padding: .9rem 1.3rem; 
+        text-decoration: none; 
+        font-weight: 600; 
+        box-shadow: var(--shadow-soft);
+        transition: all 0.3s ease;
+        border: 1px solid var(--card-border);
+      }
+      
+      .btn-light:hover {
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-1px);
+        background: var(--brand-4);
+      }
+      
+      .chip { 
+        display: inline-flex; 
+        gap: .4rem; 
+        align-items: center; 
+        font-size: .85rem; 
+        padding: .5rem .9rem; 
+        border-radius: 20px; 
+        background: linear-gradient(135deg, var(--brand-4), var(--brand-3)); 
+        color: var(--text-primary); 
+        border: 1px solid var(--card-border);
+        font-weight: 500;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .card { 
+        background: var(--card); 
+        border: 1px solid var(--card-border); 
+        border-radius: 20px; 
+        padding: 2rem; 
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+      
+      .card:hover {
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+      }
+      
+      .grid { 
+        display: grid; 
+        gap: 1.5rem; 
+      }
+      
+      .grid-3 { 
+        grid-template-columns: repeat(3, minmax(0, 1fr)); 
+      }
+      
+      .grid-2 { 
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
+      }
+      
+      @media (max-width: 900px) { 
+        .grid-3 { grid-template-columns: 1fr; } 
+        .grid-2 { grid-template-columns: 1fr; } 
+        .container { padding: 0 1rem; }
+      }
+      
+      input, select, textarea { 
+        width: 100%; 
+        background: var(--white); 
+        border: 2px solid var(--brand-3); 
+        color: var(--text-primary); 
+        padding: 1rem 1.2rem; 
+        border-radius: 15px; 
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--brand);
+        box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+      }
+      
+      label { 
+        font-size: .9rem; 
+        color: var(--text-primary); 
+        display: block; 
+        margin-bottom: .6rem; 
+        font-weight: 500;
+      }
+      
+      .badge { 
+        display: inline-flex; 
+        align-items: center; 
+        gap: .5rem; 
+        border: 1px solid var(--brand-3); 
+        padding: .6rem 1rem; 
+        border-radius: 25px; 
+        font-size: .85rem; 
+        color: var(--text-primary); 
+        background: linear-gradient(135deg, var(--white), var(--brand-4));
+        font-weight: 500;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .hero { 
+        position: relative; 
+        overflow: hidden; 
+        padding: 4rem 0 3rem;
+      }
+      
+      .hero::before { 
+        content: ''; 
+        position: absolute; 
+        top: -50%; 
+        left: -50%; 
+        width: 200%; 
+        height: 200%; 
+        background: radial-gradient(ellipse at 30% 20%, rgba(236,72,153,.08), transparent 50%), 
+                   radial-gradient(ellipse at 80% 30%, rgba(244,114,182,.06), transparent 40%),
+                   radial-gradient(ellipse at 20% 80%, rgba(168,85,247,.05), transparent 45%); 
+        z-index: -1; 
+        animation: float 20s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: rotate(0deg) translate(0, 0); }
+        33% { transform: rotate(120deg) translate(30px, -30px); }
+        66% { transform: rotate(240deg) translate(-20px, 20px); }
+      }
+      
+      .kpi { 
+        font-weight: 700; 
+        font-size: clamp(1.75rem, 3vw, 2.5rem); 
+        color: var(--brand);
+        background: linear-gradient(135deg, var(--brand), var(--text-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .muted { 
+        color: var(--muted); 
+      }
+      
+      .divider { 
+        height: 1px; 
+        background: linear-gradient(90deg, transparent, var(--brand-3), transparent); 
+        margin: 3rem 0; 
+      }
+      
+      .footer a { 
+        color: var(--text-primary); 
+        text-decoration: none; 
+        transition: color 0.3s ease;
+      }
+      
+      .footer a:hover {
+        color: var(--brand);
+      }
+      
+      .sticky-cta { 
+        position: sticky; 
+        top: 0; 
+        z-index: 50; 
+        background: rgba(255, 255, 255, 0.95); 
+        backdrop-filter: blur(15px); 
+        border-bottom: 1px solid var(--card-border);
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .floating-wa { 
+        position: fixed; 
+        right: 25px; 
+        bottom: 25px; 
+        z-index: 60; 
+      }
+      
+      .floating-wa a { 
+        display: flex; 
+        align-items: center; 
+        gap: .6rem; 
+        background: linear-gradient(135deg, #25d366, #128c7e); 
+        color: var(--white); 
+        padding: 1rem 1.3rem; 
+        border-radius: 25px; 
+        font-weight: 600; 
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+      
+      .floating-wa a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      }
+      
+      .promo-ribbon { 
+        display: inline-block; 
+        padding: .4rem .8rem; 
+        background: linear-gradient(135deg, var(--accent), var(--accent-2)); 
+        color: var(--white); 
+        border-radius: 15px; 
+        font-weight: 600; 
+        font-size: .8rem; 
+        margin-bottom: 1rem;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      h1, h2, h3 {
+        color: var(--text-primary);
+      }
+      
+      h1 {
+        background: linear-gradient(135deg, var(--text-primary), var(--brand));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      /* Elementos decorativos */
+      .decorative-element {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--brand-3), var(--brand-4));
+        opacity: 0.6;
+        animation: float 15s ease-in-out infinite;
+      }
+      
+      .decorative-element:nth-child(1) {
+        top: 10%;
+        right: 10%;
+        animation-delay: -5s;
+      }
+      
+      .decorative-element:nth-child(2) {
+        bottom: 20%;
+        left: 5%;
+        animation-delay: -10s;
+        width: 40px;
+        height: 40px;
+      }
+      
+      /* Mejoras en formularios */
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      
+      button[type="submit"] {
+        width: 100%;
+      }
+      
+      /* Responsive mejoras */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 2rem 0;
+        }
+        
+        .btn {
+          padding: 0.8rem 1.2rem;
+          font-size: 0.9rem;
+        }
+        
+        .card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="container" style="display:flex; align-items:center; justify-content:space-between; padding: 1.5rem 0;">
+      <a href="#" aria-label="Inicio">
+        <img src={site.brandLogo} alt={site.name} width="140" height="40" />
+      </a>
+      <nav style="display:flex; gap: 1rem; align-items:center;">
+        <a class="btn-outline" href="#beneficios">Beneficios</a>
+        <a class="btn-outline" href="#coberturas">Coberturas</a>
+        <a class="btn-outline" href="#faq">FAQ</a>
+        <a class="btn" href="#cotizar">✨ Cotizar ahora</a>
+      </nav>
+    </header>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta">
+      <div class="container" style="display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 0;">
+        <span class="chip">💎 Promoción especial: <strong style="margin-left:.4rem; color: var(--brand);">Asesoría gratuita</strong></span>
+        <div style="display:flex; gap:.8rem; flex-wrap:wrap;">
+          <a class="btn" href="#cotizar">✨ Cotizar ahora</a>
+          <a class="btn-light" href={`tel:${site.phone}`}>📞 Llamar</a>
+          <a class="btn-outline" href="#faq">Ver coberturas</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" style="position: relative;">
+      <div class="decorative-element"></div>
+      <div class="decorative-element"></div>
+      <div class="container grid grid-2" style="align-items:center; gap: 3rem;">
+        <div>
+          <span class="badge">💝 Seguro de Vida para Mujeres</span>
+          <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1; margin: 1rem 0 1.2rem;">
+            Seguro <strong style="color: var(--brand);">Vida Mujer</strong>: Protección Elegante para Ti y Tu Familia
+          </h1>
+          <p class="muted" style="font-size: 1.1rem; line-height: 1.7;">
+            Un seguro pensado especialmente para la mujer moderna: protección integral por fallecimiento, respaldo especializado para cáncer femenino, generación de ahorro en vida y coberturas únicas para cada etapa de tu vida.
+          </p>
+          <div style="display:flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+            <a class="btn" href="#cotizar">✨ Quiero mi cotización</a>
+            <a class="btn-light" href={site.whatsapp} target="_blank" rel="noopener">💬 WhatsApp inmediato</a>
+            <a class="btn-outline" href={`tel:${site.phone}`}>📞 Consulta gratuita</a>
+          </div>
+          <div style="display:flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap;">
+            <div>
+              <div class="kpi">+60,000</div>
+              <div class="muted" style="font-weight: 500;">mujeres protegidas</div>
+            </div>
+            <div>
+              <div class="kpi">15+ años</div>
+              <div class="muted" style="font-weight: 500;">respaldando sueños</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="background: linear-gradient(135deg, var(--white), var(--brand-4));">
+            <h2 style="margin: 0 0 .6rem; color: var(--text-primary);">💫 Cotiza en minutos</h2>
+            <p class="muted" style="margin: 0 0 1.2rem;">Una asesora certificada te contactará el mismo día hábil.</p>
+            <form id="cotizar" action="/api/lead" method="post" data-netlify="true">
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label for="name">✨ Nombre completo</label>
+                  <input id="name" name="name" autocomplete="name" required placeholder="Tu nombre completo" />
+                </div>
+                <div class="form-group">
+                  <label for="email">💌 Email</label>
+                  <input id="email" type="email" name="email" autocomplete="email" required placeholder="tu@email.com" />
+                </div>
+              </div>
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label for="phone">📱 Teléfono / WhatsApp</label>
+                  <input id="phone" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+52 55 0000 0000" />
+                </div>
+                <div class="form-group">
+                  <label for="city">🏙️ Ciudad</label>
+                  <input id="city" name="city" autocomplete="address-level2" placeholder="Tu ciudad" />
+                </div>
+              </div>
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label for="age">🎂 Rango de edad</label>
+                  <select id="age" name="age" required>
+                    <option value="">Selecciona tu edad...</option>
+                    <option>18–24 años</option>
+                    <option>25–34 años</option>
+                    <option>35–44 años</option>
+                    <option>45–54 años</option>
+                    <option>55+ años</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="contact">💬 Preferencia de contacto</label>
+                  <select id="contact" name="contact">
+                    <option>WhatsApp (Preferido)</option>
+                    <option>Llamada telefónica</option>
+                    <option>Email</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="notes">💭 ¿Qué te gustaría proteger?</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Mi familia, mi ingreso, etapa de embarazo, mis metas financieras..."></textarea>
+              </div>
+              <div style="display:flex; gap:.8rem; align-items:center; margin: 1rem 0;">
+                <input id="privacy" type="checkbox" name="privacy" required style="width:auto; margin:0;" />
+                <label for="privacy" style="margin:0; font-size: 0.9rem;">Acepto el aviso de privacidad y términos</label>
+              </div>
+              <button class="btn" type="submit">💫 Solicitar mi cotización</button>
+              <p class="muted" style="font-size:.85rem; margin-top:.6rem; text-align: center;">Sin compromiso · Respuesta garantizada el mismo día hábil</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confianza -->
+    <section aria-label="Confianza" style="padding: 1.5rem 0;">
+      <div class="container" style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; opacity:.8; justify-content: center;">
+        <span class="muted" style="font-weight: 500;">Respaldado por las mejores aseguradoras:</span>
+        <img src="/brand-1.svg" alt="Aseguradora de prestigio" height="32" style="filter: grayscale(100%) opacity(0.7);" />
+        <img src="/brand-2.svg" alt="Solidez financiera" height="32" style="filter: grayscale(100%) opacity(0.7);" />
+        <img src="/brand-3.svg" alt="Atención certificada" height="32" style="filter: grayscale(100%) opacity(0.7);" />
+      </div>
+    </section>
+
+    <!-- Beneficios principales con CTA por tarjeta -->
+    <section id="beneficios" class="container" style="padding: 4rem 0;">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0 0 1rem;">✨ Beneficios diseñados para la mujer moderna</h2>
+        <p class="muted" style="margin: 0; font-size: 1.1rem;">Un seguro que entiende tus necesidades y se adapta a cada etapa de tu vida.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card" style="text-align: center; position: relative; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, var(--brand-4), var(--brand-3)); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: var(--brand); font-weight: 600; font-size: 0.85rem;">👨‍👩‍👧‍👦 Familia protegida</span>
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Protección por fallecimiento</h3>
+          <p class="muted" style="margin-bottom: 1.5rem;">Garantiza el bienestar económico de tus seres queridos con un respaldo sólido si llegaras a faltar.</p>
+          <a class="btn" href="#cotizar">💝 Cotizar protección</a>
+        </article>
+        
+        <article class="card" style="text-align: center; position: relative; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, #fecaca, #fda4af); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: #be185d; font-weight: 600; font-size: 0.85rem;">🌸 Salud femenina</span>
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Protección por Cáncer Femenino</h3>
+          <p class="muted" style="margin-bottom: 1.5rem;">Apoyo económico especializado ante diagnósticos específicos de cáncer que afectan a las mujeres.</p>
+          <a class="btn" href="#cotizar">🌺 Más información</a>
+        </article>
+        
+        <article class="card" style="text-align: center; position: relative; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, #fed7aa, #fdba74); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: #c2410c; font-weight: 600; font-size: 0.85rem;">💰 Patrimonio seguro</span>
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Ahorro en vida</h3>
+          <p class="muted" style="margin-bottom: 1.5rem;">Genera capital mientras estás protegida con entregas periódicas de tu suma asegurada.</p>
+          <a class="btn" href="#cotizar">✨ Simular ahorro</a>
+        </article>
+        
+        <article class="card" style="text-align: center; position: relative; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, #ddd6fe, #c4b5fd); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: #7c3aed; font-weight: 600; font-size: 0.85rem;">💍 Momentos especiales</span>
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Apoyos por matrimonio y nacimiento</h3>
+          <p class="muted" style="margin-bottom: 1.5rem;">Recibe apoyos económicos en los momentos más importantes y felices de tu vida.</p>
+          <a class="btn" href="#cotizar">💕 Activar beneficio</a>
+        </article>
+        
+        <article class="card" style="text-align: center; position: relative; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, #bbf7d0, #86efac); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: #059669; font-weight: 600; font-size: 0.85rem;">🤲 Cuidado continuo</span>
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Cuidados a Largo Plazo</h3>
+          <p class="muted" style="margin-bottom: 1.5rem;">Cobertura opcional para etapas de dependencia prolongada con atención especializada.</p>
+          <a class="btn" href="#cotizar">🌿 Ver requisitos</a>
+        </article>
+        
+        <article class="card" style="text-align: center; position: relative; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, #fecdd3, #fda4af); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: #be185d; font-weight: 600; font-size: 0.85rem;">🛡️ Protección total</span>
+          </div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Invalidez y Muerte Accidental</h3>
+          <p class="muted" style="margin-bottom: 1.5rem;">Cobertura integral opcional ante imprevistos graves que puedan afectar tu calidad de vida.</p>
+          <a class="btn" href="#cotizar">💪 Agregar al plan</a>
+        </article>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem; flex-wrap:wrap;">
+        <a class="btn" href="#cotizar" style="font-size: 1.1rem; padding: 1.2rem 2rem;">✨ Cotizar mi plan ideal</a>
+        <a class="btn-outline" href={site.whatsapp} target="_blank" rel="noopener">💬 Chatear por WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- Coberturas con CTA -->
+    <section id="coberturas" style="padding: 2rem 0;">
+      <div class="container">
+        <div class="card">
+          <h2 style="margin-top:0">Coberturas incluidas y opcionales</h2>
+          <div class="grid grid-2" style="margin-top: 1rem;">
+            <div>
+              <h3>Incluidas sin costo</h3>
+              <ul>
+                <li>AV – Apoyo en Vida</li>
+                <li>BAM – Beneficio de Asistencia Médica en Estados Unidos</li>
+                <li>Protección por Cáncer Femenino (PCF) <em>(obligatoria con costo)</em></li>
+              </ul>
+              <a class="btn" href="#cotizar" style="margin-top:.6rem;">Quiero estas coberturas</a>
+            </div>
+            <div>
+              <h3>Opcionales / con costo</h3>
+              <ul>
+                <li>PEP – Complicaciones del embarazo y padecimientos femeninos</li>
+                <li>PII – Pérdida del ingreso por invalidez total y temporal</li>
+                <li>CLP – Cuidados a Largo Plazo</li>
+                <li>CPV – Cláusula de Protección por Viudez</li>
+                <li>BMA / DI – Muerte Accidental / Doble Indemnización</li>
+                <li>BIT / BAIT / BITAE – Invalidez</li>
+                <li>AVE – Aumento de valor en efectivo</li>
+              </ul>
+              <a class="btn" href="#cotizar" style="margin-top:.6rem;">Armar mi plan</a>
+            </div>
+          </div>
+          <p class="muted" style="margin-top: .75rem; font-size:.9rem;">*La disponibilidad de coberturas depende de perfil y suscripción. Aplica evaluación y condiciones de póliza.</p>
+          <div style="display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem;">
+            <a class="btn" href="#cotizar">Cotizar paquete completo</a>
+            <a class="btn-outline" href="#faq">Ver preguntas frecuentes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA seccional -->
+    <section style="padding: 2rem 0;">
+      <div class="container card" style="display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+        <div>
+          <h3 style="margin:0 0 .25rem;">Protege hoy lo que más quieres</h3>
+          <p class="muted" style="margin:0">Cotiza tu Seguro Vida Mujer. Respuesta el mismo día hábil.</p>
+        </div>
+        <div style="display:flex; gap:.75rem;">
+          <a class="btn" href="#cotizar">Cotizar ahora</a>
+          <a class="btn-outline" href={`mailto:${site.email}`}>Escribir por correo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elegibilidad / ¿Es para mí? -->
+    <section style="padding: 2.5rem 0;">
+      <div class="container grid grid-2" style="gap:2rem; align-items:center;">
+        <div>
+          <h2>¿Para quién es Vida Mujer?</h2>
+          <ul>
+            <li>Mujeres de 25–45 años, solteras o casadas.</li>
+            <li>Responsables y previsoras, con metas familiares y personales.</li>
+            <li>Ingresos medios a altos; buscan protección y ahorro en una sola póliza.</li>
+          </ul>
+          <div style="margin-top:1rem;">
+            <a class="btn" href="#cotizar">Validar elegibilidad</a>
+            <a class="btn-outline" href={site.whatsapp} target="_blank" rel="noopener">Resolver dudas</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Lo que más protege</h3>
+          <ul>
+            <li>Bienestar de tu familia si llegas a faltar.</li>
+            <li>Tu salud y tu ingreso en etapas clave como embarazo.</li>
+            <li>Tu patrimonio a largo plazo con ahorro en vida.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section aria-label="Testimonios" style="padding: 2.5rem 0;">
+      <div class="container">
+        <h2>Lo que dicen nuestras aseguradas</h2>
+        <div class="grid grid-3" style="margin-top:1rem;">
+          <blockquote class="card"><p>“Elegí Vida Mujer por su cobertura de cáncer y la tranquilidad que da a mi familia.”</p><footer class="muted">— Ana, 34</footer></blockquote>
+          <blockquote class="card"><p>“Pude ajustarlo a mis metas y etapas; el ahorro en vida es un plus.”</p><footer class="muted">— Laura, 29</footer></blockquote>
+          <blockquote class="card"><p>“El proceso de cotización fue rápido y claro. Excelente atención.”</p><footer class="muted">— Marisol, 41</footer></blockquote>
+        </div>
+        <div style="margin-top:1rem;">
+          <a class="btn" href="#cotizar">Quiero ser la siguiente historia</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FAQ -->
+    <section id="faq" class="container" style="padding: 2.5rem 0;">
+      <h2>Preguntas frecuentes</h2>
+      <div class="grid">
+        <details class="card">
+          <summary><strong>¿Qué incluye el Seguro Vida Mujer?</strong></summary>
+          <p class="muted">Incluye protección por fallecimiento y beneficios diseñados para la mujer: respaldo por cáncer femenino, ahorro en vida y apoyos por matrimonio, nacimiento o adopción. Puedes agregar coberturas para embarazo, invalidez, muerte accidental y cuidados a largo plazo.</p>
+          <a class="btn" href="#cotizar">Cotizar con estas coberturas</a>
+        </details>
+        <details class="card">
+          <summary><strong>¿Puedo ajustar las coberturas?</strong></summary>
+          <p class="muted">Sí. La póliza se adapta a tus metas y perfil, sujeto a evaluación y términos de la aseguradora.</p>
+          <a class="btn" href="#cotizar">Armar mi plan</a>
+        </details>
+        <details class="card">
+          <summary><strong>¿Cómo empiezo?</strong></summary>
+          <p class="muted">Completa el formulario para recibir tu cotización personalizada o contáctanos por WhatsApp.</p>
+          <div style="display:flex; gap:.6rem;">
+            <a class="btn" href="#cotizar">Solicitar cotización</a>
+            <a class="btn-light" href={site.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container footer" style="padding: 2rem 0 4rem;">
+      <div class="grid grid-3">
+        <div>
+          <img src={site.brandLogoDark} alt={site.name} width="140" height="40" />
+          <p class="muted" style="margin-top: .5rem;">{site.address}</p>
+        </div>
+        <div>
+          <h3>Contacto</h3>
+          <ul style="list-style:none; padding:0; margin:0;">
+            <li><a href={`tel:${site.phone}`}>{site.phone}</a></li>
+            <li><a href={site.whatsapp} target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Enlaces</h3>
+          <ul style="list-style:none; padding:0; margin:0;">
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#coberturas">Coberturas</a></li>
+            <li><a href="#faq">Preguntas frecuentes</a></li>
+            <li><a href="#cotizar">Cotizar</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="margin-top: 1rem; font-size:.8rem;">*La información de esta página es ilustrativa y no constituye asesoría financiera ni modifica condiciones de póliza. La contratación está sujeta a evaluación y términos de la aseguradora.</p>
+    </footer>
+
+    <div class="floating-wa">
+      <a href={site.whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp">
+        <span>WhatsApp</span>
+      </a>
+    </div>
+
+    <!-- Bottom CTA que aparece a mitad del scroll -->
+    <div id="bottom-cta" style="position:fixed; left:0; right:0; bottom:-200px; z-index:55; transition: bottom .3s ease;">
+      <div class="container" style="background: rgba(236,72,153,.12); border-top:1px solid rgba(236,72,153,.25); backdrop-filter: blur(8px); padding: .9rem 1rem; display:flex; gap:.75rem; align-items:center; justify-content:space-between;">
+        <strong>¿Lista para proteger lo que más quieres?</strong>
+        <div style="display:flex; gap:.6rem;">
+          <a class="btn" href="#cotizar">Cotizar</a>
+          <a class="btn-light" href={`mailto:${site.email}`}>Escribir</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Ads event de ejemplo -->
+    <script>
+      window.addEventListener('submit', (e) => {
+        const form = e.target.closest('form');
+        if (form && form.id === 'cotizar') {
+          // @ts-ignore
+          window.gtag && window.gtag('event', 'generate_lead', { send_to: 'AW-XXXXXXX/lead' });
+        }
+      });
+      // Mostrar bottom CTA al 50% de scroll una sola vez
+      (function(){
+        let shown = false;
+        const el = document.getElementById('bottom-cta');
+        const onScroll = () => {
+          if (shown) return;
+          const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+          if (scrolled > 0.5) {
+            el.style.bottom = '0';
+            shown = true;
+            window.removeEventListener('scroll', onScroll);
+          }
+        };
+        window.addEventListener('scroll', onScroll);
+      })();
+    </script>
+  </body>
+</html>
