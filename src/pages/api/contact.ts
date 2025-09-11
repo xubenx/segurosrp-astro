@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Obtener los datos del formulario
     const body = await request.json();
-    const { name, email, phone, message } = body;
+    const { name, email, phone, message, pageUrl, pageTitle } = body;
 
     // Validar que todos los campos requeridos estén presentes
     if (!name || !email || !message) {
@@ -58,6 +58,9 @@ export const POST: APIRoute = async ({ request }) => {
 💬 *Mensaje:*
 ${message}
 
+🌐 *Página de origen:*
+🔗 *URL:* ${pageUrl || 'No disponible'}
+
 ⏰ *Fecha:* ${new Date().toLocaleString('es-MX', { 
   timeZone: 'America/Mexico_City',
   year: 'numeric',
@@ -68,9 +71,44 @@ ${message}
 })}
     `.trim();
 
-    // Enviar mensaje a Telegram
+    // Crear el mensaje prediseñado para WhatsApp
+    const whatsappMessage = `Hola ${name} 👋
+
+Vi que te contactaste a través de nuestra página web.
+
+¿En qué te puedo ayudar? �`;
+
+    // Limpiar el número de teléfono para WhatsApp (solo números)
+    const cleanPhone = phone ? phone.replace(/[^\d]/g, '') : '';
+    
+    // Codificar el mensaje para URL
+    const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
+    
+    // Crear el URL de WhatsApp con el número del cliente
+    let whatsappUrl;
+    if (cleanPhone && cleanPhone.length >= 10) {
+      // Si hay número válido, dirigir directamente a ese número
+      whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedWhatsappMessage}`;
+    } else {
+      // Si no hay número o es inválido, usar el enlace genérico
+      whatsappUrl = `https://wa.me/?text=${encodedWhatsappMessage}`;
+    }
+
+    // Enviar mensaje a Telegram con botón inline
     await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
-      parse_mode: 'Markdown'
+      parse_mode: 'Markdown',
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: cleanPhone && cleanPhone.length >= 10 
+                ? `💬 Responder a ${name} (${phone})` 
+                : `💬 Responder por WhatsApp a ${name}`,
+              url: whatsappUrl
+            }
+          ]
+        ]
+      }
     });
 
     console.log('✅ Mensaje enviado exitosamente a Telegram');
