@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 import { initializeFirebase, saveLeadToFirestore } from '../../lib/firebase-config';
+import { Timestamp } from 'firebase/firestore';
 
 // Make this endpoint server-rendered
 export const prerender = false;
@@ -213,21 +214,82 @@ export const POST: APIRoute = async ({ request }) => {
   console.log('🚀 API /contact POST iniciado');
   
   try {
-    const jsonData = await request.json();
-    console.log('📝 Datos recibidos:', jsonData);
+    // Verificar Content-Type
+    const contentType = request.headers.get('content-type');
+    console.log('📋 Content-Type recibido:', contentType);
     
-    // Sanitizar datos para evitar undefined values en Firestore
-    const leadData = {
-      name: jsonData.name ? jsonData.name.toString().trim() : null,
-      email: jsonData.email ? jsonData.email.toString().trim() : null,
-      phone: jsonData.phone ? jsonData.phone.toString().trim() : null,
-      message: jsonData.message ? jsonData.message.toString().trim() : null,
-      timestamp: new Date(),
-      ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
-      userAgent: request.headers.get('user-agent') || 'unknown',
+    // Validar que sea JSON
+    if (!contentType || !contentType.includes('application/json')) {
+      console.error('❌ Content-Type inválido:', contentType);
+      return new Response(JSON.stringify({
+        success: false,
+        message: 'Content-Type debe ser application/json'
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Obtener el body como texto primero para debugging
+    const bodyText = await request.text();
+    console.log('📄 Body recibido (longitud):', bodyText.length);
+    console.log('📄 Body recibido (primeros 200 chars):', bodyText.substring(0, 200));
+    
+    if (!bodyText || bodyText.trim() === '') {
+      console.error('❌ Body vacío');
+      return new Response(JSON.stringify({
+        success: false,
+        message: 'El cuerpo de la petición está vacío'
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Intentar parsear JSON con manejo de errores
+    let jsonData;
+    try {
+      jsonData = JSON.parse(bodyText);
+      console.log('📝 Datos JSON parseados:', Object.keys(jsonData));
+    } catch (parseError) {
+      console.error('❌ Error parsing JSON:', parseError);
+      console.error('❌ Body problemático:', bodyText);
+      return new Response(JSON.stringify({
+        success: false,
+        message: 'JSON inválido en el cuerpo de la petición',
+        details: parseError.message
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
+    // TEST: Crear datos mínimos para identificar el problema
+    const leadData: any = {
+      name: jsonData.name ? String(jsonData.name).trim() : 'Test Name',
+      email: jsonData.email ? String(jsonData.email).trim() : 'test@test.com',
+      message: jsonData.message ? String(jsonData.message).trim() : 'Test Message',
+      type: 'normal',
+      source: 'Test Source'
     };
 
-    console.log('💾 Datos sanitizados para Firestore:', leadData);
+    // Agregar timestamp COMO STRING en lugar de Timestamp objeto
+    leadData.timestamp = new Date().toISOString();
+    leadData.ip = String(request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown');
+    leadData.userAgent = String(request.headers.get('user-agent') || 'unknown');
+
+    // Solo agregar phone si tiene valor
+    if (jsonData.phone && String(jsonData.phone).trim()) {
+      leadData.phone = String(jsonData.phone).trim();
+    }
+
+    // Solo agregar campaign si tiene valor
+    if (jsonData.campaign && String(jsonData.campaign).trim()) {
+      leadData.campaign = String(jsonData.campaign).trim();
+    }
+
+    console.log('💾 Datos SIMPLIFICADOS para Firestore:', leadData);
+    console.log('🔍 Tipos de datos:', Object.entries(leadData).map(([k, v]) => `${k}: ${typeof v}`));
 
     // Validaciones básicas
     if (!leadData.name || !leadData.email || !leadData.message) {
@@ -258,7 +320,26 @@ export const POST: APIRoute = async ({ request }) => {
     
     console.log('🔍 Verificando datos antes de guardar en Firestore:');
     console.log('- Datos completos:', JSON.stringify(leadData, null, 2));
-    console.log('- Valores undefined:', Object.entries(leadData).filter(([k, v]) => v === undefined));
+    
+    // Validación exhaustiva de datos
+    const invalidFields: string[] = [];
+    for (const [key, value] of Object.entries(leadData)) {
+      if (value === undefined) {
+        invalidFields.push(`${key}: undefined`);
+      } else if (value === null) {
+        invalidFields.push(`${key}: null`);
+      } else if (typeof value === 'string' && value.includes('\u0000')) {
+        invalidFields.push(`${key}: contiene caracteres null`);
+      } else if (typeof value === 'string' && value.length === 0) {
+        invalidFields.push(`${key}: string vacío`);
+      }
+    }
+    
+    if (invalidFields.length > 0) {
+      console.error('🚨 Campos potencialmente problemáticos:', invalidFields);
+    } else {
+      console.log('✅ Todos los campos parecen válidos');
+    }
     
     try {
       await ensureFirebaseInitialized();

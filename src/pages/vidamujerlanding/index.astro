@@ -479,7 +479,8 @@ const page = {
           <div class="card" style="background: linear-gradient(135deg, var(--white), var(--brand-4));">
             <h2 style="margin: 0 0 .6rem; color: var(--text-primary);">💫 Cotiza en minutos</h2>
             <p class="muted" style="margin: 0 0 1.2rem;">Una asesora certificada te contactará el mismo día hábil.</p>
-            <form id="cotizar" action="/api/lead" method="post" data-netlify="true">
+            <form id="cotizar" method="post">
+              <div id="formMessage" class="hidden" style="padding: 1rem; border-radius: 8px; margin-bottom: 1rem;"></div>
               <div class="grid grid-2">
                 <div class="form-group">
                   <label for="name">✨ Nombre completo</label>
@@ -529,7 +530,10 @@ const page = {
                 <input id="privacy" type="checkbox" name="privacy" required style="width:auto; margin:0;" />
                 <label for="privacy" style="margin:0; font-size: 0.9rem;">Acepto el aviso de privacidad y términos</label>
               </div>
-              <button class="btn" type="submit">💫 Solicitar mi cotización</button>
+              <button class="btn" type="submit" id="submitButton">
+                <span id="buttonText">💫 Solicitar mi cotización</span>
+                <span id="buttonLoading" class="hidden">Enviando...</span>
+              </button>
               <p class="muted" style="font-size:.85rem; margin-top:.6rem; text-align: center;">Sin compromiso · Respuesta garantizada el mismo día hábil</p>
             </form>
           </div>
@@ -781,17 +785,120 @@ const page = {
 
     <!-- Google Ads event de ejemplo -->
     <script>
-      window.addEventListener('submit', (e) => {
-        const form = e.target.closest('form');
-        if (form && form.id === 'cotizar') {
-          // @ts-ignore
-          window.gtag && window.gtag('event', 'generate_lead', { send_to: 'AW-XXXXXXX/lead' });
+      // Manejo del formulario Vida Mujer
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('cotizar') as HTMLFormElement;
+        const formMessage = document.getElementById('formMessage') as HTMLElement;
+        const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+        const buttonText = document.getElementById('buttonText') as HTMLElement;
+        const buttonLoading = document.getElementById('buttonLoading') as HTMLElement;
+
+        if (!form || !formMessage || !submitButton || !buttonText || !buttonLoading) {
+          console.error('Required form elements not found');
+          return;
         }
+
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          // Deshabilitar el botón y mostrar loading
+          submitButton.disabled = true;
+          buttonText.classList.add('hidden');
+          buttonLoading.classList.remove('hidden');
+          
+          // Ocultar mensajes anteriores
+          formMessage.classList.add('hidden');
+          
+          // Obtener datos del formulario
+          const formData = new FormData(form);
+          const data = {
+            name: formData.get('name') as string,
+            email: formData.get('email') as string,
+            phone: formData.get('phone') as string,
+            city: formData.get('city') as string,
+            age: formData.get('age') as string,
+            contact: formData.get('contact') as string,
+            notes: formData.get('notes') as string,
+            source: 'Vida Mujer Landing',
+            campaign: 'SEM Vida Mujer'
+          };
+
+          console.log('📤 Enviando datos del formulario Vida Mujer:', data);
+
+          try {
+            const response = await fetch('/api/lead', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+            });
+
+            console.log('📥 Respuesta recibida:', response.status, response.statusText);
+
+            const result = await response.json();
+            console.log('📋 Resultado parseado:', result);
+
+            if (response.ok) {
+              // Éxito
+              formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
+              formMessage.innerHTML = `
+                <div>
+                  <strong>💖 ¡Perfecto!</strong><br>
+                  Tu solicitud ha sido recibida. Una asesora especializada en seguros para mujeres te contactará en las próximas 24 horas.
+                </div>
+              `;
+              formMessage.classList.remove('hidden');
+              
+              // Limpiar el formulario
+              form.reset();
+
+              // Tracking de Google Ads
+              if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+                (window as any).gtag('event', 'generate_lead', { 
+                  send_to: 'AW-XXXXXXX/lead',
+                  value: 1,
+                  currency: 'MXN'
+                });
+              }
+            } else {
+              // Error del servidor
+              console.error('❌ Error del servidor:', result);
+              formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
+              formMessage.innerHTML = `
+                <div>
+                  <strong>❌ Error</strong><br>
+                  ${result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.'}
+                </div>
+              `;
+              formMessage.classList.remove('hidden');
+            }
+          } catch (error) {
+            // Error de red
+            console.error('❌ Error de red:', error);
+            formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
+            formMessage.innerHTML = `
+              <div>
+                <strong>🌐 Error de Conexión</strong><br>
+                Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.
+              </div>
+            `;
+            formMessage.classList.remove('hidden');
+          } finally {
+            // Restaurar el botón
+            submitButton.disabled = false;
+            buttonText.classList.remove('hidden');
+            buttonLoading.classList.add('hidden');
+          }
+        });
       });
+
       // Mostrar bottom CTA al 50% de scroll una sola vez
       (function(){
         let shown = false;
         const el = document.getElementById('bottom-cta');
+        if (!el) return;
+        
         const onScroll = () => {
           if (shown) return;
           const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);

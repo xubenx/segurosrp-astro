@@ -1,0 +1,905 @@
+---
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+
+const site = "https://segurosrp.com";
+const canonical = `${site}/seguros-monterrey-en-celaya`;
+const pageTitle = "Seguros Monterrey en Celaya, Guanajuato | Asesores Seguros R&P";
+const pageDescription =
+  "Despacho de Asesores Ramírez y Plascencia (SegurosR&P). Asesores certificados de Seguros Monterrey New York Life en Celaya, Guanajuato. Cotiza vida, gastos médicos, retiro y educación. Atención local y nacional.";
+
+const business = {
+  name: "Seguros Monterrey New York Life — Despacho de Asesores Ramírez y Plascencia",
+  legalName: "Seguros Monterrey New York Life (asesoría independiente)",
+  phone: "+52 461 000 0000",
+  email: "contacto@segurosrp.com",
+  address: {
+    street: "Av. Tecnológico 123",
+    locality: "Celaya",
+    region: "Guanajuato",
+    postalCode: "38010",
+    country: "MX",
+  },
+  geo: { lat: 20.523, lng: -100.815 },
+  openingHours: "Mo-Fr 09:00-18:00",
+};
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#0A6CFF" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/images/og/seguros-monterrey-celaya.jpg`} />
+    <meta property="og:site_name" content="SegurosRP" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${site}/images/og/seguros-monterrey-celaya.jpg`} />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="es-MX" href={canonical} />
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
+
+    <!-- Schema: LocalBusiness/InsuranceAgency -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "InsuranceAgency",
+        "name": business.name,
+        "parentOrganization": "Seguros Monterrey New York Life",
+        "description": pageDescription,
+        "areaServed": ["Celaya, Guanajuato", "México"],
+        "telephone": business.phone,
+        "email": business.email,
+        "image": `${site}/images/og/seguros-monterrey-celaya.jpg`,
+        "url": canonical,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": business.address.street,
+          "addressLocality": business.address.locality,
+          "addressRegion": business.address.region,
+          "postalCode": business.address.postalCode,
+          "addressCountry": business.address.country
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": business.geo.lat,
+          "longitude": business.geo.lng
+        },
+        "openingHours": business.openingHours,
+        "sameAs": [
+          "https://www.facebook.com/SegurosMonterreyNYL",
+          "https://www.linkedin.com/company/seguros-monterrey-new-york-life"
+        ]
+      })}
+    </script>
+
+    <!-- Schema: Breadcrumb -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Inicio","item": site},
+          {"@type":"ListItem","position":2,"name":"Celaya","item": `${site}/celaya`},
+          {"@type":"ListItem","position":3,"name":"Seguros Monterrey en Celaya","item": canonical}
+        ]
+      })}
+    </script>
+
+    <!-- Schema: FAQ (se autocompleta con preguntas abajo) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"¿Atienden solo en Celaya o nacionalmente?","acceptedAnswer":{"@type":"Answer","text":"Atendemos en Celaya y de forma nacional por videollamada, WhatsApp y correo. Para trámites presenciales coordinamos agenda en Guanajuato y alrededores."}},
+          {"@type":"Question","name":"Si tengo un problema con Seguros Monterrey, ¿me pueden asesorar?","acceptedAnswer":{"@type":"Answer","text":"Sí. Como asesores certificados, te guiamos en aclaraciones, siniestros, reclamaciones y seguimiento con la aseguradora, incluyendo escalamiento formal si hace falta."}},
+          {"@type":"Question","name":"¿Puedo cambiar mi póliza con ustedes si la contraté con otro asesor?","acceptedAnswer":{"@type":"Answer","text":"Sí. Podemos ayudarte a solicitar el cambio de agente y brindarte servicio sin modificar las condiciones actuales de tu póliza."}},
+          {"@type":"Question","name":"¿Puedo contratar o firmar a distancia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Realizamos asesoría y contratación remota con firma electrónica, envío seguro de documentación y validaciones por video si aplica."}},
+          {"@type":"Question","name":"¿Trabajan directamente con Seguros Monterrey New York Life?","acceptedAnswer":{"@type":"Answer","text":"Somos despacho de asesores especializados y certificados en Seguros Monterrey New York Life. Brindamos asesoría independiente con el respaldo de la compañía."}},
+          {"@type":"Question","name":"¿Manejan UDIS y dólares?","acceptedAnswer":{"@type":"Answer","text":"Sí. Muchos planes ofrecen UDIS o USD para proteger poder adquisitivo o dolarizar parte del patrimonio, según tu estrategia."}},
+          {"@type":"Question","name":"¿Cómo se calcula mi prima?","acceptedAnswer":{"@type":"Answer","text":"Depende de edad, salud, suma asegurada, moneda, plazo y coberturas adicionales. Te entregamos comparativa clara y personalizada."}},
+          {"@type":"Question","name":"¿Cubren preexistencias?","acceptedAnswer":{"@type":"Answer","text":"Depende del producto y evaluación médica. En GMMI aplican periodos de espera y políticas de suscripción. Analizamos tu caso y alternativas."}},
+          {"@type":"Question","name":"¿Cómo tramito un siniestro o reembolso?","acceptedAnswer":{"@type":"Answer","text":"Te guiamos paso a paso: reporte, documentos, tiempos de resolución y seguimiento. En urgencias, primero atención; después formalizamos el trámite."}},
+          {"@type":"Question","name":"¿Ofrecen deducibilidad fiscal en retiro?","acceptedAnswer":{"@type":"Answer","text":"Sí. Planes como Imagina Ser o Nuevo Plenitud pueden integrar bolsillos deducibles/no deducibles conforme a LISR vigente. Coordinamos con tu contador."}}
+        ]
+      }
+    </script>
+
+    <!-- Accesibilidad base -->
+    <style is:global>
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+      :focus-visible{outline:3px solid #FF6600;outline-offset:2px}
+      
+      /* Estilos mejorados para la página */
+      .gradient-bg {
+        background: linear-gradient(135deg, #00305C 0%, #1A75CF 50%, #0052CC 100%);
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, #FF6600 0%, #FF8533 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .card-shadow {
+        box-shadow: 0 10px 25px -5px rgba(0, 48, 92, 0.1), 0 10px 10px -5px rgba(0, 48, 92, 0.04);
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, #FF6600 0%, #FF8533 100%);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+      }
+      
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+      }
+      
+      .btn-secondary {
+        background: linear-gradient(135deg, #00305C 0%, #1A75CF 100%);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 48, 92, 0.3);
+      }
+      
+      .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 48, 92, 0.4);
+      }
+      
+      /* Animaciones personalizadas */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(3deg); }
+      }
+      
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+      
+      /* Efectos hover mejorados */
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 48, 92, 0.15);
+      }
+      
+      /* Smooth scroll mejorado */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Responsive mejoras */
+      @media (max-width: 768px) {
+        .gradient-text {
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          background: linear-gradient(135deg, #FF6600 0%, #FF8533 100%);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 text-slate-800 antialiased">
+    <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
+
+    <!-- HERO (basado en tu código, con mejoras de a11y y SEO local) -->
+    <section id="inicio" class="min-h-screen gradient-bg text-white relative overflow-hidden" role="region" aria-labelledby="hero-title">
+      <!-- Elementos decorativos -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-rp-orange rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-rp-light-blue rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center min-h-screen py-20">
+          <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div class="flex flex-col justify-center space-y-6">
+              <div class="space-y-4">
+                <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+                  ✨ Asesores Certificados en Celaya, Gto
+                </div>
+                <h1 id="hero-title" class="text-5xl md:text-6xl font-bold leading-tight">
+                  Somos Expertos en <span class="gradient-text">Seguros Monterrey</span>
+                </h1>
+                <p class="text-xl text-blue-100 leading-relaxed">
+                  Protección integral para ti y tu familia con <strong>más de 25 años de experiencia</strong> en Celaya, Guanajuato y servicio nacional.
+                </p>
+              </div>
+              
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold text-center" aria-describedby="cta1-desc">
+                  💬 Solicitar Cotización
+                </a>
+                <a href="#servicios" class="btn-secondary text-white px-8 py-4 rounded-full text-lg font-semibold text-center border-2 border-white/20">
+                  📋 Ver Nuestros Servicios
+                </a>
+              </div>
+              <span id="cta1-desc" class="sr-only">Botón para abrir el formulario de contacto y cotización</span>
+              
+              <!-- Stats rápidas -->
+              <div class="grid grid-cols-3 gap-4 pt-8">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-rp-orange">25+</div>
+                  <div class="text-sm text-blue-200">Años de experiencia</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-rp-orange">1000+</div>
+                  <div class="text-sm text-blue-200">Familias protegidas</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-rp-orange">24/7</div>
+                  <div class="text-sm text-blue-200">Atención disponible</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="relative h-full flex flex-col justify-center items-center">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-rp-orange/20 to-transparent rounded-3xl"></div>
+                <img fetchpriority="high" src="/principal.webp" alt="Asesores de SegurosRP atendiendo clientes en Celaya" class="w-full h-auto max-h-[600px] object-contain rounded-3xl shadow-2xl" loading="eager" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="md:hidden flex flex-col min-h-screen relative py-20">
+          <div class="flex flex-col justify-start space-y-6 z-10">
+            <div class="space-y-4">
+              <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+                ✨ Asesores Certificados
+              </div>
+              <h1 class="text-3xl font-bold leading-tight">
+                Somos Expertos en <span class="gradient-text">Seguros Monterrey</span>
+              </h1>
+              <p class="text-lg text-blue-100">Protección integral para tu familia en Celaya y a nivel nacional</p>
+            </div>
+            
+            <div class="space-y-3">
+              <a href="#contacto" class="btn-primary text-white px-6 py-3 rounded-full font-semibold text-center block" aria-describedby="cta2-desc">
+                💬 Solicitar Cotización
+              </a>
+              <a href="#servicios" class="btn-secondary text-white px-6 py-3 rounded-full font-semibold text-center block border-2 border-white/20">
+                📋 Ver Servicios
+              </a>
+            </div>
+            <span id="cta2-desc" class="sr-only">Botón para abrir el formulario de contacto y cotización</span>
+            
+            <!-- Stats móvil -->
+            <div class="grid grid-cols-3 gap-3 pt-6">
+              <div class="text-center">
+                <div class="text-xl font-bold text-rp-orange">25+</div>
+                <div class="text-xs text-blue-200">Años</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xl font-bold text-rp-orange">1000+</div>
+                <div class="text-xs text-blue-200">Familias</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xl font-bold text-rp-orange">24/7</div>
+                <div class="text-xs text-blue-200">Atención</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Imagen móvil -->
+          <div class="absolute bottom-0 left-0 right-0 flex flex-col items-center">
+            <div class="relative w-full">
+              <div class="absolute inset-0 bg-gradient-to-t from-rp-blue/50 to-transparent"></div>
+              <img fetchpriority="high" src="/principal.webp" alt="Equipo SegurosRP en Celaya" class="w-full h-auto max-h-[40vh] object-contain object-bottom" loading="eager" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="contenido">
+      <!-- Sección Por qué elegirnos -->
+      <section id="servicios" class="py-20 bg-white" aria-labelledby="h2-por-que">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-por-que" class="text-4xl md:text-5xl font-bold mb-6">
+              Seguros Monterrey en <span class="gradient-text">Celaya</span> con SegurosRP
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Tu tranquilidad es nuestro compromiso. Más de 25 años protegiendo familias en Guanajuato.
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 card-shadow">
+              <div class="w-16 h-16 bg-gradient-to-br from-rp-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4 text-rp-blue">Atención local, alcance nacional</h3>
+              <p class="mb-4 text-gray-700">Asesoría personalizada en <strong>Celaya, Guanajuato</strong> y atención remota en todo México.</p>
+              <h4 class="text-xl font-semibold mb-3 text-rp-blue">💰 Monedas que protegen tu patrimonio</h4>
+              <p class="mb-4 text-gray-700">Planes en <strong>UDIS</strong> y <strong>USD</strong> según tu estrategia financiera.</p>
+              <h5 class="font-semibold mb-2 text-rp-blue">🤝 Acompañamiento total</h5>
+              <p class="mb-4 text-gray-700">Desde la cotización hasta el siniestro. Nos encargamos del seguimiento.</p>
+              <div class="bg-white/60 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-orange mb-2">📍 Zonas en Celaya</h6>
+                <p class="text-sm text-gray-600">Centro, Campestre, Tecnológico, Las Américas y más.</p>
+              </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 card-shadow">
+              <div class="w-16 h-16 bg-gradient-to-br from-rp-blue to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4 text-rp-blue">Productos especializados</h3>
+              <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                  <div class="w-2 h-2 bg-rp-orange rounded-full mt-2"></div>
+                  <div>
+                    <h4 class="font-semibold text-rp-blue">💖 Seguros de Vida</h4>
+                    <p class="text-sm text-gray-600">Protección familiar completa</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="w-2 h-2 bg-rp-orange rounded-full mt-2"></div>
+                  <div>
+                    <h4 class="font-semibold text-rp-blue">🏥 Gastos Médicos Mayores</h4>
+                    <p class="text-sm text-gray-600">Cobertura médica sin límites</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="w-2 h-2 bg-rp-orange rounded-full mt-2"></div>
+                  <div>
+                    <h4 class="font-semibold text-rp-blue">🎓 Seguros Educativos</h4>
+                    <p class="text-sm text-gray-600">Futuro académico asegurado</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="w-2 h-2 bg-rp-orange rounded-full mt-2"></div>
+                  <div>
+                    <h4 class="font-semibold text-rp-blue">🏖️ Planes de Retiro</h4>
+                    <p class="text-sm text-gray-600">Jubilación con dignidad</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Certificaciones y respaldo -->
+          <div class="bg-gradient-to-r from-rp-blue to-rp-light-blue rounded-3xl p-8 text-white text-center">
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Respaldados por Seguros Monterrey New York Life</h3>
+            <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+              Más de 175 años de experiencia mundial y liderazgo en el mercado mexicano de seguros.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                <div class="text-3xl font-bold text-rp-orange mb-2">175+</div>
+                <div class="text-sm">Años de experiencia global</div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                <div class="text-3xl font-bold text-rp-orange mb-2">#1</div>
+                <div class="text-sm">En satisfacción del cliente</div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                <div class="text-3xl font-bold text-rp-orange mb-2">AAA</div>
+                <div class="text-sm">Calificación crediticia</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sección de productos mejorada -->
+      <section class="py-20 bg-gray-50" aria-labelledby="h2-planes">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-planes" class="text-4xl md:text-5xl font-bold mb-6">
+              Nuestros <span class="gradient-text">Seguros</span> en Celaya
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Planes diseñados para cada etapa de tu vida, con la garantía de Seguros Monterrey New York Life
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Seguro de Vida -->
+            <article class="bg-white rounded-3xl p-8 card-shadow hover:transform hover:scale-105 transition-all duration-300" aria-labelledby="vida">
+              <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 id="vida" class="text-2xl font-bold mb-3 text-rp-blue">💖 Seguros de Vida</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Protección por fallecimiento</h4>
+              <p class="mb-4 text-gray-600">Planes como <strong>Star Temporal</strong>, <strong>Orvi</strong> y <strong>Vida Mujer</strong>.</p>
+              
+              <div class="space-y-3 mb-6">
+                <h5 class="font-semibold text-rp-blue">✨ Beneficios clave</h5>
+                <ul class="space-y-2">
+                  <li class="flex items-center text-sm text-gray-600">
+                    <span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>
+                    Cobertura en UDIS o USD
+                  </li>
+                  <li class="flex items-center text-sm text-gray-600">
+                    <span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>
+                    Opciones de invalidez y adicionales
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="bg-blue-50 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h6>
+                <p class="text-sm text-gray-600">Hipoteca, dependientes, protección patrimonial</p>
+              </div>
+            </article>
+
+            <!-- Gastos Médicos -->
+            <article class="bg-white rounded-3xl p-8 card-shadow hover:transform hover:scale-105 transition-all duration-300" aria-labelledby="gmm">
+              <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 01-1 1H8a1 1 0 01-1-1V9a1 1 0 011-1h4a1 1 0 011 1v2z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 id="gmm" class="text-2xl font-bold mb-3 text-rp-blue">🏥 Gastos Médicos Mayores</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Cobertura nacional e internacional</h4>
+              <p class="mb-4 text-gray-600"><strong>GMMI</strong> con redes hospitalarias, maternidad y flexibilidad en deducible/coaseguro.</p>
+              
+              <div class="space-y-3 mb-6">
+                <h5 class="font-semibold text-rp-blue">✨ Beneficios clave</h5>
+                <ul class="space-y-2">
+                  <li class="flex items-center text-sm text-gray-600">
+                    <span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>
+                    Libre elección de médicos y hospitales
+                  </li>
+                  <li class="flex items-center text-sm text-gray-600">
+                    <span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>
+                    Periodos de espera y lineamientos claros
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="bg-green-50 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h6>
+                <p class="text-sm text-gray-600">Familias, profesionistas y negocios</p>
+              </div>
+            </article>
+
+            <!-- Retiro y Educación -->
+            <article class="bg-white rounded-3xl p-8 card-shadow hover:transform hover:scale-105 transition-all duration-300" aria-labelledby="retiro">
+              <div class="w-16 h-16 bg-gradient-to-br from-rp-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 id="retiro" class="text-2xl font-bold mb-3 text-rp-blue">🏖️ Retiro y Educación</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Rentas de por vida o pago único</h4>
+              <p class="mb-4 text-gray-600"><strong>Imagina Ser</strong>, <strong>Nuevo Plenitud</strong> y <strong>SeguBeca</strong>.</p>
+              
+              <div class="space-y-3 mb-6">
+                <h5 class="font-semibold text-rp-blue">✨ Beneficios clave</h5>
+                <ul class="space-y-2">
+                  <li class="flex items-center text-sm text-gray-600">
+                    <span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>
+                    Posibles beneficios fiscales
+                  </li>
+                  <li class="flex items-center text-sm text-gray-600">
+                    <span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>
+                    Rendimientos mínimos garantizados
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="bg-orange-50 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h6>
+                <p class="text-sm text-gray-600">Construir patrimonio y educación universitaria</p>
+              </div>
+            </article>
+          </div>
+          
+          <!-- CTA de productos -->
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">
+              💬 Solicitar Cotización Personalizada
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proceso mejorado -->
+      <section class="py-20 bg-white" aria-labelledby="h2-proceso">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-proceso" class="text-4xl md:text-5xl font-bold mb-6">
+              ¿Cómo <span class="gradient-text">Trabajamos</span>?
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Un proceso simple y transparente para proteger lo que más amas
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-4 gap-8">
+            <!-- Paso 1 -->
+            <div class="relative">
+              <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 text-center card-shadow">
+                <div class="w-16 h-16 bg-gradient-to-br from-rp-blue to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span class="text-2xl font-bold text-white">1</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-rp-blue">🔍 Descubrimiento</h3>
+                <h4 class="font-semibold mb-3 text-gray-700">Entendemos tus metas</h4>
+                <p class="text-gray-600 mb-4">Protección, salud, retiro o educación.</p>
+                
+                <div class="space-y-2 text-sm">
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h5 class="font-semibold text-rp-blue">📅 Formato</h5>
+                    <p class="text-gray-600">Presencial o virtual</p>
+                  </div>
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h6 class="font-semibold text-rp-orange">⏱️ Tiempo</h6>
+                    <p class="text-gray-600">30–45 min</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Flecha decorativa -->
+              <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                <svg class="w-8 h-8 text-rp-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="relative">
+              <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 text-center card-shadow">
+                <div class="w-16 h-16 bg-gradient-to-br from-rp-orange to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span class="text-2xl font-bold text-white">2</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-rp-blue">🎨 Diseño</h3>
+                <h4 class="font-semibold mb-3 text-gray-700">Comparativas claras</h4>
+                <p class="text-gray-600 mb-4">UDIS vs USD, sumas y coberturas.</p>
+                
+                <div class="space-y-2 text-sm">
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h5 class="font-semibold text-rp-blue">⚡ Optimización</h5>
+                    <p class="text-gray-600">Fiscal y presupuesto</p>
+                  </div>
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h6 class="font-semibold text-rp-orange">📄 Entrega</h6>
+                    <p class="text-gray-600">PDF + explicación</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Flecha decorativa -->
+              <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                <svg class="w-8 h-8 text-rp-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="relative">
+              <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 text-center card-shadow">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span class="text-2xl font-bold text-white">3</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-rp-blue">✍️ Contratación</h3>
+                <h4 class="font-semibold mb-3 text-gray-700">Firma remota o presencial</h4>
+                <p class="text-gray-600 mb-4">Validaciones médicas si aplican.</p>
+                
+                <div class="space-y-2 text-sm">
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h5 class="font-semibold text-rp-blue">🔒 Seguridad</h5>
+                    <p class="text-gray-600">Datos y documentos</p>
+                  </div>
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h6 class="font-semibold text-rp-orange">✅ Listo</h6>
+                    <p class="text-gray-600">Recibes tu póliza digital</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Flecha decorativa -->
+              <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                <svg class="w-8 h-8 text-rp-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="relative">
+              <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 text-center card-shadow">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span class="text-2xl font-bold text-white">4</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-rp-blue">🤝 Acompañamiento</h3>
+                <h4 class="font-semibold mb-3 text-gray-700">Servicio post-venta</h4>
+                <p class="text-gray-600 mb-4">Actualizaciones y siniestros.</p>
+                
+                <div class="space-y-2 text-sm">
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h5 class="font-semibold text-rp-blue">📱 Seguimiento</h5>
+                    <p class="text-gray-600">WhatsApp, mail y llamadas</p>
+                  </div>
+                  <div class="bg-white/60 rounded-lg p-2">
+                    <h6 class="font-semibold text-rp-orange">♾️ Siempre</h6>
+                    <p class="text-gray-600">Estamos contigo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA del proceso -->
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">
+              🚀 Comenzar Ahora
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs mejoradas -->
+      <section class="py-20 bg-gray-50" aria-labelledby="h2-faq">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-faq" class="text-4xl md:text-5xl font-bold mb-6">
+              Preguntas <span class="gradient-text">Frecuentes</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Resolvemos tus dudas más comunes sobre seguros en Celaya
+            </p>
+          </div>
+
+          <div class="max-w-4xl mx-auto space-y-6">
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🌎 ¿Atienden solo en Celaya o nacionalmente?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </summary>
+              <div class="mt-6 space-y-4">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-blue-50 rounded-2xl p-4">
+                    <h3 class="font-semibold text-rp-blue mb-2">🏢 Cobertura</h3>
+                    <p class="text-gray-700">Atendemos en <strong>Celaya, Guanajuato</strong> y brindamos servicio <strong>en toda la República</strong> por videollamada, WhatsApp y correo.</p>
+                  </div>
+                  <div class="bg-orange-50 rounded-2xl p-4">
+                    <h4 class="font-semibold text-rp-orange mb-2">🚗 Visitas</h4>
+                    <p class="text-gray-700">Coordinamos citas presenciales en Guanajuato y estados cercanos según agenda.</p>
+                  </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-green-50 rounded-2xl p-4">
+                    <h5 class="font-semibold text-green-600 mb-2">⚡ Tiempos</h5>
+                    <p class="text-gray-700">Respuesta el mismo día hábil.</p>
+                  </div>
+                  <div class="bg-purple-50 rounded-2xl p-4">
+                    <h6 class="font-semibold text-purple-600 mb-2">📱 Canales</h6>
+                    <p class="text-gray-700">Teléfono, WhatsApp, correo y reuniones virtuales.</p>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🛡️ Si tengo un problema con Seguros Monterrey, ¿me pueden asesorar?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </summary>
+              <div class="mt-6 space-y-4">
+                <div class="bg-green-50 rounded-2xl p-6">
+                  <h3 class="font-semibold text-green-600 mb-3">✅ Sí, te acompañamos</h3>
+                  <p class="text-gray-700 mb-4">Guiamos aclaraciones, siniestros, reclamaciones, reembolsos y <strong>escalamiento formal</strong> si hace falta.</p>
+                  
+                  <div class="grid md:grid-cols-3 gap-4">
+                    <div>
+                      <h4 class="font-semibold text-rp-blue mb-2">📋 Qué necesitamos</h4>
+                      <p class="text-sm text-gray-600">Número de póliza, identificación y evidencia del caso.</p>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-rp-blue mb-2">🎯 Resultados</h5>
+                      <p class="text-sm text-gray-600">Buscamos resolución ágil y documentada, manteniéndote informado.</p>
+                    </div>
+                    <div>
+                      <h6 class="font-semibold text-rp-orange mb-2">💰 Costo</h6>
+                      <p class="text-sm text-gray-600">La asesoría a clientes vigentes está incluida.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🔄 ¿Puedo cambiar mi póliza con ustedes?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </summary>
+              <div class="mt-6">
+                <div class="bg-blue-50 rounded-2xl p-6">
+                  <h3 class="font-semibold text-rp-blue mb-3">✅ Cambio de agente</h3>
+                  <p class="text-gray-700 mb-4">Te ayudamos a solicitar el cambio de asesor sin modificar condiciones de tu póliza.</p>
+                  
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h4 class="font-semibold text-rp-orange mb-2">📄 Requisitos</h4>
+                      <p class="text-sm text-gray-600">Identificación, póliza y formato de cambio.</p>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-rp-orange mb-2">🎁 Beneficio</h5>
+                      <p class="text-sm text-gray-600">Atención directa y seguimiento cercano de SegurosRP.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>💻 ¿Puedo contratar o firmar a distancia?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </summary>
+              <div class="mt-6">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6">
+                  <h3 class="font-semibold text-green-600 mb-3">✅ 100% remoto</h3>
+                  <p class="text-gray-700 mb-4">Firma electrónica, envío seguro de documentos y validaciones por video cuando aplique.</p>
+                  
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h4 class="font-semibold text-rp-blue mb-2">🔒 Privacidad</h4>
+                      <p class="text-sm text-gray-600">Manejo responsable de datos personales conforme a la normativa aplicable.</p>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-rp-blue mb-2">🤝 Soporte</h5>
+                      <p class="text-sm text-gray-600">Te guiamos en cada paso del proceso.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>💰 ¿Manejan UDIS y dólares?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </summary>
+              <div class="mt-6">
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6">
+                  <h3 class="font-semibold text-orange-600 mb-3">✅ Múltiples monedas</h3>
+                  <p class="text-gray-700 mb-4">Muchos planes permiten <strong>UDIS</strong> o <strong>USD</strong>, útil para blindar poder adquisitivo o dolarizar parte del ahorro.</p>
+                  
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h4 class="font-semibold text-rp-blue mb-2">🎯 Elección</h4>
+                      <p class="text-sm text-gray-600">Depende de horizonte, tolerancia a riesgo y objetivos; te mostramos escenarios.</p>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-rp-blue mb-2">💡 Combinaciones</h5>
+                      <p class="text-sm text-gray-600">También se pueden mezclar estrategias por producto.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Final -->
+      <section class="py-20 gradient-bg text-white relative overflow-hidden">
+        <!-- Elementos decorativos -->
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute top-10 right-10 w-96 h-96 bg-rp-orange rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div class="absolute bottom-10 left-10 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">
+              ¿Listo para <span class="gradient-text">Proteger</span> tu Futuro?
+            </h2>
+            <p class="text-xl md:text-2xl text-blue-100 mb-8">
+              Más de 25 años protegiendo familias en Celaya, Guanajuato. 
+              <br class="hidden md:block">
+              <strong>Tu tranquilidad es nuestro compromiso.</strong>
+            </p>
+            
+            <!-- Stats destacadas -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+              <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-6">
+                <div class="text-4xl md:text-5xl font-bold text-rp-orange mb-2">25+</div>
+                <div class="text-lg text-blue-100">Años de experiencia</div>
+                <div class="text-sm text-blue-200">Protegiendo familias mexicanas</div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-6">
+                <div class="text-4xl md:text-5xl font-bold text-rp-orange mb-2">1000+</div>
+                <div class="text-lg text-blue-100">Familias protegidas</div>
+                <div class="text-sm text-blue-200">En Guanajuato y todo México</div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-6">
+                <div class="text-4xl md:text-5xl font-bold text-rp-orange mb-2">24/7</div>
+                <div class="text-lg text-blue-100">Atención disponible</div>
+                <div class="text-sm text-blue-200">Cuando más nos necesitas</div>
+              </div>
+            </div>
+            
+            <!-- CTAs principales -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <a href="#contacto" class="btn-primary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3">
+                <span>💬</span>
+                <span>Solicitar Cotización</span>
+              </a>
+              <a href="tel:+524610000000" class="btn-secondary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3 border-2 border-white/20">
+                <span>📞</span>
+                <span>Llamar Ahora</span>
+              </a>
+            </div>
+            
+            <!-- Información de contacto rápida -->
+            <div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-4">
+                <div class="text-rp-orange text-2xl mb-2">📍</div>
+                <div class="font-semibold text-blue-100">Celaya, Guanajuato</div>
+                <div class="text-sm text-blue-200">Centro, Campestre, Tecnológico</div>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-4">
+                <div class="text-rp-orange text-2xl mb-2">📱</div>
+                <div class="font-semibold text-blue-100">WhatsApp</div>
+                <div class="text-sm text-blue-200">Respuesta inmediata</div>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-4">
+                <div class="text-rp-orange text-2xl mb-2">🌎</div>
+                <div class="font-semibold text-blue-100">Servicio Nacional</div>
+                <div class="text-sm text-blue-200">Todo México disponible</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <Contact></Contact>
+    </main>
+
+   <Footer></Footer>
+
+  </body>
+</html>

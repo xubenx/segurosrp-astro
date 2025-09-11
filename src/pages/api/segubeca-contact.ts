@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 import { initializeFirebase, saveLeadToFirestore } from '../../lib/firebase-config';
+import { Timestamp } from 'firebase/firestore';
 
 // Inicializar Firebase
 let firebaseInitialized = false;
@@ -301,25 +302,77 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     console.log('🎓 Procesando formulario de Segubeca...');
     
-    const jsonData = await request.json();
-    console.log('📋 Datos recibidos:', jsonData);
+    // Verificar Content-Type
+    const contentType = request.headers.get('content-type');
+    console.log('📋 Content-Type recibido:', contentType);
     
-    // Crear objeto de lead con los datos de Segubeca
-    const leadData = {
-      parentName: jsonData.parentName?.toString().trim(),
-      childName: jsonData.childName?.toString().trim(),
-      parentAge: jsonData.parentAge?.toString().trim(),
-      childAge: jsonData.childAge?.toString().trim(),
-      monthlySavings: jsonData.monthlySavings?.toString().trim(),
-      email: jsonData.email?.toString().trim(),
-      whatsapp: jsonData.whatsapp?.toString().trim(),
+    // Validar que sea JSON
+    if (!contentType || !contentType.includes('application/json')) {
+      console.error('❌ Content-Type inválido:', contentType);
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Content-Type debe ser application/json'
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Obtener el body como texto primero para debugging
+    const bodyText = await request.text();
+    console.log('📄 Body recibido (longitud):', bodyText.length);
+    console.log('📄 Body recibido (primeros 200 chars):', bodyText.substring(0, 200));
+    
+    if (!bodyText || bodyText.trim() === '') {
+      console.error('❌ Body vacío');
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'El cuerpo de la petición está vacío'
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Intentar parsear JSON con manejo de errores
+    let jsonData;
+    try {
+      jsonData = JSON.parse(bodyText);
+      console.log('📋 Datos JSON parseados correctamente:', Object.keys(jsonData));
+    } catch (parseError) {
+      console.error('❌ Error parsing JSON:', parseError);
+      console.error('❌ Body problemático:', bodyText);
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'JSON inválido en el cuerpo de la petición',
+        details: parseError.message
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
+    // TEST: Crear datos mínimos para identificar el problema
+    const leadData: any = {
+      parentName: jsonData.parentName ? String(jsonData.parentName).trim() : 'Test Parent',
+      childName: jsonData.childName ? String(jsonData.childName).trim() : 'Test Child',
+      parentAge: jsonData.parentAge ? String(jsonData.parentAge).trim() : '30',
+      childAge: jsonData.childAge ? String(jsonData.childAge).trim() : '5',
+      monthlySavings: jsonData.monthlySavings ? String(jsonData.monthlySavings).trim() : '1000',
+      email: jsonData.email ? String(jsonData.email).trim() : 'test@test.com',
+      whatsapp: jsonData.whatsapp ? String(jsonData.whatsapp).trim() : '1234567890',
       source: 'Segubeca Landing',
       campaign: 'Seguros Educativos',
-      type: 'segubeca',
-      timestamp: new Date(),
-      ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
-      userAgent: request.headers.get('user-agent') || 'unknown',
+      type: 'segubeca'
     };
+
+    // Agregar timestamp COMO STRING en lugar de Timestamp objeto
+    leadData.timestamp = new Date().toISOString();
+    leadData.ip = String(request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown');
+    leadData.userAgent = String(request.headers.get('user-agent') || 'unknown');
+
+    console.log('💾 Datos SIMPLIFICADOS Segubeca para Firestore:', leadData);
+    console.log('🔍 Tipos de datos:', Object.entries(leadData).map(([k, v]) => `${k}: ${typeof v}`));
 
     // Validaciones básicas
     if (!leadData.parentName || !leadData.childName || !leadData.parentAge || 

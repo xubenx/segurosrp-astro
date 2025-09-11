@@ -18,30 +18,6 @@ pnpm-debug.log*
 .env
 .env.production
 
-# temporary files
-*.tmp
-*.temp
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Cache
-.cache/
-
 # macOS-specific files
 .DS_Store
 .vercel
-# Agregar este archivo a .gitignore inmediatamente
-.env

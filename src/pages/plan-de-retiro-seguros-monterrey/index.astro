@@ -1,0 +1,443 @@
+---
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const site = "https://segurosrp.com";
+const canonical = `${site}/plan-de-retiro-seguros-monterrey`;
+const pageTitle = "Plan de Retiro Seguros Monterrey | Asesores de Retiro — SegurosRP";
+const pageDescription =
+  "Despacho de Asesores Ramírez y Plascencia (SegurosR&P). Especialistas en plan de retiro Seguros Monterrey New York Life (Imagina Ser y Nuevo Plenitud). Contrata en todo México. Deducibilidad PPR, UDIS y USD.";
+
+const business = {
+  name: "Seguros Monterrey New York Life — Despacho de Asesores Ramírez y Plascencia",
+  legalName: "Seguros Monterrey New York Life (asesoría independiente)",
+  phone: "+52 461 000 0000",
+  email: "contacto@segurosrp.com",
+  url: canonical,
+  areaServed: ["México"],
+};
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#0A6CFF" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/images/og/plan-retiro-seguros-monterrey.jpg`} />
+    <meta property="og:site_name" content="SegurosRP" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${site}/images/og/plan-retiro-seguros-monterrey.jpg`} />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="es-MX" href={canonical} />
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
+
+    <!-- Schema: InsuranceAgency (enfoque nacional) -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "InsuranceAgency",
+        "name": business.name,
+        "description": pageDescription,
+        "areaServed": business.areaServed,
+        "telephone": business.phone,
+        "email": business.email,
+        "url": business.url,
+        "image": `${site}/images/og/plan-retiro-seguros-monterrey.jpg`,
+        "sameAs": [
+          "https://www.facebook.com/SegurosMonterreyNYL",
+          "https://www.linkedin.com/company/seguros-monterrey-new-york-life"
+        ]
+      })}
+    </script>
+
+    <!-- Schema: Breadcrumb -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Inicio","item": site},
+          {"@type":"ListItem","position":2,"name":"Planes de Retiro","item": `${site}/retiro`},
+          {"@type":"ListItem","position":3,"name":"Plan de Retiro Seguros Monterrey","item": canonical}
+        ]
+      })}
+    </script>
+
+    <!-- Schema: FAQ -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"¿Qué es el plan de retiro Seguros Monterrey Imagina Ser?","acceptedAnswer":{"@type":"Answer","text":"Es un seguro de retiro con respaldo de vida que permite elegir cómo recibir tu ahorro: rentas mensuales de por vida o en una sola exhibición; se puede contratar en UDI o USD y ofrece rendimiento mínimo garantizado. "}},
+          {"@type":"Question","name":"¿Qué ofrece Nuevo Plenitud?","acceptedAnswer":{"@type":"Answer","text":"Te permite elegir entre pago único o ingresos mensuales de por vida; puedes heredar el ingreso a un co-beneficiario o establecer un periodo de garantía. Incluye aguinaldo equivalente a una mensualidad durante los primeros 5 años de retiro y opciones de adelanto de ingresos."}},
+          {"@type":"Question","name":"¿Puedo deducir impuestos (PPR)?","acceptedAnswer":{"@type":"Answer","text":"Sí. Para bolsos PPR aplica LISR Art. 151 (hasta 5 UMA anuales o 10% del ingreso, lo que resulte menor). También existe deducibilidad Art. 185 con tope anual equivalente en pesos. Ambos pueden usarse simultáneamente conforme a ley vigente."}},
+          {"@type":"Question","name":"¿Atienden a nivel nacional?","acceptedAnswer":{"@type":"Answer","text":"Sí, somos asesores certificados y atendemos en toda la República por videollamada, WhatsApp, teléfono y correo."}},
+          {"@type":"Question","name":"¿Puedo contratar en UDI o en dólares?","acceptedAnswer":{"@type":"Answer","text":"Sí. Varios planes permiten contratar en UDI o USD; diseñamos tu estrategia según objetivos, horizonte y tolerancia al riesgo."}},
+          {"@type":"Question","name":"¿En qué edades puedo programar mi retiro?","acceptedAnswer":{"@type":"Answer","text":"Comúnmente 60, 65 o 70 años según el plan y versión contratada."}}
+        ]
+      }
+    </script>
+
+    <!-- Accesibilidad base y utilidades -->
+    <style is:global>
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+      :focus-visible{outline:3px solid #FF6600;outline-offset:2px}
+      html{scroll-behavior:smooth}
+      .gradient-bg{background:linear-gradient(135deg,#00305C 0%,#1A75CF 50%,#0052CC 100%)}
+      .gradient-text{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      .card-shadow{box-shadow:0 10px 25px -5px rgba(0,48,92,.1),0 10px 10px -5px rgba(0,48,92,.04)}
+      .btn-primary{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(255,102,0,.3)}
+      .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,102,0,.4)}
+      .btn-secondary{background:linear-gradient(135deg,#00305C 0%,#1A75CF 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(0,48,92,.3)}
+      .btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,48,92,.4)}
+    </style>
+  </head>
+
+  <body class="bg-gray-50 text-slate-800 antialiased">
+    <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
+
+    <!-- HERO: enfoque nacional, palabra clave exacta -->
+    <section id="inicio" class="min-h-screen gradient-bg text-white relative overflow-hidden" role="region" aria-labelledby="hero-title">
+      <div class="container mx-auto px-4 relative z-10">
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center min-h-screen py-20">
+          <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div class="flex flex-col justify-center space-y-6">
+              <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+                ✨ Asesores de Planes de Retiro — Servicio Nacional
+              </div>
+              <h1 id="hero-title" class="text-5xl md:text-6xl font-bold leading-tight">
+                Plan de Retiro <span class="gradient-text">Seguros Monterrey</span>
+              </h1>
+              <p class="text-xl text-blue-100 leading-relaxed">
+                Especialistas en <strong>Imagina Ser</strong> y <strong>Nuevo Plenitud</strong>. Diseñamos tu estrategia de retiro con deducibilidad PPR, UDIS o USD.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold text-center" aria-describedby="cta1-desc">
+                  💬 Cotiza tu retiro
+                </a>
+                <a href="#planes" class="btn-secondary text-white px-8 py-4 rounded-full text-lg font-semibold text-center border-2 border-white/20">
+                  📋 Ver planes y beneficios
+                </a>
+              </div>
+              <span id="cta1-desc" class="sr-only">Abrir formulario de contacto para asesoría de retiro</span>
+            </div>
+            <div class="relative h-full flex flex-col justify-center items-center">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-rp-orange/20 to-transparent rounded-3xl"></div>
+                <img fetchpriority="high" src="/principal.webp" alt="Asesores de SegurosRP explicando planes de retiro de Seguros Monterrey" class="w-full h-auto max-h-[600px] object-contain rounded-3xl shadow-2xl" loading="eager" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="md:hidden flex flex-col min-h-screen relative py-20">
+          <div class="flex flex-col justify-start space-y-6 z-10">
+            <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
+              ✨ Asesores de Retiro — México
+            </div>
+            <h1 class="text-3xl font-bold leading-tight">Plan de Retiro <span class="gradient-text">Seguros Monterrey</span></h1>
+            <p class="text-lg text-blue-100">Contrata a distancia. Deducibilidad PPR. UDI o USD.</p>
+            <div class="space-y-3">
+              <a href="#contacto" class="btn-primary text-white px-6 py-3 rounded-full font-semibold text-center block" aria-describedby="cta2-desc">💬 Cotiza tu retiro</a>
+              <a href="#planes" class="btn-secondary text-white px-6 py-3 rounded-full font-semibold text-center block border-2 border-white/20">📋 Ver planes</a>
+            </div>
+            <span id="cta2-desc" class="sr-only">Abrir formulario de contacto para asesoría de retiro</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 flex flex-col items-center">
+            <div class="relative w-full">
+              <div class="absolute inset-0 bg-gradient-to-t from-rp-blue/50 to-transparent"></div>
+              <img fetchpriority="high" src="/principal.webp" alt="Equipo SegurosRP asesorando sobre retiro" class="w-full h-auto max-h-[40vh] object-contain object-bottom" loading="eager" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="contenido">
+      <!-- Por qué con nosotros (H2->H6) -->
+      <section id="asesoria" class="py-20 bg-white" aria-labelledby="h2-asesoria">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-asesoria" class="text-4xl md:text-5xl font-bold mb-6">Asesores de <span class="gradient-text">Planes de Retiro</span> Seguros Monterrey</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Somos despacho de asesores certificados y 100% enfocados en el <strong>plan de retiro Seguros Monterrey</strong> a nivel nacional.</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold mb-4 text-rp-blue">Diseño estratégico</h3>
+              <h4 class="text-xl font-semibold mb-3 text-rp-blue">💡 Fiscal + Patrimonial</h4>
+              <p class="mb-4 text-gray-700">Comparamos <strong>bolsos deducibles (PPR)</strong> y no deducibles, así como UDI vs USD.</p>
+              <h5 class="font-semibold mb-2 text-rp-blue">🔍 Transparencia total</h5>
+              <p class="mb-4 text-gray-700">Resumen claro de costos, rendimientos mínimos y escenarios.</p>
+              <div class="bg-white/60 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-orange mb-2">📄 Entregables</h6>
+                <p class="text-sm text-gray-600">PDF comparativo + sesión de explicación.</p>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold mb-4 text-rp-blue">Atención en todo México</h3>
+              <h4 class="text-xl font-semibold mb-3 text-rp-blue">📲 100% remoto o presencial</h4>
+              <p class="mb-4 text-gray-700">Videollamada, WhatsApp, correo y teléfono. Firma electrónica disponible.</p>
+              <h5 class="font-semibold mb-2 text-rp-blue">🤝 Servicio post-venta</h5>
+              <p class="mb-4 text-gray-700">Acompañamiento en aclaraciones, retiros y trámites de por vida.</p>
+              <div class="bg-white/60 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-orange mb-2">🧭 Independientes</h6>
+                <p class="text-sm text-gray-600">Asesoría independiente con respaldo de Seguros Monterrey New York Life.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Planes (Imagina Ser y Nuevo Plenitud) -->
+      <section id="planes" class="py-20 bg-gray-50" aria-labelledby="h2-planes">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-planes" class="text-4xl md:text-5xl font-bold mb-6">Planes de <span class="gradient-text">Retiro</span> Seguros Monterrey</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Elige cómo quieres vivir tu retiro: ingreso mensual de por vida o pago único. Nosotros te guiamos.</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Imagina Ser -->
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="h3-imagina">
+              <h3 id="h3-imagina" class="text-2xl font-bold mb-3 text-rp-blue">Imagina Ser</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Rentas mensuales de por vida o una sola exhibición</h4>
+              <p class="mb-4 text-gray-700">Contratable en <strong>UDI</strong> o <strong>USD</strong> con <strong>rendimiento mínimo garantizado</strong>. Edades de retiro típicas: <strong>60, 65 o 70 años</strong>.</p>
+              <div class="space-y-3 mb-6">
+                <h5 class="font-semibold text-rp-blue">✨ Beneficios clave</h5>
+                <ul class="space-y-2">
+                  <li class="flex items-center text-sm text-gray-700"><span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>Flexibilidad de aportaciones y bolsos deducibles/no deducibles</li>
+                  <li class="flex items-center text-sm text-gray-700"><span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>Protección por fallecimiento e invalidez antes del retiro</li>
+                </ul>
+              </div>
+              <div class="bg-blue-50 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h6>
+                <p class="text-sm text-gray-700">Quienes buscan ingreso vitalicio con control fiscal (PPR) y moneda indexada.</p>
+              </div>
+            </article>
+
+            <!-- Nuevo Plenitud -->
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="h3-plenitud">
+              <h3 id="h3-plenitud" class="text-2xl font-bold mb-3 text-rp-blue">Nuevo Plenitud</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Pago único o ingresos mensuales de por vida</h4>
+              <p class="mb-4 text-gray-700">Opciones para <strong>heredar ingresos</strong> al fallecimiento (co-beneficiario o periodo de garantía). <strong>Aguinaldo</strong> durante los primeros 5 años de retiro y <strong>adelantos</strong> de ingresos (6 mensualidades o 30%).</p>
+              <div class="space-y-3 mb-6">
+                <h5 class="font-semibold text-rp-blue">✨ Beneficios clave</h5>
+                <ul class="space-y-2">
+                  <li class="flex items-center text-sm text-gray-700"><span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>Libre elección de edad de retiro dentro de las versiones del plan</li>
+                  <li class="flex items-center text-sm text-gray-700"><span class="w-2 h-2 bg-rp-orange rounded-full mr-3"></span>Alternativas deducibles y no deducibles</li>
+                </ul>
+              </div>
+              <div class="bg-green-50 rounded-2xl p-4">
+                <h6 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h6>
+                <p class="text-sm text-gray-700">Quienes buscan ingreso vitalicio y posibilidad de heredar rentas o ajustar flujos.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Comparador rápido -->
+          <div class="grid md:grid-cols-2 gap-8 mt-12">
+            <div class="bg-white rounded-3xl p-8 card-shadow">
+              <h3 class="text-xl font-bold mb-4 text-rp-blue">Comparador express</h3>
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="font-semibold">Forma de cobro</div>
+                <div>Rentas de por vida / Pago único</div>
+                <div class="font-semibold">Monedas</div>
+                <div>UDI o USD</div>
+                <div class="font-semibold">Edades de retiro</div>
+                <div>60, 65 o 70 (según plan)</div>
+                <div class="font-semibold">Aguinaldo</div>
+                <div>Aplicable en Nuevo Plenitud</div>
+                <div class="font-semibold">Adelantos</div>
+                <div>6 rentas o 30% (según plan)</div>
+              </div>
+            </div>
+            <div class="bg-white rounded-3xl p-8 card-shadow">
+              <h3 class="text-xl font-bold mb-4 text-rp-blue">Deducibilidad (PPR)</h3>
+              <p class="text-sm text-gray-700">Puedes aprovechar <strong>Art. 151</strong> (hasta 5 UMA o 10% ingreso) y/o <strong>Art. 185</strong> (tope anual en pesos). *Sujetos a LISR vigente.</p>
+              <h4 class="font-semibold mt-4 text-rp-blue">Ejemplos de uso</h4>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Bolsillo PPR para deducir hoy y diferir impuestos al retiro</li>
+                <li>Bolsillo no deducible para maximizar flujo neto a retiro</li>
+              </ul>
+              <h5 class="font-semibold mt-4 text-rp-blue">Recomendación</h5>
+              <p class="text-sm text-gray-700">Coordina con tu contador. Nosotros te damos la comparativa fiscal.</p>
+              <h6 class="font-semibold mt-4 text-rp-orange">Aviso</h6>
+              <p class="text-xs text-gray-600">La información fiscal puede actualizarse; verificamos cada caso con LISR vigente.</p>
+            </div>
+          </div>
+
+          <!-- CTA productos -->
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">💬 Quiero una propuesta de retiro</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proceso -->
+      <section class="py-20 bg-white" aria-labelledby="h2-proceso">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-proceso" class="text-4xl md:text-5xl font-bold mb-6">¿Cómo <span class="gradient-text">Trabajamos</span>?</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Proceso claro desde la cotización hasta tus rentas de por vida.</p>
+          </div>
+          <div class="grid md:grid-cols-4 gap-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">🔍 Descubrimiento</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Metas y horizonte</h4>
+              <p class="text-gray-600 mb-4">Ingreso deseado, edad de retiro y moneda.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">📅 Formato</h5>
+                <p class="text-gray-600">Virtual o presencial</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">⏱️ 30–45 min</h6>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">🎨 Diseño</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Comparativas claras</h4>
+              <p class="text-gray-600 mb-4">PPR vs no deducible, UDI vs USD; 60/65/70 años.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">⚡ Optimización</h5>
+                <p class="text-gray-600">Fiscal y de flujo</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">📄 Entrega</h6>
+                <p class="text-gray-600">PDF + sesión</p>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">✍️ Contratación</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Firma remota o presencial</h4>
+              <p class="text-gray-600 mb-4">Validaciones y documentación segura.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">🔒 Seguridad</h5>
+                <p class="text-gray-600">Protección de datos</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">✅ Listo</h6>
+                <p class="text-gray-600">Póliza digital</p>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">🤝 Acompañamiento</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Servicio post-venta</h4>
+              <p class="text-gray-600 mb-4">Actualizaciones, retiros y herencias de ingresos.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">📱 Seguimiento</h5>
+                <p class="text-gray-600">WhatsApp, mail y llamadas</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">♾️ Siempre</h6>
+                <p class="text-gray-600">Estamos contigo</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">🚀 Empezar mi plan de retiro</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs -->
+      <section class="py-20 bg-gray-50" aria-labelledby="h2-faq">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-faq" class="text-4xl md:text-5xl font-bold mb-6">Preguntas <span class="gradient-text">Frecuentes</span></h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Dudas comunes sobre <strong>plan de retiro Seguros Monterrey</strong>.</p>
+          </div>
+
+          <div class="max-w-4xl mx-auto space-y-6">
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🧮 ¿Puedo deducir impuestos (PPR)?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6 space-y-3">
+                <p class="text-gray-700">Sí. <strong>Artículo 151</strong>: hasta 5 UMA anuales o 10% de tus ingresos (lo que resulte menor). <strong>Artículo 185</strong>: tope anual en pesos. Pueden combinarse según reglas vigentes.</p>
+                <p class="text-sm text-gray-600">*Confirma con tu contador. Nosotros modelamos el impacto fiscal.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🏦 ¿En qué moneda me conviene invertir: UDI o USD?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6 space-y-3">
+                <p class="text-gray-700">Depende de tu horizonte y objetivos. UDI protege poder adquisitivo; USD ayuda a dolarizar patrimonio. Ambos planes ofrecen alternativas.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>📅 ¿Cuándo puedo programar mi retiro?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6">
+                <p class="text-gray-700">Según el plan, es común elegir entre 60, 65 o 70 años.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🎁 ¿Nuevo Plenitud da aguinaldo o permite adelantos?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6 space-y-3">
+                <p class="text-gray-700">Sí. Aguinaldo equivalente a una mensualidad durante los primeros 5 años de retiro y opciones para adelantar: 6 mensualidades en un pago (hasta dos veces) o el 30% de los ingresos (a los 5, 10 o 15 años), con reajuste posterior del ingreso.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🌎 ¿Atienden nacionalmente?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6">
+                <p class="text-gray-700">Sí. Atendemos en todo México por videollamada, WhatsApp, correo y teléfono. También coordinamos citas presenciales.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Final -->
+      <section class="py-20 gradient-bg text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+          <h2 class="text-4xl md:text-6xl font-bold mb-6">¿Listo para <span class="gradient-text">Construir</span> tu Retiro?</h2>
+          <p class="text-xl md:text-2xl text-blue-100 mb-8">Te ayudamos a elegir y contratar tu <strong>plan de retiro Seguros Monterrey</strong> con total claridad.</p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="#contacto" class="btn-primary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3"><span>💬</span><span>Solicitar Cotización</span></a>
+            <a href="tel:+524610000000" class="btn-secondary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3 border-2 border-white/20"><span>📞</span><span>Llamar Ahora</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto" class="bg-white"><Contact /></section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,462 @@
+---
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+import { Image } from "astro:assets";
+
+const site = "https://segurosrp.com";
+const canonical = `${site}/asesores-seguros-monterrey`;
+const pageTitle = "Asesores Seguros Monterrey | Seguros Monterrey Asesores — SegurosRP";
+const pageDescription =
+  "Despacho de Asesores Ramírez y Plascencia (SegurosR&P). Somos asesores certificados de Seguros Monterrey New York Life. Vida, Gastos Médicos, Retiro y Educación. Atención nacional y firma digital.";
+
+const business = {
+  name: "Seguros Monterrey New York Life — Despacho de Asesores Ramírez y Plascencia",
+  legalName: "Seguros Monterrey New York Life (asesoría independiente)",
+  phone: "+52 461 000 0000",
+  email: "contacto@segurosrp.com",
+  url: canonical,
+  areaServed: ["México"],
+};
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#0A6CFF" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/images/og/asesores-seguros-monterrey.jpg`} />
+    <meta property="og:site_name" content="SegurosRP" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${site}/images/og/asesores-seguros-monterrey.jpg`} />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="es-MX" href={canonical} />
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
+
+    <!-- Schema: InsuranceAgency (enfoque nacional, sin localización ciudad) -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "InsuranceAgency",
+        "name": business.name,
+        "description": pageDescription,
+        "areaServed": business.areaServed,
+        "telephone": business.phone,
+        "email": business.email,
+        "url": business.url,
+        "image": `${site}/images/og/asesores-seguros-monterrey.jpg`,
+        "sameAs": [
+          "https://www.facebook.com/SegurosMonterreyNYL",
+          "https://www.linkedin.com/company/seguros-monterrey-new-york-life"
+        ]
+      })}
+    </script>
+
+    <!-- Schema: Breadcrumb -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Inicio","item": site},
+          {"@type":"ListItem","position":2,"name":"Asesoría en Seguros","item": `${site}/asesoria`},
+          {"@type":"ListItem","position":3,"name":"Asesores Seguros Monterrey","item": canonical}
+        ]
+      })}
+    </script>
+
+    <!-- Schema: FAQ -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"¿Qué hace un asesor de Seguros Monterrey?","acceptedAnswer":{"@type":"Answer","text":"Diagnostica tus metas, compara planes de Seguros Monterrey New York Life (vida, gastos médicos, retiro y educación), te ayuda a contratar y te acompaña en siniestros y trámites post-venta."}},
+          {"@type":"Question","name":"¿Atienden a nivel nacional?","acceptedAnswer":{"@type":"Answer","text":"Sí. Damos servicio en todo México por videollamada, WhatsApp, teléfono y correo. También coordinamos citas presenciales."}},
+          {"@type":"Question","name":"¿Puedo cambiarme con ustedes si ya tengo una póliza?","acceptedAnswer":{"@type":"Answer","text":"Sí. Te ayudamos a solicitar el cambio de agente para recibir nuestro servicio, sin modificar las condiciones vigentes de tu póliza."}},
+          {"@type":"Question","name":"¿La firma es digital?","acceptedAnswer":{"@type":"Answer","text":"Sí. Contamos con proceso de contratación 100% remoto con validaciones y firma electrónica, además de opciones presenciales."}},
+          {"@type":"Question","name":"¿Cobran por la asesoría?","acceptedAnswer":{"@type":"Answer","text":"La asesoría está incluida para clientes vigentes. Para diagnósticos especializados, cotizamos por proyecto y se bonifica si contratas."}},
+          {"@type":"Question","name":"¿Trabajan con UDI o USD?","acceptedAnswer":{"@type":"Answer","text":"Sí. Muchos planes permiten contratar en UDI o en dólares para proteger poder adquisitivo o dolarizar parte del patrimonio."}}
+        ]
+      }
+    </script>
+
+    <!-- Accesibilidad base + utilidades visuales del theme -->
+    <style is:global>
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+      :focus-visible{outline:3px solid #FF6600;outline-offset:2px}
+      html{scroll-behavior:smooth}
+      .gradient-bg{background:linear-gradient(135deg,#00305C 0%,#1A75CF 50%,#0052CC 100%)}
+      .gradient-text{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      .card-shadow{box-shadow:0 10px 25px -5px rgba(0,48,92,.1),0 10px 10px -5px rgba(0,48,92,.04)}
+      .btn-primary{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(255,102,0,.3)}
+      .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,102,0,.4)}
+      .btn-secondary{background:linear-gradient(135deg,#00305C 0%,#1A75CF 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(0,48,92,.3)}
+      .btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,48,92,.4)}
+    </style>
+  </head>
+
+  <body class="bg-gray-50 text-slate-800 antialiased">
+    <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
+
+    <!-- HERO: keywords principales sin confusión geográfica -->
+	<section class="min-h-screen bg-gradient-to-r from-rp-blue to-rp-light-blue text-white relative overflow-hidden">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen">
+			
+			<!-- Layout Unificado Responsivo -->
+			<div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full py-8 lg:py-0 relative z-20">
+				
+				<!-- Contenido Principal -->
+				<div class="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+					<!-- Título responsivo -->
+					<h1 class="text-3xl mt-40 md:mt-20 sm:text-4xl md:text-5xl lg:text-6xl xl:text-5xl font-bold leading-tight ">
+						<span class="text-rp-orange block sm:inline">Asesores Seguros</span>
+						<span class="text-white block">Monterrey New York Life</span>
+					</h1>
+					
+					<!-- Descripción responsiva -->
+					<p class="text-lg sm:text-xl md:text-2xl mb-6  text-blue-100 max-w-2xl mx-auto lg:mx-0">
+						Protege a tu familia con los mejores seguros de vida, salud y educación en Seguros Monterrey
+					</p>
+					
+					<!-- Beneficios - Ocultos en móvil pequeño, visibles en tablet+ -->
+					<div class="hidden sm:block p-4 md:p-6 mb-6 max-w-2xl mx-auto lg:mx-0">
+						<h2 class="text-xl md:text-2xl font-semibold mb-3 text-rp-orange">Beneficios Exclusivos</h2>
+						<ul class="space-y-2 md:space-y-3 text-base md:text-lg">
+							<li class="flex items-center justify-center lg:justify-start">
+								<span class="text-rp-orange mr-3">✓</span>
+								Asesores certificados New York Life
+							</li>
+							<li class="flex items-center justify-center lg:justify-start">
+								<span class="text-rp-orange mr-3">✓</span>
+								Cotización gratuita sin compromiso
+							</li>
+							<li class="flex items-center justify-center lg:justify-start">
+								<span class="text-rp-orange mr-3">✓</span>
+								Atención personalizada en todo México
+							</li>
+							<li class="flex items-center justify-center lg:justify-start">
+								<span class="text-rp-orange mr-3">✓</span>
+								Planes adaptados a tu presupuesto
+							</li>
+						</ul>
+					</div>
+					
+					<!-- Botones responsivos -->
+					<div class="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-center lg:justify-start max-w-lg mx-auto lg:mx-0">
+						<a href="#cotizar" class="w-full sm:w-auto bg-rp-orange hover:bg-orange-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+							Cotizar Ahora GRATIS
+						</a>
+						<a href="tel:+524461354113" class="w-full sm:w-auto bg-white text-rp-blue px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold text-center transition duration-300 hover:bg-rp-orange hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105">
+							📞 Llamar Asesor
+						</a>
+					</div>
+				</div>
+				
+				<!-- Imagen Principal - Responsiva -->
+				<div class="w-full lg:w-1/2 h-96  sm:h-80 md:h-96 lg:h-full flex items-center justify-center relative">
+					<!-- Móvil y Tablet -->
+					<div class="lg:hidden w-full h-full relative  mt-40">
+						<Image 
+							src="/principal.webp" 
+							alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
+							class="w-full h-full object-contain object-center" 
+							loading="eager"
+							width={800}
+							height={600}
+							format="webp"
+						/>
+					</div>
+					
+					<!-- Desktop -->
+					<div class="hidden lg:flex w-full h-full items-end justify-center">
+						<Image 
+							src="/principal.webp" 
+							alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
+							class="w-full h-auto max-h-full object-contain object-bottom" 
+							loading="eager"
+							width={800}
+							height={600}
+							format="webp"
+						/>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Overlay decorativo para móviles pequeños -->
+			<div class="sm:hidden absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 pointer-events-none"></div>
+		</div>
+	</section>
+
+    <main id="contenido">
+      <!-- Qué hacemos (H2→H6) -->
+      <section id="que-hacemos" class="py-20 bg-white" aria-labelledby="h2-que-hacemos">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-que-hacemos" class="text-4xl md:text-5xl font-bold mb-6">¿Qué hace un <span class="gradient-text">asesor</span> de Seguros Monterrey?</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Diagnóstico, comparación, contratación y acompañamiento continuo con el respaldo de <strong>Seguros Monterrey New York Life</strong>.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <article class="bg-blue-50 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Diagnóstico</h3>
+              <h4 class="font-semibold mb-2">Metas y presupuesto</h4>
+              <p class="text-gray-700">Identificamos objetivos: protección, salud, retiro o educación.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Entrega</h5>
+              <p class="text-sm text-gray-600">Resumen y propuesta inicial.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Tiempo</h6>
+              <p class="text-sm text-gray-600">30–45 min.</p>
+            </article>
+
+            <article class="bg-orange-50 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Comparación</h3>
+              <h4 class="font-semibold mb-2">Coberturas y monedas</h4>
+              <p class="text-gray-700">UDIS o USD, sumas aseguradas, riders y periodos de espera.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Transparencia</h5>
+              <p class="text-sm text-gray-600">Costos, valores y escenarios.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Formato</h6>
+              <p class="text-sm text-gray-600">PDF + sesión de explicación.</p>
+            </article>
+
+            <article class="bg-green-50 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Acompañamiento</h3>
+              <h4 class="font-semibold mb-2">Contratación y post-venta</h4>
+              <p class="text-gray-700">Firma remota/presencial, siniestros, reembolsos y actualizaciones.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Canales</h5>
+              <p class="text-sm text-gray-600">WhatsApp, correo, videollamada.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Disponibilidad</h6>
+              <p class="text-sm text-gray-600">Soporte continuo.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servicios -->
+      <section id="servicios" class="py-20 bg-gray-50" aria-labelledby="h2-servicios">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-servicios" class="text-4xl md:text-5xl font-bold mb-6">Servicios de <span class="gradient-text">Asesoría</span></h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Selecciona el plan adecuado de <strong>Seguros Monterrey New York Life</strong> para cada etapa.</p>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8">
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="vida">
+              <h3 id="vida" class="text-2xl font-bold mb-3 text-rp-blue">Vida</h3>
+              <h4 class="font-semibold mb-2 text-gray-700">Protección familiar</h4>
+              <p class="text-gray-700">Star Temporal, Orvi y Vida Mujer.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Beneficios</h5>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>UDIS o USD</li>
+                <li>Invalidez y adicionales</li>
+              </ul>
+              <h6 class="mt-2 text-slate-600 font-semibold">Ideal</h6>
+              <p class="text-sm text-gray-600">Dependientes o hipoteca.</p>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="gmm">
+              <h3 id="gmm" class="text-2xl font-bold mb-3 text-rp-blue">Gastos Médicos</h3>
+              <h4 class="font-semibold mb-2 text-gray-700">Cobertura amplia</h4>
+              <p class="text-gray-700">GMMI con redes hospitalarias y maternidad.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Beneficios</h5>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Elección de hospitales</li>
+                <li>Lineamientos claros</li>
+              </ul>
+              <h6 class="mt-2 text-slate-600 font-semibold">Ideal</h6>
+              <p class="text-sm text-gray-600">Familias y profesionistas.</p>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="retiro">
+              <h3 id="retiro" class="text-2xl font-bold mb-3 text-rp-blue">Retiro</h3>
+              <h4 class="font-semibold mb-2 text-gray-700">Rentas vitalicias o pago único</h4>
+              <p class="text-gray-700">Imagina Ser y Nuevo Plenitud.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Beneficios</h5>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Deducibilidad (PPR)</li>
+                <li>UDIS o USD</li>
+              </ul>
+              <h6 class="mt-2 text-slate-600 font-semibold">Ideal</h6>
+              <p class="text-sm text-gray-600">Planeación a 60/65/70.</p>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="educacion">
+              <h3 id="educacion" class="text-2xl font-bold mb-3 text-rp-blue">Educación</h3>
+              <h4 class="font-semibold mb-2 text-gray-700">Ahorro universitario</h4>
+              <p class="text-gray-700">SeguBeca y estrategias mixtas.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Beneficios</h5>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Objetivo fijo</li>
+                <li>Flexibilidad de aportación</li>
+              </ul>
+              <h6 class="mt-2 text-slate-600 font-semibold">Ideal</h6>
+              <p class="text-sm text-gray-600">Familias con hijos.</p>
+            </article>
+          </div>
+
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">💬 Quiero asesoría con un especialista</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proceso -->
+      <section class="py-20 bg-white" aria-labelledby="h2-proceso">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-proceso" class="text-4xl md:text-5xl font-bold mb-6">¿Cómo <span class="gradient-text">Trabajamos</span>?</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Proceso claro desde la cotización hasta el servicio post-venta.</p>
+          </div>
+          <div class="grid md:grid-cols-4 gap-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">🔍 Descubrimiento</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Necesidades y metas</h4>
+              <p class="text-gray-600 mb-4">Protección, salud, retiro, educación.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">📅 Formato</h5>
+                <p class="text-gray-600">Virtual o presencial</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">⏱️ 30–45 min</h6>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">🎨 Diseño</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Comparativas claras</h4>
+              <p class="text-gray-600 mb-4">UDIS vs USD, coberturas y presupuesto.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">⚡ Optimización</h5>
+                <p class="text-gray-600">Fiscal y patrimonial</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">📄 Entrega</h6>
+                <p class="text-gray-600">PDF + sesión</p>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">✍️ Contratación</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Firma digital o presencial</h4>
+              <p class="text-gray-600 mb-4">Validaciones y documentación segura.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">🔒 Seguridad</h5>
+                <p class="text-gray-600">Protección de datos</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">✅ Listo</h6>
+                <p class="text-gray-600">Póliza digital</p>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">🤝 Acompañamiento</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Servicio post-venta</h4>
+              <p class="text-gray-600 mb-4">Siniestros, reembolsos y actualizaciones.</p>
+              <div class="bg-white/60 rounded-lg p-2 text-sm">
+                <h5 class="font-semibold text-rp-blue">📱 Seguimiento</h5>
+                <p class="text-gray-600">WhatsApp, mail y llamadas</p>
+              </div>
+              <div class="bg-white/60 rounded-lg p-2 text-sm mt-2">
+                <h6 class="font-semibold text-rp-orange">♾️ Siempre</h6>
+                <p class="text-gray-600">Estamos contigo</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">🚀 Empezar con un asesor</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs específicas de asesoría -->
+      <section class="py-20 bg-gray-50" aria-labelledby="h2-faq">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 id="h2-faq" class="text-4xl md:text-5xl font-bold mb-6">Preguntas <span class="gradient-text">Frecuentes</span></h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Sobre nuestra asesoría profesional de <strong>Seguros Monterrey</strong>.</p>
+          </div>
+
+          <div class="max-w-4xl mx-auto space-y-6">
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🌎 ¿Atienden nacionalmente?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6"><p class="text-gray-700">Sí. Atendemos en todo México por videollamada, WhatsApp, correo y teléfono. Coordinamos citas presenciales cuando se requiere.</p></div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🔄 ¿Puedo cambiar mi póliza con ustedes?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6"><p class="text-gray-700">Sí. Te ayudamos a solicitar <strong>cambio de agente</strong> para darte servicio sin alterar las condiciones contratadas.</p></div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🛡️ Si tengo un siniestro o aclaración, ¿me asesoran?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6"><p class="text-gray-700">Sí. Acompañamos en reportes, documentación, seguimiento y escalamiento formal si es necesario.</p></div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>💻 ¿Puedo contratar a distancia con firma digital?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6"><p class="text-gray-700">Sí. Proceso 100% remoto con validaciones; también opción presencial.</p></div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>💰 ¿Cobran por la asesoría?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6"><p class="text-gray-700">La asesoría para clientes vigentes está incluida. Diagnósticos especializados pueden tener costo y se bonifican si contratas.</p></div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🏦 ¿Trabajan con UDI o USD?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6"><p class="text-gray-700">Sí. Diseñamos estrategia en UDI o dólares, según objetivos y horizonte.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Final -->
+      <section class="py-20 gradient-bg text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+          <h2 class="text-4xl md:text-6xl font-bold mb-6">¿Buscas <span class="gradient-text">Asesores</span> de Seguros Monterrey?</h2>
+          <p class="text-xl md:text-2xl text-blue-100 mb-8">Hablemos. Diseñamos tu plan y te acompañamos siempre.</p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="#contacto" class="btn-primary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3"><span>💬</span><span>Solicitar Asesoría</span></a>
+            <a href="tel:+524610000000" class="btn-secondary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3 border-2 border-white/20"><span>📞</span><span>Llamar Ahora</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto" class="bg-white"><Contact /></section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

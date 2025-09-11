@@ -511,18 +511,18 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 					
 					const formData = new FormData(form);
 					const data = {
-						name: formData.get('nombre'),
+						nombre: formData.get('nombre'),
 						email: formData.get('email'),
-						phone: formData.get('telefono'),
-						age: formData.get('edad'),
-						insuranceType: formData.get('tipoSeguro'),
+						telefono: formData.get('telefono'),
+						edad: formData.get('edad'),
+						tipoSeguro: formData.get('tipoSeguro'),
 						message: `Edad: ${formData.get('edad')}, Tipo de seguro: ${formData.get('tipoSeguro')}. ${formData.get('mensaje') || ''}`,
 						source: 'Landing Asesores Monterrey NYL',
 						campaign: 'SEM Google Ads - Asesores Seguros Monterrey'
 					};
 
 					try {
-						const response = await fetch('/api/contact', {
+						const response = await fetch('/api/lead', {
 							method: 'POST',
 							headers: {
 								'Content-Type': 'application/json',

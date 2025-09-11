@@ -1,0 +1,406 @@
+---
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const site = "https://segurosrp.com";
+const canonical = `${site}/beneficios-del-seguro-de-vida`;
+const pageTitle = "Beneficios del Seguro de Vida | Asesores Seguros Monterrey New York Life — SegurosRP";
+const pageDescription =
+  "Conoce los beneficios del seguro de vida: protección por fallecimiento, respaldo ante invalidez, flexibilidad de coberturas y monedas (UDIS/USD). Asesoría de Seguros Monterrey New York Life en todo México.";
+
+const business = {
+  name: "Seguros Monterrey New York Life — Despacho de Asesores Ramírez y Plascencia",
+  legalName: "Seguros Monterrey New York Life (asesoría independiente)",
+  phone: "+52 461 000 0000",
+  email: "contacto@segurosrp.com",
+  url: canonical,
+  areaServed: ["México"],
+};
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#0A6CFF" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/images/og/beneficios-seguro-de-vida.jpg`} />
+    <meta property="og:site_name" content="SegurosRP" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${site}/images/og/beneficios-seguro-de-vida.jpg`} />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="es-MX" href={canonical} />
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
+
+    <!-- Schema: InsuranceAgency (enfoque nacional) -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "InsuranceAgency",
+        "name": business.name,
+        "description": pageDescription,
+        "areaServed": business.areaServed,
+        "telephone": business.phone,
+        "email": business.email,
+        "url": business.url,
+        "image": `${site}/images/og/beneficios-seguro-de-vida.jpg`,
+        "sameAs": [
+          "https://www.facebook.com/SegurosMonterreyNYL",
+          "https://www.linkedin.com/company/seguros-monterrey-new-york-life"
+        ]
+      })}
+    </script>
+
+    <!-- Schema: Breadcrumb -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Inicio","item": site},
+          {"@type":"ListItem","position":2,"name":"Vida","item": `${site}/vida`},
+          {"@type":"ListItem","position":3,"name":"Beneficios del Seguro de Vida","item": canonical}
+        ]
+      })}
+    </script>
+
+    <!-- Schema: FAQ (se completa con las preguntas de abajo) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"¿Cuáles son los beneficios del seguro de vida?","acceptedAnswer":{"@type":"Answer","text":"Protección económica a tus beneficiarios en caso de fallecimiento, posibilidad de agregar coberturas por invalidez o enfermedades, flexibilidad en suma asegurada y plazos, y elección de moneda (UDIS o USD) según objetivos."}},
+          {"@type":"Question","name":"¿El seguro de vida cubre invalidez?","acceptedAnswer":{"@type":"Answer","text":"Depende del plan y de los adicionales contratados. Existen coberturas de invalidez total y permanente que anticipan o exentan pagos; analizamos tu caso y opciones disponibles."}},
+          {"@type":"Question","name":"¿Qué diferencia hay entre seguro temporal y ordinario de vida?","acceptedAnswer":{"@type":"Answer","text":"El temporal protege por un plazo definido con primas usualmente más bajas; el ordinario de vida busca protección vitalicia con valores en la póliza. Te explicamos cuál conviene según tus metas y presupuesto."}},
+          {"@type":"Question","name":"¿Puedo contratar a distancia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Contamos con asesoría y contratación 100% remota con firma electrónica, y opción presencial cuando se requiera."}},
+          {"@type":"Question","name":"¿UDIS o USD para mi seguro de vida?","acceptedAnswer":{"@type":"Answer","text":"Ambas monedas están disponibles en distintos planes. UDIS ayuda a proteger contra la inflación; USD puede dolarizar parte del patrimonio. Diseñamos la mezcla adecuada para ti."}}
+        ]
+      }
+    </script>
+
+    <!-- Accesibilidad base + utilidades -->
+    <style is:global>
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+      :focus-visible{outline:3px solid #FF6600;outline-offset:2px}
+      html{scroll-behavior:smooth}
+      .gradient-bg{background:linear-gradient(135deg,#00305C 0%,#1A75CF 50%,#0052CC 100%)}
+      .gradient-text{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      .card-shadow{box-shadow:0 10px 25px -5px rgba(0,48,92,.1),0 10px 10px -5px rgba(0,48,92,.04)}
+      .btn-primary{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(255,102,0,.3)}
+      .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,102,0,.4)}
+      .btn-secondary{background:linear-gradient(135deg,#00305C 0%,#1A75CF 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(0,48,92,.3)}
+      .btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,48,92,.4)}
+    </style>
+  </head>
+
+  <body class="bg-gray-50 text-slate-800 antialiased">
+    <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
+
+    <!-- HERO: palabra clave exacta -->
+    <section id="inicio" class="min-h-[70vh] md:min-h-screen gradient-bg text-white relative overflow-hidden" role="region" aria-labelledby="hero-title">
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="grid md:grid-cols-2 gap-10 items-center py-16 md:py-24">
+          <div class="space-y-6">
+            <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">✨ Asesoría profesional — Servicio nacional</div>
+            <h1 id="hero-title" class="text-4xl md:text-6xl font-bold leading-tight">
+              Beneficios del <span class="gradient-text">Seguro de Vida</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100">Somos <strong>asesores certificados</strong> de <strong>Seguros Monterrey New York Life</strong>. Te explicamos, comparamos y contratamos el seguro de vida ideal para ti.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold text-center" aria-describedby="cta1-desc">💬 Hablar con un asesor</a>
+              <a href="#beneficios" class="btn-secondary text-white px-8 py-4 rounded-full text-lg font-semibold text-center border-2 border-white/20">📋 Ver beneficios</a>
+            </div>
+            <span id="cta1-desc" class="sr-only">Abrir formulario de contacto para asesoría en seguro de vida</span>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-rp-orange/20 to-transparent rounded-3xl"></div>
+            <img src="/principal.webp" fetchpriority="high" loading="eager" alt="Asesores explicando beneficios del seguro de vida" class="w-full h-auto max-h-[520px] object-contain rounded-3xl shadow-2xl" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="contenido">
+      <!-- Índice (ayuda SEO/a11y) -->
+      <nav aria-label="Índice de contenidos" class="bg-white border-t border-b border-gray-100">
+        <div class="container mx-auto px-4 py-6">
+          <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <li><a class="underline hover:no-underline" href="#beneficios">Beneficios clave</a></li>
+            <li><a class="underline hover:no-underline" href="#tipos">Tipos de seguro de vida</a></li>
+            <li><a class="underline hover:no-underline" href="#suma">Cómo elegir suma asegurada</a></li>
+            <li><a class="underline hover:no-underline" href="#faq">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Beneficios clave H2→H6 -->
+      <section id="beneficios" class="py-20 bg-white" aria-labelledby="h2-beneficios">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-14">
+            <h2 id="h2-beneficios" class="text-4xl md:text-5xl font-bold mb-6">Beneficios del <span class="gradient-text">Seguro de Vida</span></h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Protección financiera y tranquilidad para ti y tu familia, con la solidez de <strong>Seguros Monterrey New York Life</strong>.</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <article class="bg-blue-50 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Protección a beneficiarios</h3>
+              <h4 class="font-semibold mb-2">Indemnización por fallecimiento</h4>
+              <p class="text-gray-700">Entrega de la <strong>suma asegurada</strong> a las personas que designes, para mantener su nivel de vida y cubrir compromisos.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Usos comunes</h5>
+              <p class="text-sm text-gray-600">Hipoteca, educación, deudas, gastos inmediatos.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Prioridad</h6>
+              <p class="text-sm text-gray-600">Familias con dependientes económicos.</p>
+            </article>
+
+            <article class="bg-orange-50 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Coberturas adicionales</h3>
+              <h4 class="font-semibold mb-2">Invalidez y enfermedades</h4>
+              <p class="text-gray-700">Agrega <strong>invalidez total y permanente</strong>, exención de primas o diagnósticos cubiertos según el plan.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Ventaja</h5>
+              <p class="text-sm text-gray-600">Respaldo económico cuando más lo necesitas.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Nota</h6>
+              <p class="text-sm text-gray-600">Aplican evaluaciones médicas y periodos de espera.</p>
+            </article>
+
+            <article class="bg-green-50 rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Monedas que protegen</h3>
+              <h4 class="font-semibold mb-2">UDIS o USD</h4>
+              <p class="text-gray-700">Elige <strong>UDIS</strong> para proteger poder adquisitivo o <strong>USD</strong> para dolarizar una parte del patrimonio.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Estrategia</h5>
+              <p class="text-sm text-gray-600">Podemos combinar monedas según objetivos.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Aplicación</h6>
+              <p class="text-sm text-gray-600">Disponible en varios planes de vida.</p>
+            </article>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <article class="bg-white rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Flexibilidad de diseño</h3>
+              <h4 class="font-semibold mb-2">Temporal u Ordinario de Vida</h4>
+              <p class="text-gray-700">Protección por <strong>plazos definidos</strong> (temporal) o <strong>vitalicia</strong> (ordinario de vida) con valores en la póliza.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Personalización</h5>
+              <p class="text-sm text-gray-600">Sumas aseguradas, plazos y adicionales a medida.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Ejemplos</h6>
+              <p class="text-sm text-gray-600">Star Temporal, ORVI y Vida Mujer.</p>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Orden patrimonial</h3>
+              <h4 class="font-semibold mb-2">Designación de beneficiarios</h4>
+              <p class="text-gray-700">Define quién recibe los recursos y en qué proporción, con <strong>actualizaciones</strong> cuando la vida cambia.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Documentación</h5>
+              <p class="text-sm text-gray-600">Te guiamos para mantener tus datos al día.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Alerta</h6>
+              <p class="text-sm text-gray-600">Beneficiarios desactualizados complican el cobro.</p>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow">
+              <h3 class="text-2xl font-semibold text-rp-blue mb-3">Acompañamiento experto</h3>
+              <h4 class="font-semibold mb-2">De la cotización al siniestro</h4>
+              <p class="text-gray-700">Te acompañamos en <strong>contratación, cambios y reclamaciones</strong>, con seguimiento continuo.</p>
+              <h5 class="mt-3 font-semibold text-rp-blue">Canales</h5>
+              <p class="text-sm text-gray-600">WhatsApp, videollamada, correo y teléfono.</p>
+              <h6 class="mt-2 text-slate-600 font-semibold">Disponibilidad</h6>
+              <p class="text-sm text-gray-600">Atención nacional.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tipos de seguro de vida (SMNYL) -->
+      <section id="tipos" class="py-20 bg-gray-50" aria-labelledby="h2-tipos">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-14">
+            <h2 id="h2-tipos" class="text-4xl md:text-5xl font-bold mb-6">Tipos de <span class="gradient-text">Seguro de Vida</span></h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Trabajamos con planes de <strong>Seguros Monterrey New York Life</strong> para cada objetivo y etapa.</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="vida-temporal">
+              <h3 id="vida-temporal" class="text-2xl font-bold mb-3 text-rp-blue">Vida Temporal (Star Temporal)</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Protección por plazo definido</h4>
+              <p class="mb-4 text-gray-700">Primas competitivas y <strong>suma alta</strong> para cubrir responsabilidades de corto y mediano plazo.</p>
+              <div class="bg-blue-50 rounded-2xl p-4">
+                <h5 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h5>
+                <p class="text-sm text-gray-700">Hipoteca, deudas, educación de hijos.</p>
+                <h6 class="font-semibold text-slate-600 mt-2">Monedas</h6>
+                <p class="text-sm text-gray-600">UDIS o USD (según versión).</p>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="ordinario-vida">
+              <h3 id="ordinario-vida" class="text-2xl font-bold mb-3 text-rp-blue">Ordinario de Vida (ORVI)</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Protección vitalicia con valores</h4>
+              <p class="mb-4 text-gray-700">Enfoque patrimonial, posibilidad de <strong>valores en póliza</strong> y coberturas adicionales.</p>
+              <div class="bg-green-50 rounded-2xl p-4">
+                <h5 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h5>
+                <p class="text-sm text-gray-700">Legado, planeación sucesoria y estabilidad a largo plazo.</p>
+                <h6 class="font-semibold text-slate-600 mt-2">Flexibilidad</h6>
+                <p class="text-sm text-gray-600">Ajustes de suma y adicionales según metas.</p>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-3xl p-8 card-shadow" aria-labelledby="vida-mujer">
+              <h3 id="vida-mujer" class="text-2xl font-bold mb-3 text-rp-blue">Vida Mujer</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Enfoque en salud femenina</h4>
+              <p class="mb-4 text-gray-700">Beneficios y coberturas pensadas para etapas y riesgos específicos.</p>
+              <div class="bg-orange-50 rounded-2xl p-4">
+                <h5 class="font-semibold text-rp-blue mb-2">🎯 Ideal para</h5>
+                <p class="text-sm text-gray-700">Mujeres que buscan protección integral y acompañamiento.</p>
+                <h6 class="font-semibold text-slate-600 mt-2">Extras</h6>
+                <p class="text-sm text-gray-600">Consulta opciones de diagnósticos y asistencias.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">💬 Quiero cotizar mi seguro de vida</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cómo elegir la suma asegurada -->
+      <section id="suma" class="py-20 bg-white" aria-labelledby="h2-suma">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-14">
+            <h2 id="h2-suma" class="text-4xl md:text-5xl font-bold mb-6">¿Cómo elegir la <span class="gradient-text">Suma Asegurada</span>?</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Definimos juntos un monto que cubra compromisos y metas de tu familia.</p>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8">
+            <article class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">1) Gastos anuales</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Multiplicador</h4>
+              <p class="text-gray-600">Usa un rango de <strong>5 a 10×</strong> tus gastos o ingreso anual como punto de partida.</p>
+              <h5 class="font-semibold mt-3 text-rp-blue">Ajustes</h5>
+              <p class="text-sm text-gray-600">Considera ahorros/activos existentes.</p>
+              <h6 class="font-semibold mt-2 text-slate-600">Tip</h6>
+              <p class="text-sm text-gray-600">No olvides inflación futura.</p>
+            </article>
+
+            <article class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">2) Deudas y metas</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Pasivos + proyectos</h4>
+              <p class="text-gray-600">Suma hipoteca, créditos, educación e imprevistos.</p>
+              <h5 class="font-semibold mt-3 text-rp-blue">Visión</h5>
+              <p class="text-sm text-gray-600">Incluye metas a 5–10 años.</p>
+              <h6 class="font-semibold mt-2 text-slate-600">Orden</h6>
+              <p class="text-sm text-gray-600">Listar todo evita quedarte corto.</p>
+            </article>
+
+            <article class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">3) Horizonte</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Plazo de protección</h4>
+              <p class="text-gray-600">Temporal para etapas críticas; ordinario de vida para patrimonio y legado.</p>
+              <h5 class="font-semibold mt-3 text-rp-blue">Moneda</h5>
+              <p class="text-sm text-gray-600">UDIS vs USD según objetivos.</p>
+              <h6 class="font-semibold mt-2 text-slate-600">Revisión</h6>
+              <p class="text-sm text-gray-600">Ajusta con cambios familiares.</p>
+            </article>
+
+            <article class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 text-center card-shadow">
+              <h3 class="text-xl font-bold mb-3 text-rp-blue">4) Presupuesto</h3>
+              <h4 class="font-semibold mb-3 text-gray-700">Prima sostenible</h4>
+              <p class="text-gray-600">Buscamos el equilibrio entre <strong>cobertura</strong> y <strong>costo</strong> para que el plan sea duradero.</p>
+              <h5 class="font-semibold mt-3 text-rp-blue">Optimización</h5>
+              <p class="text-sm text-gray-600">Periodicidad y descuentos.</p>
+              <h6 class="font-semibold mt-2 text-slate-600">Consejo</h6>
+              <p class="text-sm text-gray-600">Revisa cada 12–24 meses.</p>
+            </article>
+          </div>
+
+          <div class="text-center mt-12">
+            <a href="#contacto" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">💬 Quiero calcular mi suma asegurada</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs -->
+      <section id="faq" class="py-20 bg-gray-50" aria-labelledby="h2-faq">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-14">
+            <h2 id="h2-faq" class="text-4xl md:text-5xl font-bold mb-6">Preguntas <span class="gradient-text">Frecuentes</span></h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Resolvemos dudas comunes sobre los beneficios del <strong>seguro de vida</strong>.</p>
+          </div>
+
+          <div class="max-w-4xl mx-auto space-y-6">
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🧾 ¿Qué cubre exactamente la indemnización?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6">
+                <p class="text-gray-700">La suma asegurada se paga a tus beneficiarios para los fines que decidan (p. ej. gastos inmediatos, deudas, educación). Te ayudamos a definir un monto suficiente.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🛡️ ¿Puedo agregar invalidez total y permanente?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6">
+                <p class="text-gray-700">Sí, como cobertura adicional en varios planes. Puede anticipar o exentar el pago de primas según el caso. Revisamos elegibilidad y tiempos de espera.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>💳 ¿Cómo se calcula la prima?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6">
+                <p class="text-gray-700">Edad, salud, suma asegurada, tipo de plan, moneda y coberturas adicionales. Te entregamos comparativa clara y personalizada.</p>
+              </div>
+            </details>
+
+            <details class="bg-white rounded-3xl p-8 card-shadow group">
+              <summary class="cursor-pointer text-xl font-semibold flex items-center justify-between text-rp-blue group-open:text-rp-orange transition-colors">
+                <span>🌐 ¿Puedo contratar a distancia?</span>
+                <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </summary>
+              <div class="mt-6">
+                <p class="text-gray-700">Sí, asesoría y firma electrónica disponibles. También podemos vernos de forma presencial si lo prefieres.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Final -->
+      <section class="py-20 gradient-bg text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+          <h2 class="text-4xl md:text-6xl font-bold mb-6">¿Listo para <span class="gradient-text">Proteger</span> a tu familia?</h2>
+          <p class="text-xl md:text-2xl text-blue-100 mb-8">Cotiza con asesores de <strong>Seguros Monterrey New York Life</strong> y elige el mejor <strong>seguro de vida</strong> para tus metas.</p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="#contacto" class="btn-primary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3"><span>💬</span><span>Solicitar Cotización</span></a>
+            <a href="tel:+524610000000" class="btn-secondary text-white px-10 py-5 rounded-full text-xl font-bold text-center flex items-center space-x-3 border-2 border-white/20"><span>📞</span><span>Llamar Ahora</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto" class="bg-white"><Contact /></section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
