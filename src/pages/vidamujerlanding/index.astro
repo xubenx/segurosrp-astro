@@ -6,12 +6,12 @@
 const site = {
   name: 'SegurosRP',
   url: 'https://www.ejemplo.com/vida-mujer',
-  phone: '+52 55 0000 0000',
-  whatsapp: 'https://wa.me/525500000000',
-  email: 'contacto@ejemplo.com',
-  address: 'CDMX, México',
-  brandLogo: '/logo.svg',
-  brandLogoDark: '/logo-dark.svg',
+  phone: '+52 446 135 4113',
+  whatsapp: 'https://wa.me/524461354113',
+  email: 'info@segurosrp.com',
+  address: 'México',
+  brandLogo: '/rp_blancos.png',
+  brandLogoDark: '/rp_blancos.png',
 };
 
 const page = {
@@ -772,16 +772,7 @@ const page = {
       </a>
     </div>
 
-    <!-- Bottom CTA que aparece a mitad del scroll -->
-    <div id="bottom-cta" style="position:fixed; left:0; right:0; bottom:-200px; z-index:55; transition: bottom .3s ease;">
-      <div class="container" style="background: rgba(236,72,153,.12); border-top:1px solid rgba(236,72,153,.25); backdrop-filter: blur(8px); padding: .9rem 1rem; display:flex; gap:.75rem; align-items:center; justify-content:space-between;">
-        <strong>¿Lista para proteger lo que más quieres?</strong>
-        <div style="display:flex; gap:.6rem;">
-          <a class="btn" href="#cotizar">Cotizar</a>
-          <a class="btn-light" href={`mailto:${site.email}`}>Escribir</a>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Google Ads event de ejemplo -->
     <script>
@@ -826,7 +817,7 @@ const page = {
           console.log('📤 Enviando datos del formulario Vida Mujer:', data);
 
           try {
-            const response = await fetch('/api/lead', {
+            const response = await fetch('/api/vida-mujer-lead', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

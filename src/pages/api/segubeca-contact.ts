@@ -26,12 +26,22 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Obtener los datos del formulario
+    // Obtener los datos del formulario de Segubeca
     const body = await request.json();
-    const { name, email, phone, message, pageUrl, pageTitle } = body;
+    const { 
+      parentName, 
+      childName, 
+      parentAge, 
+      childAge, 
+      monthlySavings, 
+      email, 
+      whatsapp,
+      source,
+      campaign 
+    } = body;
 
     // Validar que todos los campos requeridos estén presentes
-    if (!name || !email || !message) {
+    if (!parentName || !childName || !email || !whatsapp) {
       return new Response(
         JSON.stringify({ 
           success: false, 
@@ -47,19 +57,24 @@ export const POST: APIRoute = async ({ request }) => {
     // Crear instancia del bot
     const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
 
-    // Formatear el mensaje para Telegram
+    // Formatear el mensaje para Telegram específico para Segubeca
     const telegramMessage = `
-🆕 *Nuevo mensaje de contacto*
+🎓 *NUEVO LEAD - SEGUBECA (Seguros Educativos)*
 
-👤 *Nombre:* ${name}
-📧 *Email:* ${email}
-📱 *Teléfono:* ${phone || 'No proporcionado'}
+👨‍👩‍👧‍👦 *Información Familiar:*
+• *Padre/Madre:* ${parentName} (${parentAge} años)
+• *Hijo/a:* ${childName} (${childAge} años)
 
-💬 *Mensaje:*
-${message}
+💰 *Capacidad de Ahorro:*
+• *Monto mensual deseado:* ${monthlySavings}
 
-🌐 *Página de origen:*
-🔗 *URL:* ${pageUrl || 'No disponible'}
+📧 *Contacto:*
+• *Email:* ${email}
+• *WhatsApp:* ${whatsapp}
+
+🌐 *Información de Campaign:*
+• *Fuente:* ${source || 'Segubeca Landing'}
+• *Campaña:* ${campaign || 'Seguros Educativos'}
 
 ⏰ *Fecha:* ${new Date().toLocaleString('es-MX', { 
   timeZone: 'America/Mexico_City',
@@ -72,14 +87,14 @@ ${message}
     `.trim();
 
     // Crear el mensaje prediseñado para WhatsApp
-    const whatsappMessage = `Hola ${name} 👋
+    const whatsappMessage = `Hola ${parentName} 👋
 
-Vi que te contactaste a través de nuestra página web.
+Vi que estás interesado/a en asegurar el futuro educativo de ${childName}.
 
-¿En qué te puedo ayudar? �`;
+¿Te parece si platicamos sobre las opciones de Segubeca? 🎓😊`;
 
     // Limpiar el número de teléfono para WhatsApp (solo números)
-    const cleanPhone = phone ? phone.replace(/[^\d]/g, '') : '';
+    const cleanPhone = whatsapp ? whatsapp.replace(/[^\d]/g, '') : '';
     
     // Codificar el mensaje para URL
     const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
@@ -102,8 +117,8 @@ Vi que te contactaste a través de nuestra página web.
           [
             {
               text: cleanPhone && cleanPhone.length >= 10 
-                ? `💬 Responder a ${name} (${phone})` 
-                : `💬 Responder por WhatsApp a ${name}`,
+                ? `💬 Contactar a ${parentName} por WhatsApp` 
+                : `💬 Contactar por WhatsApp`,
               url: whatsappUrl
             }
           ]
@@ -111,12 +126,12 @@ Vi que te contactaste a través de nuestra página web.
       }
     });
 
-    console.log('✅ Mensaje enviado exitosamente a Telegram');
+    console.log('✅ Lead de Segubeca enviado exitosamente a Telegram');
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'Mensaje enviado correctamente' 
+        message: 'Lead de Segubeca procesado correctamente' 
       }),
       { 
         status: 200,
@@ -125,7 +140,7 @@ Vi que te contactaste a través de nuestra página web.
     );
 
   } catch (error) {
-    console.error('❌ Error al enviar mensaje:', error);
+    console.error('❌ Error al enviar lead de Segubeca:', error);
     
     return new Response(
       JSON.stringify({ 

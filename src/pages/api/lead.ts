@@ -28,10 +28,19 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Obtener los datos del formulario
     const body = await request.json();
-    const { name, email, phone, message, pageUrl, pageTitle } = body;
+    const { 
+      nombre, 
+      email, 
+      telefono, 
+      edad, 
+      tipoSeguro, 
+      message,
+      source,
+      campaign 
+    } = body;
 
     // Validar que todos los campos requeridos estén presentes
-    if (!name || !email || !message) {
+    if (!nombre || !email || !telefono || !edad || !tipoSeguro) {
       return new Response(
         JSON.stringify({ 
           success: false, 
@@ -47,19 +56,24 @@ export const POST: APIRoute = async ({ request }) => {
     // Crear instancia del bot
     const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
 
-    // Formatear el mensaje para Telegram
+    // Formatear el mensaje para Telegram específico para cotización de seguros
     const telegramMessage = `
-🆕 *Nuevo mensaje de contacto*
+🆕 *NUEVA COTIZACIÓN - ASESORES SEGUROS MONTERREY*
 
-👤 *Nombre:* ${name}
+👤 *Cliente:* ${nombre}
 📧 *Email:* ${email}
-📱 *Teléfono:* ${phone || 'No proporcionado'}
+📱 *Teléfono:* ${telefono}
 
-💬 *Mensaje:*
-${message}
+🎯 *Información de Cotización:*
+• *Edad:* ${edad}
+• *Tipo de Seguro:* ${tipoSeguro}
 
-🌐 *Página de origen:*
-🔗 *URL:* ${pageUrl || 'No disponible'}
+💬 *Mensaje adicional:*
+${message || 'Sin mensaje adicional'}
+
+📊 *Información de Campaign:*
+• *Fuente:* ${source || 'Landing Asesores Monterrey NYL'}
+• *Campaña:* ${campaign || 'SEM Google Ads - Asesores Seguros Monterrey'}
 
 ⏰ *Fecha:* ${new Date().toLocaleString('es-MX', { 
   timeZone: 'America/Mexico_City',
@@ -72,14 +86,14 @@ ${message}
     `.trim();
 
     // Crear el mensaje prediseñado para WhatsApp
-    const whatsappMessage = `Hola ${name} 👋
+    const whatsappMessage = `Hola ${nombre} 👋
 
-Vi que te contactaste a través de nuestra página web.
+Vi que solicitaste una cotización de ${tipoSeguro.toLowerCase()}.
 
-¿En qué te puedo ayudar? �`;
+¿Te parece si platicamos sobre tus opciones de seguros? 😊`;
 
     // Limpiar el número de teléfono para WhatsApp (solo números)
-    const cleanPhone = phone ? phone.replace(/[^\d]/g, '') : '';
+    const cleanPhone = telefono ? telefono.replace(/[^\d]/g, '') : '';
     
     // Codificar el mensaje para URL
     const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
@@ -102,8 +116,8 @@ Vi que te contactaste a través de nuestra página web.
           [
             {
               text: cleanPhone && cleanPhone.length >= 10 
-                ? `💬 Responder a ${name} (${phone})` 
-                : `💬 Responder por WhatsApp a ${name}`,
+                ? `💬 Contactar a ${nombre} por WhatsApp` 
+                : `💬 Contactar por WhatsApp`,
               url: whatsappUrl
             }
           ]
@@ -111,12 +125,12 @@ Vi que te contactaste a través de nuestra página web.
       }
     });
 
-    console.log('✅ Mensaje enviado exitosamente a Telegram');
+    console.log('✅ Cotización de seguros enviada exitosamente a Telegram');
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'Mensaje enviado correctamente' 
+        message: 'Cotización procesada correctamente' 
       }),
       { 
         status: 200,
@@ -125,7 +139,7 @@ Vi que te contactaste a través de nuestra página web.
     );
 
   } catch (error) {
-    console.error('❌ Error al enviar mensaje:', error);
+    console.error('❌ Error al enviar cotización:', error);
     
     return new Response(
       JSON.stringify({ 
