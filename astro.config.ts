@@ -3,7 +3,7 @@ import vercel from '@astrojs/vercel';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  output: 'static',
+  output: 'server',
 
   adapter: vercel({
     webAnalytics: {
@@ -21,7 +21,7 @@ export default defineConfig({
 
   vite: {
     ssr: {
-      external: ['nodemailer', 'firebase/app', 'firebase/firestore']
+      external: ['nodemailer', 'firebase/app', 'firebase/firestore', 'node-telegram-bot-api']
     },
     build: {
       // Asegurar que el CSS se inline correctamente
