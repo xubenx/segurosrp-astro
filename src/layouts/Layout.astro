@@ -20,13 +20,10 @@ const { title, description } = Astro.props as Props;
 		<!-- DNS prefetch for external domains -->
 		<link rel="dns-prefetch" href="//www.googletagmanager.com">
 		<link rel="dns-prefetch" href="//connect.facebook.net">
-		<link rel="dns-prefetch" href="//fonts.googleapis.com">
 		
 		<!-- Preconnect to external domains -->
 		<link rel="preconnect" href="https://www.googletagmanager.com">
 		<link rel="preconnect" href="https://connect.facebook.net">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		
 		<!-- Critical CSS inlined -->
 		<style>
@@ -113,9 +110,15 @@ const { title, description } = Astro.props as Props;
 			}
 		</style>
 		
-		<!-- Preload critical fonts -->
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+		<!-- Preload critical font files for better performance -->
+		<link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin>
+		
+		<!-- Preload critical fonts - Local -->
+		<link rel="preload" href="/css/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="/css/fonts.css"></noscript>
 		
 		<!-- Meta tags -->
 		{description && <meta name="description" content={description} />}

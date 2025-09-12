@@ -220,8 +220,6 @@ const advisors = [
               onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none'"
             >
               <option value="">Selecciona una opción</option>
-              <option value="1000-2000">$1,000 - $2,000 MXN</option>
-              <option value="2000-3000">$2,000 - $3,000 MXN</option>
               <option value="3000-5000">$3,000 - $5,000 MXN</option>
               <option value="5000-10000">$5,000 - $10,000 MXN</option>
               <option value="10000+">Más de $10,000 MXN</option>
@@ -369,14 +367,7 @@ const advisors = [
                   font-size: 0.875rem;
                   margin-bottom: 0.5rem;
                 ">{advisor.specialty}</p>
-                <a href={advisor.phoneHref} style="
-                  color: #FFDE59;
-                  text-decoration: none;
-                  font-weight: 600;
-                  font-size: 0.875rem;
-                ">
-                  📞 {advisor.phone}
-                </a>
+                
               </div>
             </div>
           ))}

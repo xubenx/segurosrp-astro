@@ -19,8 +19,15 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
   <meta name="keywords" content="Segubeca, seguro educativo, futuro hijos, educación universitaria, ahorro educación, financiamiento educativo" />
   <meta name="author" content="Segubeca" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Preload critical font files for better performance -->
+  <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  
+  <!-- Preload critical images for better LCP -->
+  <link rel="preload" href="/nyl-white.png" as="image" />
+  <link rel="preload" href="/rp_blancos_flip.png" as="image" />
+  
+  <link rel="stylesheet" href="/css/fonts.css" />
 </head>
 
 <body class="font-['Poppins'] text-gray-800 bg-slate-50 m-0 p-0">
@@ -33,10 +40,10 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
         <!-- Logos en la parte superior -->
         <div class="flex justify-between items-center flex-shrink-0 mb-5">
             <a href="/" class="flex-shrink-0">
-                <img src="/seguros-monterrey-new-york-life-logo.png" alt="Ramírez y Plascencia" class="h-10 sm:h-16 md:h-20 max-w-32 sm:max-w-48 md:max-w-52 object-contain" />
+                <img src="/nyl-white.png" alt="Ramírez y Plascencia" class="h-10 sm:h-16 md:h-20 max-w-32 sm:max-w-48 md:max-w-52 object-contain" />
             </a>
             <a href="/" class="flex-shrink-0">
-                <img src="/segubecalanding/rp_blanco.png" alt="New York Life" class="w-24 sm:w-36 md:w-60 lg:w-72 h-auto max-h-none" />
+                <img src="/rp_blancos_flip.png" alt="New York Life" class="w-32 sm:w-36 md:w-60 lg:w-56 h-auto max-h-none" />
             </a>
         </div>
         
@@ -57,7 +64,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                     </div>
                 </div>
                 <div class="flex relative mt-96 md:mt-96 lg:mt-96 md:h-60">
-                    <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="absolute bottom-0 right-0 w-full max-w-2xl  object-contain z-10 " />
+                    <img src="/segubecalanding/hero.png" alt="Padres asegurando el futuro de sus hijos con Segubeca" class="absolute bottom-0 right-0 w-full max-w-2xl  object-contain z-10" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -79,11 +86,11 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 justify-center max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 px-4 justify-center max-w-5xl mx-auto">
         <!-- Universidad Anáhuac -->
         <div class="text-center">
           <div class="h-32 flex items-center justify-center mb-4">
-            <img src="/segubecalanding/anahuac.png" alt="Universidad Anáhuac" class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" />
+            <img src="/segubecalanding/anahuac.png" alt="Universidad Anáhuac" class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" loading="lazy" />
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$2,350,000</p>
@@ -93,7 +100,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
         <!-- Universidad Panamericana -->
         <div class="text-center">
           <div class="h-32 flex items-center justify-center mb-4">
-            <img src="/segubecalanding/panamericana.png" alt="Universidad Panamericana" class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" />
+            <img src="/segubecalanding/panamericana.png" alt="Universidad Panamericana" class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" loading="lazy" />
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$2,000,000</p>
@@ -103,7 +110,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
         <!-- Tecnológico de Monterrey -->
         <div class="text-center">
           <div class="h-32 flex items-center justify-center mb-4">
-            <img src="/segubecalanding/tec.png" alt="Tecnológico de Monterrey" class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" />
+            <img src="/segubecalanding/tec.png" alt="Tecnológico de Monterrey" class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" loading="lazy" />
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$1,500,000</p>
@@ -149,6 +156,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                 src="/segubecalanding/paso_1.png" 
                                 alt="Paso 1: Define tu plan"
                                 class="w-full max-w-4xl h-auto mx-auto"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -160,6 +168,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                 src="/segubecalanding/paso_2.png" 
                                 alt="Paso 2: Estás protegido"
                                 class="w-full max-w-4xl h-auto mx-auto"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -178,6 +187,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                     src="/segubecalanding/beneficio_1.png" 
                                     alt="Beneficio 1"
                                     class="w-full max-w-52 h-auto mx-auto"
+                                    loading="lazy"
                                 />
                             </div>
                             
@@ -187,6 +197,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                     src="/segubecalanding/beneficio_2.png" 
                                     alt="Beneficio 2"
                                     class="w-full max-w-52 h-auto mx-auto"
+                                    loading="lazy"
                                 />
                             </div>
                             
@@ -196,6 +207,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                     src="/segubecalanding/beneficio_3.png" 
                                     alt="Beneficio 3"
                                     class="w-full max-w-52 h-auto mx-auto"
+                                    loading="lazy"
                                 />
                             </div>
                             
@@ -205,6 +217,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                     src="/segubecalanding/beneficio_4.png" 
                                     alt="Beneficio 4"
                                     class="w-full max-w-52 h-auto mx-auto"
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
@@ -217,6 +230,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                 src="/segubecalanding/paso_3.png" 
                                 alt="Paso 3: Ahorro"
                                 class="w-full max-w-4xl h-auto mx-auto"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -228,6 +242,7 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                                 src="/segubecalanding/paso_4.png" 
                                 alt="Paso 4: Recibes tu dinero"
                                 class="w-full max-w-4xl h-auto mx-auto"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -266,68 +281,74 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
         <div class="relative">
           <!-- Indicadores -->
           <div class="flex justify-center space-x-2 mb-8">
-            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 transition-opacity duration-300 carousel-indicator opacity-100" data-slide="0"></button>
-            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-opacity duration-300 carousel-indicator" data-slide="1"></button>
-            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-opacity duration-300 carousel-indicator" data-slide="2"></button>
-            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-opacity duration-300 carousel-indicator" data-slide="3"></button>
+            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 transition-all duration-300 carousel-indicator opacity-100" data-slide="0"></button>
+            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-all duration-300 carousel-indicator" data-slide="1"></button>
+            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-all duration-300 carousel-indicator" data-slide="2"></button>
+            <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-all duration-300 carousel-indicator" data-slide="3"></button>
           </div>
 
           <!-- Slides container -->
-          <div class="relative overflow-hidden">
-            <!-- Slide 1 - Testimonios 1 y 2 (Desktop: 2 columnas, Mobile: 1 imagen) -->
-            <div class="carousel-slide flex justify-center gap-4 transition-transform duration-500 ease-in-out" data-slide="0">
-              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl flex justify-center">
+          <div class="relative overflow-hidden min-h-[600px]">
+            <!-- Slide 1 - María González -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-100 transition-opacity duration-700 ease-in-out" data-slide="0">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👨‍⚕️ María González</h3>
+                  <p class="text-black text-sm">"Gracias a Segubeca, mi hija pudo estudiar medicina sin preocupaciones financieras. El retiro fue puntual y completo."</p>
+                </div>
                 <img 
                   src="/segubecalanding/testimonio_15.png" 
-                  alt="Comprobante de retiro 1"
-                  class="w-full h-auto max-h-[500px] sm:max-h-[400px] md:max-h-[600px] lg:max-h-[700px] object-contain"
-                />
-              </div>
-              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl justify-center hidden lg:flex">
-                <img 
-                  src="/segubecalanding/testimonio_16.png" 
-                  alt="Comprobante de retiro 2"
-                  class="w-full h-auto max-h-[500px] sm:max-h-[400px] md:max-h-[600px] lg:max-h-[700px] object-contain"
+                  alt="Comprobante de retiro de María González"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
                 />
               </div>
             </div>
 
-            <!-- Slide 2 - Testimonio 2 (Solo mobile) -->
-            <div class="carousel-slide justify-center absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out lg:hidden" data-slide="1">
-              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl flex justify-center">
+            <!-- Slide 2 - Roberto Hernández -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out" data-slide="1">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👨‍💼 Roberto Hernández</h3>
+                  <p class="text-black text-sm">"Invertí en Segubeca cuando mi hijo tenía 8 años. A los 18, recibió el capital completo para su carrera en ingeniería."</p>
+                </div>
                 <img 
                   src="/segubecalanding/testimonio_16.png" 
-                  alt="Comprobante de retiro 2"
-                  class="w-full h-auto max-h-[500px] sm:max-h-[400px] md:max-h-[600px] object-contain"
+                  alt="Comprobante de retiro de Roberto Hernández"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
                 />
               </div>
             </div>
 
-            <!-- Slide 3 - Testimonios 3 y 4 (Desktop: 2 columnas, Mobile: 1 imagen) -->
-            <div class="carousel-slide flex justify-center gap-4 absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" data-slide="2">
-              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl flex justify-center">
+            <!-- Slide 3 - Ana Martínez -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out" data-slide="2">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👩‍🏫 Juan Martínez</h3>
+                  <p class="text-black text-sm">" Segubeca me dio la tranquilidad de asegurar la universidad de mis gemelos. ¡Funcionó perfectamente!"</p>
+                </div>
                 <img 
                   src="/segubecalanding/testimonio_17.png" 
-                  alt="Comprobante de retiro 3"
-                  class="w-full h-auto max-h-[500px] sm:max-h-[400px] md:max-h-[600px] lg:max-h-[700px] object-contain"
-                />
-              </div>
-              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl justify-center hidden lg:flex">
-                <img 
-                  src="/segubecalanding/testimonio_18.png" 
-                  alt="Comprobante de retiro 4"
-                  class="w-full h-auto max-h-[500px] sm:max-h-[400px] md:max-h-[600px] lg:max-h-[700px] object-contain"
+                  alt="Comprobante de retiro de Ana Martínez"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
                 />
               </div>
             </div>
 
-            <!-- Slide 4 - Testimonio 4 (Solo mobile) -->
-            <div class="carousel-slide justify-center absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out lg:hidden" data-slide="3">
-              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl flex justify-center">
+            <!-- Slide 4 - Dr. Carlos Ruiz -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out" data-slide="3">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👨‍👩‍👧‍👦 Josefina Ruiz</h3>
+                  <p class="text-black text-sm">"Segubeca no solo cumplió, sino que superó mis expectativas. Mi hija estudió en el extranjero gracias a esta inversión."</p>
+                </div>
                 <img 
                   src="/segubecalanding/testimonio_18.png" 
-                  alt="Comprobante de retiro 4"
-                  class="w-full h-auto max-h-[500px] sm:max-h-[400px] md:max-h-[600px] object-contain"
+                  alt="Comprobante de retiro del Dr. Carlos Ruiz"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -342,31 +363,51 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                 const slides = document.querySelectorAll('.carousel-slide');
                 let currentSlide = 0;
                 let autoSlideInterval;
+                let isTransitioning = false;
 
-                function showSlide(index) {
+                function showSlide(index, immediate = false) {
+                    if (isTransitioning && !immediate) return;
+                    
+                    isTransitioning = true;
+                    
+                    // Asegurar que el índice esté en rango
+                    index = index % slides.length;
+                    if (index < 0) index = slides.length - 1;
+                    
                     // Ocultar todos los slides
                     slides.forEach((slide, i) => {
+                        const slideElement = slide;
                         if (i === index) {
-                            slide.classList.remove('opacity-0');
-                            slide.classList.add('opacity-100');
+                            slideElement.classList.remove('opacity-0');
+                            slideElement.classList.add('opacity-100');
+                            slideElement.classList.remove('invisible');
+                            slideElement.classList.add('visible');
                         } else {
-                            slide.classList.remove('opacity-100');
-                            slide.classList.add('opacity-0');
+                            slideElement.classList.remove('opacity-100');
+                            slideElement.classList.add('opacity-0');
+                            slideElement.classList.remove('visible');
+                            slideElement.classList.add('invisible');
                         }
                     });
 
                     // Actualizar indicadores
                     indicators.forEach((indicator, i) => {
+                        const indicatorElement = indicator;
                         if (i === index) {
-                            indicator.classList.remove('opacity-50');
-                            indicator.classList.add('opacity-100');
+                            indicatorElement.classList.remove('opacity-50', 'scale-100');
+                            indicatorElement.classList.add('opacity-100', 'scale-110');
                         } else {
-                            indicator.classList.remove('opacity-100');
-                            indicator.classList.add('opacity-50');
+                            indicatorElement.classList.remove('opacity-100', 'scale-110');
+                            indicatorElement.classList.add('opacity-50', 'scale-100');
                         }
                     });
 
                     currentSlide = index;
+                    
+                    // Permitir nueva transición después de que termine la animación
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 100);
                 }
 
                 function nextSlide() {
@@ -374,8 +415,17 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
                     showSlide(nextIndex);
                 }
 
+                function prevSlide() {
+                    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+                    showSlide(prevIndex);
+                }
+
                 function startAutoSlide() {
-                    autoSlideInterval = setInterval(nextSlide, 5000);
+                    autoSlideInterval = setInterval(() => {
+                        if (!isTransitioning) {
+                            nextSlide();
+                        }
+                    }, 4000);
                 }
 
                 function stopAutoSlide() {
@@ -384,22 +434,46 @@ import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
 
                 // Event listeners para los indicadores
                 indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
+                    indicator.addEventListener('click', (e) => {
+                        e.preventDefault();
                         stopAutoSlide();
                         showSlide(index);
                         startAutoSlide();
                     });
                 });
 
-                // Iniciar el carrusel automático
-                startAutoSlide();
+                // Navegación con teclado
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        stopAutoSlide();
+                        prevSlide();
+                        startAutoSlide();
+                    } else if (e.key === 'ArrowRight') {
+                        stopAutoSlide();
+                        nextSlide();
+                        startAutoSlide();
+                    }
+                });
 
-                // Pausar en hover
+                // Pausar en hover del carrusel completo
                 const carouselContainer = document.querySelector('.relative');
                 if (carouselContainer) {
                     carouselContainer.addEventListener('mouseenter', stopAutoSlide);
                     carouselContainer.addEventListener('mouseleave', startAutoSlide);
                 }
+
+                // Inicializar el carrusel
+                showSlide(0, true);
+                startAutoSlide();
+
+                // Manejar cambios de visibilidad de la página
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        stopAutoSlide();
+                    } else {
+                        startAutoSlide();
+                    }
+                });
             });
         </script>
     </section>
