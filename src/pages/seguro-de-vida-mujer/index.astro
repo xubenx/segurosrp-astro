@@ -82,11 +82,11 @@ const business = {
     </script>
 
     <!-- Schema: FAQ -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context":"https://schema.org",
-        "@type":"FAQPage",
-        "mainEntity":[
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
           {"@type":"Question","name":"¿Qué es el Seguro de Vida Mujer de Seguros Monterrey?","acceptedAnswer":{"@type":"Answer","text":"Es un seguro de vida con enfoque femenino que combina protección por fallecimiento, protección por cáncer femenino (PCF) y ahorro en vida con entregas periódicas; además contempla anticipos por matrimonio o nacimiento/adopción y un beneficio de Apoyo en Vida en padecimientos graves definidos."}},
           {"@type":"Question","name":"¿Qué cubre la Protección por Cáncer Femenino (PCF)?","acceptedAnswer":{"@type":"Answer","text":"Indemniza un porcentaje de la suma asegurada según el órgano afectado y el estadio (p. ej. mama 100% o 47% si está localizado; ovario; útero 21% o 12% localizado; trompas 12%; tumores benignos de vagina o vulva 9%), con periodos y requisitos establecidos en condiciones."}},
           {"@type":"Question","name":"¿Hay ahorro en vida?","acceptedAnswer":{"@type":"Answer","text":"Sí. A partir del 5.º año se entregan porcentajes de la suma asegurada con periodicidad definida por año póliza, manteniendo la protección por fallecimiento durante la vigencia."}},
@@ -94,7 +94,7 @@ const business = {
           {"@type":"Question","name":"¿Puedo contratar en UDI o USD?","acceptedAnswer":{"@type":"Answer","text":"Sí. Hay versiones en UDI y dólares. La elección depende de tus objetivos (inflación vs. dolarización)."}},
           {"@type":"Question","name":"¿Atienden en todo México y con firma digital?","acceptedAnswer":{"@type":"Answer","text":"Sí. Asesoría nacional por videollamada, WhatsApp, teléfono y correo; firma electrónica disponible."}}
         ]
-      }
+      })}
     </script>
 
     <!-- Accesibilidad base y utilidades -->

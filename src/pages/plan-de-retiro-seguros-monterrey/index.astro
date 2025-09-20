@@ -82,11 +82,11 @@ const business = {
     </script>
 
     <!-- Schema: FAQ -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context":"https://schema.org",
-        "@type":"FAQPage",
-        "mainEntity":[
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
           {"@type":"Question","name":"¿Qué es el plan de retiro Seguros Monterrey Imagina Ser?","acceptedAnswer":{"@type":"Answer","text":"Es un seguro de retiro con respaldo de vida que permite elegir cómo recibir tu ahorro: rentas mensuales de por vida o en una sola exhibición; se puede contratar en UDI o USD y ofrece rendimiento mínimo garantizado. "}},
           {"@type":"Question","name":"¿Qué ofrece Nuevo Plenitud?","acceptedAnswer":{"@type":"Answer","text":"Te permite elegir entre pago único o ingresos mensuales de por vida; puedes heredar el ingreso a un co-beneficiario o establecer un periodo de garantía. Incluye aguinaldo equivalente a una mensualidad durante los primeros 5 años de retiro y opciones de adelanto de ingresos."}},
           {"@type":"Question","name":"¿Puedo deducir impuestos (PPR)?","acceptedAnswer":{"@type":"Answer","text":"Sí. Para bolsos PPR aplica LISR Art. 151 (hasta 5 UMA anuales o 10% del ingreso, lo que resulte menor). También existe deducibilidad Art. 185 con tope anual equivalente en pesos. Ambos pueden usarse simultáneamente conforme a ley vigente."}},
@@ -94,7 +94,7 @@ const business = {
           {"@type":"Question","name":"¿Puedo contratar en UDI o en dólares?","acceptedAnswer":{"@type":"Answer","text":"Sí. Varios planes permiten contratar en UDI o USD; diseñamos tu estrategia según objetivos, horizonte y tolerancia al riesgo."}},
           {"@type":"Question","name":"¿En qué edades puedo programar mi retiro?","acceptedAnswer":{"@type":"Answer","text":"Comúnmente 60, 65 o 70 años según el plan y versión contratada."}}
         ]
-      }
+      })}
     </script>
 
     <!-- Accesibilidad base y utilidades -->

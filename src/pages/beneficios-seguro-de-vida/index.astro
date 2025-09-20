@@ -82,18 +82,18 @@ const business = {
     </script>
 
     <!-- Schema: FAQ (se completa con las preguntas de abajo) -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context":"https://schema.org",
-        "@type":"FAQPage",
-        "mainEntity":[
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
           {"@type":"Question","name":"¿Cuáles son los beneficios del seguro de vida?","acceptedAnswer":{"@type":"Answer","text":"Protección económica a tus beneficiarios en caso de fallecimiento, posibilidad de agregar coberturas por invalidez o enfermedades, flexibilidad en suma asegurada y plazos, y elección de moneda (UDIS o USD) según objetivos."}},
           {"@type":"Question","name":"¿El seguro de vida cubre invalidez?","acceptedAnswer":{"@type":"Answer","text":"Depende del plan y de los adicionales contratados. Existen coberturas de invalidez total y permanente que anticipan o exentan pagos; analizamos tu caso y opciones disponibles."}},
           {"@type":"Question","name":"¿Qué diferencia hay entre seguro temporal y ordinario de vida?","acceptedAnswer":{"@type":"Answer","text":"El temporal protege por un plazo definido con primas usualmente más bajas; el ordinario de vida busca protección vitalicia con valores en la póliza. Te explicamos cuál conviene según tus metas y presupuesto."}},
           {"@type":"Question","name":"¿Puedo contratar a distancia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Contamos con asesoría y contratación 100% remota con firma electrónica, y opción presencial cuando se requiera."}},
           {"@type":"Question","name":"¿UDIS o USD para mi seguro de vida?","acceptedAnswer":{"@type":"Answer","text":"Ambas monedas están disponibles en distintos planes. UDIS ayuda a proteger contra la inflación; USD puede dolarizar parte del patrimonio. Diseñamos la mezcla adecuada para ti."}}
         ]
-      }
+      })}
     </script>
 
     <!-- Accesibilidad base + utilidades -->

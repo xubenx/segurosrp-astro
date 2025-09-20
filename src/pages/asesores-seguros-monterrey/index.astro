@@ -83,11 +83,11 @@ const business = {
     </script>
 
     <!-- Schema: FAQ -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context":"https://schema.org",
-        "@type":"FAQPage",
-        "mainEntity":[
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
           {"@type":"Question","name":"¿Qué hace un asesor de Seguros Monterrey?","acceptedAnswer":{"@type":"Answer","text":"Diagnostica tus metas, compara planes de Seguros Monterrey New York Life (vida, gastos médicos, retiro y educación), te ayuda a contratar y te acompaña en siniestros y trámites post-venta."}},
           {"@type":"Question","name":"¿Atienden a nivel nacional?","acceptedAnswer":{"@type":"Answer","text":"Sí. Damos servicio en todo México por videollamada, WhatsApp, teléfono y correo. También coordinamos citas presenciales."}},
           {"@type":"Question","name":"¿Puedo cambiarme con ustedes si ya tengo una póliza?","acceptedAnswer":{"@type":"Answer","text":"Sí. Te ayudamos a solicitar el cambio de agente para recibir nuestro servicio, sin modificar las condiciones vigentes de tu póliza."}},
@@ -95,7 +95,7 @@ const business = {
           {"@type":"Question","name":"¿Cobran por la asesoría?","acceptedAnswer":{"@type":"Answer","text":"La asesoría está incluida para clientes vigentes. Para diagnósticos especializados, cotizamos por proyecto y se bonifica si contratas."}},
           {"@type":"Question","name":"¿Trabajan con UDI o USD?","acceptedAnswer":{"@type":"Answer","text":"Sí. Muchos planes permiten contratar en UDI o en dólares para proteger poder adquisitivo o dolarizar parte del patrimonio."}}
         ]
-      }
+      })}
     </script>
 
     <!-- Accesibilidad base + utilidades visuales del theme -->

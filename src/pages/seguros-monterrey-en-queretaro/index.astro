@@ -104,11 +104,11 @@ const business = {
     </script>
 
     <!-- Schema: FAQ (se autocompleta con preguntas abajo) -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context":"https://schema.org",
-        "@type":"FAQPage",
-        "mainEntity":[
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
           {"@type":"Question","name":"¿Atienden solo en Querétaro o nacionalmente?","acceptedAnswer":{"@type":"Answer","text":"Atendemos en Querétaro y de forma nacional por videollamada, WhatsApp y correo. Para trámites presenciales coordinamos agenda en Querétaro y alrededores."}},
           {"@type":"Question","name":"Si tengo un problema con Seguros Monterrey, ¿me pueden asesorar?","acceptedAnswer":{"@type":"Answer","text":"Sí. Como asesores certificados, te guiamos en aclaraciones, siniestros, reclamaciones y seguimiento con la aseguradora, incluyendo escalamiento formal si hace falta."}},
           {"@type":"Question","name":"¿Puedo cambiar mi póliza con ustedes si la contraté con otro asesor?","acceptedAnswer":{"@type":"Answer","text":"Sí. Podemos ayudarte a solicitar el cambio de agente y brindarte servicio sin modificar las condiciones actuales de tu póliza."}},
@@ -120,7 +120,7 @@ const business = {
           {"@type":"Question","name":"¿Cómo tramito un siniestro o reembolso?","acceptedAnswer":{"@type":"Answer","text":"Te guiamos paso a paso: reporte, documentos, tiempos de resolución y seguimiento. En urgencias, primero atención; después formalizamos el trámite."}},
           {"@type":"Question","name":"¿Ofrecen deducibilidad fiscal en retiro?","acceptedAnswer":{"@type":"Answer","text":"Sí. Planes como Imagina Ser o Nuevo Plenitud pueden integrar bolsillos deducibles/no deducibles conforme a LISR vigente. Coordinamos con tu contador."}}
         ]
-      }
+      })}
     </script>
 
     <!-- Accesibilidad base -->
