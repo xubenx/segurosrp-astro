@@ -4,7 +4,7 @@
   <!-- Página principal -->
   <url>
     <loc>https://segurosrp.com/</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,14 +12,14 @@
   <!-- Páginas principales -->
   <url>
     <loc>https://segurosrp.com/nosotros</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/contacto</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -27,14 +27,14 @@
   <!-- Páginas de asesores -->
   <url>
     <loc>https://segurosrp.com/asesores-seguros-monterrey</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/asesores-seguros-monterrey-nyl</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -42,91 +42,91 @@
   <!-- Páginas de seguros de vida -->
   <url>
     <loc>https://segurosrp.com/seguros-vida</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/imagina-ser</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/legado</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/mio</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/nuevo-plenitud</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/objetivo-vida</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/orvi</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/realiza</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/se-adapta</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/segubeca</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/star-dotal</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/star-temporal</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-vida/vida-mujer</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -134,35 +134,35 @@
   <!-- Páginas de seguros de salud -->
   <url>
     <loc>https://segurosrp.com/seguros-salud</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-salud/accidentes-personales</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-salud/alfa-medical</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-salud/alfa-medical-flex</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-salud/alfa-medical-internacional</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -170,21 +170,21 @@
   <!-- Páginas de beneficios y servicios -->
   <url>
     <loc>https://segurosrp.com/beneficios-seguro-de-vida</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/plan-de-retiro-seguros-monterrey</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguro-de-vida-mujer</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -192,14 +192,14 @@
   <!-- Páginas de ubicaciones -->
   <url>
     <loc>https://segurosrp.com/seguros-monterrey-en-celaya-gto</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/seguros-monterrey-en-queretaro</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -207,14 +207,14 @@
   <!-- Landing pages especiales -->
   <url>
     <loc>https://segurosrp.com/segubecalanding</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://segurosrp.com/vidamujerlanding</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
