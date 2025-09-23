@@ -1,5 +1,6 @@
 ---
 // Contact section component for Segubeca
+
 const advisors = [
   {
     name: "Lic. Silvia Plascencia",
@@ -496,7 +497,21 @@ const advisors = [
         if (response.ok) {
           // Éxito
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-          
+          // Enviar conversión a Google Analytics GA4
+          if (typeof (window as any).gtag !== 'undefined') {
+            // Enviar conversión específica a GA4
+            (window as any).gtag('event', 'leads_segubeca', {
+              'event_category': 'conversion',
+              'event_label': 'Segubeca Contact Form',
+              'form_name': 'Segubeca Contact Form'
+
+            });
+            
+            // También enviar evento genérico de formulario
+            (window as any).gtag('event', 'submit', {
+              'form_name': 'Segubeca Contact Form'
+            });
+          }
           // Mostrar mensaje personalizado según el resultado
           if (result.details && result.details.errors && result.details.errors.length > 0) {
             // Éxito con advertencias
