@@ -57,71 +57,65 @@ const business = {
     <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
 
     <!-- Schema: LocalBusiness/InsuranceAgency -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "InsuranceAgency",
-        "name": business.name,
-        "parentOrganization": "Seguros Monterrey New York Life",
-        "description": pageDescription,
-        "areaServed": ["Celaya, Guanajuato", "México"],
-        "telephone": business.phone,
-        "email": business.email,
-        "image": `${site}/images/og/seguros-monterrey-celaya.jpg`,
-        "url": canonical,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": business.address.street,
-          "addressLocality": business.address.locality,
-          "addressRegion": business.address.region,
-          "postalCode": business.address.postalCode,
-          "addressCountry": business.address.country
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": business.geo.lat,
-          "longitude": business.geo.lng
-        },
-        "openingHours": business.openingHours,
-        "sameAs": [
-          "https://www.facebook.com/segurosrp/",
-          "https://www.linkedin.com/company/ramirez-plascencia-despacho-de-seguros/"
-        ]
-      })}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "InsuranceAgency",
+      "name": business.name,
+      "parentOrganization": "Seguros Monterrey New York Life",
+      "description": pageDescription,
+      "areaServed": ["Celaya, Guanajuato", "México"],
+      "telephone": business.phone,
+      "email": business.email,
+      "image": `${site}/images/og/seguros-monterrey-celaya.jpg`,
+      "url": canonical,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": business.address.street,
+        "addressLocality": business.address.locality,
+        "addressRegion": business.address.region,
+        "postalCode": business.address.postalCode,
+        "addressCountry": business.address.country
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": business.geo.lat,
+        "longitude": business.geo.lng
+      },
+      "openingHours": business.openingHours,
+      "sameAs": [
+        "https://www.facebook.com/segurosrp/",
+        "https://www.linkedin.com/company/ramirez-plascencia-despacho-de-seguros/"
+      ]
+    })}></script>
 
     <!-- Schema: Breadcrumb -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Inicio","item": site},
-          {"@type":"ListItem","position":2,"name":"Celaya","item": `${site}/celaya`},
-          {"@type":"ListItem","position":3,"name":"Seguros Monterrey en Celaya","item": canonical}
-        ]
-      })}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Inicio","item": site},
+        {"@type":"ListItem","position":2,"name":"Celaya","item": `${site}/celaya`},
+        {"@type":"ListItem","position":3,"name":"Seguros Monterrey en Celaya","item": canonical}
+      ]
+    })}></script>
 
     <!-- Schema: FAQ (se autocompleta con preguntas abajo) -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {"@type":"Question","name":"¿Atienden solo en Celaya o nacionalmente?","acceptedAnswer":{"@type":"Answer","text":"Atendemos en Celaya y de forma nacional por videollamada, WhatsApp y correo. Para trámites presenciales coordinamos agenda en Guanajuato y alrededores."}},
-          {"@type":"Question","name":"Si tengo un problema con Seguros Monterrey, ¿me pueden asesorar?","acceptedAnswer":{"@type":"Answer","text":"Sí. Como asesores certificados, te guiamos en aclaraciones, siniestros, reclamaciones y seguimiento con la aseguradora, incluyendo escalamiento formal si hace falta."}},
-          {"@type":"Question","name":"¿Puedo cambiar mi póliza con ustedes si la contraté con otro asesor?","acceptedAnswer":{"@type":"Answer","text":"Sí. Podemos ayudarte a solicitar el cambio de agente y brindarte servicio sin modificar las condiciones actuales de tu póliza."}},
-          {"@type":"Question","name":"¿Puedo contratar o firmar a distancia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Realizamos asesoría y contratación remota con firma electrónica, envío seguro de documentación y validaciones por video si aplica."}},
-          {"@type":"Question","name":"¿Trabajan directamente con Seguros Monterrey New York Life?","acceptedAnswer":{"@type":"Answer","text":"Somos despacho de asesores especializados y certificados en Seguros Monterrey New York Life. Brindamos asesoría independiente con el respaldo de la compañía."}},
-          {"@type":"Question","name":"¿Manejan UDIS y dólares?","acceptedAnswer":{"@type":"Answer","text":"Sí. Muchos planes ofrecen UDIS o USD para proteger poder adquisitivo o dolarizar parte del patrimonio, según tu estrategia."}},
-          {"@type":"Question","name":"¿Cómo se calcula mi prima?","acceptedAnswer":{"@type":"Answer","text":"Depende de edad, salud, suma asegurada, moneda, plazo y coberturas adicionales. Te entregamos comparativa clara y personalizada."}},
-          {"@type":"Question","name":"¿Cubren preexistencias?","acceptedAnswer":{"@type":"Answer","text":"Depende del producto y evaluación médica. En GMMI aplican periodos de espera y políticas de suscripción. Analizamos tu caso y alternativas."}},
-          {"@type":"Question","name":"¿Cómo tramito un siniestro o reembolso?","acceptedAnswer":{"@type":"Answer","text":"Te guiamos paso a paso: reporte, documentos, tiempos de resolución y seguimiento. En urgencias, primero atención; después formalizamos el trámite."}},
-          {"@type":"Question","name":"¿Ofrecen deducibilidad fiscal en retiro?","acceptedAnswer":{"@type":"Answer","text":"Sí. Planes como Imagina Ser o Nuevo Plenitud pueden integrar bolsillos deducibles/no deducibles conforme a LISR vigente. Coordinamos con tu contador."}}
-        ]
-      })}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"¿Atienden solo en Celaya o nacionalmente?","acceptedAnswer":{"@type":"Answer","text":"Atendemos en Celaya y de forma nacional por videollamada, WhatsApp y correo. Para trámites presenciales coordinamos agenda en Guanajuato y alrededores."}},
+        {"@type":"Question","name":"Si tengo un problema con Seguros Monterrey, ¿me pueden asesorar?","acceptedAnswer":{"@type":"Answer","text":"Sí. Como asesores certificados, te guiamos en aclaraciones, siniestros, reclamaciones y seguimiento con la aseguradora, incluyendo escalamiento formal si hace falta."}},
+        {"@type":"Question","name":"¿Puedo cambiar mi póliza con ustedes si la contraté con otro asesor?","acceptedAnswer":{"@type":"Answer","text":"Sí. Podemos ayudarte a solicitar el cambio de agente y brindarte servicio sin modificar las condiciones actuales de tu póliza."}},
+        {"@type":"Question","name":"¿Puedo contratar o firmar a distancia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Realizamos asesoría y contratación remota con firma electrónica, envío seguro de documentación y validaciones por video si aplica."}},
+        {"@type":"Question","name":"¿Trabajan directamente con Seguros Monterrey New York Life?","acceptedAnswer":{"@type":"Answer","text":"Somos despacho de asesores especializados y certificados en Seguros Monterrey New York Life. Brindamos asesoría independiente con el respaldo de la compañía."}},
+        {"@type":"Question","name":"¿Manejan UDIS y dólares?","acceptedAnswer":{"@type":"Answer","text":"Sí. Muchos planes ofrecen UDIS o USD para proteger poder adquisitivo o dolarizar parte del patrimonio, según tu estrategia."}},
+        {"@type":"Question","name":"¿Cómo se calcula mi prima?","acceptedAnswer":{"@type":"Answer","text":"Depende de edad, salud, suma asegurada, moneda, plazo y coberturas adicionales. Te entregamos comparativa clara y personalizada."}},
+        {"@type":"Question","name":"¿Cubren preexistencias?","acceptedAnswer":{"@type":"Answer","text":"Depende del producto y evaluación médica. En GMMI aplican periodos de espera y políticas de suscripción. Analizamos tu caso y alternativas."}},
+        {"@type":"Question","name":"¿Cómo tramito un siniestro o reembolso?","acceptedAnswer":{"@type":"Answer","text":"Te guiamos paso a paso: reporte, documentos, tiempos de resolución y seguimiento. En urgencias, primero atención; después formalizamos el trámite."}},
+        {"@type":"Question","name":"¿Ofrecen deducibilidad fiscal en retiro?","acceptedAnswer":{"@type":"Answer","text":"Sí. Planes como Imagina Ser o Nuevo Plenitud pueden integrar bolsillos deducibles/no deducibles conforme a LISR vigente. Coordinamos con tu contador."}}
+      ]
+    })}></script>
 
     <!-- Accesibilidad base -->
     <style is:global>

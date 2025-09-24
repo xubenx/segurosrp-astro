@@ -45,39 +45,33 @@ const page = {
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href={site.url} />
 
-    <script type="application/ld+json">
-      {JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: site.name,
-        url: site.url,
-        logo: site.brandLogo,
-        contactPoint: [{ '@type': 'ContactPoint', telephone: site.phone, contactType: 'sales', areaServed: 'MX', availableLanguage: ['es'] }],
-      })}
-    </script>
-    <script type="application/ld+json">
-      {JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: 'Seguro Vida Mujer',
-        serviceType: 'Seguro de Vida para Mujeres',
-        provider: { '@type': 'Organization', name: site.name },
-        areaServed: 'MX',
-        offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
-        brand: site.name,
-      })}
-    </script>
-    <script type="application/ld+json">
-      {JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: [
-          { '@type': 'Question', name: '¿Qué cubre el Seguro Vida Mujer?', acceptedAnswer: { '@type': 'Answer', text: 'Protección por fallecimiento, respaldo por cáncer femenino, generación de ahorro en vida y apoyos por matrimonio, nacimiento o adopción; coberturas opcionales para complicaciones de embarazo, padecimientos femeninos, invalidez, muerte accidental y más.' } },
-          { '@type': 'Question', name: '¿Para quién está diseñado?', acceptedAnswer: { '@type': 'Answer', text: 'Mujeres entre 25 y 45 años, solteras o casadas, responsables y previsoras que desean proteger su salud y a su familia, con ingresos medios a altos.' } },
-          { '@type': 'Question', name: '¿Cómo solicito una cotización?', acceptedAnswer: { '@type': 'Answer', text: 'Completa el formulario de la página o escríbenos por WhatsApp. Un asesor certificado te contactará el mismo día hábil.' } },
-        ],
-      })}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: site.name,
+      url: site.url,
+      logo: site.brandLogo,
+      contactPoint: [{ '@type': 'ContactPoint', telephone: site.phone, contactType: 'sales', areaServed: 'MX', availableLanguage: ['es'] }],
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: 'Seguro Vida Mujer',
+      serviceType: 'Seguro de Vida para Mujeres',
+      provider: { '@type': 'Organization', name: site.name },
+      areaServed: 'MX',
+      offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
+      brand: site.name,
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        { '@type': 'Question', name: '¿Qué cubre el Seguro Vida Mujer?', acceptedAnswer: { '@type': 'Answer', text: 'Protección por fallecimiento, respaldo por cáncer femenino, generación de ahorro en vida y apoyos por matrimonio, nacimiento o adopción; coberturas opcionales para complicaciones de embarazo, padecimientos femeninos, invalidez, muerte accidental y más.' } },
+        { '@type': 'Question', name: '¿Para quién está diseñado?', acceptedAnswer: { '@type': 'Answer', text: 'Mujeres entre 25 y 45 años, solteras o casadas, responsables y previsoras que desean proteger su salud y a su familia, con ingresos medios a altos.' } },
+        { '@type': 'Question', name: '¿Cómo solicito una cotización?', acceptedAnswer: { '@type': 'Answer', text: 'Completa el formulario de la página o escríbenos por WhatsApp. Un asesor certificado te contactará el mismo día hábil.' } },
+      ],
+    })}></script>
 
     <style>
       /* Paleta femenina suave y elegante */
