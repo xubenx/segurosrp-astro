@@ -47,8 +47,15 @@ const business = {
     <!-- Hreflang -->
     <link rel="alternate" hreflang="es-MX" href={canonical} />
 
-    <!-- Preload -->
-    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
+    <!-- Critical Resource Preloads -->
+    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" type="image/webp" 
+          media="(min-width: 1024px)" />
+    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" type="image/webp" 
+          media="(max-width: 1023px)" />
+    <link rel="preload" as="font" href="/fonts/Inter-Bold.woff2" type="font/woff2" crossorigin />
+    <link rel="preload" as="font" href="/fonts/Inter-SemiBold.woff2" type="font/woff2" crossorigin />
+    <link rel="dns-prefetch" href="https://segurosrp.com" />
+    <link rel="preconnect" href="https://segurosrp.com" crossorigin />
 
     <!-- Schema: InsuranceAgency (enfoque nacional, sin localización ciudad) -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -104,6 +111,10 @@ const business = {
       .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,102,0,.4)}
       .btn-secondary{background:linear-gradient(135deg,#00305C 0%,#1A75CF 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(0,48,92,.3)}
       .btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,48,92,.4)}
+      
+      /* Optimizaciones de imágenes */
+      img{image-rendering:auto;image-rendering:crisp-edges;image-rendering:-webkit-optimize-contrast}
+      .hero-image{will-change:transform;transform:translateZ(0)}
     </style>
   </head>
 
@@ -171,11 +182,14 @@ const business = {
 						<Image 
 							src="/principal.webp" 
 							alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
-							class="w-full h-full object-contain object-center" 
+							class="w-full h-full object-contain object-center hero-image" 
 							loading="eager"
-							width={800}
-							height={600}
+							fetchpriority="high"
+							decoding="async"
+							width={640}
+							height={480}
 							format="webp"
+							sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
 						/>
 					</div>
 					
@@ -184,11 +198,14 @@ const business = {
 						<Image 
 							src="/principal.webp" 
 							alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
-							class="w-full h-auto max-h-full object-contain object-bottom" 
+							class="w-full h-auto max-h-full object-contain object-bottom hero-image" 
 							loading="eager"
-							width={800}
-							height={600}
+							fetchpriority="high"
+							decoding="async"
+							width={1200}
+							height={900}
 							format="webp"
+							sizes="(min-width: 1024px) 50vw, 100vw"
 						/>
 					</div>
 				</div>
