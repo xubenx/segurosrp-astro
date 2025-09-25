@@ -65,7 +65,7 @@ interface ContactLead extends LeadBase {
 {
   "name": "Juan Pérez",
   "email": "juan.perez@email.com",
-  "phone": "4425958912",
+  "phone": "4461354113",
   "message": "Me interesa conocer más sobre sus seguros de vida",
   "type": "normal",
   "source": "Formulario Contact",
@@ -151,7 +151,7 @@ interface SegubecaLead extends LeadBase {
   "childAge": "6-9",
   "monthlySavings": "3000-5000",
   "email": "maria.garcia@email.com",
-  "whatsapp": "4425958912",
+  "whatsapp": "4461354113",
   "type": "segubeca",
   "source": "Segubeca Landing",
   "campaign": "Seguros Educativos",
@@ -226,7 +226,7 @@ interface VidaMujerLead extends LeadBase {
 {
   "name": "Ana López",
   "email": "ana.lopez@email.com",
-  "phone": "4425958912",
+  "phone": "4461354113",
   "city": "Querétaro",
   "age": "25–34 años",
   "contact": "WhatsApp (Preferido)",
@@ -306,7 +306,7 @@ interface AsesoresTorreyLead extends LeadBase {
 {
   "name": "Carlos Rodríguez",
   "email": "carlos.rodriguez@email.com",
-  "phone": "4425958912",
+  "phone": "4461354113",
   "age": "26-35",
   "insuranceType": "vida",
   "message": "Edad: 26-35, Tipo de seguro: vida. Necesito cotización para proteger a mi familia",

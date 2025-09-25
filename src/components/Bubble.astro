@@ -11,6 +11,7 @@ export interface Props {
   position?: string;
   imageWidth?: number;
   imageHeight?: number;
+  href?: string;
 }
 
 const { 
@@ -21,35 +22,67 @@ const {
   animation, 
   position = "",
   imageWidth = 240,
-  imageHeight = 240
+  imageHeight = 240,
+  href
 } = Astro.props;
 ---
 
-<div class={`group cursor-pointer bubble-float ${animation} ${position}`}>
-  <div class={`w-40 h-40 md:w-60 md:h-60 lg:w-60 lg:h-60 rounded-full overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-br ${gradientFrom} ${gradientTo} mx-auto relative`}>
-    {image.startsWith('http') ? (
-      <img 
-        src={image} 
-        alt={title} 
-        class="w-full h-full object-cover opacity-80"
-        loading="lazy"
-        width={imageWidth}
-        height={imageHeight}
-      />
-    ) : (
-      <Image 
-        src={image} 
-        alt={title} 
-        class="w-full h-full object-cover opacity-80"
-        loading="lazy"
-        width={imageWidth}
-        height={imageHeight}
-        format="webp"
-        quality={85}
-      />
-    )}
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3 lg:p-4">
-      <span class="text-white font-bold text-sm lg:text-lg leading-tight">{title}</span>
+{href ? (
+  <a href={href} class={`group cursor-pointer bubble-float ${animation} ${position} block text-center`}>
+    <div class={`w-40 h-40 md:w-60 md:h-60 lg:w-60 lg:h-60 rounded-full overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-br ${gradientFrom} ${gradientTo} mx-auto relative mb-4`}>
+      {image.startsWith('http') ? (
+        <img 
+          src={image} 
+          alt={title} 
+          class="w-full h-full object-cover opacity-90"
+          loading="lazy"
+          width={imageWidth}
+          height={imageHeight}
+        />
+      ) : (
+        <Image 
+          src={image} 
+          alt={title} 
+          class="w-full h-full object-cover opacity-90"
+          loading="lazy"
+          width={imageWidth}
+          height={imageHeight}
+          format="webp"
+          quality={85}
+        />
+      )}
     </div>
+    <h3 class="text-rp-blue font-bold text-xl md:text-2xl lg:text-3xl leading-tight drop-shadow-lg hover:drop-shadow-xl transition-all duration-300 transform hover:scale-105 px-2">
+      {title}
+    </h3>
+  </a>
+) : (
+  <div class={`group cursor-pointer bubble-float ${animation} ${position} text-center`}>
+    <div class={`w-40 h-40 md:w-60 md:h-60 lg:w-60 lg:h-60 rounded-full overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-br ${gradientFrom} ${gradientTo} mx-auto relative mb-4`}>
+      {image.startsWith('http') ? (
+        <img 
+          src={image} 
+          alt={title} 
+          class="w-full h-full object-cover opacity-90"
+          loading="lazy"
+          width={imageWidth}
+          height={imageHeight}
+        />
+      ) : (
+        <Image 
+          src={image} 
+          alt={title} 
+          class="w-full h-full object-cover opacity-90"
+          loading="lazy"
+          width={imageWidth}
+          height={imageHeight}
+          format="webp"
+          quality={85}
+        />
+      )}
+    </div>
+    <h3 class="text-rp-blue font-bold text-xl md:text-2xl lg:text-3xl leading-tight drop-shadow-lg hover:drop-shadow-xl transition-all duration-300 transform hover:scale-105 px-2">
+      {title}
+    </h3>
   </div>
-</div>
+)}

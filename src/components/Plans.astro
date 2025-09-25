@@ -4,40 +4,20 @@ import Bubble from './Bubble.astro';
 
 const plans = [
   {
-    title: "Seguros de Salud",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=400&auto=format&fit=crop",
-    gradientFrom: "from-blue-500",
-    gradientTo: "to-blue-600",
-    animation: "animate-float-1",
-    desktopPosition: "absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8",
-    href: "/seguros-salud"
-  },
-  {
     title: "Seguros de Vida",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400&auto=format&fit=crop",
+    image: "/seguro-vida.png",
     gradientFrom: "from-green-500",
     gradientTo: "to-green-600",
-    animation: "animate-float-2",
-    desktopPosition: "absolute top-1/2 right-0 transform translate-x-8 -translate-y-1/2",
+    animation: "animate-float-1",
     href: "/seguros-vida"
   },
   {
-    title: "Gastos Médicos Mayores",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
-    gradientFrom: "from-red-500",
-    gradientTo: "to-red-600",
-    animation: "animate-float-4",
-    desktopPosition: "absolute bottom-0 left-1/4 transform -translate-x-8 translate-y-8",
-    href: "/seguros-salud/alfa-medical"
-  },
-  {
-    title: "Accidentes Personales",
-    image: "https://images.unsplash.com/photo-1545987796-200677ee1011?q=80&w=400&auto=format&fit=crop",
-    gradientFrom: "from-orange-500",
-    gradientTo: "to-orange-600",
-    animation: "animate-float-5",
-    desktopPosition: "absolute top-1/2 left-0 transform -translate-x-8 -translate-y-1/2",
-    href: "/seguros-salud/accidentes-personales"
+    title: "Seguros de Salud",
+    image: "/seguro-salud.jpg",
+    gradientFrom: "from-blue-500",
+    gradientTo: "to-blue-600",
+    animation: "animate-float-2",
+    href: "/seguros-salud"
   }
 ];
 ---
@@ -45,29 +25,12 @@ const plans = [
 <section id="planes" class=" h-[90vh] md:h-screen  flex items-center justify-center bg-gradient-to-br from-rp-gray to-white py-20">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-rp-blue mb-4">Nuestros Planes</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-rp-blue mt-4">Nuestros Planes</h2>
       <p class="text-xl text-gray-600">Protección diseñada para cada etapa de tu vida</p>
     </div>
 
-    <!-- Desktop Layout: Circular arrangement -->
-    <div class="hidden lg:block relative max-w-5xl mx-auto desktop-circular-layout">
-      <div class="relative w-full h-96 flex items-center justify-center">
-        {plans.map((plan) => (
-          <div class={plan.desktopPosition}>
-            <Bubble 
-              title={plan.title}
-              image={plan.image}
-              gradientFrom={plan.gradientFrom}
-              gradientTo={plan.gradientTo}
-              animation={plan.animation}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Mobile and Tablet Layout: Grid -->
-    <div class="lg:hidden grid grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
+    <!-- Layout: Simple grid for all devices -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 lg:gap-20 max-w-5xl mx-auto justify-items-center">
       {plans.map((plan) => (
         <Bubble 
           title={plan.title}
@@ -75,6 +38,7 @@ const plans = [
           gradientFrom={plan.gradientFrom}
           gradientTo={plan.gradientTo}
           animation={plan.animation}
+          href={plan.href}
         />
       ))}
     </div>

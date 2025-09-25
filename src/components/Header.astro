@@ -63,36 +63,24 @@ const paginasPrincipales = [
       <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
         <a href="/" class="text-rp-blue hover:text-rp-orange transition duration-300 text-sm xl:text-base">Inicio</a>
         
-        <!-- Seguros Individuales Dropdown -->
+        <!-- Planes Dropdown -->
         <div class="relative group">
-          <!---
           <button class="text-rp-blue hover:text-rp-orange transition duration-300 flex items-center text-sm xl:text-base">
-            Seguros Individuales
+            Planes
             <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
-          </button> -->
+          </button>
           
           <!-- Dropdown Menu -->
-          <div class="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
             <div class="py-2">
-              {segurosIndividuales.map((categoria) => (
-                <div class="px-4 py-2">
-                  <a href={categoria.href} class="font-semibold text-gray-800 hover:text-rp-orange transition duration-200 block mb-2">
-                    {categoria.name}
-                  </a>
-                  <div class="pl-4 space-y-1">
-                    {categoria.items.map((item) => (
-                      <a 
-                        href={item.href} 
-                        class="block text-sm text-gray-600 hover:text-rp-orange transition duration-200"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <a href="/seguros-vida" class="block px-4 py-3 text-gray-800 hover:text-rp-orange hover:bg-gray-50 transition duration-200 font-medium">
+                Seguros de Vida
+              </a>
+              <a href="/seguros-salud" class="block px-4 py-3 text-gray-800 hover:text-rp-orange hover:bg-gray-50 transition duration-200 font-medium border-t border-gray-100">
+                Seguros de Salud
+              </a>
             </div>
           </div>
         </div>
@@ -123,33 +111,27 @@ const paginasPrincipales = [
       <div class="container mx-auto px-4 py-4 max-h-screen overflow-y-auto">
         <a href="/" class="block py-3 text-rp-blue hover:text-rp-orange transition duration-300 border-b border-gray-100">Inicio</a>
         
-        <!-- Mobile Seguros Individuales Section
+        <!-- Mobile Planes Section -->
         <div class="border-b border-gray-100">
-          <button id="mobile-seguros-individuales-toggle" class="flex items-center justify-between w-full py-3 text-rp-blue hover:text-rp-orange transition duration-300">
-            <span>Seguros Individuales</span>
-            <svg class="w-5 h-5 transition-transform duration-200" id="mobile-seguros-individuales-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button id="mobile-planes-toggle" class="flex items-center justify-between w-full py-3 text-rp-blue hover:text-rp-orange transition duration-300">
+            <span>Planes</span>
+            <svg class="w-5 h-5 transition-transform duration-200" id="mobile-planes-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div id="mobile-seguros-individuales-menu" class="hidden pb-3">
-            {segurosIndividuales.map((categoria) => (
-              <div class="pl-4 mb-4">
-                <a href={categoria.href} class="block py-2 text-sm font-semibold text-gray-800 hover:text-rp-orange transition duration-200">
-                  {categoria.name}
-                </a>
-                <div class="pl-4 space-y-1">
-                  {categoria.items.map((item) => (
-                    <a href={item.href} class="block py-1 text-sm text-gray-600 hover:text-rp-orange transition duration-200">
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div id="mobile-planes-menu" class="hidden pb-3">
+            <div class="pl-4 space-y-2">
+              <a href="/seguros-vida" class="block py-2 text-sm font-medium text-gray-800 hover:text-rp-orange transition duration-200">
+                Seguros de Vida
+              </a>
+              <a href="/seguros-salud" class="block py-2 text-sm font-medium text-gray-800 hover:text-rp-orange transition duration-200">
+                Seguros de Salud
+              </a>
+            </div>
           </div>
         </div>
- -->
-          <a href="/contact" class="block py-3 text-rp-blue hover:text-rp-orange transition duration-300 border-b border-gray-100">Contacto</a>
+        
+        <a href="/contact" class="block py-3 text-rp-blue hover:text-rp-orange transition duration-300 border-b border-gray-100">Contacto</a>
         
         <!-- Mobile CTA Button -->
         <div class="pt-4">
@@ -199,15 +181,15 @@ const paginasPrincipales = [
       });
     }
     
-    // Mobile seguros individuales dropdown toggle
-    const mobileSegurosIndividualesToggle = document.getElementById('mobile-seguros-individuales-toggle');
-    const mobileSegurosIndividualesMenu = document.getElementById('mobile-seguros-individuales-menu');
-    const mobileSegurosIndividualesArrow = document.getElementById('mobile-seguros-individuales-arrow');
+    // Mobile planes dropdown toggle
+    const mobilePlanesToggle = document.getElementById('mobile-planes-toggle');
+    const mobilePlanesMenu = document.getElementById('mobile-planes-menu');
+    const mobilePlanesArrow = document.getElementById('mobile-planes-arrow');
     
-    if (mobileSegurosIndividualesToggle && mobileSegurosIndividualesMenu && mobileSegurosIndividualesArrow) {
-      mobileSegurosIndividualesToggle.addEventListener('click', function() {
-        mobileSegurosIndividualesMenu.classList.toggle('hidden');
-        mobileSegurosIndividualesArrow.classList.toggle('rotate-180');
+    if (mobilePlanesToggle && mobilePlanesMenu && mobilePlanesArrow) {
+      mobilePlanesToggle.addEventListener('click', function() {
+        mobilePlanesMenu.classList.toggle('hidden');
+        mobilePlanesArrow.classList.toggle('rotate-180');
       });
     }
     

@@ -5,7 +5,7 @@ const offices = [
     city: "Querétaro",
     address: "Nouvalia, Local 106 Planta Baja, Piso 6, Querétaro, Qro.",
     phone: "+52 (442) 595 8912",
-    phoneHref: "tel:+524425958912"
+    phoneHref: "tel:+524461354113"
   },
   {
     city: "Celaya",
@@ -21,7 +21,7 @@ const advisors = [
     specialty: "Asesora especializada en protección integral para la mujer",
     image: "/asesor_1.png",
     phone: "+52 (442) 595 8912",
-    phoneHref: "tel:+524425958912"
+    phoneHref: "tel:+524461354113"
   },
   {
     name: "Lic. Michelle Ramírez",
@@ -35,7 +35,7 @@ const advisors = [
     specialty: "Asesor especializado en retiro y protección de patrimonio",
     image: "/asesor_3.png",
     phone: "+52 (442) 595 8912",
-    phoneHref: "tel:+524425958912"
+    phoneHref: "tel:+524461354113"
   }
 ];
 ---
@@ -45,14 +45,14 @@ const advisors = [
     <h2 class="text-4xl font-bold text-rp-blue text-center mb-12">Contáctanos</h2>
     
     <!-- Formulario e Imágenes en 2 columnas -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 ml-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:ml-20">
       <!-- Cards de Asesores -->
       <div class="order-1 lg:order-2">
         <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6">Nuestros Asesores</h3>
         <div class="space-y-6">
           {advisors.map((advisor) => (
         <div class="flex items-start space-x-4">
-          <div class="w-auto h-[7rem] md:w-auto md:h-24 lg:w-auto lg:h-32 overflow-hidden rounded-lg">
+          <div class="w-screen h-auto md:w-auto md:h-24 lg:w-auto lg:h-32 overflow-hidden rounded-lg">
             <img 
           src={advisor.image} 
           alt={advisor.name}
