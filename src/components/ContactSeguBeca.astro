@@ -398,6 +398,7 @@ const advisors = [
             <a 
               href="https://wa.me/524461354113?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Segubeca%20para%20asegurar%20la%20educación%20de%20mi%20hijo" 
               target="_blank"
+              onclick="if(typeof gtagSendEvent === 'function') { gtagSendEvent('https://wa.me/524461354113?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Segubeca%20para%20asegurar%20la%20educación%20de%20mi%20hijo'); return false; }"
               style="
                 display: inline-block;
                 background: #25D366;
@@ -497,14 +498,26 @@ const advisors = [
         if (response.ok) {
           // Éxito
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-          // Enviar conversión a Google Analytics GA4
+          
+          // Enviar evento de conversión usando gtagSendEvent
+          if (typeof (window as any).gtagSendEvent === 'function') {
+            (window as any).gtagSendEvent(null); // No necesitamos redireccionar, solo enviar el evento
+          } else if (typeof (window as any).gtag !== 'undefined') {
+            // Fallback si gtagSendEvent no está disponible
+            (window as any).gtag('event', 'click_formulario_segubeca', {
+              'event_category': 'conversion',
+              'event_label': 'Segubeca Contact Form Submit',
+              'form_name': 'Segubeca Contact Form'
+            });
+          }
+          
+          // Enviar conversión adicional a Google Analytics GA4
           if (typeof (window as any).gtag !== 'undefined') {
             // Enviar conversión específica a GA4
             (window as any).gtag('event', 'leads_segubeca', {
               'event_category': 'conversion',
               'event_label': 'Segubeca Contact Form',
               'form_name': 'Segubeca Contact Form'
-
             });
             
             // También enviar evento genérico de formulario
