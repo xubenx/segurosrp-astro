@@ -506,6 +506,24 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 			const form = document.getElementById('quoteForm');
 			
 			if (form && form instanceof HTMLFormElement) {
+				// Track form interaction
+				let formInteractionTracked = false;
+				const inputs = form.querySelectorAll('input, select, textarea');
+				inputs.forEach(input => {
+					input.addEventListener('focus', function() {
+						if (!formInteractionTracked) {
+							formInteractionTracked = true;
+							// Track form start
+							if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+								(window as any).gtag('event', 'form_start', {
+									'form_id': 'quoteForm',
+									'page_location': window.location.href
+								});
+							}
+						}
+					});
+				});
+				
 				form.addEventListener('submit', async function(e) {
 					e.preventDefault();
 					
@@ -535,12 +553,19 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 							alert('¡Gracias! Un asesor se pondrá en contacto contigo en las próximas 24 horas.');
 							form.reset();
 							
-							// Opcional: Tracking de conversión para Google Ads
+							// Tracking de conversión para Google Ads
 							if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
 								(window as any).gtag('event', 'conversion', {
-									'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+									'send_to': 'AW-17382344046/CONVERSION_LABEL',
 									'value': 1.0,
 									'currency': 'MXN'
+								});
+								
+								// Evento adicional para tracking del formulario de contacto
+								(window as any).gtag('event', 'generate_lead', {
+									'campaign_id': 'seguros-monterrey-nyl',
+									'form_id': 'quoteForm',
+									'page_location': window.location.href
 								});
 							}
 						} else {
@@ -557,6 +582,16 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 
 	<!-- Meta tags específicos para SEM en el head -->
 	<Fragment slot="head">
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17382344046"></script>
+		<script is:inline>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'AW-17382344046');
+		</script>
+		
 		<meta name="keywords" content="{keywords}">
 		<meta name="robots" content="index, follow">
 		<meta property="og:title" content="{title}">
