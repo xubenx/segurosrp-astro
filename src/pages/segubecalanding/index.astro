@@ -84,6 +84,28 @@ import { Image } from 'astro:assets';
       font-display: swap;
       src: url('/fonts/Poppins-SemiBold.woff2') format('woff2');
     }
+    
+    /* Optimizaciones para prevenir CLS */
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    
+    /* Contenedores con aspect-ratio específicos */
+    [style*="aspect-ratio"] {
+      overflow: hidden;
+    }
+    
+    /* Mejoras para el hero */
+    .hero-image-container {
+      contain: layout style paint;
+    }
+    
+    /* Preload crítico para hero */
+    .hero-image-container img {
+      content-visibility: auto;
+      contain-intrinsic-size: 380px 380px;
+    }
   </style>
 </head>
 
@@ -102,10 +124,10 @@ import { Image } from 'astro:assets';
                     alt="Ramírez y Plascencia" 
                     class="h-10 sm:h-16 md:h-20 max-w-32 sm:max-w-48 md:max-w-52 object-contain"
                     loading="eager"
-                    width={200}
-                    height={80}
+                    width={128}
+                    height={51}
                     format="webp"
-                    quality={90}
+                    quality={85}
                     sizes="(max-width: 640px) 128px, (max-width: 768px) 192px, 208px"
                 />
             </a>
@@ -118,7 +140,7 @@ import { Image } from 'astro:assets';
                     width={128}
                     height={27}
                     format="webp"
-                    quality={90}
+                    quality={85}
                     sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, (max-width: 1024px) 240px, 224px"
                 />
             </a>
@@ -140,18 +162,18 @@ import { Image } from 'astro:assets';
                         </a>
                     </div>
                 </div>
-                <div class="flex relative mt-96 md:mt-96 lg:mt-96 md:h-60">
+                <div class="flex relative mt-96 md:mt-96 lg:mt-96 md:h-60 hero-image-container" style="aspect-ratio: 1;">
                     <Image 
                         src="/segubecalanding/hero.png" 
                         alt="Padres asegurando el futuro de sus hijos con Segubeca" 
                         fetchpriority="high" 
                         class="absolute bottom-0 right-0 w-full max-w-2xl object-contain z-10" 
                         loading="eager"
-                        width={400}
-                        height={400}
+                        width={380}
+                        height={380}
                         format="webp"
-                        quality={85}
-                        sizes="(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
+                        quality={80}
+                        sizes="(max-width: 768px) 380px, (max-width: 1024px) 500px, 600px"
                     />
                 </div>
             </div>
@@ -177,7 +199,7 @@ import { Image } from 'astro:assets';
       <div class="grid md:grid-cols-3 gap-8 px-4 justify-center max-w-5xl mx-auto">
         <!-- Universidad Anáhuac -->
         <div class="text-center">
-          <div class="h-32 flex items-center justify-center mb-4">
+          <div class="h-32 flex items-center justify-center mb-4" style="aspect-ratio: 830/240;">
             <Image 
               src="/segubecalanding/anahuac.png" 
               alt="Universidad Anáhuac" 
@@ -187,8 +209,8 @@ import { Image } from 'astro:assets';
               width={348}
               height={101}
               format="webp"
-              quality={85}
-              sizes="(max-width: 768px) 348px, (max-width: 1024px) 300px, 350px"
+              quality={75}
+              sizes="(max-width: 480px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 300px, 348px"
             />
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -198,7 +220,7 @@ import { Image } from 'astro:assets';
 
         <!-- Universidad Panamericana -->
         <div class="text-center">
-          <div class="h-32 flex items-center justify-center mb-4">
+          <div class="h-32 flex items-center justify-center mb-4" style="aspect-ratio: 768/206;">
             <Image 
               src="/segubecalanding/panamericana.png" 
               alt="Universidad Panamericana" 
@@ -208,8 +230,8 @@ import { Image } from 'astro:assets';
               width={348}
               height={93}
               format="webp"
-              quality={85}
-              sizes="(max-width: 768px) 348px, (max-width: 1024px) 300px, 350px"
+              quality={75}
+              sizes="(max-width: 480px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 300px, 348px"
             />
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -219,7 +241,7 @@ import { Image } from 'astro:assets';
 
         <!-- Tecnológico de Monterrey -->
         <div class="text-center">
-          <div class="h-32 flex items-center justify-center mb-4">
+          <div class="h-32 flex items-center justify-center mb-4" style="aspect-ratio: 400/105;">
             <Image 
               src="/segubecalanding/tec.png" 
               alt="Tecnológico de Monterrey" 
@@ -229,8 +251,8 @@ import { Image } from 'astro:assets';
               width={348}
               height={91}
               format="webp"
-              quality={85}
-              sizes="(max-width: 768px) 348px, (max-width: 1024px) 300px, 350px"
+              quality={75}
+              sizes="(max-width: 480px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 300px, 348px"
             />
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -272,7 +294,7 @@ import { Image } from 'astro:assets';
                     
                     <!-- Paso 1 -->
                     <div class="-mt-4">
-                        <div class="text-center">
+                        <div class="text-center" style="aspect-ratio: 10/3;">
                             <Image 
                                 src="/segubecalanding/paso_1.png" 
                                 alt="Paso 1: Define tu plan"
@@ -281,15 +303,15 @@ import { Image } from 'astro:assets';
                                 width={380}
                                 height={114}
                                 format="webp"
-                                quality={80}
-                                sizes="(max-width: 768px) 380px, (max-width: 1024px) 600px, 896px"
+                                quality={75}
+                                sizes="(max-width: 480px) 320px, (max-width: 768px) 380px, (max-width: 1024px) 600px, 800px"
                             />
                         </div>
                     </div>
 
                     <!-- Paso 2 -->
                     <div class="-mt-8">
-                        <div class="text-center">
+                        <div class="text-center" style="aspect-ratio: 10/3;">
                             <Image 
                                 src="/segubecalanding/paso_2.png" 
                                 alt="Paso 2: Estás protegido"
@@ -298,8 +320,8 @@ import { Image } from 'astro:assets';
                                 width={380}
                                 height={114}
                                 format="webp"
-                                quality={80}
-                                sizes="(max-width: 768px) 380px, (max-width: 1024px) 600px, 896px"
+                                quality={75}
+                                sizes="(max-width: 480px) 320px, (max-width: 768px) 380px, (max-width: 1024px) 600px, 800px"
                             />
                         </div>
                     </div>
@@ -313,7 +335,7 @@ import { Image } from 'astro:assets';
                     <div class="my-8">
                         <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
                             <!-- Beneficio 1 -->
-                            <div class="text-center">
+                            <div class="text-center" style="aspect-ratio: 1;">
                                 <Image 
                                     src="/segubecalanding/beneficio_1.png" 
                                     alt="Beneficio 1"
@@ -322,13 +344,13 @@ import { Image } from 'astro:assets';
                                     width={186}
                                     height={186}
                                     format="webp"
-                                    quality={80}
-                                    sizes="(max-width: 768px) 186px, (max-width: 1024px) 200px, 208px"
+                                    quality={75}
+                                    sizes="(max-width: 480px) 140px, (max-width: 768px) 186px, (max-width: 1024px) 180px, 200px"
                                 />
                             </div>
                             
                             <!-- Beneficio 2 -->
-                            <div class="text-center">
+                            <div class="text-center" style="aspect-ratio: 1;">
                                 <Image 
                                     src="/segubecalanding/beneficio_2.png" 
                                     alt="Beneficio 2"
@@ -337,13 +359,13 @@ import { Image } from 'astro:assets';
                                     width={186}
                                     height={186}
                                     format="webp"
-                                    quality={80}
-                                    sizes="(max-width: 768px) 186px, (max-width: 1024px) 200px, 208px"
+                                    quality={75}
+                                    sizes="(max-width: 480px) 140px, (max-width: 768px) 186px, (max-width: 1024px) 180px, 200px"
                                 />
                             </div>
                             
                             <!-- Beneficio 3 -->
-                            <div class="text-center">
+                            <div class="text-center" style="aspect-ratio: 1;">
                                 <Image 
                                     src="/segubecalanding/beneficio_3.png" 
                                     alt="Beneficio 3"
@@ -352,13 +374,13 @@ import { Image } from 'astro:assets';
                                     width={186}
                                     height={186}
                                     format="webp"
-                                    quality={80}
-                                    sizes="(max-width: 768px) 186px, (max-width: 1024px) 200px, 208px"
+                                    quality={75}
+                                    sizes="(max-width: 480px) 140px, (max-width: 768px) 186px, (max-width: 1024px) 180px, 200px"
                                 />
                             </div>
                             
                             <!-- Beneficio 4 -->
-                            <div class="text-center">
+                            <div class="text-center" style="aspect-ratio: 1;">
                                 <Image 
                                     src="/segubecalanding/beneficio_4.png" 
                                     alt="Beneficio 4"
@@ -367,8 +389,8 @@ import { Image } from 'astro:assets';
                                     width={186}
                                     height={186}
                                     format="webp"
-                                    quality={80}
-                                    sizes="(max-width: 768px) 186px, (max-width: 1024px) 200px, 208px"
+                                    quality={75}
+                                    sizes="(max-width: 480px) 140px, (max-width: 768px) 186px, (max-width: 1024px) 180px, 200px"
                                 />
                             </div>
                         </div>
@@ -376,7 +398,7 @@ import { Image } from 'astro:assets';
 
                     <!-- Paso 3 -->
                     <div class="-mt-4">
-                        <div class="text-center">
+                        <div class="text-center" style="aspect-ratio: 10/3;">
                             <Image 
                                 src="/segubecalanding/paso_3.png" 
                                 alt="Paso 3: Ahorro"
@@ -385,15 +407,15 @@ import { Image } from 'astro:assets';
                                 width={380}
                                 height={114}
                                 format="webp"
-                                quality={80}
-                                sizes="(max-width: 768px) 380px, (max-width: 1024px) 600px, 896px"
+                                quality={75}
+                                sizes="(max-width: 480px) 320px, (max-width: 768px) 380px, (max-width: 1024px) 600px, 800px"
                             />
                         </div>
                     </div>
 
                     <!-- Paso 4 -->
                     <div>
-                        <div class="text-center">
+                        <div class="text-center" style="aspect-ratio: 10/3;">
                             <Image 
                                 src="/segubecalanding/paso_4.png" 
                                 alt="Paso 4: Recibes tu dinero"
@@ -402,8 +424,8 @@ import { Image } from 'astro:assets';
                                 width={380}
                                 height={114}
                                 format="webp"
-                                quality={80}
-                                sizes="(max-width: 768px) 380px, (max-width: 1024px) 600px, 896px"
+                                quality={75}
+                                sizes="(max-width: 480px) 320px, (max-width: 768px) 380px, (max-width: 1024px) 600px, 800px"
                             />
                         </div>
                     </div>
@@ -462,10 +484,11 @@ import { Image } from 'astro:assets';
                   alt="Comprobante de retiro de María González"
                   class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
                   loading="lazy"
-                  width={400}
-                  height={400}
+                  width={380}
+                  height={380}
                   format="webp"
-                  sizes="(max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
+                  quality={75}
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
                 />
               </div>
             </div>
@@ -482,10 +505,11 @@ import { Image } from 'astro:assets';
                   alt="Comprobante de retiro de Roberto Hernández"
                   class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
                   loading="lazy"
-                  width={400}
-                  height={400}
+                  width={380}
+                  height={380}
                   format="webp"
-                  sizes="(max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
+                  quality={75}
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
                 />
               </div>
             </div>
@@ -502,10 +526,11 @@ import { Image } from 'astro:assets';
                   alt="Comprobante de retiro de Ana Martínez"
                   class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
                   loading="lazy"
-                  width={400}
-                  height={400}
+                  width={380}
+                  height={380}
                   format="webp"
-                  sizes="(max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
+                  quality={75}
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
                 />
               </div>
             </div>
@@ -522,10 +547,11 @@ import { Image } from 'astro:assets';
                   alt="Comprobante de retiro del Dr. Carlos Ruiz"
                   class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
                   loading="lazy"
-                  width={400}
-                  height={400}
+                  width={380}
+                  height={380}
                   format="webp"
-                  sizes="(max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
+                  quality={75}
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 380px, (max-width: 1024px) 400px, 500px"
                 />
               </div>
             </div>
