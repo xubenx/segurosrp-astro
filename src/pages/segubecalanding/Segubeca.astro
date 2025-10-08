@@ -1,0 +1,664 @@
+---
+import ContactSeguBeca from '../../components/ContactSeguBeca.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Segubeca | Apoyo educativo y protección familiar con seguro Monterrey.">
+  
+  <!-- Bloquear indexación -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+
+  <title>Segubeca | Apoyo educativo y protección familiar</title>
+
+  <!-- Preconnect para terceros críticos -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://analytics.google.com" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <!-- Preload crítico para LCP -->
+  <link rel="preload" as="image" href="/segubecalanding_optimized/hero.webp" fetchpriority="high">
+  
+  <!-- Preload critical font files for better performance -->
+  <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Poppins-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+  
+  <!-- CSS crítico inline -->
+  <style>
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/Poppins-Regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/fonts/Poppins-Bold.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('/fonts/Poppins-SemiBold.woff2') format('woff2');
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Segubeca",
+    "description": "Seguro educativo que garantiza el futuro universitario de tus hijos",
+    "provider": {
+      "@type": "Organization",
+      "name": "Seguros Monterrey New York Life"
+    }
+  }
+  </script>
+</head>
+
+<body class="font-['Poppins'] text-gray-800 bg-slate-50 m-0 p-0">
+  
+  <!-- HERO -->
+  <header class="h-screen flex flex-col m-0 p-0 relative overflow-hidden bg-gradient-to-r from-blue-800 to-slate-900">
+    <!-- Elementos de fondo espaciales -->
+    <div class="absolute inset-0 opacity-30 z-10 pointer-events-none" style="background-image: url('/segubecalanding_optimized/stars.webp'), url('/segubecalanding_optimized/moon.webp'), url('/segubecalanding_optimized/planet.webp'); background-position: center center, top 10% right 10%, bottom 20% left 15%; background-repeat: repeat, no-repeat, no-repeat; background-size: auto, clamp(80px, 15vw, 150px), clamp(100px, 20vw, 200px);"></div>
+    
+    <div class="relative z-20 h-full flex flex-col justify-between pt-5 pb-5 max-w-7xl mx-auto px-4 w-full">
+      <!-- Logos en la parte superior -->
+      <div class="flex justify-between items-center flex-shrink-0 mb-5">
+        <a href="/" class="flex-shrink-0" aria-label="Ir a página principal - New York Life">
+          <img 
+            src="/segubecalanding_optimized/Logo_New_York_Life.webp" 
+            alt="New York Life - Seguros de vida y protección familiar" 
+            class="h-10 sm:h-16 md:h-20 max-w-32 sm:max-w-48 md:max-w-52 object-contain"
+            loading="lazy"
+            decoding="async"
+            width="200"
+            height="80"
+          />
+        </a>
+        <a href="/" class="flex-shrink-0" aria-label="Ir a página principal - Ramírez y Plascencia">
+          <img 
+            src="/segubecalanding_optimized/rp_blanco.webp" 
+            alt="Ramírez y Plascencia - Asesores de seguros" 
+            class="w-32 sm:w-36 md:w-60 lg:w-56 h-auto max-h-none"
+            loading="lazy"
+            decoding="async"
+            width="224"
+            height="47"
+          />
+        </a>
+      </div>
+      
+      <!-- Contenido principal del hero -->
+      <div class="flex-1 flex items-center min-h-0">
+        <div class="grid lg:grid-cols-2 gap-4 items-center h-full w-full">
+          <div class="flex flex-col justify-center mt-40 md:mt-0 lg:mt-0">
+            <h1 class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight text-yellow-300">
+              🎓 Asegura el FUTURO de tus hijos con <span class="text-blue-400">Segubeca</span>
+            </h1>
+            <p class="text-white text-base sm:text-lg md:text-xl mb-6">
+              La educación universitaria es la mejor herencia que puedes darles. Con <strong>Segubeca</strong>, tendrás la tranquilidad de que, pase lo que pase, tus hijos contarán con los recursos necesarios para cumplir sus sueños.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <a href="#form" class="inline-block bg-yellow-300 text-black font-semibold py-3 px-6 rounded-full border-2 border-blue-500 hover:scale-105 transition-transform duration-300" aria-label="Ir al formulario para asegurar la educación de tus hijos">
+                <i class="fa-solid fa-graduation-cap me-2 text-gray-900" aria-hidden="true"></i>Quiero asegurar su educación
+              </a>
+            </div>
+          </div>
+          <div class="flex relative mt-96 md:mt-96 lg:mt-96 md:h-60">
+            <img 
+              src="/segubecalanding_optimized/hero.webp" 
+              alt="Familia feliz asegurando el futuro educativo de sus hijos con Segubeca" 
+              fetchpriority="high"
+              decoding="async"
+              class="absolute bottom-0 right-0 w-full max-w-2xl object-contain z-10" 
+              width="800"
+              height="800"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- UNIVERSIDADES SECTION -->
+    <section class="py-20 bg-cover bg-center bg-no-repeat" style="background-image: url('/segubecalanding_optimized/bg-moon.webp');">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-blue-800">
+            ¿Cuánto cuesta estudiar en las mejores universidades de México?
+          </h2>
+          <p class="text-slate-900 text-lg sm:text-xl max-w-4xl mx-auto">
+            Conoce el costo real de una educación de calidad y planifica el futuro de tus hijos
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 px-4 justify-center max-w-5xl mx-auto">
+          <!-- Universidad Anáhuac -->
+          <div class="text-center">
+            <div class="h-32 flex items-center justify-center mb-4">
+              <img 
+                src="/segubecalanding_optimized/anahuac.webp" 
+                alt="Universidad Anáhuac - Costo aproximado de carrera universitaria" 
+                class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
+                style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
+                loading="lazy"
+                decoding="async"
+                width="348"
+                height="101"
+              />
+            </div>
+            <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$2,350,000</p>
+            </div>
+          </div>
+
+          <!-- Universidad Panamericana -->
+          <div class="text-center">
+            <div class="h-32 flex items-center justify-center mb-4">
+              <img 
+                src="/segubecalanding_optimized/panamericana.webp" 
+                alt="Universidad Panamericana - Costo aproximado de carrera universitaria" 
+                class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
+                style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
+                loading="lazy"
+                decoding="async"
+                width="350"
+                height="95"
+              />
+            </div>
+            <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$2,000,000</p>
+            </div>
+          </div>
+
+          <!-- Tecnológico de Monterrey -->
+          <div class="text-center">
+            <div class="h-32 flex items-center justify-center mb-4">
+              <img 
+                src="/segubecalanding_optimized/tec.webp" 
+                alt="Tecnológico de Monterrey - Costo aproximado de carrera universitaria" 
+                class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
+                style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
+                loading="lazy"
+                decoding="async"
+                width="350"
+                height="90"
+              />
+            </div>
+            <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$1,500,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action dentro de la sección -->
+        <div class="text-center mt-12">
+          <div class="py-8">
+            <a href="#form" class="inline-block bg-blue-800 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300" aria-label="Ir al formulario para proteger el futuro educativo">
+              <i class="fa-solid fa-shield-heart me-2" aria-hidden="true"></i>Proteger su futuro ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN INFORMACIÓN SEGUBECA -->
+    <section class="relative overflow-hidden py-20 bg-gradient-to-br from-blue-800 to-slate-900">
+      <!-- Elementos de fondo espaciales -->
+      <div class="absolute inset-0 opacity-30 z-10 pointer-events-none bg-center bg-repeat bg-auto" style="background-image: url('/segubecalanding_optimized/stars.webp');"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div class="text-center mb-12">
+          <h2 class="text-yellow-300 text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            ✨ Cómo funciona Segubeca
+          </h2>
+          <p class="text-white text-lg sm:text-xl max-w-4xl mx-auto">
+            Asegurar el futuro educativo de tus hijos es más simple de lo que imaginas. 
+            Sigue estos 4 pasos y garantiza su educación universitaria.
+          </p>
+        </div>
+
+        <!-- Pasos del proceso -->
+        <div class="flex justify-center">
+          <div class="max-w-4xl w-full">
+            <div class="flex flex-col gap-0">
+              
+              <!-- Paso 1 -->
+              <div class="-mt-4">
+                <div class="text-center">
+                  <img 
+                    src="/segubecalanding_optimized/paso_1.webp" 
+                    alt="Paso 1: Define tu plan - Elige la suma asegurada y el plazo de ahorro"
+                    class="w-full max-w-4xl h-auto mx-auto"
+                    loading="lazy"
+                    decoding="async"
+                    width="896"
+                    height="268"
+                  />
+                </div>
+              </div>
+
+              <!-- Paso 2 -->
+              <div class="-mt-8">
+                <div class="text-center">
+                  <img 
+                    src="/segubecalanding_optimized/paso_2.webp" 
+                    alt="Paso 2: Estás protegido desde el primer día con cobertura completa"
+                    class="w-full max-w-4xl h-auto mx-auto"
+                    loading="lazy"
+                    decoding="async"
+                    width="896"
+                    height="268"
+                  />
+                </div>
+              </div>
+              
+              <!-- Beneficios paso 2 -->
+              <p class="text-white text-lg sm:text-xl max-w-4xl mx-auto mt-4 text-center">
+                Y obtienes los siguientes beneficios:
+              </p>
+              
+              <!-- Sección de Beneficios después del Paso 2 -->
+              <div class="my-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
+                  <!-- Beneficio 1 -->
+                  <div class="text-center">
+                    <img 
+                      src="/segubecalanding_optimized/beneficio_1.webp" 
+                      alt="Beneficio 1: Protección inmediata ante cualquier eventualidad"
+                      class="w-full max-w-52 h-auto mx-auto"
+                      loading="lazy"
+                      decoding="async"
+                      width="186"
+                      height="186"
+                    />
+                  </div>
+                  
+                  <!-- Beneficio 2 -->
+                  <div class="text-center">
+                    <img 
+                      src="/segubecalanding_optimized/beneficio_2.webp" 
+                      alt="Beneficio 2: Garantía de pago completo del plan educativo"
+                      class="w-full max-w-52 h-auto mx-auto"
+                      loading="lazy"
+                      decoding="async"
+                      width="186"
+                      height="186"
+                    />
+                  </div>
+                  
+                  <!-- Beneficio 3 -->
+                  <div class="text-center">
+                    <img 
+                      src="/segubecalanding_optimized/beneficio_3.webp" 
+                      alt="Beneficio 3: Ahorro disciplinado para el futuro universitario"
+                      class="w-full max-w-52 h-auto mx-auto"
+                      loading="lazy"
+                      decoding="async"
+                      width="186"
+                      height="186"
+                    />
+                  </div>
+                  
+                  <!-- Beneficio 4 -->
+                  <div class="text-center">
+                    <img 
+                      src="/segubecalanding_optimized/beneficio_4.webp" 
+                      alt="Beneficio 4: Capital disponible al cumplir 18 años"
+                      class="w-full max-w-52 h-auto mx-auto"
+                      loading="lazy"
+                      decoding="async"
+                      width="186"
+                      height="186"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 3 -->
+              <div class="-mt-4">
+                <div class="text-center">
+                  <img 
+                    src="/segubecalanding_optimized/paso_3.webp" 
+                    alt="Paso 3: Ahorro sistemático mensual con rendimientos garantizados"
+                    class="w-full max-w-4xl h-auto mx-auto"
+                    loading="lazy"
+                    decoding="async"
+                    width="896"
+                    height="268"
+                  />
+                </div>
+              </div>
+
+              <!-- Paso 4 -->
+              <div>
+                <div class="text-center">
+                  <img 
+                    src="/segubecalanding_optimized/paso_4.webp" 
+                    alt="Paso 4: Recibes tu dinero cuando tu hijo cumpla 18 años"
+                    class="w-full max-w-4xl h-auto mx-auto"
+                    loading="lazy"
+                    decoding="async"
+                    width="896"
+                    height="268"
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action de la sección -->
+        <div class="text-center mt-8">
+          <div class="p-6 max-w-2xl mx-auto">
+            <h3 class="text-[#FEE63C] font-bold mb-4 text-xl sm:text-2xl">
+              ✨ ¡Es así de simple!
+            </h3>
+            <p class="text-white mb-4 text-base sm:text-lg">
+              Con Segubeca, aseguras que tu hijo tenga el capital necesario para su educación universitaria, 
+              sin importar lo que pase. Es la mejor inversión que puedes hacer hoy.
+            </p>
+            <a href="#form" class="inline-block bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-800 py-3 px-6 rounded-full font-bold transition-transform duration-200 hover:scale-105 shadow-lg" aria-label="Empezar mi plan de ahorro educativo ahora">
+              🚀 Empezar mi plan ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS SECTION -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-slate-900 to-blue-700 py-8 md:py-12 lg:py-16">
+      <!-- Elementos de fondo espaciales -->
+      <div class="absolute inset-0 z-10 pointer-events-none bg-center bg-repeat bg-auto" style="background-image: url('/segubecalanding_optimized/bg-moon.webp');"></div>
+      
+      <h2 class="absolute top-5 sm:top-8 md:top-10 left-1/2 transform -translate-x-1/2 text-black text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold z-20 text-center w-full">💬 Testimonios de clientes satisfechos</h2>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 mt-0 sm:mt-20 md:mt-0">
+        <!-- Carrusel de Testimonios con Tailwind CSS -->
+        <div class="relative">
+          <!-- Indicadores -->
+          <div class="flex justify-center space-x-2 mb-8">
+            <button aria-label="Ver testimonio 1 de 4" class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 transition-all duration-300 carousel-indicator opacity-100" data-slide="0"></button>
+            <button aria-label="Ver testimonio 2 de 4" class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-all duration-300 carousel-indicator" data-slide="1"></button>
+            <button aria-label="Ver testimonio 3 de 4" class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-all duration-300 carousel-indicator" data-slide="2"></button>
+            <button aria-label="Ver testimonio 4 de 4" class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-300 opacity-50 transition-all duration-300 carousel-indicator" data-slide="3"></button>
+          </div>
+
+          <!-- Slides container -->
+          <div class="relative overflow-hidden min-h-[600px]">
+            <!-- Slide 1 - María González -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-100 transition-opacity duration-700 ease-in-out" data-slide="0">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👨‍⚕️ María González</h3>
+                  <p class="text-black text-sm">"Gracias a Segubeca, mi hija pudo estudiar medicina sin preocupaciones financieras. El retiro fue puntual y completo."</p>
+                </div>
+                <img 
+                  src="/segubecalanding_optimized/testimonio_15.webp" 
+                  alt="Comprobante de retiro exitoso de María González - Segubeca cumple su promesa"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="500"
+                />
+              </div>
+            </div>
+
+            <!-- Slide 2 - Roberto Hernández -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out" data-slide="1">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👨‍💼 Roberto Hernández</h3>
+                  <p class="text-black text-sm">"Invertí en Segubeca cuando mi hijo tenía 8 años. A los 18, recibió el capital completo para su carrera en ingeniería."</p>
+                </div>
+                <img 
+                  src="/segubecalanding_optimized/testimonio_16.webp" 
+                  alt="Comprobante de retiro exitoso de Roberto Hernández - Capital completo para ingeniería"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="500"
+                />
+              </div>
+            </div>
+
+            <!-- Slide 3 - Juan Martínez -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out" data-slide="2">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👩‍🏫 Juan Martínez</h3>
+                  <p class="text-black text-sm">"Segubeca me dio la tranquilidad de asegurar la universidad de mis gemelos. ¡Funcionó perfectamente!"</p>
+                </div>
+                <img 
+                  src="/segubecalanding_optimized/testimonio_17.webp" 
+                  alt="Comprobante de retiro exitoso de Juan Martínez - Educación asegurada para gemelos"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="500"
+                />
+              </div>
+            </div>
+
+            <!-- Slide 4 - Josefina Ruiz -->
+            <div class="carousel-slide absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out" data-slide="3">
+              <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col justify-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
+                  <h3 class="text-black font-bold text-lg mb-2">👨‍👩‍👧‍👦 Josefina Ruiz</h3>
+                  <p class="text-black text-sm">"Segubeca no solo cumplió, sino que superó mis expectativas. Mi hija estudió en el extranjero gracias a esta inversión."</p>
+                </div>
+                <img 
+                  src="/segubecalanding_optimized/testimonio_18.webp" 
+                  alt="Comprobante de retiro exitoso de Josefina Ruiz - Educación internacional garantizada"
+                  class="w-full h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] object-contain mx-auto"
+                  loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="500"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <div id="form"><ContactSeguBeca /></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p>© <span id="year"></span> Segubeca. Todos los derechos reservados.</p>
+      <p class="text-sm mt-2">Consulta términos, condiciones, coberturas, exclusiones y requisitos con nuestros asesores. La disponibilidad y beneficios están sujetos a evaluación.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts al final del body con defer -->
+  <script defer>
+    // Year en footer
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear().toString();
+    }
+  </script>
+
+  <script defer>
+    // Carrusel de testimonios
+    document.addEventListener('DOMContentLoaded', function() {
+      const indicators = document.querySelectorAll('.carousel-indicator');
+      const slides = document.querySelectorAll('.carousel-slide');
+      let currentSlide = 0;
+      let autoSlideInterval;
+      let isTransitioning = false;
+
+      function showSlide(index, immediate = false) {
+        if (isTransitioning && !immediate) return;
+        
+        isTransitioning = true;
+        
+        // Asegurar que el índice esté en rango
+        index = index % slides.length;
+        if (index < 0) index = slides.length - 1;
+        
+        // Ocultar todos los slides
+        slides.forEach((slide, i) => {
+          const slideElement = slide;
+          if (i === index) {
+            slideElement.classList.remove('opacity-0');
+            slideElement.classList.add('opacity-100');
+            slideElement.classList.remove('invisible');
+            slideElement.classList.add('visible');
+          } else {
+            slideElement.classList.remove('opacity-100');
+            slideElement.classList.add('opacity-0');
+            slideElement.classList.remove('visible');
+            slideElement.classList.add('invisible');
+          }
+        });
+
+        // Actualizar indicadores
+        indicators.forEach((indicator, i) => {
+          const indicatorElement = indicator;
+          if (i === index) {
+            indicatorElement.classList.remove('opacity-50', 'scale-100');
+            indicatorElement.classList.add('opacity-100', 'scale-110');
+          } else {
+            indicatorElement.classList.remove('opacity-100', 'scale-110');
+            indicatorElement.classList.add('opacity-50', 'scale-100');
+          }
+        });
+
+        currentSlide = index;
+        
+        // Permitir nueva transición después de que termine la animación
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 100);
+      }
+
+      function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+      }
+
+      function prevSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+      }
+
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+          if (!isTransitioning) {
+            nextSlide();
+          }
+        }, 4000);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+
+      // Event listeners para los indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', (e) => {
+          e.preventDefault();
+          stopAutoSlide();
+          showSlide(index);
+          startAutoSlide();
+        });
+      });
+
+      // Navegación con teclado
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          stopAutoSlide();
+          prevSlide();
+          startAutoSlide();
+        } else if (e.key === 'ArrowRight') {
+          stopAutoSlide();
+          nextSlide();
+          startAutoSlide();
+        }
+      });
+
+      // Pausar en hover del carrusel completo
+      const carouselContainer = document.querySelector('.relative');
+      if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+        carouselContainer.addEventListener('mouseleave', startAutoSlide);
+      }
+
+      // Inicializar el carrusel
+      showSlide(0, true);
+      startAutoSlide();
+
+      // Manejar cambios de visibilidad de la página
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopAutoSlide();
+        } else {
+          startAutoSlide();
+        }
+      });
+    });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17382344046"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17382344046');
+  </script>
+
+  <!-- Google tag (gtag.js) event - delayed navigation helper -->
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'click_whatsapp', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Cargar CSS no crítico al final -->
+  <link rel="stylesheet" href="/css/fonts.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/css/fonts.css" /></noscript>
+  
+  <!-- FontAwesome icons - carga diferida -->
+  <link rel="stylesheet" href="/fontawesome-css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/fontawesome-css/all.min.css" /></noscript>
+</body>
+</html>
