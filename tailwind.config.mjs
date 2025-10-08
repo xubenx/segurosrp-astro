@@ -9,7 +9,7 @@ export default {
       colors: {
         'rp-blue': '#00305C',
         'rp-light-blue': '#1A75CF',
-        'rp-orange': '#FF6600',
+        'rp-orange': '#E55A00',
         'rp-gray': '#F5F5F5',
         'rp-white': '#FFFFFF',
         'rp-black': '#000000',
