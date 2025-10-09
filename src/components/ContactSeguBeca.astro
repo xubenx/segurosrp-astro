@@ -402,6 +402,11 @@ const advisors = [
               target="_blank"
               onclick="
                 if (typeof window.gtag !== 'undefined') {
+                  // Asegurar que GA4 esté configurado antes de enviar eventos
+                  window.gtag('config', 'G-Y67F0BJRHL', {
+                    'send_page_view': false
+                  });
+                  
                   window.gtag('event', 'segubeca_whatsapp', {
                     event_category: 'conversion',
                     event_label: 'Segubeca WhatsApp Contact',
@@ -525,8 +530,13 @@ const advisors = [
         if (response.ok) {
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
 
-          // Enviar evento de conversión segubeca_form a Google Analytics 4
+          // Asegurar que GA4 esté configurado antes de enviar eventos
           if (typeof window.gtag !== 'undefined') {
+            window.gtag('config', 'G-Y67F0BJRHL', {
+              'send_page_view': false
+            });
+
+            // Enviar evento de conversión segubeca_form a Google Analytics 4
             window.gtag('event', 'segubeca_form', {
               event_category: 'conversion',
               event_label: 'Segubeca Contact Form Submit',
