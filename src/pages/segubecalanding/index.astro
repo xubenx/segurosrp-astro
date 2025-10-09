@@ -41,9 +41,7 @@ import { Image } from 'astro:assets';
       if (GA4_ID) {
         gtag('config', GA4_ID);
       }
-      if (GOOGLE_ADS_ID) {
-        gtag('config', GOOGLE_ADS_ID, { send_page_view: false });
-      }
+      
     }
 
     function ensureGtagLoaded() {
@@ -168,9 +166,9 @@ import { Image } from 'astro:assets';
             </a>
             <a href="/" class="flex-shrink-0" aria-label="New York Life">
                 <picture>
-                    <source srcset="/rp_blancos_flip_mobile.webp" media="(max-width: 640px)" type="image/webp" />
-                    <source srcset="/rp_blancos_flip_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
-                    <source srcset="/rp_blancos_flip_desktop.webp" type="image/webp" />
+                    <source srcset="/rp_blancos_flip.webp" media="(max-width: 640px)" type="image/webp" />
+                    <source srcset="/rp_blancos_flip.webp" media="(max-width: 1024px)" type="image/webp" />
+                    <source srcset="/rp_blancos_flip.webp" type="image/webp" />
                     <img
                         src="/rp_blancos_flip.png"
                         alt="New York Life"
