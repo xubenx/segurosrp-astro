@@ -375,6 +375,21 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 							<a href="https://wa.me/524461354113?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20seguros%20New%20York%20Life%20en%20Monterrey.%20¿Pueden%20ayudarme?" 
 							   target="_blank" 
 							   rel="noopener noreferrer"
+							   onclick="
+							     if (typeof window.gtag !== 'undefined') {
+							       window.gtag('config', 'G-M46V75WPZT', {
+							         'send_page_view': false
+							       });
+							       
+							       window.gtag('event', 'asesores_whatsapp', {
+							         event_category: 'conversion',
+							         event_label: 'Asesores Monterrey WhatsApp Contact',
+							         value: 1,
+							         currency: 'MXN'
+							       });
+							     }
+							     return true;
+							   "
 							   class="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-lg font-bold text-lg transition duration-300 shadow-lg flex items-center justify-center gap-3 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
 							   aria-label="Contactar por WhatsApp para información sobre seguros">
 								<span class="text-2xl" role="img" aria-label="WhatsApp">💬</span>
@@ -575,8 +590,21 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 							alert('¡Gracias! Un asesor se pondrá en contacto contigo en las próximas 24 horas.');
 							form.reset();
 							
-							// Tracking de conversión para Google Ads
+							// Asegurar que GA4 esté configurado antes de enviar eventos
 							if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+								(window as any).gtag('config', 'G-M46V75WPZT', {
+									'send_page_view': false
+								});
+
+								// Evento de conversión asesores_form para Google Analytics 4
+								(window as any).gtag('event', 'asesores_form', {
+									'event_category': 'conversion',
+									'event_label': 'Asesores Monterrey Contact Form Submit',
+									'value': 1,
+									'currency': 'MXN'
+								});
+								
+								// Tracking de conversión para Google Ads
 								(window as any).gtag('event', 'conversion', {
 									'send_to': 'G-Y67F0BJRHL/CONVERSION_LABEL',
 									'value': 1.0,
