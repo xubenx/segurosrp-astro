@@ -24,12 +24,36 @@ const business = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5C5DGHJC');</script>
+    <!-- Google Tag Manager - Carga Diferida -->
+    <script>
+      // Inicializar dataLayer
+      window.dataLayer = window.dataLayer || [];
+      
+      // Función para cargar GTM
+      function loadGTM() {
+        if (window.gtmLoaded) return;
+        window.gtmLoaded = true;
+        
+        // Google Tag Manager
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5C5DGHJC');
+      }
+      
+      // Cargar GTM después de la primera interacción del usuario
+      const events = ['mousedown', 'touchstart', 'scroll', 'keydown'];
+      const loadOnce = () => {
+        loadGTM();
+        events.forEach(event => window.removeEventListener(event, loadOnce));
+      };
+      
+      events.forEach(event => window.addEventListener(event, loadOnce, { passive: true }));
+      
+      // Fallback: cargar después de 5 segundos si no hay interacción
+      setTimeout(loadGTM, 5000);
+    </script>
     <!-- End Google Tag Manager -->
     
     <title>{pageTitle}</title>
