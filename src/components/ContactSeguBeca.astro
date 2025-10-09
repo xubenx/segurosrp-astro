@@ -403,6 +403,13 @@ const advisors = [
               onclick="
                 console.log('Click en WhatsApp - Enviando evento segubeca_whatsapp');
                 
+                // Asegurar que GA4 esté configurado
+                if (typeof window.gtag !== 'undefined') {
+                  window.gtag('config', 'G-Y67F0BJRHL', {
+                    'send_page_view': false
+                  });
+                }
+                
                 // Enviar evento a dataLayer para GTM
                 if (typeof window.dataLayer !== 'undefined') {
                   window.dataLayer.push({
@@ -543,6 +550,13 @@ const advisors = [
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
 
           console.log('Formulario enviado exitosamente - Enviando eventos de conversión');
+
+          // Asegurar que GA4 esté configurado
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('config', 'G-Y67F0BJRHL', {
+              'send_page_view': false
+            });
+          }
 
           // Enviar evento a dataLayer para GTM
           if (typeof window.dataLayer !== 'undefined') {
