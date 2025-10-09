@@ -11,51 +11,73 @@ import { Image } from 'astro:assets';
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Google tag (gtag.js) -->
   <script>
-    const GTAG_ID = 'AW-17382344046';
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    // @ts-nocheck
+    const GA4_ID = 'G-Y67F0BJRHL';
+    const GOOGLE_ADS_ID = 'AW-17382344046';
+    const GTAG_PRIMARY_ID = GA4_ID || GOOGLE_ADS_ID;
+
+    interface WindowWithGtag extends Window {
+      dataLayer: unknown[];
+      gtagSendEvent?: (url: string) => boolean;
+      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    }
+
+    const globalWindow = window as WindowWithGtag;
+    globalWindow.dataLayer = globalWindow.dataLayer || [];
+
+    function gtag(...args: unknown[]) {
+      globalWindow.dataLayer.push(args);
+    }
 
     function loadGtagConfig() {
       gtag('js', new Date());
-      gtag('config', GTAG_ID, { send_page_view: false });
+      if (GA4_ID) {
+        gtag('config', GA4_ID);
+      }
+      if (GOOGLE_ADS_ID) {
+        gtag('config', GOOGLE_ADS_ID, { send_page_view: false });
+      }
     }
 
     function ensureGtagLoaded() {
       if (document.getElementById('gtag-script')) {
         return;
       }
+      if (!GTAG_PRIMARY_ID) {
+        return;
+      }
       const script = document.createElement('script');
       script.id = 'gtag-script';
       script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_PRIMARY_ID}`;
       script.onload = loadGtagConfig;
-      document.head.appendChild(script);
+      document.head?.appendChild(script);
     }
 
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => ensureGtagLoaded(), { timeout: 2000 });
+    if (globalWindow.requestIdleCallback) {
+      globalWindow.requestIdleCallback(() => ensureGtagLoaded(), { timeout: 2000 });
     } else {
-      window.addEventListener('load', ensureGtagLoaded);
+      globalWindow.addEventListener('load', ensureGtagLoaded);
     }
 
     // Helper function to delay opening a URL until a gtag event is sent.
     // Call it in response to an action that should navigate to a URL.
     function gtagSendEvent(url) {
       ensureGtagLoaded();
-      var callback = function () {
+      const callback = function () {
         if (typeof url === 'string') {
-          window.location = url;
+          globalWindow.location.href = url;
         }
       };
       gtag('event', 'click_whatsapp', {
-        'event_callback': callback,
-        'event_timeout': 2000,
+        event_callback: callback,
+        event_timeout: 2000,
         // <event_parameters>
       });
       return false;
     }
 
-    window.gtagSendEvent = gtagSendEvent;
+    globalWindow.gtagSendEvent = gtagSendEvent;
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
