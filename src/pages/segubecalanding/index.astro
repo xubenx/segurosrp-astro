@@ -13,8 +13,8 @@ import { Image } from 'astro:assets';
   <script>
     // @ts-nocheck
     const GA4_ID = 'G-Y67F0BJRHL';
-    const GOOGLE_ADS_ID = 'AW-17382344046';
-    const GTAG_PRIMARY_ID = GA4_ID || GOOGLE_ADS_ID;
+
+    const GTAG_PRIMARY_ID = GA4_ID ;
 
     interface WindowWithGtag extends Window {
       dataLayer: unknown[];
