@@ -400,7 +400,17 @@ const advisors = [
             <a 
               href="https://wa.me/524461354113?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Segubeca%20para%20asegurar%20la%20educación%20de%20mi%20hijo" 
               target="_blank"
-              onclick="if(typeof gtagSendEvent === 'function') { gtagSendEvent('https://wa.me/524461354113?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Segubeca%20para%20asegurar%20la%20educación%20de%20mi%20hijo'); return false; }"
+              onclick="
+                if (typeof window.gtag !== 'undefined') {
+                  window.gtag('event', 'segubeca_whatsapp', {
+                    event_category: 'conversion',
+                    event_label: 'Segubeca WhatsApp Contact',
+                    value: 1,
+                    currency: 'MXN'
+                  });
+                }
+                return true;
+              "
               style="
                 display: inline-block;
                 background: #25D366;
@@ -515,24 +525,21 @@ const advisors = [
         if (response.ok) {
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
 
-          if (typeof window.gtagSendEvent === 'function') {
-            window.gtagSendEvent(null);
-          } else if (typeof window.gtag !== 'undefined') {
-            window.gtag('event', 'click_formulario_segubeca', {
+          // Enviar evento de conversión segubeca_form a Google Analytics 4
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'segubeca_form', {
               event_category: 'conversion',
               event_label: 'Segubeca Contact Form Submit',
-              form_name: 'Segubeca Contact Form'
+              value: 1,
+              currency: 'MXN'
             });
           }
 
+          // Eventos adicionales de tracking (no conversión)
           if (typeof window.gtag !== 'undefined') {
-            window.gtag('event', 'leads_segubeca', {
-              event_category: 'conversion',
-              event_label: 'Segubeca Contact Form',
-              form_name: 'Segubeca Contact Form'
-            });
-
-            window.gtag('event', 'submit', {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'engagement',
+              event_label: 'Segubeca Form',
               form_name: 'Segubeca Contact Form'
             });
           }

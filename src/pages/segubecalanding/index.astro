@@ -195,7 +195,19 @@ import { Image } from 'astro:assets';
                         La educación universitaria es la mejor herencia que puedes darles. Con <strong>Segubeca</strong>, tendrás la tranquilidad de que, pase lo que pase, tus hijos contarán con los recursos necesarios para cumplir sus sueños.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-4 mb-64 md:mt-0">
-            <a href="#form" class="inline-block bg-yellow-300 text-black font-semibold py-3 px-6 rounded-full border-2 border-blue-500 hover:scale-105 transition-transform duration-300">
+            <a 
+              href="#form" 
+              class="inline-block bg-yellow-300 text-black font-semibold py-3 px-6 rounded-full border-2 border-blue-500 hover:scale-105 transition-transform duration-300"
+              onclick="
+                if (typeof window.gtag !== 'undefined') {
+                  window.gtag('event', 'click_cta_hero', {
+                    event_category: 'engagement',
+                    event_label: 'Hero CTA - Quiero asegurar su educación',
+                    button_location: 'hero_section'
+                  });
+                }
+              "
+            >
               🎓 Quiero asegurar su educación
                         </a>
                     </div>
@@ -314,7 +326,19 @@ import { Image } from 'astro:assets';
       <!-- Call to Action dentro de la sección -->
       <div class="text-center mt-12">
         <div class="py-8">
-          <a href="#form" class="inline-block bg-blue-800 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300">
+          <a 
+            href="#form" 
+            class="inline-block bg-blue-800 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            onclick="
+              if (typeof window.gtag !== 'undefined') {
+                window.gtag('event', 'click_cta_universities', {
+                  event_category: 'engagement',
+                  event_label: 'Universities Section CTA - Proteger su futuro',
+                  button_location: 'universities_section'
+                });
+              }
+            "
+          >
             🛡️ Proteger su futuro ahora
           </a>
         </div>
@@ -518,7 +542,19 @@ import { Image } from 'astro:assets';
                     Con Segubeca, aseguras que tu hijo tenga el capital necesario para su educación universitaria, 
                     sin importar lo que pase. Es la mejor inversión que puedes hacer hoy.
                 </p>
-                <a href="#form"  class="inline-block bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-800 py-3 px-6 rounded-full font-bold transition-transform duration-200 hover:scale-105 shadow-lg">
+                <a 
+                  href="#form" 
+                  class="inline-block bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-800 py-3 px-6 rounded-full font-bold transition-transform duration-200 hover:scale-105 shadow-lg"
+                  onclick="
+                    if (typeof window.gtag !== 'undefined') {
+                      window.gtag('event', 'click_cta_steps', {
+                        event_category: 'engagement',
+                        event_label: 'Steps Section CTA - Empezar mi plan',
+                        button_location: 'steps_section'
+                      });
+                    }
+                  "
+                >
                     🚀 Empezar mi plan ahora
                 </a>
             </div>
