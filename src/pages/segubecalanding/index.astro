@@ -10,33 +10,53 @@ import { Image } from 'astro:assets';
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17382344046"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    const GTAG_ID = 'AW-17382344046';
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
 
-  gtag('config', 'AW-17382344046');
-</script>
+    function loadGtagConfig() {
+      gtag('js', new Date());
+      gtag('config', GTAG_ID, { send_page_view: false });
+    }
 
-<!-- Google tag (gtag.js) event - delayed navigation helper -->
-<script>
-  // Helper function to delay opening a URL until a gtag event is sent.
-  // Call it in response to an action that should navigate to a URL.
-  function gtagSendEvent(url) {
-    var callback = function () {
-      if (typeof url === 'string') {
-        window.location = url;
+    function ensureGtagLoaded() {
+      if (document.getElementById('gtag-script')) {
+        return;
       }
-    };
-    gtag('event', 'click_whatsapp', {
-      'event_callback': callback,
-      'event_timeout': 2000,
-      // <event_parameters>
-    });
-    return false;
-  }
-</script>
+      const script = document.createElement('script');
+      script.id = 'gtag-script';
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`;
+      script.onload = loadGtagConfig;
+      document.head.appendChild(script);
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => ensureGtagLoaded(), { timeout: 2000 });
+    } else {
+      window.addEventListener('load', ensureGtagLoaded);
+    }
+
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      ensureGtagLoaded();
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'click_whatsapp', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+        // <event_parameters>
+      });
+      return false;
+    }
+
+    window.gtagSendEvent = gtagSendEvent;
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   
@@ -57,6 +77,7 @@ import { Image } from 'astro:assets';
   <!-- Preload critical font files for better performance -->
   <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Poppins-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
   
   <!-- Preload crítico para LCP -->
   <link rel="preload" href="/segubecalanding_optimized/hero.webp" as="image" fetchpriority="high" />
@@ -140,13 +161,13 @@ import { Image } from 'astro:assets';
                     <p class="text-white text-base sm:text-lg md:text-xl mb-2">
                         La educación universitaria es la mejor herencia que puedes darles. Con <strong>Segubeca</strong>, tendrás la tranquilidad de que, pase lo que pase, tus hijos contarán con los recursos necesarios para cumplir sus sueños.
                     </p>
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <a href="#form" class="inline-block bg-yellow-300 text-black font-semibold py-3 px-6 rounded-full border-2 border-blue-500 hover:scale-105 transition-transform duration-300">
-                            <i class="fa-solid fa-graduation-cap me-2 text-gray-900"></i>🎓 Quiero asegurar su educación
+                    <div class="flex flex-wrap gap-2 mt-4 mb-64 md:mt-0">
+            <a href="#form" class="inline-block bg-yellow-300 text-black font-semibold py-3 px-6 rounded-full border-2 border-blue-500 hover:scale-105 transition-transform duration-300">
+              🎓 Quiero asegurar su educación
                         </a>
                     </div>
                 </div>
-                <div class="flex relative mt-60 md:mt-96 lg:mt-96 md:h-60">
+                <div class="flex relative mt-56 md:mt-96 lg:mt-96 md:h-60">
                     <picture class="absolute bottom-0 right-0 w-full max-w-2xl z-10">
                         <source srcset="/segubecalanding_optimized/hero_mobile.webp" media="(max-width: 640px)" type="image/webp" />
                         <source srcset="/segubecalanding_optimized/hero_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
@@ -261,7 +282,7 @@ import { Image } from 'astro:assets';
       <div class="text-center mt-12">
         <div class="py-8">
           <a href="#form" class="inline-block bg-blue-800 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300">
-            <i class="fa-solid fa-shield-heart me-2"></i>Proteger su futuro ahora
+            🛡️ Proteger su futuro ahora
           </a>
         </div>
       </div>
