@@ -96,32 +96,37 @@ import { Image } from 'astro:assets';
     <div class="relative z-20 h-full flex flex-col justify-between pt-5 pb-5 max-w-7xl mx-auto px-4 w-full">
         <!-- Logos en la parte superior -->
         <div class="flex justify-between items-center flex-shrink-0 mb-5">
-            <a href="/" class="flex-shrink-0">
-                <Image 
-                    src="/nyl-white.png" 
-                    alt="Ramírez y Plascencia" 
-                    class="h-10 sm:h-16 md:h-20 max-w-32 sm:max-w-48 md:max-w-52 object-contain"
-                    loading="eager"
-                    width={200}
-                    height={80}
-                    format="webp"
-                    quality={85}
-                    sizes="(max-width: 640px) 128px, (max-width: 768px) 192px, 208px"
-                />
+            <a href="/" class="flex-shrink-0" aria-label="Ramírez y Plascencia">
+                <picture>
+                    <source srcset="/nyl-white_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                    <source srcset="/nyl-white_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                    <source srcset="/nyl-white_desktop.webp" type="image/webp" />
+                    <img
+                        src="/nyl-white.png"
+                        alt="Ramírez y Plascencia"
+                        class="h-10 sm:h-16 md:h-20 max-w-32 sm:max-w-48 md:max-w-52 object-contain"
+                        loading="eager"
+                        decoding="async"
+                        width="208"
+                        height="80"
+                    />
+                </picture>
             </a>
-            <a href="/" class="flex-shrink-0">
-                <Image 
-                    src="/rp_blancos_flip.png" 
-                    alt="New York Life" 
-                    class="w-32 sm:w-36 md:w-60 lg:w-56 h-auto max-h-none"
-                    loading="eager"
-                    widths={[128, 144, 240, 256]}
-                    width={128}
-                    height={27}
-                    format="webp"
-                    quality={85}
-                    sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, 240px"
-                />
+            <a href="/" class="flex-shrink-0" aria-label="New York Life">
+                <picture>
+                    <source srcset="/rp_blancos_flip_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                    <source srcset="/rp_blancos_flip_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                    <source srcset="/rp_blancos_flip_desktop.webp" type="image/webp" />
+                    <img
+                        src="/rp_blancos_flip.png"
+                        alt="New York Life"
+                        class="w-32 sm:w-36 md:w-60 lg:w-56 h-auto max-h-none"
+                        loading="eager"
+                        decoding="async"
+                        width="256"
+                        height="108"
+                    />
+                </picture>
             </a>
         </div>
         
@@ -142,19 +147,21 @@ import { Image } from 'astro:assets';
                     </div>
                 </div>
                 <div class="flex relative mt-60 md:mt-96 lg:mt-96 md:h-60">
-                    <Image 
-                        src="/segubecalanding_optimized/hero.webp" 
-                        alt="Padres asegurando el futuro de sus hijos con Segubeca" 
-                        fetchpriority="high" 
-                        class="absolute bottom-0 right-0 w-full max-w-2xl object-contain z-10" 
-                        loading="eager"
-                        widths={[380, 480, 600, 800, 1200]}
-                        width={380}
-                        height={380}
-                        format="webp"
-                        quality={75}
-                        sizes="(max-width: 640px) 380px, (max-width: 768px) 480px, (max-width: 1024px) 600px, 800px"
-                    />
+                    <picture class="absolute bottom-0 right-0 w-full max-w-2xl z-10">
+                        <source srcset="/segubecalanding_optimized/hero_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                        <source srcset="/segubecalanding_optimized/hero_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                        <source srcset="/segubecalanding_optimized/hero.webp" type="image/webp" />
+                        <img
+                            src="/segubecalanding_optimized/hero.webp"
+                            alt="Padres asegurando el futuro de sus hijos con Segubeca"
+                            class="w-full h-auto object-contain"
+                            loading="eager"
+                            decoding="async"
+                            fetchpriority="high"
+                            width="800"
+                            height="800"
+                        />
+                    </picture>
                 </div>
             </div>
         </div>
@@ -180,19 +187,21 @@ import { Image } from 'astro:assets';
         <!-- Universidad Anáhuac -->
         <div class="text-center">
           <div class="h-32 flex items-center justify-center mb-4">
-            <Image 
-              src="/segubecalanding_optimized/anahuac.webp" 
-              alt="Universidad Anáhuac" 
-              class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
-              style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
-              loading="lazy"
-              widths={[280, 348, 400, 800]}
-              width={348}
-              height={100}
-              format="webp"
-              quality={75}
-              sizes="(max-width: 640px) 280px, (max-width: 768px) 348px, 400px"
-            />
+            <picture>
+              <source srcset="/segubecalanding_optimized/anahuac_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+              <source srcset="/segubecalanding_optimized/anahuac_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+              <source srcset="/segubecalanding_optimized/anahuac.webp" type="image/webp" />
+              <img 
+                src="/segubecalanding_optimized/anahuac.webp" 
+                alt="Universidad Anáhuac" 
+                class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
+                style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
+                loading="lazy"
+                decoding="async"
+                width="348"
+                height="100"
+              />
+            </picture>
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$2,350,000</p>
@@ -202,19 +211,21 @@ import { Image } from 'astro:assets';
         <!-- Universidad Panamericana -->
         <div class="text-center">
           <div class="h-32 flex items-center justify-center mb-4">
-            <Image 
-              src="/segubecalanding_optimized/panamericana.webp" 
-              alt="Universidad Panamericana" 
-              class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
-              style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
-              loading="lazy"
-              widths={[280, 348, 400, 800]}
-              width={348}
-              height={94}
-              format="webp"
-              quality={75}
-              sizes="(max-width: 640px) 280px, (max-width: 768px) 348px, 400px"
-            />
+            <picture>
+              <source srcset="/segubecalanding_optimized/panamericana_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+              <source srcset="/segubecalanding_optimized/panamericana_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+              <source srcset="/segubecalanding_optimized/panamericana.webp" type="image/webp" />
+              <img 
+                src="/segubecalanding_optimized/panamericana.webp" 
+                alt="Universidad Panamericana" 
+                class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
+                style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
+                loading="lazy"
+                decoding="async"
+                width="348"
+                height="94"
+              />
+            </picture>
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$2,000,000</p>
@@ -224,19 +235,21 @@ import { Image } from 'astro:assets';
         <!-- Tecnológico de Monterrey -->
         <div class="text-center">
           <div class="h-32 flex items-center justify-center mb-4">
-            <Image 
-              src="/segubecalanding_optimized/tec.webp" 
-              alt="Tecnológico de Monterrey" 
-              class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
-              style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
-              loading="lazy"
-              widths={[280, 348, 400, 800]}
-              width={348}
-              height={91}
-              format="webp"
-              quality={75}
-              sizes="(max-width: 640px) 280px, (max-width: 768px) 348px, 400px"
-            />
+            <picture>
+              <source srcset="/segubecalanding_optimized/tec_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+              <source srcset="/segubecalanding_optimized/tec_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+              <source srcset="/segubecalanding_optimized/tec.webp" type="image/webp" />
+              <img 
+                src="/segubecalanding_optimized/tec.webp" 
+                alt="Tecnológico de Monterrey" 
+                class="max-h-full max-w-full object-contain filter brightness-0 saturate-100 transition-all duration-300 hover:brightness-75 hover:scale-105" 
+                style="filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(1234%) hue-rotate(200deg) brightness(91%) contrast(101%);" 
+                loading="lazy"
+                decoding="async"
+                width="348"
+                height="91"
+              />
+            </picture>
           </div>
           <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <p class="m-0 font-bold text-2xl sm:text-3xl lg:text-4xl">$1,500,000</p>
@@ -278,36 +291,40 @@ import { Image } from 'astro:assets';
                     <!-- Paso 1 -->
                     <div class="-mt-4">
                         <div class="text-center">
-                            <Image 
-                                src="/segubecalanding_optimized/paso_1.webp" 
-                                alt="Paso 1: Define tu plan"
-                                class="w-full max-w-4xl h-auto mx-auto"
-                                loading="lazy"
-                                widths={[340, 380, 600, 800]}
-                                width={380}
-                                height={114}
-                                format="webp"
-                                quality={70}
-                                sizes="(max-width: 640px) 340px, (max-width: 768px) 380px, 600px"
-                            />
+                            <picture>
+                                <source srcset="/segubecalanding_optimized/paso_1_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_1_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_1.webp" type="image/webp" />
+                                <img 
+                                    src="/segubecalanding_optimized/paso_1.webp" 
+                                    alt="Paso 1: Define tu plan"
+                                    class="w-full max-w-4xl h-auto mx-auto"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="380"
+                                    height="114"
+                                />
+                            </picture>
                         </div>
                     </div>
 
                     <!-- Paso 2 -->
                     <div class="-mt-8">
                         <div class="text-center">
-                            <Image 
-                                src="/segubecalanding_optimized/paso_2.webp" 
-                                alt="Paso 2: Estás protegido"
-                                class="w-full max-w-4xl h-auto mx-auto"
-                                loading="lazy"
-                                widths={[340, 380, 600, 800]}
-                                width={380}
-                                height={114}
-                                format="webp"
-                                quality={70}
-                                sizes="(max-width: 640px) 340px, (max-width: 768px) 380px, 600px"
-                            />
+                            <picture>
+                                <source srcset="/segubecalanding_optimized/paso_2_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_2_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_2.webp" type="image/webp" />
+                                <img 
+                                    src="/segubecalanding_optimized/paso_2.webp" 
+                                    alt="Paso 2: Estás protegido"
+                                    class="w-full max-w-4xl h-auto mx-auto"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="380"
+                                    height="114"
+                                />
+                            </picture>
                         </div>
                     </div>
                     
@@ -321,66 +338,74 @@ import { Image } from 'astro:assets';
                         <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
                             <!-- Beneficio 1 -->
                             <div class="text-center">
-                                <Image 
-                                    src="/segubecalanding_optimized/beneficio_1.webp" 
-                                    alt="Beneficio 1"
-                                    class="w-full max-w-52 h-auto mx-auto"
-                                    loading="lazy"
-                                    widths={[160, 186, 208, 380]}
-                                    width={186}
-                                    height={186}
-                                    format="webp"
-                                    quality={70}
-                                    sizes="(max-width: 640px) 160px, (max-width: 768px) 186px, 208px"
-                                />
+                                <picture>
+                                    <source srcset="/segubecalanding_optimized/beneficio_1_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_1_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_1.webp" type="image/webp" />
+                                    <img 
+                                        src="/segubecalanding_optimized/beneficio_1.webp" 
+                                        alt="Beneficio 1"
+                                        class="w-full max-w-52 h-auto mx-auto"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="186"
+                                        height="186"
+                                    />
+                                </picture>
                             </div>
                             
                             <!-- Beneficio 2 -->
                             <div class="text-center">
-                                <Image 
-                                    src="/segubecalanding_optimized/beneficio_2.webp" 
-                                    alt="Beneficio 2"
-                                    class="w-full max-w-52 h-auto mx-auto"
-                                    loading="lazy"
-                                    widths={[160, 186, 208, 380]}
-                                    width={186}
-                                    height={186}
-                                    format="webp"
-                                    quality={70}
-                                    sizes="(max-width: 640px) 160px, (max-width: 768px) 186px, 208px"
-                                />
+                                <picture>
+                                    <source srcset="/segubecalanding_optimized/beneficio_2_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_2_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_2.webp" type="image/webp" />
+                                    <img 
+                                        src="/segubecalanding_optimized/beneficio_2.webp" 
+                                        alt="Beneficio 2"
+                                        class="w-full max-w-52 h-auto mx-auto"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="186"
+                                        height="186"
+                                    />
+                                </picture>
                             </div>
                             
                             <!-- Beneficio 3 -->
                             <div class="text-center">
-                                <Image 
-                                    src="/segubecalanding_optimized/beneficio_3.webp" 
-                                    alt="Beneficio 3"
-                                    class="w-full max-w-52 h-auto mx-auto"
-                                    loading="lazy"
-                                    widths={[160, 186, 208, 380]}
-                                    width={186}
-                                    height={186}
-                                    format="webp"
-                                    quality={70}
-                                    sizes="(max-width: 640px) 160px, (max-width: 768px) 186px, 208px"
-                                />
+                                <picture>
+                                    <source srcset="/segubecalanding_optimized/beneficio_3_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_3_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_3.webp" type="image/webp" />
+                                    <img 
+                                        src="/segubecalanding_optimized/beneficio_3.webp" 
+                                        alt="Beneficio 3"
+                                        class="w-full max-w-52 h-auto mx-auto"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="186"
+                                        height="186"
+                                    />
+                                </picture>
                             </div>
                             
                             <!-- Beneficio 4 -->
                             <div class="text-center">
-                                <Image 
-                                    src="/segubecalanding_optimized/beneficio_4.webp" 
-                                    alt="Beneficio 4"
-                                    class="w-full max-w-52 h-auto mx-auto"
-                                    loading="lazy"
-                                    widths={[160, 186, 208, 380]}
-                                    width={186}
-                                    height={186}
-                                    format="webp"
-                                    quality={70}
-                                    sizes="(max-width: 640px) 160px, (max-width: 768px) 186px, 208px"
-                                />
+                                <picture>
+                                    <source srcset="/segubecalanding_optimized/beneficio_4_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_4_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                    <source srcset="/segubecalanding_optimized/beneficio_4.webp" type="image/webp" />
+                                    <img 
+                                        src="/segubecalanding_optimized/beneficio_4.webp" 
+                                        alt="Beneficio 4"
+                                        class="w-full max-w-52 h-auto mx-auto"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="186"
+                                        height="186"
+                                    />
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -388,36 +413,40 @@ import { Image } from 'astro:assets';
                     <!-- Paso 3 -->
                     <div class="-mt-4">
                         <div class="text-center">
-                            <Image 
-                                src="/segubecalanding_optimized/paso_3.webp" 
-                                alt="Paso 3: Ahorro"
-                                class="w-full max-w-4xl h-auto mx-auto"
-                                loading="lazy"
-                                widths={[340, 380, 600, 800]}
-                                width={380}
-                                height={114}
-                                format="webp"
-                                quality={70}
-                                sizes="(max-width: 640px) 340px, (max-width: 768px) 380px, 600px"
-                            />
+                            <picture>
+                                <source srcset="/segubecalanding_optimized/paso_3_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_3_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_3.webp" type="image/webp" />
+                                <img 
+                                    src="/segubecalanding_optimized/paso_3.webp" 
+                                    alt="Paso 3: Ahorro"
+                                    class="w-full max-w-4xl h-auto mx-auto"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="380"
+                                    height="114"
+                                />
+                            </picture>
                         </div>
                     </div>
 
                     <!-- Paso 4 -->
                     <div>
                         <div class="text-center">
-                            <Image 
-                                src="/segubecalanding_optimized/paso_4.webp" 
-                                alt="Paso 4: Recibes tu dinero"
-                                class="w-full max-w-4xl h-auto mx-auto"
-                                loading="lazy"
-                                widths={[340, 380, 600, 800]}
-                                width={380}
-                                height={114}
-                                format="webp"
-                                quality={70}
-                                sizes="(max-width: 640px) 340px, (max-width: 768px) 380px, 600px"
-                            />
+                            <picture>
+                                <source srcset="/segubecalanding_optimized/paso_4_mobile.webp" media="(max-width: 640px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_4_tablet.webp" media="(max-width: 1024px)" type="image/webp" />
+                                <source srcset="/segubecalanding_optimized/paso_4.webp" type="image/webp" />
+                                <img 
+                                    src="/segubecalanding_optimized/paso_4.webp" 
+                                    alt="Paso 4: Recibes tu dinero"
+                                    class="w-full max-w-4xl h-auto mx-auto"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="380"
+                                    height="114"
+                                />
+                            </picture>
                         </div>
                     </div>
 
