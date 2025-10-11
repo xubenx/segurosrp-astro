@@ -2,6 +2,7 @@
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 import { Image } from "astro:assets";
+import { GTM } from 'astro-gtm';
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/asesores-seguros-monterrey`;
@@ -23,36 +24,8 @@ const business = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    
-    <!-- Google Tag Manager - Carga Diferida -->
-    <script>
-      // Inicializar dataLayer
-      window.dataLayer = window.dataLayer || [];
-      
-      // Función para cargar GTM
-      function loadGTM() {
-        if (window.gtmLoaded) return;
-        window.gtmLoaded = true;
-        
-        // Google Tag Manager
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-5C5DGHJC');
-      }
-      
-      // Cargar GTM después de la primera interacción del usuario
-      const events = ['mousedown', 'touchstart', 'scroll', 'keydown'];
-      const loadOnce = () => {
-        loadGTM();
-        events.forEach(event => window.removeEventListener(event, loadOnce));
-      };
-      
-      events.forEach(event => window.addEventListener(event, loadOnce, { passive: true }));
-      
-      // Fallback: cargar después de 5 segundos si no hay interacción
-      setTimeout(loadGTM, 5000);
+      <GTM id="GTM-5C5DGHJC" />
+
     </script>
     <!-- End Google Tag Manager -->
     
@@ -81,7 +54,7 @@ const business = {
     <link rel="alternate" hreflang="es-MX" href={canonical} />
 
     <!-- Critical Resource Preloads -->
-    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" type="image/webp" 
+    <link rel="preload" as="image" href="/principal_tiny.png" fetchpriority="high" type="image/png" 
           media="(min-width: 1024px)" />
     <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" type="image/webp" 
           media="(max-width: 1023px)" />
@@ -218,7 +191,7 @@ const business = {
                     <!-- Móvil y Tablet -->
                     <div class="lg:hidden w-full h-full relative  mt-40">
                         <Image 
-                            src="/principal.webp" 
+                            src="/principal_tiny.png" 
                             alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
                             class="w-full h-full object-contain object-center hero-image" 
                             loading="eager"
