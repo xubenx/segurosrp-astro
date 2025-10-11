@@ -110,14 +110,20 @@ const business = {
       .gradient-bg{background:linear-gradient(135deg,#00305C 0%,#1A75CF 50%,#0052CC 100%)}
       .gradient-text{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
       .card-shadow{box-shadow:0 10px 25px -5px rgba(0,48,92,.1),0 10px 10px -5px rgba(0,48,92,.04)}
-      .btn-primary{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(255,102,0,.3)}
-      .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,102,0,.4)}
-      .btn-secondary{background:linear-gradient(135deg,#00305C 0%,#1A75CF 100%);transition:all .3s ease;box-shadow:0 4px 15px rgba(0,48,92,.3)}
-      .btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,48,92,.4)}
+      
+      /* Optimizaciones de performance - usar transform y opacity para evitar reflow */
+      .btn-primary{background:linear-gradient(135deg,#FF6600 0%,#FF8533 100%);transition:transform .3s ease,opacity .3s ease;box-shadow:0 4px 15px rgba(255,102,0,.3);will-change:transform}
+      .btn-primary:hover{transform:translateY(-2px) translateZ(0);opacity:0.9}
+      .btn-secondary{background:linear-gradient(135deg,#00305C 0%,#1A75CF 100%);transition:transform .3s ease,opacity .3s ease;box-shadow:0 4px 15px rgba(0,48,92,.3);will-change:transform}
+      .btn-secondary:hover{transform:translateY(-2px) translateZ(0);opacity:0.9}
       
       /* Optimizaciones de imágenes */
-      img{image-rendering:auto;image-rendering:crisp-edges;image-rendering:-webkit-optimize-contrast}
-      .hero-image{will-change:transform;transform:translateZ(0)}
+      img{image-rendering:auto;image-rendering:crisp-edges;image-rendering:-webkit-optimize-contrast;content-visibility:auto}
+      .hero-image{will-change:transform;transform:translateZ(0);contain:layout style paint}
+      
+      /* Optimización de animaciones - usar GPU */
+      *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+      @media (prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}}
     </style>
   </head>
 
