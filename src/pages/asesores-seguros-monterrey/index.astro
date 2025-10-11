@@ -2,7 +2,6 @@
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 import { Image } from "astro:assets";
-import { GoogleTagManager } from 'astro-gtm';
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/asesores-seguros-monterrey`;
@@ -24,7 +23,6 @@ const business = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <GoogleTagManager gtmId="GTM-5C5DGHJC" />
     
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
@@ -481,5 +479,90 @@ const business = {
     </main>
 
     <Footer />
+    
+    <!-- Google Tag Manager - Carga diferida optimizada -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5DGHJC"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    
+    <script is:inline>
+      // Carga diferida de GTM - optimizada para performance
+      (function() {
+        let gtmLoaded = false;
+        
+        function loadGTM() {
+          if (gtmLoaded) return;
+          gtmLoaded = true;
+          
+          // Inicializar dataLayer
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+          });
+          
+          // Cargar GTM script de forma asíncrona
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5C5DGHJC';
+          
+          // Usar requestIdleCallback si está disponible
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+              document.head.appendChild(script);
+            });
+          } else {
+            document.head.appendChild(script);
+          }
+          
+          // Remover listeners después de cargar
+          removeListeners();
+        }
+        
+        function removeListeners() {
+          window.removeEventListener('scroll', loadGTM, { passive: true });
+          window.removeEventListener('mousemove', loadGTM, { passive: true });
+          window.removeEventListener('touchstart', loadGTM, { passive: true });
+          window.removeEventListener('click', loadGTM, { passive: true });
+        }
+        
+        // Estrategia de carga:
+        // 1. Esperar a que el DOM esté completamente cargado
+        if (document.readyState === 'complete') {
+          // Si ya está cargado, usar requestIdleCallback
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+              // Cargar en primera interacción o después de 3 segundos
+              setupListeners();
+            }, { timeout: 3000 });
+          } else {
+            setupListeners();
+          }
+        } else {
+          // Esperar a que la página cargue completamente
+          window.addEventListener('load', function() {
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(() => {
+                setupListeners();
+              }, { timeout: 3000 });
+            } else {
+              setupListeners();
+            }
+          });
+        }
+        
+        function setupListeners() {
+          // Cargar GTM en primera interacción significativa
+          window.addEventListener('scroll', loadGTM, { passive: true, once: true });
+          window.addEventListener('mousemove', loadGTM, { passive: true, once: true });
+          window.addEventListener('touchstart', loadGTM, { passive: true, once: true });
+          window.addEventListener('click', loadGTM, { passive: true, once: true });
+          
+          // Fallback: cargar después de 5 segundos si no hay interacción
+          setTimeout(loadGTM, 5000);
+        }
+      })();
+    </script>
   </body>
 </html>
