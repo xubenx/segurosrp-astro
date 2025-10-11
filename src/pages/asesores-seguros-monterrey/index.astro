@@ -215,39 +215,41 @@ const business = {
 				
 				<!-- Imagen Principal - Responsiva -->
 				<div class="w-full lg:w-1/2 h-96  sm:h-80 md:h-96 lg:h-full flex items-center justify-center relative">
-					<!-- Móvil y Tablet -->
-					<div class="lg:hidden w-full h-full relative  mt-40">
-						<Image 
-							src="/principal.webp" 
-							alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
-							class="w-full h-full object-contain object-center hero-image" 
-							loading="eager"
-							fetchpriority="high"
-							decoding="async"
-							width={640}
-							height={480}
-							format="webp"
-							sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
-						/>
-					</div>
-					
-					<!-- Desktop -->
-					<div class="hidden lg:flex w-full h-full items-end justify-center">
-						<Image 
-							src="/principal.webp" 
-							alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
-							class="w-full h-auto max-h-full object-contain object-bottom hero-image" 
-							loading="eager"
-							fetchpriority="high"
-							decoding="async"
-							width={1200}
-							height={900}
-							format="webp"
-							sizes="(min-width: 1024px) 50vw, 100vw"
-						/>
-					</div>
-				</div>
-			</div>
+                    <!-- Móvil y Tablet -->
+                    <div class="lg:hidden w-full h-full relative  mt-40">
+                        <Image 
+                            src="/principal.webp" 
+                            alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
+                            class="w-full h-full object-contain object-center hero-image" 
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
+                            width={800}
+                            height={600}
+                            format="webp"
+                            quality={80}
+                            sizes="(max-width: 767px) 100vw, 50vw"
+                        />
+                    </div>
+                    
+                    <!-- Desktop -->
+                    <div class="hidden lg:flex w-full h-full items-end justify-center">
+                        <Image 
+                            src="/principal.webp" 
+                            alt="Asesores Seguros Monterrey New York Life - Familia protegida con seguros de vida, salud y educación"
+                            class="w-full h-auto max-h-full object-contain object-bottom hero-image" 
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
+                            width={1200}
+                            height={900}
+                            format="webp"
+                            quality={85}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                        />
+                    </div>
+                </div>
+            </div>
 			
 			<!-- Overlay decorativo para móviles pequeños -->
 			<div class="sm:hidden absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 pointer-events-none"></div>
