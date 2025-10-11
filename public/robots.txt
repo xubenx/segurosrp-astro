@@ -1,10 +1,9 @@
 User-agent: *
 Allow: /
 
-# Bloquear indexación de landing pages específicas
+
 Disallow: /segubecalanding/
 Disallow: /asesores-seguros-monterrey-nyl/
 Disallow: /vidamujerlanding/
 
-# Sitemap
 Sitemap: https://segurosrp.com/sitemap.xml
