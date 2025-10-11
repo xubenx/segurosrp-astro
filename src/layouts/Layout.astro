@@ -17,35 +17,78 @@ const { title, description } = Astro.props as Props;
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-		<!-- Google Tag Manager - Carga Diferida -->
-		<script>
-			// Inicializar dataLayer
-			window.dataLayer = window.dataLayer || [];
-			
-			// Función para cargar GTM
-			function loadGTM() {
-				if (window.gtmLoaded) return;
-				window.gtmLoaded = true;
+		<!-- Google Tag Manager - Carga Diferida Optimizada -->
+		<script is:inline>
+			(function() {
+				let gtmLoaded = false;
 				
-				// Google Tag Manager
-				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-				})(window,document,'script','dataLayer','GTM-5C5DGHJC');
-			}
-			
-			// Cargar GTM después de la primera interacción del usuario
-			const events = ['mousedown', 'touchstart', 'scroll', 'keydown'];
-			const loadOnce = () => {
-				loadGTM();
-				events.forEach(event => window.removeEventListener(event, loadOnce));
-			};
-			
-			events.forEach(event => window.addEventListener(event, loadOnce, { passive: true }));
-			
-			// Fallback: cargar después de 5 segundos si no hay interacción
-			setTimeout(loadGTM, 5000);
+				function loadGTM() {
+					if (gtmLoaded) return;
+					gtmLoaded = true;
+					
+					// Inicializar dataLayer
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push({
+						'gtm.start': new Date().getTime(),
+						event: 'gtm.js'
+					});
+					
+					// Cargar GTM script de forma asíncrona
+					const script = document.createElement('script');
+					script.async = true;
+					script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5C5DGHJC';
+					
+					// Usar requestIdleCallback si está disponible
+					if ('requestIdleCallback' in window) {
+						requestIdleCallback(() => {
+							document.head.appendChild(script);
+						});
+					} else {
+						document.head.appendChild(script);
+					}
+					
+					// Remover listeners
+					removeListeners();
+				}
+				
+				function removeListeners() {
+					window.removeEventListener('scroll', loadGTM);
+					window.removeEventListener('mousemove', loadGTM);
+					window.removeEventListener('touchstart', loadGTM);
+					window.removeEventListener('click', loadGTM);
+				}
+				
+				// Estrategia de carga
+				if (document.readyState === 'complete') {
+					if ('requestIdleCallback' in window) {
+						requestIdleCallback(() => {
+							setupListeners();
+						}, { timeout: 3000 });
+					} else {
+						setupListeners();
+					}
+				} else {
+					window.addEventListener('load', function() {
+						if ('requestIdleCallback' in window) {
+							requestIdleCallback(() => {
+								setupListeners();
+							}, { timeout: 3000 });
+						} else {
+							setupListeners();
+						}
+					});
+				}
+				
+				function setupListeners() {
+					window.addEventListener('scroll', loadGTM, { passive: true, once: true });
+					window.addEventListener('mousemove', loadGTM, { passive: true, once: true });
+					window.addEventListener('touchstart', loadGTM, { passive: true, once: true });
+					window.addEventListener('click', loadGTM, { passive: true, once: true });
+					
+					// Fallback: cargar después de 5 segundos
+					setTimeout(loadGTM, 5000);
+				}
+			})();
 		</script>
 		<!-- End Google Tag Manager -->
 		
@@ -157,42 +200,95 @@ const { title, description } = Astro.props as Props;
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y67F0BJRHL"></script>
-		<script is:inline>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'G-Y67F0BJRHL');
-		</script>
-
-		<!-- Meta Pixel Code - Load async -->
-		<script is:inline>
-		setTimeout(function() {
-			!function(f,b,e,v,n,t,s)
-			{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-			n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-			if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-			n.queue=[];t=b.createElement(e);t.async=!0;
-			t.src=v;s=b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t,s)}(window, document,'script',
-			'https://connect.facebook.net/en_US/fbevents.js');
-			fbq('init', '292484572612457');
-			fbq('track', 'PageView');
-		}, 1000);
-		</script>
-		<noscript><img height="1" width="1" style="display:none"
-		src="https://www.facebook.com/tr?id=292484572612457&ev=PageView&noscript=1"
-		/></noscript>
-		<!-- End Meta Pixel Code -->
 	</head>
 	<body>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5DGHJC"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
+		
+		<!-- Meta Pixel (noscript) -->
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=292484572612457&ev=PageView&noscript=1"
+		/></noscript>
+		
 		<slot />
 		<OptimizedLoading />
+		
+		<!-- Scripts de Analytics - Carga Diferida -->
+		<script is:inline>
+			(function() {
+				let analyticsLoaded = false;
+				
+				function loadAnalytics() {
+					if (analyticsLoaded) return;
+					analyticsLoaded = true;
+					
+					// Google Analytics (gtag.js)
+					const gtagScript = document.createElement('script');
+					gtagScript.async = true;
+					gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Y67F0BJRHL';
+					document.head.appendChild(gtagScript);
+					
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					window.gtag = gtag;
+					gtag('js', new Date());
+					gtag('config', 'G-Y67F0BJRHL');
+					
+					// Meta Pixel
+					!function(f,b,e,v,n,t,s)
+					{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+					n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+					if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+					n.queue=[];t=b.createElement(e);t.async=!0;
+					t.src=v;s=b.getElementsByTagName(e)[0];
+					s.parentNode.insertBefore(t,s)}(window, document,'script',
+					'https://connect.facebook.net/en_US/fbevents.js');
+					fbq('init', '292484572612457');
+					fbq('track', 'PageView');
+					
+					removeListeners();
+				}
+				
+				function removeListeners() {
+					window.removeEventListener('scroll', loadAnalytics);
+					window.removeEventListener('mousemove', loadAnalytics);
+					window.removeEventListener('touchstart', loadAnalytics);
+					window.removeEventListener('click', loadAnalytics);
+				}
+				
+				// Esperar a que la página cargue
+				if (document.readyState === 'complete') {
+					if ('requestIdleCallback' in window) {
+						requestIdleCallback(() => {
+							setupListeners();
+						}, { timeout: 2000 });
+					} else {
+						setTimeout(setupListeners, 100);
+					}
+				} else {
+					window.addEventListener('load', function() {
+						if ('requestIdleCallback' in window) {
+							requestIdleCallback(() => {
+								setupListeners();
+							}, { timeout: 2000 });
+						} else {
+							setTimeout(setupListeners, 100);
+						}
+					});
+				}
+				
+				function setupListeners() {
+					window.addEventListener('scroll', loadAnalytics, { passive: true, once: true });
+					window.addEventListener('mousemove', loadAnalytics, { passive: true, once: true });
+					window.addEventListener('touchstart', loadAnalytics, { passive: true, once: true });
+					window.addEventListener('click', loadAnalytics, { passive: true, once: true });
+					
+					// Fallback: cargar después de 3 segundos
+					setTimeout(loadAnalytics, 3000);
+				}
+			})();
+		</script>
 	</body>
 </html>
