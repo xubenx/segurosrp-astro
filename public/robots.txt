@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
 
-
 Disallow: /segubecalanding/
 Disallow: /asesores-seguros-monterrey-nyl/
 Disallow: /vidamujerlanding/
+
 
 Sitemap: https://segurosrp.com/sitemap.xml
