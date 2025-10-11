@@ -2,7 +2,7 @@
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 import { Image } from "astro:assets";
-import { GTM } from 'astro-gtm';
+import { GoogleTagManager } from 'astro-gtm';
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/asesores-seguros-monterrey`;
@@ -24,10 +24,7 @@ const business = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <GTM id="GTM-5C5DGHJC" />
-
-    </script>
-    <!-- End Google Tag Manager -->
+    <GoogleTagManager gtmId="GTM-5C5DGHJC" />
     
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
@@ -125,10 +122,6 @@ const business = {
   </head>
 
   <body class="bg-gray-50 text-slate-800 antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5DGHJC"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     
     <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
 
