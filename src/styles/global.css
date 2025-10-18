@@ -23,13 +23,51 @@
 /* Configuración base */
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Texta', 'Jost', system-ui, -apple-system, sans-serif;
 }
 
 body {
   line-height: 1.6;
   color: #374151;
   background-color: var(--rp-white);
+  font-family: 'Texta', 'Jost', system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+}
+
+/* Tipografía base para todo el proyecto (excepto /segubecalanding) */
+html:not([data-page="segubecalanding"]) h1, 
+html:not([data-page="segubecalanding"]) h2, 
+html:not([data-page="segubecalanding"]) h3, 
+html:not([data-page="segubecalanding"]) h4, 
+html:not([data-page="segubecalanding"]) h5, 
+html:not([data-page="segubecalanding"]) h6 {
+  font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+  font-weight: 800; /* Extranegrita */
+  line-height: 1.2;
+}
+
+/* Subtítulos */
+html:not([data-page="segubecalanding"]) .subtitle,
+html:not([data-page="segubecalanding"]) h3, 
+html:not([data-page="segubecalanding"]) h4 {
+  font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+  font-weight: 600; /* Seminegrita */
+}
+
+/* Cuerpo de texto */
+html:not([data-page="segubecalanding"]) p, 
+html:not([data-page="segubecalanding"]) span, 
+html:not([data-page="segubecalanding"]) div, 
+html:not([data-page="segubecalanding"]) a, 
+html:not([data-page="segubecalanding"]) li, 
+html:not([data-page="segubecalanding"]) td, 
+html:not([data-page="segubecalanding"]) th, 
+html:not([data-page="segubecalanding"]) label, 
+html:not([data-page="segubecalanding"]) input, 
+html:not([data-page="segubecalanding"]) textarea, 
+html:not([data-page="segubecalanding"]) button {
+  font-family: 'Texta', 'Jost', system-ui, -apple-system, sans-serif;
+  font-weight: 300; /* Light */
 }
 
 /* Componentes personalizados */
@@ -37,6 +75,7 @@ body {
   .btn-primary {
     background: linear-gradient(135deg, var(--rp-orange) 0%, #FF8533 100%);
     color: white;
+    font-family: 'Raleway', system-ui, -apple-system, sans-serif;
     font-weight: 600;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
@@ -57,6 +96,7 @@ body {
   .btn-secondary {
     background: linear-gradient(135deg, var(--rp-blue) 0%, var(--rp-light-blue) 100%);
     color: white;
+    font-family: 'Raleway', system-ui, -apple-system, sans-serif;
     font-weight: 600;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;

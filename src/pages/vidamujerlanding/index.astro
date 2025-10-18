@@ -97,11 +97,12 @@ const page = {
       
       body { 
         margin: 0; 
-        font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; 
+        font-family: 'Texta', 'Jost', system-ui, -apple-system, sans-serif; 
         color: var(--text-primary); 
         background: var(--bg);
         background-attachment: fixed;
         line-height: 1.6;
+        font-weight: 300;
       }
       
       .container { 
@@ -118,6 +119,7 @@ const page = {
         color: var(--white); 
         padding: 1rem 1.5rem; 
         border-radius: 25px; 
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
         font-weight: 600; 
         text-decoration: none; 
         box-shadow: var(--shadow-medium);
@@ -140,7 +142,8 @@ const page = {
         padding: .9rem 1.3rem; 
         border-radius: 25px; 
         text-decoration: none; 
-        font-weight: 500;
+        font-family: 'Texta', 'Jost', system-ui, -apple-system, sans-serif;
+        font-weight: 300;
         transition: all 0.3s ease;
         box-shadow: var(--shadow-soft);
       }
@@ -157,6 +160,7 @@ const page = {
         border-radius: 25px; 
         padding: .9rem 1.3rem; 
         text-decoration: none; 
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
         font-weight: 600; 
         box-shadow: var(--shadow-soft);
         transition: all 0.3s ease;
@@ -179,7 +183,8 @@ const page = {
         background: linear-gradient(135deg, var(--brand-4), var(--brand-3)); 
         color: var(--text-primary); 
         border: 1px solid var(--card-border);
-        font-weight: 500;
+        font-family: 'Texta', 'Jost', system-ui, -apple-system, sans-serif;
+        font-weight: 300;
         box-shadow: var(--shadow-soft);
       }
       
@@ -284,7 +289,8 @@ const page = {
       }
       
       .kpi { 
-        font-weight: 700; 
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+        font-weight: 800; 
         font-size: clamp(1.75rem, 3vw, 2.5rem); 
         color: var(--brand);
         background: linear-gradient(135deg, var(--brand), var(--text-secondary));
@@ -338,6 +344,7 @@ const page = {
         color: var(--white); 
         padding: 1rem 1.3rem; 
         border-radius: 25px; 
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
         font-weight: 600; 
         box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
         transition: all 0.3s ease;
@@ -355,6 +362,7 @@ const page = {
         background: linear-gradient(135deg, var(--accent), var(--accent-2)); 
         color: var(--white); 
         border-radius: 15px; 
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
         font-weight: 600; 
         font-size: .8rem; 
         margin-bottom: 1rem;
@@ -362,14 +370,20 @@ const page = {
       }
       
       h1, h2, h3 {
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
         color: var(--text-primary);
       }
       
       h1 {
+        font-weight: 800;
         background: linear-gradient(135deg, var(--text-primary), var(--brand));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+      }
+      
+      h2, h3 {
+        font-weight: 600;
       }
       
       /* Elementos decorativos */
@@ -461,11 +475,11 @@ const page = {
           <div style="display:flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap;">
             <div>
               <div class="kpi">+60,000</div>
-              <div class="muted" style="font-weight: 500;">mujeres protegidas</div>
+              <div class="muted" style="font-family: 'Texta', 'Jost', system-ui, sans-serif; font-weight: 300;">mujeres protegidas</div>
             </div>
             <div>
               <div class="kpi">15+ años</div>
-              <div class="muted" style="font-weight: 500;">respaldando sueños</div>
+              <div class="muted" style="font-family: 'Texta', 'Jost', system-ui, sans-serif; font-weight: 300;">respaldando sueños</div>
             </div>
           </div>
         </div>
@@ -538,7 +552,7 @@ const page = {
     <!-- Confianza -->
     <section aria-label="Confianza" style="padding: 1.5rem 0;">
       <div class="container" style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; opacity:.8; justify-content: center;">
-        <span class="muted" style="font-weight: 500;">Respaldado por las mejores aseguradoras:</span>
+        <span class="muted" style="font-family: 'Texta', 'Jost', system-ui, sans-serif; font-weight: 300;">Respaldado por las mejores aseguradoras:</span>
         <img src="/brand-1.svg" alt="Aseguradora de prestigio" height="32" style="filter: grayscale(100%) opacity(0.7);" />
         <img src="/brand-2.svg" alt="Solidez financiera" height="32" style="filter: grayscale(100%) opacity(0.7);" />
         <img src="/brand-3.svg" alt="Atención certificada" height="32" style="filter: grayscale(100%) opacity(0.7);" />
@@ -554,7 +568,7 @@ const page = {
       <div class="grid grid-3">
         <article class="card" style="text-align: center; position: relative; overflow: hidden;">
           <div style="background: linear-gradient(135deg, var(--brand-4), var(--brand-3)); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
-            <span style="color: var(--brand); font-weight: 600; font-size: 0.85rem;">👨‍👩‍👧‍👦 Familia protegida</span>
+            <span style="color: var(--brand); font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.85rem;">👨‍👩‍👧‍👦 Familia protegida</span>
           </div>
           <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Protección por fallecimiento</h3>
           <p class="muted" style="margin-bottom: 1.5rem;">Garantiza el bienestar económico de tus seres queridos con un respaldo sólido si llegaras a faltar.</p>
@@ -563,7 +577,7 @@ const page = {
         
         <article class="card" style="text-align: center; position: relative; overflow: hidden;">
           <div style="background: linear-gradient(135deg, #fecaca, #fda4af); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
-            <span style="color: #be185d; font-weight: 600; font-size: 0.85rem;">🌸 Salud femenina</span>
+            <span style="color: #be185d; font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.85rem;">🌸 Salud femenina</span>
           </div>
           <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Protección por Cáncer Femenino</h3>
           <p class="muted" style="margin-bottom: 1.5rem;">Apoyo económico especializado ante diagnósticos específicos de cáncer que afectan a las mujeres.</p>
@@ -572,7 +586,7 @@ const page = {
         
         <article class="card" style="text-align: center; position: relative; overflow: hidden;">
           <div style="background: linear-gradient(135deg, #fed7aa, #fdba74); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
-            <span style="color: #c2410c; font-weight: 600; font-size: 0.85rem;">💰 Patrimonio seguro</span>
+            <span style="color: #c2410c; font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.85rem;">💰 Patrimonio seguro</span>
           </div>
           <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Ahorro en vida</h3>
           <p class="muted" style="margin-bottom: 1.5rem;">Genera capital mientras estás protegida con entregas periódicas de tu suma asegurada.</p>
@@ -581,7 +595,7 @@ const page = {
         
         <article class="card" style="text-align: center; position: relative; overflow: hidden;">
           <div style="background: linear-gradient(135deg, #ddd6fe, #c4b5fd); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
-            <span style="color: #7c3aed; font-weight: 600; font-size: 0.85rem;">💍 Momentos especiales</span>
+            <span style="color: #7c3aed; font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.85rem;">💍 Momentos especiales</span>
           </div>
           <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Apoyos por matrimonio y nacimiento</h3>
           <p class="muted" style="margin-bottom: 1.5rem;">Recibe apoyos económicos en los momentos más importantes y felices de tu vida.</p>
@@ -590,7 +604,7 @@ const page = {
         
         <article class="card" style="text-align: center; position: relative; overflow: hidden;">
           <div style="background: linear-gradient(135deg, #bbf7d0, #86efac); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
-            <span style="color: #059669; font-weight: 600; font-size: 0.85rem;">🤲 Cuidado continuo</span>
+            <span style="color: #059669; font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.85rem;">🤲 Cuidado continuo</span>
           </div>
           <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Cuidados a Largo Plazo</h3>
           <p class="muted" style="margin-bottom: 1.5rem;">Cobertura opcional para etapas de dependencia prolongada con atención especializada.</p>
@@ -599,7 +613,7 @@ const page = {
         
         <article class="card" style="text-align: center; position: relative; overflow: hidden;">
           <div style="background: linear-gradient(135deg, #fecdd3, #fda4af); padding: 0.5rem 1rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">
-            <span style="color: #be185d; font-weight: 600; font-size: 0.85rem;">🛡️ Protección total</span>
+            <span style="color: #be185d; font-family: 'Raleway', system-ui, sans-serif; font-weight: 600; font-size: 0.85rem;">🛡️ Protección total</span>
           </div>
           <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Invalidez y Muerte Accidental</h3>
           <p class="muted" style="margin-bottom: 1.5rem;">Cobertura integral opcional ante imprevistos graves que puedan afectar tu calidad de vida.</p>

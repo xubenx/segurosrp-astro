@@ -1,0 +1,164 @@
+---
+/**
+ * Componente optimizado para mostrar la imagen del equipo de asesores
+ * Implementa:
+ * - Múltiples versiones responsivas (desktop, tablet, mobile)
+ * - WebP con fallback PNG
+ * - Lazy loading inteligente
+ * - Placeholder blur effect
+ * - Aspect ratio preservation
+ */
+
+export interface Props {
+  priority?: boolean; // Si es true, carga inmediata (para hero images)
+  className?: string;
+  alt?: string;
+  showCaption?: boolean;
+}
+
+const { 
+  priority = false, 
+  className = "",
+  alt = "Equipo de asesores certificados Seguros Monterrey New York Life",
+  showCaption = false
+} = Astro.props;
+
+// Configuración de carga
+const loading = priority ? "eager" : "lazy";
+const fetchpriority = priority ? "high" : "auto";
+const decoding = priority ? "sync" : "async";
+---
+
+<figure class={`team-image-container ${className}`}>
+  <picture>
+    <!-- WebP Desktop (1200px) -->
+    <source 
+      media="(min-width: 1024px)" 
+      srcset="/equipo-asesores_desktop.webp"
+      type="image/webp"
+      width="1200"
+      height="800"
+    />
+    
+    <!-- WebP Tablet (800px) -->
+    <source 
+      media="(min-width: 768px) and (max-width: 1023px)" 
+      srcset="/equipo-asesores_tablet.webp"
+      type="image/webp"
+      width="800"
+      height="533"
+    />
+    
+    <!-- WebP Mobile (600px) -->
+    <source 
+      media="(max-width: 767px)" 
+      srcset="/equipo-asesores_mobile.webp"
+      type="image/webp"
+      width="600"
+      height="400"
+    />
+    
+    <!-- Fallback PNG -->
+    <img 
+      src="/equipo-asesores.png" 
+      alt={alt}
+      loading={loading}
+      fetchpriority={fetchpriority}
+      decoding={decoding}
+      width="1200"
+      height="800"
+      class="team-image"
+      style="background-image: url('/equipo-asesores_tiny.webp'); background-size: cover; background-position: center;"
+    />
+  </picture>
+  
+  {showCaption && (
+    <figcaption class="team-caption">
+      <p class="text-center mt-4 text-gray-600">
+        <strong>Silvia Plascencia, José Ramírez y Michelle Ramírez</strong><br />
+        Asesores certificados de Seguros Monterrey New York Life
+      </p>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .team-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  picture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .team-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 48, 92, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Aspect ratio preservation */
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center;
+    
+    /* Performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
+    contain: layout style paint;
+    
+    /* Blur placeholder effect */
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+  }
+  
+  .team-image:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px -10px rgba(0, 48, 92, 0.15);
+  }
+  
+  .team-caption {
+    margin-top: 1rem;
+  }
+  
+  /* Animación de carga suave */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .team-image {
+    animation: fadeIn 0.6s ease-in;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    .team-image {
+      border-radius: 0.375rem;
+    }
+  }
+  
+  /* Prefers reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .team-image {
+      animation: none;
+      transition: none;
+    }
+    
+    .team-image:hover {
+      transform: none;
+    }
+  }
+</style>

@@ -1,9 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Contact from '../../components/Contact.astro';
+
 ---
 
 <Layout title="Star Temporal - Seguro Temporal | Seguros RP">
-  <main class="pt-20">
+  <main class="">
+    <Header/>
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-orange-900 via-orange-800 to-red-900 text-white py-16 lg:py-24">
       <div class="container mx-auto px-4">
@@ -390,5 +395,8 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </div>
     </section>
+              <section id="contacto" class="bg-white"><Contact /></section>
+
+    <Footer/>
   </main>
 </Layout>

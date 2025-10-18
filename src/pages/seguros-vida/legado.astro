@@ -1,10 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Contact from '../../components/Contact.astro';
+
 ---
 
 <Layout title="Legado - Protección Patrimonial | Seguros RP">
   <main class="pt-20">
     <!-- Hero Section -->
+    <Header/>
     <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-slate-900 text-white py-16 lg:py-24">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
@@ -355,5 +360,9 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </div>
     </section>
+          <section id="contacto" class="bg-white"><Contact /></section>
+
   </main>
+      <Footer/>
+
 </Layout>

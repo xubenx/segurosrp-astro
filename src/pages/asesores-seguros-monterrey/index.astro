@@ -481,82 +481,109 @@ const business = {
     <Footer />
   
     <script is:inline>
-      // Carga diferida de GTM - optimizada para performance
+      // Carga ultra-optimizada de GTM - evita forced reflows y mejora Core Web Vitals
       (function() {
         let gtmLoaded = false;
+        let interactionDetected = false;
+        
+        // Inicializar dataLayer temprano pero sin cargar GTM aún
+        window.dataLayer = window.dataLayer || [];
         
         function loadGTM() {
           if (gtmLoaded) return;
           gtmLoaded = true;
           
-          // Inicializar dataLayer
-          window.dataLayer = window.dataLayer || [];
+          // Push GTM start event
           window.dataLayer.push({
             'gtm.start': new Date().getTime(),
             event: 'gtm.js'
           });
           
-          // Cargar GTM script de forma asíncrona
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5C5DGHJC';
-          
-          // Usar requestIdleCallback si está disponible
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => {
-              document.head.appendChild(script);
+          // Usar requestIdleCallback con timeout largo para evitar interferir con métricas
+          const loadScript = function() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.defer = true;
+            // Agregar parámetros para mejorar cache
+            script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5C5DGHJC&l=dataLayer';
+            
+            // Cargar con prioridad baja
+            if ('importance' in script) {
+              script.importance = 'low';
+            }
+            
+            // Evitar forced reflow: usar RAF para programar la inserción
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                document.head.appendChild(script);
+              });
             });
+          };
+          
+          // Usar requestIdleCallback con timeout alto para no interferir con LCP/FID/CLS
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadScript, { timeout: 10000 });
           } else {
-            document.head.appendChild(script);
+            // Fallback: setTimeout con delay alto
+            setTimeout(loadScript, 3000);
           }
           
-          // Remover listeners después de cargar
           removeListeners();
         }
         
         function removeListeners() {
-          window.removeEventListener('scroll', loadGTM, { passive: true });
-          window.removeEventListener('mousemove', loadGTM, { passive: true });
-          window.removeEventListener('touchstart', loadGTM, { passive: true });
-          window.removeEventListener('click', loadGTM, { passive: true });
+          window.removeEventListener('scroll', onInteraction, { passive: true });
+          window.removeEventListener('mousemove', onInteraction, { passive: true });
+          window.removeEventListener('touchstart', onInteraction, { passive: true });
+          window.removeEventListener('click', onInteraction, { passive: true });
+          window.removeEventListener('keydown', onInteraction, { passive: true });
         }
         
-        // Estrategia de carga:
-        // 1. Esperar a que el DOM esté completamente cargado
-        if (document.readyState === 'complete') {
-          // Si ya está cargado, usar requestIdleCallback
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => {
-              // Cargar en primera interacción o después de 3 segundos
-              setupListeners();
-            }, { timeout: 3000 });
-          } else {
-            setupListeners();
+        function onInteraction() {
+          if (!interactionDetected) {
+            interactionDetected = true;
+            // Retrasar ligeramente después de la primera interacción
+            setTimeout(loadGTM, 1000);
           }
-        } else {
-          // Esperar a que la página cargue completamente
-          window.addEventListener('load', function() {
-            if ('requestIdleCallback' in window) {
-              requestIdleCallback(() => {
-                setupListeners();
-              }, { timeout: 3000 });
-            } else {
-              setupListeners();
-            }
-          });
         }
         
         function setupListeners() {
-          // Cargar GTM en primera interacción significativa
-          window.addEventListener('scroll', loadGTM, { passive: true, once: true });
-          window.addEventListener('mousemove', loadGTM, { passive: true, once: true });
-          window.addEventListener('touchstart', loadGTM, { passive: true, once: true });
-          window.addEventListener('click', loadGTM, { passive: true, once: true });
+          // Listeners pasivos para minimizar impacto en performance
+          window.addEventListener('scroll', onInteraction, { passive: true, once: true });
+          window.addEventListener('mousemove', onInteraction, { passive: true, once: true });
+          window.addEventListener('touchstart', onInteraction, { passive: true, once: true });
+          window.addEventListener('click', onInteraction, { passive: true, once: true });
+          window.addEventListener('keydown', onInteraction, { passive: true, once: true });
           
-          // Fallback: cargar después de 5 segundos si no hay interacción
-          setTimeout(loadGTM, 5000);
+          // Fallback: cargar después de 8 segundos si no hay interacción
+          // Esto evita interferir con las métricas Core Web Vitals
+          setTimeout(loadGTM, 8000);
+        }
+        
+        // Esperar a que la página esté completamente cargada y estable
+        if (document.readyState === 'complete') {
+          if ('requestIdleCallback' in window) {
+            // Esperar a que el navegador esté idle con timeout de 5 segundos
+            requestIdleCallback(setupListeners, { timeout: 5000 });
+          } else {
+            setTimeout(setupListeners, 2000);
+          }
+        } else {
+          window.addEventListener('load', function() {
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(setupListeners, { timeout: 5000 });
+            } else {
+              setTimeout(setupListeners, 2000);
+            }
+          }, { passive: true, once: true });
         }
       })();
     </script>
+    
+    <!-- Noscript fallback para GTM -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5DGHJC" 
+              height="0" width="0" style="display:none;visibility:hidden" loading="lazy"></iframe>
+    </noscript>
   </body>
 </html>

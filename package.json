@@ -5,7 +5,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize:team": "node scripts/optimize-team-image.js",
+    "optimize:all": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.5.1",
