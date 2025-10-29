@@ -1,0 +1,136 @@
+---
+// src/components/ModalAd.astro
+
+// --- Props para hacerlo reutilizable ---
+export interface Props {
+  title: string;
+  message: string;
+  imageUrl: string;
+  contactUrl: string;
+  delayInSeconds?: number;
+}
+
+const {
+  title = "¡Hola! ¿Necesitas ayuda?",
+  message = "Vemos que llevas un tiempo en nuestra página. ¡Nos encantaría asesorarte! Contáctanos sin compromiso.",
+  imageUrl = "https://picsum.photos/400/250", // Una imagen de ejemplo
+  contactUrl = "/contacto",
+  delayInSeconds = 30, // <-- Por defecto, ahora son 30 segundos
+} = Astro.props;
+---
+
+<div id="modal-overlay" class="modal-overlay">
+  <div class="modal-content">
+    <button id="close-modal-btn" class="close-button" aria-label="Cerrar modal">&times;</button>
+    <img src={imageUrl} alt={title} class="modal-image" />
+    <h2>{title}</h2>
+    <p>{message}</p>
+    <a href={contactUrl} class="contact-btn">Asesórate</a>
+  </div>
+</div>
+
+<style>
+  /* --- LOS ESTILOS CSS SON LOS MISMOS --- */
+  /* (Puedes mantener los que ya tenías del ejemplo anterior) */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    position: relative;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  .modal-content h2 { margin-top: 0; }
+  .modal-content p { margin-bottom: 1.5rem; }
+  .contact-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  .contact-btn:hover { background-color: #0056b3; }
+</style>
+
+<script define:vars={{ delay: delayInSeconds * 1000 }}>
+  const modalOverlay = document.getElementById('modal-overlay');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+
+  // --- Funciones para abrir y cerrar el modal ---
+  function openModal() {
+    if (modalOverlay) {
+      modalOverlay.style.display = 'flex';
+    }
+  }
+
+  function closeModal() {
+    if (modalOverlay) {
+      modalOverlay.style.display = 'none';
+    }
+  }
+
+  // --- Lógica del temporizador ---
+  // Se ejecuta una sola vez: después del tiempo 'delay', se llama a openModal.
+  const timer = setTimeout(openModal, delay);
+
+  // --- Asignar eventos para cerrar ---
+  // Cierra el modal con el botón de la esquina
+  closeModalBtn.addEventListener('click', closeModal);
+
+  // Cierra el modal si se hace clic fuera del contenido
+  modalOverlay.addEventListener('click', (event) => {
+    if (event.target === modalOverlay) {
+      closeModal();
+    }
+  });
+
+  // Cierra el modal con la tecla 'Escape'
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // OPCIONAL: Limpiar el temporizador si el usuario abandona la página
+  // para evitar que se ejecute innecesariamente.
+  window.addEventListener('beforeunload', () => {
+    clearTimeout(timer);
+  });
+</script>
