@@ -13,35 +13,32 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
   
   <main class="pt-20">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-5xl font-bold mb-6">Seguros de Gastos Médicos Mayores</h1>
-          <p class="text-xl mb-8 opacity-90">Protege tu salud y la de tus seres queridos ante el impacto económico que puede representar un gasto médico</p>
-          <a href="#productos" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            Ver Nuestros Productos
-          </a>
-        </div>
+    <section class=" text-white py-20 overflow-hidden">
+      <!-- Imagen de fondo -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="/planes/alfa medical/hero-2.webp" 
+          alt="Seguros de Gastos Médicos Mayores - RP Seguros" 
+          class="w-full h-full object-cover object-center "
+          loading="eager"
+        />
+        <!-- Overlay gradient -->
       </div>
-    </section>
-
-    <!-- ¿Qué es un Seguro de Gastos Médicos Mayores? -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">¿Qué es un Seguro de Gastos Médicos Mayores?</h2>
-          <div class="bg-white p-8 rounded-lg shadow-lg">
-            <p class="text-lg text-gray-700 leading-relaxed mb-6">
-              Es un instrumento que permite protegerte a ti y tus seres queridos ante el impacto económico que puede representar un gasto en salud. La protección de un Seguro les ayudará a solventar los costos de atención médica, para que ustedes solo se concentren en estar bien.
-            </p>
-            <h3 class="text-xl font-semibold mb-4 text-gray-800">¿Cómo funciona?</h3>
-            <p class="text-gray-700 leading-relaxed">
-              Contratarás el producto que mejor se ajuste a tu estilo y etapa de vida, de tal manera que decidas tu participación por evento, el nivel hospitalario al que te gustaría tener acceso y si lo deseas, beneficios adicionales que pueden mejorar tu cobertura. En caso de requerir atención por algún accidente o enfermedad, se cubrirán los gastos médicos derivados de la atención.
-            </p>
+      
+      <!-- Contenido -->
+      <div class="container mx-auto px-4 relative z-10 mt-20">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="bg-rp-light-blue/50 backdrop-blur-sm rounded-lg p-8">
+        <h1 class="text-5xl text-white font-bold mb-6">Seguros de Gastos Médicos Mayores</h1>
+        <p class="text-xl mb-8 text-white opacity-90">Protege tu salud y la de tus seres queridos ante el impacto económico que puede representar un gasto médico</p>
+        <a href="#productos" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          Ver Nuestros Productos
+        </a>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- Productos -->
     <section id="productos" class="py-16">
@@ -66,8 +63,8 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
                 <li>• Administra tu participación</li>
                 <li>• Coberturas personalizables</li>
               </ul>
-              <a href="/seguros-salud/alfa-medical-flex" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Me interesa
+              <a href="/seguros-salud/alfa-medical-flex" class="bg-rp-light-blue text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Ver más
               </a>
             </div>
           </div>
@@ -77,7 +74,7 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
             <div class="p-6">
               <div class="flex items-center mb-4">
                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-[#3F933A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                   </svg>
                 </div>
@@ -89,8 +86,8 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
                 <li>• Cobertura de maternidad completa</li>
                 <li>• Planes familiares</li>
               </ul>
-              <a href="/seguros-salud/alfa-medical" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
-                Me interesa
+              <a href="/seguros-salud/alfa-medical" class="bg-[#3F933A] text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                Ver más
               </a>
             </div>
           </div>
@@ -100,9 +97,9 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
             <div class="p-6">
               <div class="flex items-center mb-4">
                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
-                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"></path>
-                  </svg>
+                    <svg class="w-6 h-6 text-[#D11F65]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800">Alfa Medical Internacional</h3>
               </div>
@@ -112,8 +109,8 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
                 <li>• Servicio Concierge</li>
                 <li>• Cobertura más amplia</li>
               </ul>
-              <a href="/seguros-salud/alfa-medical-internacional" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                Me interesa
+              <a href="/seguros-salud/alfa-medical-internacional" class="bg-[#D11F65] text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                Ver más
               </a>
             </div>
           </div>
@@ -124,7 +121,7 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-blue-600 text-white">
+    <section class="py-16 bg-rp-light-blue text-white">
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">¿No sabes qué Seguro te conviene más?</h2>
         <p class="text-xl mb-8 opacity-90">Deja tus datos y un experto te ayudará a elegir uno de acuerdo a tus necesidades.</p>
