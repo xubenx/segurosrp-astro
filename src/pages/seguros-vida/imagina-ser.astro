@@ -11,65 +11,87 @@ const pageDescription = "Que te motive ahorrar para el retiro que imaginas. Segu
 <Layout title={pageTitle} description={pageDescription}>
   <Header />
   
-  <main class="pt-20">
+  <main class="">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-5xl font-bold mb-6">Imagina Ser</h1>
-          <p class="text-2xl mb-8 opacity-90">Que te motive ahorrar para el retiro que imaginas</p>
-          <p class="text-lg mb-8 opacity-80">
-            Imagina Ser es el producto que se adecúa a tus necesidades, para garantizar tus ingresos en el retiro y mantener tu estilo de vida, no depender de tus familiares o concretar un sueño en la etapa de vida en la que tendrás más tiempo para disfrutarlo.
-          </p>
-          <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            Me interesa
-          </a>
+    <section class="relative h-screen text-white py-20 overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+      <img src="/planes/imagina ser/4.webp" alt="Background" class="w-full h-full object-cover" />
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-rp-blue/50 to-rp-light-blue/50"></div>
+
+      <div class="container mx-auto px-4 relative z-10">
+      <div class="grid md:grid-cols-2 gap-12 items-center min-h-screen">
+        <!-- Contenido -->
+        <div>
+        <h1 class="text-5xl font-bold mb-6">Imagina Ser</h1>
+        <p class="text-2xl mb-8 opacity-90">Que te motive ahorrar para el retiro que imaginas</p>
+        <p class="text-lg mb-8 opacity-90">
+          Imagina Ser es el producto que se adecúa a tus necesidades, para garantizar tus ingresos en el retiro y mantener tu estilo de vida, no depender de tus familiares o concretar un sueño en la etapa de vida en la que tendrás más tiempo para disfrutarlo.
+        </p>
+        <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block shadow-xl">
+          Me interesa
+        </a>
+        <!-- Imagen destacada para móvil -->
+        <div class="md:hidden mt-8 text-center">
+          <img src="/planes/imagina ser/imagina-2.webp" alt="Retiro feliz" loading="eager" class="max-w-xs mx-auto h-auto object-contain" />
         </div>
+        </div>
+        
+        <!-- Imagen destacada para desktop -->
+        <div class="hidden md:flex justify-end items-end h-[30rem]">
+        <img src="/planes/imagina ser/imagina-2.webp" alt="Retiro feliz" loading="eager" class="max-h-96 object-contain" />
+        </div>
+      </div>
       </div>
     </section>
 
     <!-- Valor diferencial -->
-    <section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <section class="py-16 h-screen bg-gradient-to-r from-rp-light-blue to-rp-blue">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Con este Seguro de Vida te ayudamos a cumplir tus objetivos protegiendo la estabilidad económica de tu familia durante el periodo de acumulación, garantizando rendimiento mínimo y lo más importante, <strong>tu ahorro no perderá su valor adquisitivo</strong>.
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+        
+        <div>
+          <h2 class="text-3xl font-bold mb-6 text-white">Tu ahorro protegido y garantizado</h2>
+          <p class="text-lg text-gray-200 leading-relaxed">
+          Con este Seguro de Vida te ayudamos a cumplir tus objetivos protegiendo la estabilidad económica de tu familia durante el periodo de acumulación, garantizando rendimiento mínimo y lo más importante, <strong class="text-white">tu ahorro no perderá su valor adquisitivo</strong>.
           </p>
         </div>
+        <div >
+          <img src="/planes/imagina ser/señora.webp" alt="Ahorro protegido"  loading="lazy" />
+        </div>
+        </div>
+      </div>
       </div>
     </section>
 
     <!-- Beneficios principales -->
     <section class="py-16">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-6xl mx-auto">
           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Considera Imagina Ser si estás buscando:</h2>
           <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-blue-500">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                </svg>
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center border-t-4 border-blue-500 hover:shadow-2xl transition-shadow">
+              <div class="mb-6 bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono1.webp" alt="Mantener estilo de vida" class="w-24 h-24 mx-auto object-contain" loading="lazy" />
               </div>
               <h3 class="text-lg font-semibold mb-3 text-gray-800">Mantener tu estilo de vida en la edad de retiro</h3>
               <p class="text-gray-600 text-sm">Asegurando que tendrás un ingreso vitalicio</p>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-indigo-500">
-              <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                </svg>
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center border-t-4 border-indigo-500 hover:shadow-2xl transition-shadow">
+              <div class="mb-6 bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono2.webp" alt="Protección familiar" class="w-24 h-24 mx-auto object-contain" loading="lazy" />
               </div>
               <h3 class="text-lg font-semibold mb-3 text-gray-800">Proteger mejor a tus seres queridos</h3>
               <p class="text-gray-600 text-sm">En caso de fallecer o llegar a sufrir invalidez</p>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-purple-500">
-              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
-                </svg>
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center border-t-4 border-blue-500 hover:shadow-2xl transition-shadow">
+              <div class="mb-6 bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono3.webp" alt="Herramienta flexible" class="w-24 h-24 mx-auto object-contain" loading="lazy" />
               </div>
               <h3 class="text-lg font-semibold mb-3 text-gray-800">Una herramienta flexible</h3>
               <p class="text-gray-600 text-sm">Que ofrece ahorro en UDI o dólares y rendimientos garantizados</p>
@@ -82,60 +104,74 @@ const pageDescription = "Que te motive ahorrar para el retiro que imaginas. Segu
     <!-- Rendimientos garantizados -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-8 rounded-lg">
-            <h2 class="text-2xl font-bold mb-4">Protege tu ahorro con rendimientos garantizados</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-white/10 p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">En Dólares</h3>
-                <p class="text-3xl font-bold">2%</p>
-                <p class="text-sm">Rendimiento garantizado anual</p>
-              </div>
-              <div class="bg-white/10 p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">En UDI</h3>
-                <p class="text-3xl font-bold">1%</p>
-                <p class="text-sm">Rendimiento garantizado anual</p>
-              </div>
-            </div>
+      <div class="max-w-6xl mx-auto">
+        <div class="flex justify-center">
+        <div class="bg-gradient-to-r from-rp-light-blue to-rp-blue text-white p-10 rounded-2xl shadow-2xl max-w-md w-full">
+          <h2 class="text-3xl font-bold mb-6">Protege tu ahorro con rendimientos garantizados</h2>
+          <div class="grid gap-6">
+          <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+            <h3 class="font-bold text-xl mb-2">En Dólares</h3>
+            <p class="text-4xl font-bold mb-2">2%</p>
+            <p class="text-sm opacity-90">Rendimiento garantizado anual</p>
+          </div>
+          <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+            <h3 class="font-bold text-xl mb-2">En UDI</h3>
+            <p class="text-4xl font-bold mb-2">1%</p>
+            <p class="text-sm opacity-90">Rendimiento garantizado anual</p>
+          </div>
           </div>
         </div>
+        </div>
+      </div>
       </div>
     </section>
 
     <!-- ¿Cómo funciona? -->
     <section class="py-16">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-6xl mx-auto">
           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
           
-          <div class="grid md:grid-cols-4 gap-6 mb-12">
-            <div class="text-center">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-2xl font-bold text-blue-600">1</span>
+          <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div class="text-center group">
+              <div class="mb-4 transform group-hover:scale-110 transition-transform bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono4.webp" alt="Define tu ahorro" class="w-20 h-20 mx-auto object-contain" loading="lazy" />
+              </div>
+              <div class="w-12 h-12 bg-rp-light-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <span class="text-xl font-bold">1</span>
               </div>
               <h3 class="font-semibold mb-2 text-gray-800">Define tu ahorro</h3>
               <p class="text-gray-600 text-sm">Estableces el monto que puedes ahorrar y el periodo que mejor se adapta a tus posibilidades</p>
             </div>
             
-            <div class="text-center">
-              <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-2xl font-bold text-indigo-600">2</span>
+            <div class="text-center group">
+              <div class="mb-4 transform group-hover:scale-110 transition-transform bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono5.webp" alt="Genera rendimientos" class="w-20 h-20 mx-auto object-contain" loading="lazy" />
+              </div>
+              <div class="w-12 h-12 bg-rp-light-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <span class="text-xl font-bold">2</span>
               </div>
               <h3 class="font-semibold mb-2 text-gray-800">Genera rendimientos</h3>
               <p class="text-gray-600 text-sm">Tu ahorro genera rendimientos garantizados en dólares o en UDI según el plan que elijas</p>
             </div>
             
-            <div class="text-center">
-              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-2xl font-bold text-purple-600">3</span>
+            <div class="text-center group">
+              <div class="mb-4 transform group-hover:scale-110 transition-transform bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono6.webp" alt="Aportaciones adicionales" class="w-20 h-20 mx-auto object-contain" loading="lazy" />
+              </div>
+              <div class="w-12 h-12 bg-rp-light-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <span class="text-xl font-bold">3</span>
               </div>
               <h3 class="font-semibold mb-2 text-gray-800">Aportaciones adicionales</h3>
               <p class="text-gray-600 text-sm">Puedes realizar aportaciones adicionales deducibles de impuestos</p>
             </div>
             
-            <div class="text-center">
-              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-2xl font-bold text-green-600">4</span>
+            <div class="text-center group">
+              <div class="mb-4 transform group-hover:scale-110 transition-transform bg-white rounded-xl p-4">
+                <img src="/planes/imagina ser/icono7.webp" alt="Recibe tu dinero" class="w-20 h-20 mx-auto object-contain" loading="lazy" />
+              </div>
+              <div class="w-12 h-12 bg-rp-light-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <span class="text-xl font-bold">4</span>
               </div>
               <h3 class="font-semibold mb-2 text-gray-800">Recibe tu dinero</h3>
               <p class="text-gray-600 text-sm">Al alcanzar la edad de retiro recibes tu dinero de la forma que más te convenga</p>
@@ -145,102 +181,93 @@ const pageDescription = "Que te motive ahorrar para el retiro que imaginas. Segu
       </div>
     </section>
 
+    <div>
+      <img src="/planes/imagina ser/banner2.webp" alt="Retiro feliz" loading="eager" class="w-full h-auto object-contain" />
+    </div>
+
     <!-- Formas de recibir tu dinero -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo recibiré mi dinero? ¡Tú eliges!</h2>
-          
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Una sola exhibición -->
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
-              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold mb-3 text-gray-800">En una sola exhibición</h3>
-              <p class="text-gray-600 text-sm">Te permite invertir en grandes proyectos como emprender o comprar una propiedad</p>
-            </div>
-
-            <!-- Ingresos vitalicios -->
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-green-500">
-              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold mb-3 text-gray-800">Ingresos vitalicios mensuales</h3>
-              <p class="text-gray-600 text-sm">En moneda nacional, calculados al tipo de cambio vigente del dólar o UDI</p>
-            </div>
-
-            <!-- Aguinaldos -->
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-purple-500">
-              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold mb-3 text-gray-800">Aguinaldos en diciembre</h3>
-              <p class="text-gray-600 text-sm">Complementa tu ingreso durante los primeros 5 años con aguinaldos equivalentes a una mensualidad</p>
-            </div>
-
-            <!-- Pago especial -->
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-orange-500">
-              <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold mb-3 text-gray-800">Pago especial</h3>
-              <p class="text-gray-600 text-sm">Para planes como remodelar o hacer un viaje, solicita un pago equivalente a 6 mensualidades</p>
-            </div>
-
-            <!-- Adelanto -->
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-red-500">
-              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold mb-3 text-gray-800">Adelanto de emergencia</h3>
-              <p class="text-gray-600 text-sm">Ante cualquier eventualidad, puedes solicitar un adelanto del 30% de una mensualidad</p>
-            </div>
-
-            <!-- Edades de retiro -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg shadow-lg border-l-4 border-indigo-500">
-              <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold mb-3 text-gray-800">Elige tu edad de retiro</h3>
-              <p class="text-gray-600 text-sm">Puedes elegir entre 55, 60, 65 o 70 años según tus planes de vida</p>
-            </div>
-          </div>
+      <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo recibiré mi dinero? ¡Tú eliges!</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Una sola exhibición -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-rp-orange hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-rp-orange/20 rounded-xl flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-rp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+        </svg>
         </div>
+        <h3 class="text-lg font-bold mb-3 text-gray-800">En una sola exhibición</h3>
+        <p class="text-gray-600 text-sm">Te permite invertir en grandes proyectos como emprender o comprar una propiedad</p>
+      </div>
+
+      <!-- Ingresos vitalicios -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-rp-orange hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-rp-orange/20 rounded-xl flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-rp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3 text-gray-800">Ingresos vitalicios mensuales</h3>
+        <p class="text-gray-600 text-sm">En moneda nacional, calculados al tipo de cambio vigente del dólar o UDI</p>
+      </div>
+
+      <!-- Aguinaldos -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-rp-orange hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-rp-orange/20 rounded-xl flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-rp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+        </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3 text-gray-800">Aguinaldos en diciembre</h3>
+        <p class="text-gray-600 text-sm">Complementa tu ingreso durante los primeros 5 años con aguinaldos equivalentes a una mensualidad</p>
+      </div>
+
+      <!-- Pago especial -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-rp-orange hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-rp-orange/20 rounded-xl flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-rp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+        </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3 text-gray-800">Pago especial</h3>
+        <p class="text-gray-600 text-sm">Para planes como remodelar o hacer un viaje, solicita un pago equivalente a 6 mensualidades</p>
+      </div>
+
+      <!-- Adelanto -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-rp-orange hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-rp-orange/20 rounded-xl flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-rp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3 text-gray-800">Adelanto de emergencia</h3>
+        <p class="text-gray-600 text-sm">Ante cualquier eventualidad, puedes solicitar un adelanto del 30% de una mensualidad</p>
+      </div>
+
+      <!-- Edades de retiro -->
+      <div class="bg-gradient-to-br from-rp-orange/10 to-rp-orange/30 p-6 rounded-2xl shadow-lg border-l-4 border-rp-orange hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-rp-orange/20 rounded-xl flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-rp-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3 text-gray-800">Elige tu edad de retiro</h3>
+        <p class="text-gray-600 text-sm">Puedes elegir entre 55, 60, 65 o 70 años según tus planes de vida</p>
+      </div>
+      </div>
+      </div>
       </div>
     </section>
 
-    <!-- Beneficios fiscales -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-8 rounded-lg text-center">
-            <h2 class="text-3xl font-bold mb-4">Beneficios Fiscales</h2>
-            <p class="text-lg mb-6">
-              Durante la etapa de acumulación puedes realizar aportaciones adicionales en cualquier momento, 
-              <strong>mismas que puedes hacer deducibles de impuestos</strong>
-            </p>
-            <div class="bg-white/10 p-4 rounded-lg inline-block">
-              <p class="text-sm">Consulta con tu asesor fiscal para más detalles</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Productos relacionados -->
+
+    <!-- CTA Section -->
+    
+          <section id="contacto" class="bg-white"><Contact /></section>
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
@@ -260,18 +287,6 @@ const pageDescription = "Que te motive ahorrar para el retiro que imaginas. Segu
         </div>
       </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">¿Quieres hablar con un asesor?</h2>
-        <p class="text-xl mb-8 opacity-90">Deja tus datos y un experto te ayudará a diseñar el plan perfecto para tu retiro.</p>
-        <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-          Quiero hablar con un asesor
-        </a>
-      </div>
-    </section>
-          <section id="contacto" class="bg-white"><Contact /></section>
 
   </main>
 

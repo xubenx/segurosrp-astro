@@ -10,177 +10,237 @@ import Contact from '../../components/Contact.astro';
   <main class="">
     <Header/>
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16 lg:py-24">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span class="text-yellow-400">SeguBeca</span>
-          </h1>
-          <p class="text-xl lg:text-2xl mb-8 text-blue-100">
-            Asegura el futuro educativo de tus hijos mientras proteges a tu familia
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
-              Cotizar Ahora
-            </a>
-            <a href="#como-funciona" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
-              Conocer Más
-            </a>
-          </div>
-        </div>
+    <section class="h-screen text-white py-16 lg:py-24 relative">
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat sm:bg-cover" 
+       style="background-image: url('/planes/segubeca/1.webp'); 
+        background-size: cover; 
+        background-position: center center;">
+      <!-- Overlay para mejorar legibilidad en móvil -->
+      <div class="absolute inset-0 bg-black bg-opacity-40 sm:bg-opacity-30"></div>
       </div>
-    </section>
-
-    <!-- Beneficios Principales -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            ¿Por qué elegir SeguBeca?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Una planeación inteligente para la educación universitaria de tus hijos
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Educación Garantizada</h3>
-            <p class="text-gray-600">
-              Asegura que tus hijos tengan acceso a la educación universitaria que necesitan, sin comprometer el patrimonio familiar.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Protección Familiar</h3>
-            <p class="text-gray-600">
-              En caso de fallecimiento o invalidez, el plan continúa y tu familia recibe la suma asegurada contratada.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Ahorro Seguro</h3>
-            <p class="text-gray-600">
-              Tu dinero crece de manera segura sin poner en riesgo el capital, protegido contra la inflación.
-            </p>
-          </div>
-        </div>
+      <div class="container mx-auto px-4 relative z-10 h-full flex items-end">
+      <div class="max-w-4xl mx-auto text-center mb-20 sm:mb-32 lg:mb-40">
+      <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+      <span class="text-yellow-400">SeguBeca</span>
+      </h1>
+      <p class="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 px-4">
+      Asegura el futuro educativo de tus hijos mientras proteges a tu familia
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center px-4">
+      <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
+        Cotizar Ahora
+      </a>
+      <a href="#como-funciona" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 text-sm sm:text-base">
+        Conocer Más
+      </a>
+      </div>
+      </div>
       </div>
     </section>
 
     <!-- Cómo Funciona -->
     <section id="como-funciona" class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            ¿Cómo funciona SeguBeca?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Un proceso simple y transparente para asegurar el futuro educativo
-          </p>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+        ¿Cómo funciona SeguBeca?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Un proceso simple y transparente para asegurar el futuro educativo
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-8 rounded-2xl text-center shadow-lg">
+        <div class="mb-6">
+          <img src="/planes/segubeca/31.webp" alt="Flexibilidad" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Flexibilidad</h3>
+        <p class="text-gray-600">
+          Adapta el plan a tus necesidades y capacidad de pago, con opciones flexibles para el beneficio educativo de tus hijos.
+        </p>
         </div>
 
+        <div class="bg-white p-8 rounded-2xl text-center shadow-lg">
+        <div class="mb-6">
+          <img src="/planes/segubeca/32.webp" alt="Tranquilidad" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Tranquilidad</h3>
+        <p class="text-gray-600">
+          La paz mental de saber que la educación de tus hijos está asegurada, sin importar las circunstancias futuras.
+        </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl text-center shadow-lg">
+        <div class="mb-6">
+          <img src="/planes/segubeca/33.webp" alt="Mancomunado" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Mancomunado</h3>
+        <p class="text-gray-600">
+          Protección conjunta para ambos padres, garantizando que el plan continúe independientemente de las adversidades.
+        </p>
+        </div>
+
+        
+      </div>
+      
+      </div>
+  
+    </section>
+
+
+        <section class="py-16    bg-gray-100">
+      <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <div class="space-y-8">
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Define el monto necesario</h3>
-                <p class="text-gray-600">Calcula el costo aproximado de la universidad y gastos adicionales que necesitarás cubrir para la educación de tu hijo.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Protección garantizada</h3>
-                <p class="text-gray-600">Si durante el período de aportaciones llegaras a faltar o padecer invalidez, SeguBeca cubre los pagos restantes automáticamente.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Suma asegurada para la familia</h3>
-                <p class="text-gray-600">En caso de fallecimiento, tu familia cuenta con una suma asegurada al menos igual a la del ahorro contratado.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Beneficio educativo</h3>
-                <p class="text-gray-600">Cuando tu hijo cumpla 18 años, comenzará a recibir el ahorro formado durante toda la vigencia del plan para su educación.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">5</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Apoyo inmediato</h3>
-                <p class="text-gray-600">En caso de fallecimiento del asegurado, el beneficiario puede recibir un anticipo de hasta el 15% de la suma asegurada.</p>
-              </div>
-            </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
+          
+          <!-- Ejemplo práctico -->
+          <div class="flex justify-center items-center ">
+            <iframe 
+              width="100%" 
+              height="315" 
+              src="https://www.youtube.com/embed/bUs-24lla5w?si=-nF9NB_kMUq1xllp" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen
+              class="rounded-lg shadow-lg max-w-full md:max-w-[560px]"
+              style="max-width: 560px;"
+            ></iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Opciones de Pago -->
+    <!-- Coberturas Adicionales -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            Opciones de Recepción
+            Coberturas Adicionales
           </h2>
           <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Tú decides cómo recibir el beneficio educativo
+            Protección completa para ti y tu familia
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Pago Único</h3>
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Seguro de Vida -->
+          <div class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="mb-6">
+              <img src="/planes/segubeca/icon1.webp" alt="Seguro de Vida" class="w-24 h-24 mx-auto mb-4">
             </div>
-            <p class="text-gray-600 text-center">
-              Recibe el monto total en una sola exhibición para cubrir todos los gastos educativos de una vez.
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Seguro de Vida</h3>
+            <p class="text-gray-600">
+              Protección financiera para tu familia en caso de fallecimiento, garantizando su bienestar económico.
             </p>
           </div>
 
-          <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Pagos Mensuales</h3>
+          <!-- Doble Indemnización -->
+          <div class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="mb-6">
+              <img src="/planes/segubeca/icon2.webp" alt="Doble Indemnización" class="w-24 h-24 mx-auto mb-4">
             </div>
-            <p class="text-gray-600 text-center">
-              Recibe ingresos mensuales durante cuatro años, con la suma asegurada más rendimientos al final del período.
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Doble Indemnización</h3>
+            <p class="text-gray-600">
+              En caso de muerte accidental y pérdidas orgánicas, tu familia recibirá el doble del monto asegurado.
             </p>
           </div>
+
+          <!-- Invalidez Total o Permanente -->
+          <div class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="mb-6">
+              <img src="/planes/segubeca/icon3.webp" alt="Invalidez Total o Permanente" class="w-24 h-24 mx-auto mb-4">
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Invalidez Total o Permanente</h3>
+            <p class="text-gray-600">
+              Seguro en caso de invalidez total o permanente, proporcionando apoyo financiero cuando más lo necesitas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Banner de Estadísticas -->
+    <section class="py-12 md:py-16 bg-gradient-to-r from-rp-blue  to-rp-light-blue relative overflow-hidden">
+      <!-- Elementos decorativos de fondo -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-yellow-400 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
+          
+          <!-- Estadística 1 -->
+          <div class="text-center transform hover:scale-105 transition-transform duration-300">
+            <div class="mb-3">
+              <div class="inline-block p-4 bg-white bg-opacity-20 rounded-full backdrop-blur-sm mb-4">
+                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+            <div class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 animate-pulse">
+              +100
+            </div>
+            <div class="text-lg md:text-xl font-semibold text-white mb-1">
+              SeguBecas
+            </div>
+            <div class="text-sm md:text-base text-blue-100 font-medium">
+              cobradas hasta 2024
+            </div>
+          </div>
+
+          <!-- Estadística 2 -->
+          <div class="text-center transform hover:scale-105 transition-transform duration-300">
+            <div class="mb-3">
+              <div class="inline-block p-4 bg-white bg-opacity-20 rounded-full backdrop-blur-sm mb-4">
+                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+            <div class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-2">
+              $50,000,000
+            </div>
+            <div class="text-lg md:text-xl font-semibold text-white mb-1">
+              Destinados para
+            </div>
+            <div class="text-sm md:text-base text-blue-100 font-medium">
+              carreras universitarias
+            </div>
+          </div>
+
+          <!-- Estadística 3 -->
+          <div class="text-center transform hover:scale-105 transition-transform duration-300">
+            <div class="mb-3">
+              <div class="inline-block p-4 bg-white bg-opacity-20 rounded-full backdrop-blur-sm mb-4">
+                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2">
+              100%
+            </div>
+            <div class="text-lg md:text-xl font-semibold text-white mb-1">
+              De nuestros
+            </div>
+            <div class="text-sm md:text-base text-blue-100 font-medium">
+              asegurados protegidos
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Texto adicional -->
+        <div class="text-center mt-10 md:mt-12">
+          <p class="text-white text-lg md:text-xl font-medium max-w-3xl mx-auto">
+            Miles de familias han confiado en nosotros para asegurar el futuro educativo de sus hijos
+          </p>
         </div>
       </div>
     </section>
@@ -245,8 +305,8 @@ import Contact from '../../components/Contact.astro';
               </p>
             </div>
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                <span class="text-purple-600 font-bold">AS</span>
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <span class="text-blue-600 font-bold">AS</span>
               </div>
               <div>
                 <p class="font-semibold text-gray-800">Ana Sofía</p>
@@ -259,7 +319,7 @@ import Contact from '../../components/Contact.astro';
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
+    <section class="py-16 bg-gradient-to-br from-rp-blue to-rp-light-blue  text-white">
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl lg:text-4xl font-bold mb-6">
           Asegura el futuro educativo de tus hijos
@@ -268,7 +328,7 @@ import Contact from '../../components/Contact.astro';
           Comienza hoy a planear la educación universitaria de tus hijos con la tranquilidad que brinda SeguBeca
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+          <a href="#contacto" class="bg-[#E2A130] hover:bg-yellow-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
             Cotizar SeguBeca
           </a>
           <a href="https://wa.me/524461354113" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">

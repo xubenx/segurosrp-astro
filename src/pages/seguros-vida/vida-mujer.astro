@@ -6,30 +6,193 @@ import Contact from '../../components/Contact.astro';
 
 ---
 
-<Layout title="Vida Mujer - Seguro Especializado | Seguros RP">
+<Layout title="Vida Mujer | Asesores Seguros Monterrey">
   <main class="">
     <Header/>
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-pink-900 via-pink-800 to-rose-900 text-white py-16 lg:py-24">
+    <section style="background-image: url('/planes/vm/hero.webp'); background-size: cover; background-position: center;" class="h-screen relative text-white py-24 lg:py-32 flex items-end">
+      <!-- Overlay para mejorar la legibilidad del texto -->
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      
+      <div class="container mx-auto px-4 relative z-10 pb-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+        <span class="text-pink-400">Vida Mujer</span>
+        </h1>
+        <p class="text-xl lg:text-2xl mb-8 text-pink-100">
+        Que te motive Proteger Mejor® todos los aspectos de tu vida
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contacto" class="bg-pink-500 hover:bg-pink-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+          Me Interesa
+        </a>
+        <a href="#como-funciona" class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
+          Conocer Más
+        </a>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Sección de Beneficios Principales con Íconos -->
+    <section class="py-16 bg-gradient-to-br from-pink-50 via-white to-purple-50">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span class="text-yellow-400">Vida Mujer</span>
-          </h1>
-          <p class="text-xl lg:text-2xl mb-8 text-pink-100">
-            Que te motive Proteger Mejor® todos los aspectos de tu vida
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
-              Me Interesa
-            </a>
-            <a href="#como-funciona" class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
-              Conocer Más
-            </a>
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Protección Integral -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div class="mb-6">
+                <img src="/planes/vm/icon1.webp" alt="Protección Integral" class="w-20 h-20 mx-auto mb-4 object-contain">
+              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Protección Integral</h3>
+              <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                Tienes un respaldo financiero sólido en caso de fallecimiento, invalidez o pérdidas orgánicas
+              </p>
+            </div>
+
+            <!-- Ahorro Integral -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div class="mb-6">
+                <img src="/planes/vm/icon2.webp" alt="Ahorro Integral" class="w-20 h-20 mx-auto mb-4 object-contain">
+              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Ahorro Integral</h3>
+              <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                Construye un futuro próspero con un plan de ahorro a tu medida, en el que podrás recibir parte de tu ahorro a partir del quinto año
+              </p>
+            </div>
+
+            <!-- Coberturas Especiales -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div class="mb-6">
+                <img src="/planes/vm/icon3.webp" alt="Coberturas Especiales" class="w-20 h-20 mx-auto mb-4 object-contain">
+              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Coberturas Especiales</h3>
+              <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                Enfrenta los desafíos de la vida con tranquilidad, con coberturas específicas para enfermedades: Cáncer de mama, cáncer de ovario, complicaciones en el embarazo
+              </p>
+            </div>
+
+            <!-- Apoyo en Momentos Difíciles -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div class="mb-6">
+                <img src="/planes/vm/icon4.webp" alt="Apoyo en momentos difíciles" class="w-20 h-20 mx-auto mb-4 object-contain">
+              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Apoyo en momentos difíciles</h3>
+              <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                Te ofrecemos asistencia en caso de diagnóstico de enfermedades graves, para que puedas concentrarte en tu recuperación
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Mini Banner 115% -->
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
+          
+          <!-- Ejemplo práctico -->
+          <div class="flex justify-center items-center ">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_-rNdi-XXE8?si=KDRZeVneSIZ-_qsq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div>
+            <p class="text-black text-center">
+              Vida Mujer es el seguro más completo que toda mujer debería tener, sin importar su edad y momento de su vida en el que se encuentre.
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- Coberturas Adicionales -->
+    <section class=" bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Coberturas Adicionales
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Protección especializada para cada etapa de tu vida
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          
+          <!-- Protección por cáncer femenino -->
+          <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="mb-6">
+              <img src="/planes/vm/icon5.webp" alt="Protección por cáncer femenino" class="w-20 h-20 mx-auto mb-4 object-contain">
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por cáncer femenino</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              (mama, ovarios, útero, trompas de Falopio)
+            </p>
+          </div>
+
+          <!-- Protección por padecimientos femeninos -->
+          <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="mb-6">
+              <img src="/planes/vm/icon6.webp" alt="Protección por padecimientos femeninos" class="w-20 h-20 mx-auto mb-4 object-contain">
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por padecimientos femeninos</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              (Enfermedad inflamatoria pélvica, prolapso genital, fibroadenomas)
+            </p>
+          </div>
+
+          <!-- Protección por complicaciones del embarazo -->
+          <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="mb-6">
+              <img src="/planes/vm/icon7.webp" alt="Protección por complicaciones del embarazo" class="w-20 h-20 mx-auto mb-4 object-contain">
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por complicaciones del embarazo</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              (Parto prematuro, partos múltiples, eclampsia, embarazo ectópico)
+            </p>
+          </div>
+
+          <!-- Protección por complicaciones en el recién nacido -->
+          <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="mb-6">
+              <img src="/planes/vm/icon8.webp" alt="Protección por complicaciones en el recién nacido" class="w-20 h-20 mx-auto mb-4 object-contain">
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por complicaciones en el recién nacido</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              (Espina bífida, labio leporino, síndrome de down, cardiopatía cianógena)
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="py-10 mt-12 md:py-12 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-400 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 left-1/4 w-64 h-64 bg-yellow-300 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-pink-300 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-white text-base md:text-lg mb-3 font-medium">
+            El único plan que te garantiza el
+          </p>
+          <div class="flex items-center justify-center mb-3">
+            <div class="text-6xl md:text-7xl lg:text-8xl font-extrabold text-white animate-pulse">
+              115%
+            </div>
+          </div>
+          <div class="h-1 w-24 bg-white mx-auto mb-4"></div>
+          <p class="text-white text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
+            de rendimiento de tu suma asegurada al vencimiento del mismo
+          </p>
+        </div>
+      </div>
+    </section>
+
 
     <!-- Beneficios Principales -->
     <section class="py-16 bg-white">
@@ -56,9 +219,9 @@ import Contact from '../../components/Contact.astro';
             </p>
           </div>
 
-          <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-gradient-to-br from-pink-50 to-pink-50 p-8 rounded-2xl text-center">
+            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
               </svg>
             </div>
@@ -68,9 +231,9 @@ import Contact from '../../components/Contact.astro';
             </p>
           </div>
 
-          <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl text-center">
+            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
               </svg>
             </div>
@@ -83,233 +246,7 @@ import Contact from '../../components/Contact.astro';
       </div>
     </section>
 
-    <!-- Cómo Funciona -->
-    <section id="como-funciona" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            ¿Cómo funciona Vida Mujer?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Un sistema integral de protección y ahorro diseñado para ti
-          </p>
-        </div>
 
-        <div class="max-w-4xl mx-auto">
-          <div class="space-y-8">
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Establece tu protección</h3>
-                <p class="text-gray-600">Define la protección que necesitas de acuerdo con tu etapa de vida para adaptarlo a tus necesidades específicas.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Define tu ahorro</h3>
-                <p class="text-gray-600">Establece el monto que puedes ahorrar y el período de pago (mensual, trimestral, semestral o anual) que mejor se adapte a ti.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Recibe beneficios en vida</h3>
-                <p class="text-gray-600">A partir del 5º año recibes el 5% de la suma asegurada, luego cada 2 años hasta el 17°, y en el 20° año el 80% restante.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-6">
-              <div class="flex-shrink-0 w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Protección continua</h3>
-                <p class="text-gray-600">Independientemente de los anticipos recibidos, en caso de fallecimiento tus beneficiarios reciben el 100% de la suma asegurada.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beneficios en Vida -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            ¡Tú eliges cómo recibir tu dinero!
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Múltiples formas de aprovechar tu seguro en vida
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl">
-            <div class="text-center mb-4">
-              <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-gray-800">Pago Único</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Recibe el dinero en una sola exhibición para realizar grandes proyectos como emprender o comprar una propiedad.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-2xl">
-            <div class="text-center mb-4">
-              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-gray-800">Eventos Especiales</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Si entre el 4º y 5º año te casas o tienes un hijo, puedes adelantar el 5% de la suma asegurada para ese momento especial.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl">
-            <div class="text-center mb-4">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-gray-800">Anticipos por Salud</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Anticipo del 25% de la suma asegurada o $700,000 MN en caso de diagnóstico de enfermedades específicas de la mujer.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cronología de Beneficios -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            Cronología de Beneficios
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Así recibirás tus beneficios a lo largo del tiempo
-          </p>
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-          <div class="relative">
-            <!-- Línea de tiempo -->
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-pink-300 h-full"></div>
-            
-            <div class="space-y-12">
-              <div class="flex items-center">
-                <div class="flex-1 text-right pr-8">
-                  <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <h3 class="font-bold text-gray-800">Año 5</h3>
-                    <p class="text-gray-600">5% de la suma asegurada</p>
-                  </div>
-                </div>
-                <div class="w-4 h-4 bg-pink-600 rounded-full border-4 border-white z-10"></div>
-                <div class="flex-1 pl-8"></div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="flex-1 pr-8"></div>
-                <div class="w-4 h-4 bg-pink-600 rounded-full border-4 border-white z-10"></div>
-                <div class="flex-1 text-left pl-8">
-                  <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <h3 class="font-bold text-gray-800">Años 7, 9, 11, 13, 15, 17</h3>
-                    <p class="text-gray-600">5% cada 2 años</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="flex-1 text-right pr-8">
-                  <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <h3 class="font-bold text-gray-800">Año 20</h3>
-                    <p class="text-gray-600">80% de la suma asegurada</p>
-                  </div>
-                </div>
-                <div class="w-4 h-4 bg-pink-600 rounded-full border-4 border-white z-10"></div>
-                <div class="flex-1 pl-8"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 text-center">
-            <div class="bg-pink-50 p-6 rounded-2xl">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Total al final del plazo</h3>
-              <p class="text-lg text-pink-600 font-semibold">115% de la suma asegurada contratada</p>
-              <p class="text-sm text-gray-600 mt-2">Independientemente de los anticipos, tus beneficiarios siempre reciben el 100% en caso de fallecimiento</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Coberturas Especiales -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            Coberturas Especiales para la Mujer
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Protección específica para condiciones de salud femeninas
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl text-center">
-            <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-800 mb-2">Infarto al Miocardio</h3>
-            <p class="text-sm text-gray-600">Anticipo del 25% en caso de diagnóstico</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-2xl text-center">
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-800 mb-2">Accidente Cerebrovascular</h3>
-            <p class="text-sm text-gray-600">Cobertura especializada</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl text-center">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-800 mb-2">Cáncer</h3>
-            <p class="text-sm text-gray-600">Protección ante diagnóstico oncológico</p>
-          </div>
-
-          <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl text-center">
-            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-800 mb-2">Insuficiencia Renal</h3>
-            <p class="text-sm text-gray-600">Cobertura para insuficiencia renal crónica</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Testimonios -->
     <section class="py-16 bg-gray-50">
@@ -341,7 +278,7 @@ import Contact from '../../components/Contact.astro';
             </div>
           </div>
 
-          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-purple-500">
+          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-pink-500">
             <div class="mb-4">
               <div class="flex text-yellow-400 mb-2">
                 <span>★★★★★</span>
@@ -351,8 +288,8 @@ import Contact from '../../components/Contact.astro';
               </p>
             </div>
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                <span class="text-purple-600 font-bold">PS</span>
+              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4">
+                <span class="text-pink-600 font-bold">PS</span>
               </div>
               <div>
                 <p class="font-semibold text-gray-800">Patricia Silva</p>
@@ -361,7 +298,7 @@ import Contact from '../../components/Contact.astro';
             </div>
           </div>
 
-          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-blue-500">
+          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-pink-500">
             <div class="mb-4">
               <div class="flex text-yellow-400 mb-2">
                 <span>★★★★★</span>
@@ -371,8 +308,8 @@ import Contact from '../../components/Contact.astro';
               </p>
             </div>
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <span class="text-blue-600 font-bold">MR</span>
+              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4">
+                <span class="text-pink-600 font-bold">MR</span>
               </div>
               <div>
                 <p class="font-semibold text-gray-800">Mónica Rodríguez</p>
@@ -385,7 +322,7 @@ import Contact from '../../components/Contact.astro';
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-br from-pink-600 to-rose-800 text-white">
+    <section class="py-16 bg-gradient-to-br from-pink-600 via-pink-500 to-pink-400 text-white">
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl lg:text-4xl font-bold mb-6">
           Protege todos los aspectos de tu vida
@@ -394,7 +331,7 @@ import Contact from '../../components/Contact.astro';
           Vida Mujer está diseñado para entenderte y apoyarte en cada rol que desempeñas. Disfruta cada día sintiéndote respaldada.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contacto" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+          <a href="#contacto" class="bg-white hover:bg-pink-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
             Quiero Vida Mujer
           </a>
           <a href="https://wa.me/524461354113" class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
