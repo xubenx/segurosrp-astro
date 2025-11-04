@@ -27,20 +27,22 @@ import Footer from '../components/Footer.astro';
     <!-- Formulario de Contacto -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          <!-- Formulario - Columna izquierda (8 columnas en desktop) -->
-          <div class="lg:col-span-8">
-            <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg">
-              <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
-                Envíanos un mensaje
-              </h2>
-              <ContactForm />
-            </div>
+        <!-- Formulario - Ancho completo -->
+        <div class="max-w-4xl mx-auto mb-16">
+          <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg">
+            <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-6 text-center">
+              Envíanos un mensaje
+            </h2>
+            <ContactForm />
           </div>
+        </div>
 
-          <!-- Métodos de Contacto - Columna derecha (4 columnas en desktop) -->
-          <div class="lg:col-span-4">
-            <div class="space-y-6">
+        <!-- Métodos de Contacto - Debajo del formulario -->
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Otras formas de contacto
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <!-- WhatsApp -->
               <div class="contact-method-card bg-gradient-to-br from-[#3F933A] to-green-600 p-6 rounded-2xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div class="flex items-center mb-4">
