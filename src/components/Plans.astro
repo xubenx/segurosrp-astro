@@ -1,46 +1,691 @@
 ---
-// Plans section with floating bubbles
-import Bubble from './Bubble.astro';
+// Plans carousel section
 
 const plans = [
   {
-    title: "Seguros de Vida",
-    image: "/seguro-vida.png",
-    gradientFrom: "from-green-500",
-    gradientTo: "to-green-600",
-    animation: "animate-float-1",
-    href: "/seguros-vida"
+    id: 1,
+    title: "Vida Mujer",
+    image: "/planes/slider-1.webp",
+    gradientFrom: "from-pink-500",
+    gradientTo: "to-rose-600",
+    href: "/seguro-de-vida-mujer"
   },
   {
-    title: "Seguros de Salud",
-    image: "/seguro-salud.jpg",
+    id: 2,
+    title: "SeguBeca",
+    image: "/planes/slider-2.webp",
     gradientFrom: "from-blue-500",
-    gradientTo: "to-blue-600",
-    animation: "animate-float-2",
+    gradientTo: "to-indigo-600",
+    href: "/segubecalanding"
+  },
+  {
+    id: 3,
+    title: "Gastos Médicos",
+    image: "/planes/slider-3.webp",
+    gradientFrom: "from-green-500",
+    gradientTo: "to-emerald-600",
     href: "/seguros-salud"
+  },
+  {
+    id: 4,
+    title: "Retiro",
+    image: "/planes/slider-4.webp",
+    gradientFrom: "from-purple-500",
+    gradientTo: "to-violet-600",
+    href: "/plan-de-retiro-seguros-monterrey"
+  },
+  {
+    id: 5,
+    title: "Ahorro",
+    image: "/planes/slider-5.webp",
+    gradientFrom: "from-amber-500",
+    gradientTo: "to-orange-600",
+    href: "/seguros-vida"
   }
 ];
 ---
 
-<section id="planes" class=" h-[90vh] md:h-screen  flex items-center justify-center bg-gradient-to-br from-rp-gray to-white py-20">
+<section id="planes" class="h-[90vh] md:h-screen flex items-center justify-center bg-gradient-to-br from-rp-gray to-white  ">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-16">
+    <div class="text-center">
       <h2 class="text-4xl md:text-5xl font-bold text-rp-blue mt-4">Nuestros Planes</h2>
       <p class="text-xl text-gray-600">Protección diseñada para cada etapa de tu vida</p>
     </div>
 
-    <!-- Layout: Simple grid for all devices -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 lg:gap-20 max-w-5xl mx-auto justify-items-center">
-      {plans.map((plan) => (
-        <Bubble 
-          title={plan.title}
-          image={plan.image}
-          gradientFrom={plan.gradientFrom}
-          gradientTo={plan.gradientTo}
-          animation={plan.animation}
-          href={plan.href}
-        />
-      ))}
+    <!-- Plans Carousel -->
+    <div class="plans-carousel-container">
+      <div class="plans-carousel" id="plansCarousel">
+        <!-- Left side cards -->
+        <div class="plan-card plan-card-side left-1" id="leftCard1">
+          <div class="plan-image-wrapper">
+            <img class="plan-image" loading="lazy" />
+            <div class="plan-overlay">
+              <h3 class="plan-title"></h3>
+              <a class="plan-link">
+                Ver Detalles
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-card plan-card-side left-2" id="leftCard2">
+          <div class="plan-image-wrapper">
+            <img class="plan-image" loading="lazy" />
+            <div class="plan-overlay">
+              <h3 class="plan-title"></h3>
+              <a class="plan-link">
+                Ver Detalles
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center card (always visible and prominent) -->
+        <div class="plan-card plan-card-center" id="centerCard">
+          <div class="plan-image-wrapper">
+            <img class="plan-image" loading="lazy" />
+            <div class="plan-overlay">
+              <h3 class="plan-title"></h3>
+              <a class="plan-link">
+                Ver Detalles
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side cards -->
+        <div class="plan-card plan-card-side right-1" id="rightCard1">
+          <div class="plan-image-wrapper">
+            <img class="plan-image" loading="lazy" />
+            <div class="plan-overlay">
+              <h3 class="plan-title"></h3>
+              <a class="plan-link">
+                Ver Detalles
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-card plan-card-side right-2" id="rightCard2">
+          <div class="plan-image-wrapper">
+            <img class="plan-image" loading="lazy" />
+            <div class="plan-overlay">
+              <h3 class="plan-title"></h3>
+              <a class="plan-link">
+                Ver Detalles
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Navigation buttons -->
+      <button class="carousel-nav carousel-nav-prev" id="prevBtn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button class="carousel-nav carousel-nav-next" id="nextBtn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+      
+      <!-- Dots indicator -->
+      <div class="carousel-dots py-2">
+        {plans.map((_, index) => (
+          <button 
+            class={`carousel-dot ${index === 0 ? 'active' : ''}`}
+            data-slide={index}
+          ></button>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .plans-carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .plans-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 2rem 0;
+  }
+
+  .plan-card {
+    flex-shrink: 0;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+  }
+
+  .plan-card-center {
+    width: 350px;
+    height: 450px;
+    z-index: 10;
+    transform: scale(1.15) translateZ(0);
+    position: relative;
+  }
+
+  .plan-card-side {
+    width: 280px;
+    height: 360px;
+    z-index: 5;
+    opacity: 0.6;
+    transform: scale(0.85) translateZ(0);
+    position: relative;
+  }
+
+  .left-1 {
+    transform: scale(0.75) translateX(-20px) translateZ(0);
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  .left-2 {
+    transform: scale(0.85) translateX(-10px) translateZ(0);
+    opacity: 0.6;
+    z-index: 3;
+  }
+
+  .right-1 {
+    transform: scale(0.85) translateX(10px) translateZ(0);
+    opacity: 0.6;
+    z-index: 3;
+  }
+
+  .right-2 {
+    transform: scale(0.75) translateX(20px) translateZ(0);
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  .plan-image-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.6s ease;
+  }
+
+
+  .plan-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .plan-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .plan-card-center .plan-overlay {
+    transform: translateY(0);
+  }
+
+  .plan-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .plan-link {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+  }
+
+  .plan-link:hover {
+    border-bottom-color: white;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-nav:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .carousel-nav-prev {
+    left: -25px;
+  }
+
+  .carousel-nav-next {
+    right: -25px;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(156, 163, 175, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: #3b82f6;
+    transform: scale(1.2);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .plans-carousel-container {
+      padding: 0 1rem;
+    }
+
+    .plans-carousel {
+      justify-content: center;
+      gap: 0;
+      padding: 1rem 0;
+    }
+
+    .plan-card-center,
+    .plan-card-side,
+    .left-1,
+    .left-2,
+    .right-1,
+    .right-2 {
+      width: 90vw;
+      max-width: 320px;
+      height: 400px;
+      transform: none !important;
+      opacity: 1 !important;
+      z-index: 10 !important;
+    }
+
+    .plan-card:not(.active-mobile) {
+      display: none !important;
+    }
+
+    .carousel-nav {
+      display: none;
+    }
+
+    .plan-overlay {
+      transform: translateY(0) !important;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
+      padding: 1.5rem;
+    }
+
+    .plan-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .carousel-dots {
+      margin-top: 1.5rem;
+    }
+
+    .carousel-dot {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  /* Tablet responsive */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .plan-card-center {
+      width: 300px;
+      height: 400px;
+    }
+
+    .plan-card-side {
+      width: 240px;
+      height: 320px;
+    }
+
+    .carousel-nav-prev {
+      left: -15px;
+    }
+
+    .carousel-nav-next {
+      right: -15px;
+    }
+  }
+
+  /* Animation for smooth transitions */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .plan-card {
+    animation: slideIn 0.6s ease forwards;
+  }
+</style>
+
+<script>
+  // Plans data - synchronized with Astro frontmatter
+  const plansData = [
+    {
+      id: 1,
+      title: "Vida Mujer",
+      image: "/planes/slider-1.webp",
+      gradientFrom: "from-pink-500",
+      gradientTo: "to-rose-600",
+      href: "/seguro-de-vida-mujer"
+    },
+    {
+      id: 2,
+      title: "SeguBeca",
+      image: "/planes/slider-2.webp",
+      gradientFrom: "from-blue-500",
+      gradientTo: "to-indigo-600",
+      href: "/segubecalanding"
+    },
+    {
+      id: 3,
+      title: "Gastos Médicos",
+      image: "/planes/slider-3.webp",
+      gradientFrom: "from-green-500",
+      gradientTo: "to-emerald-600",
+      href: "/seguros-salud"
+    },
+    {
+      id: 4,
+      title: "Retiro",
+      image: "/planes/slider-4.webp",
+      gradientFrom: "from-purple-500",
+      gradientTo: "to-violet-600",
+      href: "/plan-de-retiro-seguros-monterrey"
+    },
+    {
+      id: 5,
+      title: "Ahorro",
+      image: "/planes/slider-5.webp",
+      gradientFrom: "from-amber-500",
+      gradientTo: "to-orange-600",
+      href: "/seguros-vida"
+    }
+  ];
+
+  class PlansCarousel {
+    constructor() {
+      this.currentIndex = 0; // Start with first plan
+      this.totalPlans = plansData.length;
+      
+      // Get carousel elements
+      this.leftCard1 = document.getElementById('leftCard1');
+      this.leftCard2 = document.getElementById('leftCard2');
+      this.centerCard = document.getElementById('centerCard');
+      this.rightCard1 = document.getElementById('rightCard1');
+      this.rightCard2 = document.getElementById('rightCard2');
+      
+      this.prevBtn = document.getElementById('prevBtn');
+      this.nextBtn = document.getElementById('nextBtn');
+      this.dots = Array.from(document.querySelectorAll('.carousel-dot'));
+      
+      this.init();
+    }
+
+    init() {
+      console.log('Initializing Plans Carousel with', this.totalPlans, 'plans');
+      console.log('Elements found:', {
+        leftCard1: !!this.leftCard1,
+        leftCard2: !!this.leftCard2,
+        centerCard: !!this.centerCard,
+        rightCard1: !!this.rightCard1,
+        rightCard2: !!this.rightCard2,
+        prevBtn: !!this.prevBtn,
+        nextBtn: !!this.nextBtn,
+        dots: this.dots.length
+      });
+      
+      this.updateCarousel();
+      this.bindEvents();
+      this.startAutoRotate();
+    }
+
+    bindEvents() {
+      this.prevBtn?.addEventListener('click', () => this.prev());
+      this.nextBtn?.addEventListener('click', () => this.next());
+      
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => this.goToSlide(index));
+      });
+
+      // Pause auto-rotate on hover
+      const container = document.querySelector('.plans-carousel-container');
+      container?.addEventListener('mouseenter', () => this.pauseAutoRotate());
+      container?.addEventListener('mouseleave', () => this.startAutoRotate());
+
+      // Handle mobile swipe
+      this.setupMobileSwipe();
+    }
+
+    getPlanIndex(offset) {
+      return (this.currentIndex + offset + this.totalPlans) % this.totalPlans;
+    }
+
+    updateCard(cardElement, planIndex) {
+      if (!cardElement || planIndex < 0) return;
+      
+      const plan = plansData[planIndex];
+      if (!plan) {
+        console.warn('No plan found for index:', planIndex);
+        return;
+      }
+
+      const img = cardElement.querySelector('.plan-image');
+      const title = cardElement.querySelector('.plan-title');
+      const link = cardElement.querySelector('.plan-link');
+      const wrapper = cardElement.querySelector('.plan-image-wrapper');
+
+      if (img) {
+        img.src = plan.image;
+        img.alt = plan.title;
+        console.log('Updated image:', plan.title, '->', plan.image);
+      }
+      if (title) title.textContent = plan.title;
+      if (link) link.href = plan.href;
+      
+      // Update gradient
+      if (wrapper) {
+        wrapper.className = `plan-image-wrapper bg-gradient-to-br ${plan.gradientFrom} ${plan.gradientTo}`;
+      }
+    }
+
+    updateCarousel() {
+      // Update all card positions
+      this.updateCard(this.leftCard1, this.getPlanIndex(-2));
+      this.updateCard(this.leftCard2, this.getPlanIndex(-1));
+      this.updateCard(this.centerCard, this.getPlanIndex(0)); // Current center
+      this.updateCard(this.rightCard1, this.getPlanIndex(1));
+      this.updateCard(this.rightCard2, this.getPlanIndex(2));
+
+      // Update dots
+      this.dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === this.currentIndex);
+      });
+
+      // Add animation class for smooth transition
+      const allCards = [this.leftCard1, this.leftCard2, this.centerCard, this.rightCard1, this.rightCard2];
+      allCards.forEach(card => {
+        if (card) {
+          card.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
+      });
+
+      // Handle mobile visibility
+      this.handleMobileVisibility();
+    }
+
+    handleMobileVisibility() {
+      const isMobile = window.innerWidth <= 768;
+      const allCards = [this.leftCard1, this.leftCard2, this.centerCard, this.rightCard1, this.rightCard2];
+      
+      if (isMobile) {
+        allCards.forEach(card => {
+          if (card) {
+            card.classList.remove('active-mobile');
+          }
+        });
+        
+        // Only show center card on mobile
+        if (this.centerCard) {
+          this.centerCard.classList.add('active-mobile');
+        }
+      } else {
+        allCards.forEach(card => {
+          if (card) {
+            card.classList.add('active-mobile');
+          }
+        });
+      }
+    }
+
+    next() {
+      this.currentIndex = (this.currentIndex + 1) % this.totalPlans;
+      this.updateCarousel();
+    }
+
+    prev() {
+      this.currentIndex = (this.currentIndex - 1 + this.totalPlans) % this.totalPlans;
+      this.updateCarousel();
+    }
+
+    goToSlide(index) {
+      this.currentIndex = index;
+      this.updateCarousel();
+    }
+
+    startAutoRotate() {
+      this.autoRotateInterval = setInterval(() => {
+        this.next();
+      }, 4000);
+    }
+
+    pauseAutoRotate() {
+      if (this.autoRotateInterval) {
+        clearInterval(this.autoRotateInterval);
+      }
+    }
+
+    setupMobileSwipe() {
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+
+      const carousel = document.querySelector('.plans-carousel');
+      
+      const handleStart = (e) => {
+        isDragging = true;
+        startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+        this.pauseAutoRotate();
+      };
+
+      const handleMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+      };
+
+      const handleEnd = () => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const diff = startX - currentX;
+        
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            this.next();
+          } else {
+            this.prev();
+          }
+        }
+
+        this.startAutoRotate();
+      };
+
+      // Touch events
+      carousel?.addEventListener('touchstart', handleStart, { passive: false });
+      carousel?.addEventListener('touchmove', handleMove, { passive: false });
+      carousel?.addEventListener('touchend', handleEnd);
+
+      // Mouse events for desktop drag
+      carousel?.addEventListener('mousedown', handleStart);
+      carousel?.addEventListener('mousemove', handleMove);
+      carousel?.addEventListener('mouseup', handleEnd);
+      carousel?.addEventListener('mouseleave', handleEnd);
+    }
+  }
+
+  // Initialize carousel when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = new PlansCarousel();
+    
+    // Handle window resize for mobile responsiveness
+    window.addEventListener('resize', () => {
+      carousel.handleMobileVisibility();
+    });
+  });
+</script>

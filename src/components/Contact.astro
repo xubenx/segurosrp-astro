@@ -54,11 +54,11 @@ const advisors = [
     <!-- Formulario e Imágenes en 2 columnas -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:ml-20">
       <!-- Cards de Asesores -->
-      <div class="order-1 lg:order-2">
+      <div class="order-1 lg:order-2 ">
         <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6">Nuestros Asesores</h3>
         <div class="space-y-6">
           {advisors.map((advisor) => (
-        <div class="flex items-start space-x-4">
+        <div class="flex items-start space-x-4 bg-rp-blue rounded-2xl">
           <div class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden rounded-lg flex-shrink-0">
             <Image 
               src={advisor.image} 
@@ -73,8 +73,8 @@ const advisors = [
             />
           </div>
           <div class="flex-grow">
-            <h4 class="font-bold text-rp-blue">{advisor.name}</h4>
-            <p class="text-sm text-gray-600">{advisor.specialty}</p>
+            <h4 class="font-bold mt-4 text-white">{advisor.name}</h4>
+            <p class="text-sm text-rp-white">{advisor.specialty}</p>
           </div>
         </div>
           ))}

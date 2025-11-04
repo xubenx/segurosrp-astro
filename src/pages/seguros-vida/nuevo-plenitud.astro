@@ -16,14 +16,11 @@ const pageDescription = "Un seguro de vida que te garantiza un patrimonio defini
     <section class=" text-white  relative">
       <div class="absolute inset-0 bg-cover bg-left bg-no-repeat h-screen md:bg-center" style="background-image: url('/planes/nuevo plenitud/hero.webp');"></div>
       <div class="container mx-auto px-4 relative z-10 flex items-center justify-center min-h-screen">
-      <div class="max-w-4xl mx-auto text-center mt-32">
-      <h1 class="text-5xl font-bold mb-6">Nuevo Plenitud</h1>
-      <p class="text-2xl mb-8 opacity-90">Patrimonio garantizado para tu retiro</p>
-      <p class="text-lg mb-8 opacity-80">
-      Es un Seguro de Vida que te garantiza un patrimonio gracias a un monto que se define a la contratación 
-      y que recibirás al llegar a tu retiro, sin importar los rendimientos del mercado.
-      </p>
-      <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+      <div class=" backdrop-blur-sm bg-black/10 rounded-lg max-w-4xl mx-auto text-center mt-32">
+      <h1 class="text-5xl font-bold mb-4">Nuevo Plenitud</h1>
+      <p class="text-2xl mb-4   rounded-lg">Patrimonio garantizado para tu retiro</p>
+
+      <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors backdrop-blur-sm">
       Garantizar mi futuro
       </a>
       </div>
@@ -31,7 +28,7 @@ const pageDescription = "Un seguro de vida que te garantiza un patrimonio defini
     </section>
 
     <!-- Sección de Beneficios Principales -->
-    <section class=" bg-white mt-20">
+    <section class="py-16 bg-white ">
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -85,6 +82,22 @@ const pageDescription = "Un seguro de vida que te garantiza un patrimonio defini
       </div>
     </section>
     <!-- ¿Cómo funciona? -->
+     
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-rp-light-blue to-rp-blue text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">¿Quieres garantizar tu futuro?</h2>
+        <p class="text-xl mb-8 opacity-90">Descubre cuánto necesitas ahorrar para tu meta de retiro.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Solicitar cotización
+          </a>
+          <a href="tel:5555555555" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+    </section>
     <section class="py-16 bg-gray-100">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
@@ -109,138 +122,10 @@ const pageDescription = "Un seguro de vida que te garantiza un patrimonio defini
       </div>
     </section>
 
-    <!-- Ejemplo práctico -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Ejemplo práctico</h2>
-          
-          <div class="bg-gradient-to-r from-blue-500 to-teal-600 text-white p-8 rounded-lg">
-            <div class="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 class="text-xl font-bold mb-4">Carlos, 40 años</h3>
-                <p class="mb-4">Quiere tener $2,000,000 a los 65 años</p>
-                <ul class="space-y-2 text-sm">
-                  <li><strong>Meta:</strong> $2,000,000 pesos</li>
-                  <li><strong>Edad de retiro:</strong> 65 años</li>
-                  <li><strong>Años para ahorrar:</strong> 25 años</li>
-                  <li><strong>Protección actual:</strong> $1,000,000</li>
-                </ul>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-4">Su plan personalizado</h3>
-                <div class="bg-white/10 p-4 rounded-lg mb-4">
-                  <p class="text-2xl font-bold">$4,850</p>
-                  <p class="text-sm">Prima mensual aproximada</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg">
-                  <p class="text-2xl font-bold">$2,000,000</p>
-                  <p class="text-sm">Garantizado a los 65 años</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ventajas vs otros productos -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Por qué Nuevo Plenitud vs otros productos?</h2>
-          
-          <div class="overflow-x-auto">
-            <table class="w-full bg-white rounded-lg shadow-lg">
-              <thead class="bg-blue-500 text-white">
-                <tr>
-                  <th class="p-4 text-left">Característica</th>
-                  <th class="p-4 text-center">Nuevo Plenitud</th>
-                  <th class="p-4 text-center">Productos variables</th>
-                  <th class="p-4 text-center">Cuentas de ahorro</th>
-                </tr>
-              </thead>
-              <tbody class="text-gray-700">
-                <tr class="border-b">
-                  <td class="p-4 font-semibold">Monto garantizado</td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr class="border-b bg-gray-50">
-                  <td class="p-4 font-semibold">Protección familiar</td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr class="border-b">
-                  <td class="p-4 font-semibold">Sin riesgo de mercado</td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-yellow-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr class="border-b bg-gray-50">
-                  <td class="p-4 font-semibold">Beneficios fiscales</td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </td>
-                  <td class="p-4 text-center">
-                    <svg class="w-6 h-6 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
+
+              <section id="contacto" class="bg-white"><Contact /></section>
     <!-- Productos relacionados -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
@@ -253,32 +138,14 @@ const pageDescription = "Un seguro de vida que te garantiza un patrimonio defini
               <a href="/seguros-vida/imagina-ser" class="text-blue-600 hover:text-blue-800 font-semibold">Ver más →</a>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
-              <h3 class="text-xl font-bold mb-3 text-gray-800">Realiza</h3>
-              <p class="text-gray-600 mb-4">Si estás dispuesto a asumir algunos riesgos a cambio de potenciales mayores rendimientos.</p>
-              <a href="/seguros-vida/realiza" class="text-blue-600 hover:text-blue-800 font-semibold">Ver más →</a>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">Orvi 99</h3>
+                <p class="text-gray-600 mb-4">El único seguro que te protege hasta los 99 años, brindándote cobertura extendida para toda la vida.</p>
+              <a href="/seguros-vida/orvi" class="text-blue-600 hover:text-blue-800 font-semibold">Ver más →</a>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-r from-blue-600 to-teal-600 text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">¿Quieres garantizar tu futuro?</h2>
-        <p class="text-xl mb-8 opacity-90">Descubre cuánto necesitas ahorrar para tu meta de retiro.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            Solicitar cotización
-          </a>
-          <a href="tel:5555555555" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-            Llamar ahora
-          </a>
-        </div>
-      </div>
-    </section>
-              <section id="contacto" class="bg-white"><Contact /></section>
-
   </main>
 
   <Footer />
