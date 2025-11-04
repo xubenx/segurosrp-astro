@@ -27,8 +27,8 @@ const stats = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
       {stats.map((stat, index) => (
         <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <h3 class="text-4xl md:text-5xl font-bold text-rp-orange mb-2 counter" data-target={stat.target}>
-            0<span class="suffix">{stat.suffix}</span>
+          <h3 class="text-4xl md:text-5xl font-bold text-rp-orange mb-2 counter flex items-baseline justify-center" data-target={stat.target}>
+            <span class="number">0</span><span class="suffix">{stat.suffix}</span>
           </h3>
           <p class="text-base md:text-lg text-gray-700">{stat.label}</p>
         </div>
@@ -60,7 +60,7 @@ function animateCounters() {
             current = target;
             clearInterval(timer);
           }
-          counter.innerHTML = `${Math.floor(current)}<span class="suffix">${suffix}</span>`;
+          counter.innerHTML = `<span class="number">${Math.floor(current)}</span><span class="suffix">${suffix}</span>`;
         }, 20);
         
         observer.unobserve(counter);

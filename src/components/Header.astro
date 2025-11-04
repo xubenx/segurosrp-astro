@@ -1,223 +1,314 @@
 ---
 // Header component
-import { Image } from 'astro:assets';
-import logoImage from '../../public/seguros-monterrey-new-york-life-logo.png';
+import { Image } from "astro:assets";
+import logoImage from "../../public/seguros-monterrey-new-york-life-logo.png";
 
 const segurosIndividuales = [
-  { 
-    name: "Seguros de Salud", 
-    href: "/seguros-salud", // Página principal de la categoría (opcional)
-    items: [
-      { name: "Alfa Medical", href: "/seguros-salud/alfa-medical" },
-      { name: "Alfa Medical Flex", href: "/seguros-salud/alfa-medical-flex" },
-      { name: "Alfa Medical Internacional", href: "/seguros-salud/alfa-medical-internacional" },
-    ]
-  },
-  { 
-    name: "Seguros de Vida", 
-    href: "/seguros-vida", // Página principal de la categoría (opcional)
-    items: [
-      { name: "Imagina Ser", href: "/seguros-vida/imagina-ser" },
-      { name: "Orvi", href: "/seguros-vida/orvi" },
-      { name: "Nuevo Plenitud", href: "/seguros-vida/nuevo-plenitud" },
-      { name: "SeguBeca", href: "/seguros-vida/segubeca" },
-      //{ name: "Star Dotal", href: "/seguros-vida/star-dotal" },
-      { name: "Vida Mujer", href: "/seguros-vida/vida-mujer" }
-    ]
-  }
+  {
+    name: "Seguros de Salud",
+    href: "/seguros-salud", // Página principal de la categoría (opcional)
+    items: [
+      { name: "Alfa Medical", href: "/seguros-salud/alfa-medical" },
+      { name: "Alfa Medical Flex", href: "/seguros-salud/alfa-medical-flex" },
+      {
+        name: "Alfa Medical Internacional",
+        href: "/seguros-salud/alfa-medical-internacional",
+      },
+    ],
+  },
+  {
+    name: "Seguros de Vida",
+    href: "/seguros-vida", // Página principal de la categoría (opcional)
+    items: [
+      { name: "Imagina Ser", href: "/seguros-vida/imagina-ser" },
+      { name: "Orvi", href: "/seguros-vida/orvi" },
+      { name: "Nuevo Plenitud", href: "/seguros-vida/nuevo-plenitud" },
+      { name: "SeguBeca", href: "/seguros-vida/segubeca" },
+      //{ name: "Star Dotal", href: "/seguros-vida/star-dotal" },
+      { name: "Vida Mujer", href: "/seguros-vida/vida-mujer" },
+    ],
+  },
 ];
 
 const paginasPrincipales = [
-  { name: "Inicio", href: "/" },
+  { name: "Inicio", href: "/" },
   // Agregué "Nosotros" aquí para hacerlo dinámico también
-  { name: "Contacto", href: "/contacto" }
+  { name: "Contacto", href: "/contacto" },
 ];
 ---
 
 <header class="bg-white shadow-lg fixed top-0 w-full z-50">
-  <nav class="container mx-auto px-4 py-3">
-    <div class="flex justify-between items-center min-h-[3.5rem]">
-            <a href="/" class="flex items-center flex-shrink-0">
-        <div class="flex items-center space-x-2 sm:space-x-3">
-          <Image 
-            src={logoImage} 
-            alt="Seguros RP" 
-            format="png"
-            loading="eager"
-            quality={95}
-            class="w-auto sm:w-auto h-10"
-          />
-        </div>
-      </a>
-      
-            <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
-        
-        {paginasPrincipales.map((pagina) => (
-          <a href={pagina.href} class="text-rp-blue hover:text-rp-orange transition duration-300 text-sm xl:text-base">
-            {pagina.name}
-          </a>
-        ))}
-        
-                {segurosIndividuales.map((seguro) => (
-          <div class="relative group">
-            <button class="text-rp-blue hover:text-rp-orange transition duration-300 flex items-center text-sm xl:text-base">
-              {seguro.name}
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            
-            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-              <div class="py-2">
-                {seguro.items.map((item, index) => (
-                  <a 
-                    href={item.href} 
-                    class:list={[
-                      "block px-4 py-3 text-gray-800 hover:text-rp-orange hover:bg-gray-50 transition duration-200 text-sm",
-                      { "border-t border-gray-100": index > 0 }
-                    ]}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
+  <nav class="container mx-auto px-4 py-3">
+    <div class="flex justify-between items-center min-h-[3.5rem]">
+      <a href="/" class="flex items-center flex-shrink-0">
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <Image
+            src={logoImage}
+            alt="Seguros RP"
+            format="png"
+            loading="eager"
+            quality={95}
+            class="w-auto sm:w-auto h-10"
+          />
+        </div>
+      </a>
 
-      </div>
-      
-            <div class="hidden lg:flex items-center">
-        <button class="bg-rp-orange text-white px-4 xl:px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 text-sm xl:text-base">
-          Cotiza ahora
-        </button>
-      </div>
-      
-            <button id="mobile-menu-button" class="lg:hidden text-rp-blue p-2 -mr-2" aria-label="Abrir menú de navegación" aria-expanded="false">
-        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-    
-        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-200 absolute top-full left-0 right-0 shadow-lg">
-      <div class="container mx-auto px-4 py-4 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
-        
-        {paginasPrincipales.map((pagina) => (
-          <a href={pagina.href} class="block py-3 text-rp-blue hover:text-rp-orange transition duration-300 border-b border-gray-100">
-            {pagina.name}
-          </a>
-        ))}
-        
-                {segurosIndividuales.map((seguro) => (
-          <div class="border-b border-gray-100">
-            <button data-toggle="mobile-submenu" class="flex items-center justify-between w-full py-3 text-rp-blue hover:text-rp-orange transition duration-300">
-              <span>{seguro.name}</span>
-              <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div data-menu="mobile-submenu-content" class="hidden pb-3">
-              <div class="pl-4 space-y-2">
-                {seguro.items.map((item) => (
-                  <a href={item.href} class="block py-2 text-sm font-medium text-gray-800 hover:text-rp-orange transition duration-200">
-                    {item.name}
-                  </a>
-                ))}
+      <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
+        {
+          paginasPrincipales.map((pagina) => (
+            <a
+              href={pagina.href}
+              class="text-rp-blue hover:text-rp-orange transition duration-300 text-sm xl:text-base"
+            >
+              {pagina.name}
+            </a>
+          ))
+        }
+
+        {
+          segurosIndividuales.map((seguro) => (
+            <div class="relative group">
+              <button class="text-rp-blue hover:text-rp-orange transition duration-300 flex items-center text-sm xl:text-base">
+                {seguro.name}
+                <svg
+                  class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div class="py-2">
+                  {seguro.items.map((item, index) => (
+                    <a
+                      href={item.href}
+                      class:list={[
+                        "block px-4 py-3 text-gray-800 hover:text-rp-orange hover:bg-gray-50 transition duration-200 text-sm",
+                        { "border-t border-gray-100": index > 0 },
+                      ]}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-        
-                <div class="pt-4">
-          <button class="w-full bg-rp-orange text-white px-6 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold">
-            Cotiza ahora
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
+          ))
+        }
+      </div>
+
+      <div class="hidden lg:flex items-center">
+        <button
+          class="bg-rp-orange text-white px-4 xl:px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 text-sm xl:text-base"
+        >
+          Cotiza ahora
+        </button>
+      </div>
+
+      <button
+        id="mobile-menu-button"
+        class="lg:hidden text-rp-blue p-2 -mr-2"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+      >
+        <svg
+          id="hamburger-icon"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          id="close-icon"
+          class="w-6 h-6 hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div
+      id="mobile-menu"
+      class="lg:hidden hidden bg-white border-t border-gray-200 absolute top-full left-0 right-0 shadow-lg"
+    >
+      <div
+        class="container mx-auto px-4 py-4 max-h-[calc(100vh-4.5rem)] overflow-y-auto"
+      >
+        {
+          paginasPrincipales.map((pagina) => (
+            <a
+              href={pagina.href}
+              class="block py-3 text-rp-blue hover:text-rp-orange transition duration-300 border-b border-gray-100"
+            >
+              {pagina.name}
+            </a>
+          ))
+        }
+
+        {
+          segurosIndividuales.map((seguro) => (
+            <div class="border-b border-gray-100">
+              <button
+                data-toggle="mobile-submenu"
+                class="flex items-center justify-between w-full py-3 text-rp-blue hover:text-rp-orange transition duration-300"
+              >
+                <span>{seguro.name}</span>
+                <svg
+                  class="w-5 h-5 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div data-menu="mobile-submenu-content" class="hidden pb-3">
+                <div class="pl-4 space-y-2">
+                  {seguro.items.map((item) => (
+                    <a
+                      href={item.href}
+                      class="block py-2 text-sm font-medium text-gray-800 hover:text-rp-orange transition duration-200"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+
+        <div class="pt-4">
+          <a
+            href="#contacto"
+            class="block w-full text-center mb-4 bg-rp-orange text-white px-6 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold"
+          >
+            Cotiza ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const closeIcon = document.getElementById('close-icon');
-    
-    if (mobileMenuButton && mobileMenu && hamburgerIcon && closeIcon) {
-      mobileMenuButton.addEventListener('click', function() {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        
-        if (isHidden) {
-          mobileMenu.classList.remove('hidden');
-          hamburgerIcon.classList.add('hidden');
-          closeIcon.classList.remove('hidden');
-          document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-        } else {
-          mobileMenu.classList.add('hidden');
-          hamburgerIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-          document.body.style.overflow = ''; // Restore scrolling
-        }
-      });
-      
-      // Close mobile menu when clicking on links
-      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-      mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          hamburgerIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-          document.body.style.overflow = '';
-  M     });
-      });
-    }
-    
-    // *** NUEVO SCRIPT PARA SUBMENÚS MÓVILES DINÁMICOS ***
-    const mobileSubmenuToggles = document.querySelectorAll('[data-toggle="mobile-submenu"]');
-    
-    mobileSubmenuToggles.forEach(toggle => {
-      toggle.addEventListener('click', function() {
-        // Encuentra el menú y la flecha específicos para este botón
-        const menu = this.nextElementSibling as HTMLElement;
-        const arrow = this.querySelector('svg');
-        
-        if (menu && arrow) {
-          menu.classList.toggle('hidden');
-          arrow.classList.toggle('rotate-180');
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    if (mobileMenuButton && mobileMenu && hamburgerIcon && closeIcon) {
+      mobileMenuButton.addEventListener("click", function () {
+        const isHidden = mobileMenu.classList.contains("hidden");
+
+        if (isHidden) {
+          mobileMenu.classList.remove("hidden");
+          hamburgerIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+          document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
+        } else {
+          mobileMenu.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+          document.body.style.overflow = ""; // Restore scrolling
         }
-      });
+      });
+
+      // Close mobile menu when clicking on links
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+          document.body.style.overflow = "";
+          M;
+        });
+      });
+    }
+
+    // *** NUEVO SCRIPT PARA SUBMENÚS MÓVILES DINÁMICOS ***
+    const mobileSubmenuToggles = document.querySelectorAll(
+      '[data-toggle="mobile-submenu"]',
+    );
+
+    mobileSubmenuToggles.forEach((toggle) => {
+      toggle.addEventListener("click", function () {
+        // Encuentra el menú y la flecha específicos para este botón
+        const menu = this.nextElementSibling as HTMLElement;
+        const arrow = this.querySelector("svg");
+
+        if (menu && arrow) {
+          menu.classList.toggle("hidden");
+          arrow.classList.toggle("rotate-180");
+        }
+      });
     });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const target = event.target as Element;
-      if (mobileMenu && mobileMenuButton && hamburgerIcon && closeIcon && 
-          !mobileMenu.contains(target) && !mobileMenuButton.contains(target)) {
-        if (!mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          hamburgerIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-          document.body.style.overflow = '';
-        }
-      }
-    });
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-      if (window.innerWidth >= 1024 && mobileMenu && hamburgerIcon && closeIcon && 
-          !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-          hamburgerIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-          document.body.style.overflow = '';
-      }
-    });
-  });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const target = event.target as Element;
+      if (
+        mobileMenu &&
+        mobileMenuButton &&
+        hamburgerIcon &&
+        closeIcon &&
+        !mobileMenu.contains(target) &&
+        !mobileMenuButton.contains(target)
+      ) {
+        if (!mobileMenu.classList.contains("hidden")) {
+          mobileMenu.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+          document.body.style.overflow = "";
+        }
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", function () {
+      if (
+        window.innerWidth >= 1024 &&
+        mobileMenu &&
+        hamburgerIcon &&
+        closeIcon &&
+        !mobileMenu.classList.contains("hidden")
+      ) {
+        mobileMenu.classList.add("hidden");
+        hamburgerIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+    });
+  });
 </script>
