@@ -211,9 +211,32 @@ const advisors = [
         console.log('📋 Resultado parseado:', result);
 
         if (response.ok) {
-          // Éxito
+          // Éxito en el envío del formulario, ahora enviar email de confirmación
+          try {
+            console.log('📧 Enviando email de confirmación a:', data.email);
+            const emailResponse = await fetch('/api/send-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email: data.email })
+            });
+
+            const emailResult = await emailResponse.json();
+            console.log('📧 Resultado del email:', emailResult);
+
+            if (emailResponse.ok) {
+              console.log('✅ Email de confirmación enviado exitosamente');
+            } else {
+              console.warn('⚠️ No se pudo enviar el email de confirmación:', emailResult.message);
+            }
+          } catch (emailError) {
+            console.error('❌ Error al enviar email de confirmación:', emailError);
+          }
+
+          // Mostrar mensaje de éxito
           formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-          formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto.';
+          formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto. También hemos enviado un email de confirmación.';
           formMessage.classList.remove('hidden');
           
           // Limpiar el formulario

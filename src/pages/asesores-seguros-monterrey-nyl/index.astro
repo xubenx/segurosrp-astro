@@ -489,7 +489,7 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 	</section>
 
 	<!-- CTA Final -->
-	<section class="py-16 bg-gradient-to-r from-rp-orange to-orange-600">
+	<section id="contacto" class="py-16 bg-gradient-to-r from-rp-orange to-orange-600">
 		<div class="container mx-auto px-4 text-center">
 			<h2 class="text-4xl font-bold text-white mb-6">
 				¿Listo para proteger a tu familia?
@@ -609,7 +609,31 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 
 						if (response.ok) {
 							// Éxito - redirigir a página de agradecimiento o mostrar mensaje
-							alert('¡Gracias! Un asesor se pondrá en contacto contigo en las próximas 24 horas.');
+							alert('¡Gracias! Un asesor se pondrá en contacto contigo en menos de 24 horas.');
+							
+							// Enviar email de confirmación
+							try {
+								console.log('📧 Enviando email de confirmación a:', data.email);
+								const emailResponse = await fetch('/api/send-email', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify({ email: data.email })
+								});
+
+								const emailResult = await emailResponse.json();
+								console.log('📧 Resultado del email:', emailResult);
+
+								if (emailResponse.ok) {
+									console.log('✅ Email de confirmación enviado exitosamente');
+								} else {
+									console.warn('⚠️ No se pudo enviar el email de confirmación:', emailResult.message);
+								}
+							} catch (emailError) {
+								console.error('❌ Error al enviar email de confirmación:', emailError);
+							}
+
 							form.reset();
 							
 							console.log('Formulario enviado exitosamente - Enviando eventos de conversión');

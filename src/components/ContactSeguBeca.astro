@@ -552,6 +552,29 @@ const advisors = [
 
           console.log('Formulario enviado exitosamente - Enviando eventos de conversión');
 
+          // Enviar email de confirmación
+          try {
+            console.log('📧 Enviando email de confirmación a:', data.email);
+            const emailResponse = await fetch('/api/send-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email: data.email })
+            });
+
+            const emailResult = await emailResponse.json();
+            console.log('📧 Resultado del email:', emailResult);
+
+            if (emailResponse.ok) {
+              console.log('✅ Email de confirmación enviado exitosamente');
+            } else {
+              console.warn('⚠️ No se pudo enviar el email de confirmación:', emailResult.message);
+            }
+          } catch (emailError) {
+            console.error('❌ Error al enviar email de confirmación:', emailError);
+          }
+
           // Asegurar que GA4 esté configurado
           if (typeof window.gtag !== 'undefined') {
             window.gtag('config', 'G-Y67F0BJRHL', {
