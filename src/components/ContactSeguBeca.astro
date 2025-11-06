@@ -552,6 +552,33 @@ const advisors = [
 
           console.log('Formulario enviado exitosamente - Enviando eventos de conversión');
 
+          // Enviar datos a Google Sheet
+          try {
+            console.log('📊 Enviando datos a Google Sheet');
+            const sheetResponse = await fetch('/api/sendToSheet', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                name: data.parentName,
+                email: data.email,
+                phone: data.whatsapp
+              })
+            });
+
+            const sheetResult = await sheetResponse.json();
+            console.log('📊 Resultado de Google Sheet:', sheetResult);
+
+            if (sheetResponse.ok) {
+              console.log('✅ Datos guardados en Google Sheet exitosamente');
+            } else {
+              console.warn('⚠️ No se pudieron guardar los datos en Google Sheet:', sheetResult.message);
+            }
+          } catch (sheetError) {
+            console.error('❌ Error al enviar a Google Sheet:', sheetError);
+          }
+
           // Enviar email de confirmación
           try {
             console.log('📧 Enviando email de confirmación a:', data.email);

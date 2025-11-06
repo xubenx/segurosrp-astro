@@ -211,6 +211,33 @@ const advisors = [
         console.log('📋 Resultado parseado:', result);
 
         if (response.ok) {
+          // Éxito en el envío del formulario, ahora enviar a Google Sheet
+          try {
+            console.log('📊 Enviando datos a Google Sheet');
+            const sheetResponse = await fetch('/api/sendToSheet', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                phone: data.phone
+              })
+            });
+
+            const sheetResult = await sheetResponse.json();
+            console.log('📊 Resultado de Google Sheet:', sheetResult);
+
+            if (sheetResponse.ok) {
+              console.log('✅ Datos guardados en Google Sheet exitosamente');
+            } else {
+              console.warn('⚠️ No se pudieron guardar los datos en Google Sheet:', sheetResult.message);
+            }
+          } catch (sheetError) {
+            console.error('❌ Error al enviar a Google Sheet:', sheetError);
+          }
+
           // Éxito en el envío del formulario, ahora enviar email de confirmación
           try {
             console.log('📧 Enviando email de confirmación a:', data.email);
