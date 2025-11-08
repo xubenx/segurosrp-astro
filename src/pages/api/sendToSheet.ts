@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { google } from 'googleapis';
 import { config } from 'dotenv';
+import { rateLimitMiddleware } from '../../lib/rate-limiter';
 
 // Cargar variables de entorno
 config();
@@ -11,6 +12,11 @@ const GOOGLE_SHEET_NAME = 'LEADS'; // Correcto, ya lo ajustaste
 // ----------------------------------
 
 export const POST: APIRoute = async ({ request }) => {
+  // Verificar rate limiting antes de procesar
+  const rateLimitResponse = rateLimitMiddleware(request);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
   // 1. Obtener credenciales
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY

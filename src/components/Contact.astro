@@ -303,7 +303,15 @@ const advisors = [
           // Error del servidor
           console.error('❌ Error del servidor:', result);
           formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
-          formMessage.textContent = result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+          
+          // Manejo específico para rate limiting
+          if (response.status === 429) {
+            const retryAfter = result.retryAfter || 60;
+            formMessage.textContent = `⏰ Has enviado demasiadas solicitudes. Por favor, espera ${retryAfter} segundos antes de intentar de nuevo.`;
+          } else {
+            formMessage.textContent = result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+          }
+          
           formMessage.classList.remove('hidden');
         }
       } catch (error) {

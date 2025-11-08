@@ -1,11 +1,18 @@
 import type { APIRoute } from 'astro';
 import TelegramBot from 'node-telegram-bot-api';
 import { config } from 'dotenv';
+import { rateLimitMiddleware } from '../../lib/rate-limiter';
 
 // Cargar variables de entorno
 config();
 
 export const POST: APIRoute = async ({ request }) => {
+  // Verificar rate limiting antes de procesar
+  const rateLimitResponse = rateLimitMiddleware(request);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     // Obtener las variables de entorno
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
