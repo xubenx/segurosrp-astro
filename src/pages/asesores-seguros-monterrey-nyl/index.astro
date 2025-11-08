@@ -355,6 +355,18 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 								<div id="mensaje-help" class="sr-only">Opcional: Describe tus necesidades específicas de seguro</div>
 							</div>
 
+							<!-- Campo Honeypot - Oculto para usuarios reales, visible para bots -->
+							<div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+								<label for="website">Website (no llenar si eres humano)</label>
+								<input 
+									type="text" 
+									name="website" 
+									id="website" 
+									tabindex="-1" 
+									autocomplete="off"
+								/>
+							</div>
+
 							<button type="submit" 
 								id="asesores_form"
 								class="w-full bg-rp-orange hover:bg-orange-600 text-white px-6 py-4 rounded-lg font-bold text-lg transition duration-300 shadow-lg focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
@@ -587,6 +599,18 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 					e.preventDefault();
 					
 					const formData = new FormData(form);
+					
+					// Verificación Honeypot - Si el campo 'website' tiene contenido, es un bot
+					const honeypotValue = (formData.get('website') as string || '').trim();
+					if (honeypotValue !== '') {
+						console.log('🤖 Bot detectado por honeypot - Bloqueando envío');
+						
+						// Simular éxito visualmente para el bot pero no hacer nada
+						alert('¡Gracias! Un asesor se pondrá en contacto contigo en menos de 24 horas.');
+						form.reset();
+						return;
+					}
+					
 					const data = {
 						nombre: formData.get('nombre'),
 						email: formData.get('email'),

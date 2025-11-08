@@ -279,6 +279,18 @@ const advisors = [
             />
           </div>
           
+          <!-- Campo Honeypot - Oculto para usuarios reales, visible para bots -->
+          <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+            <label for="website">Website (no llenar si eres humano)</label>
+            <input 
+              type="text" 
+              name="website" 
+              id="website" 
+              tabindex="-1" 
+              autocomplete="off"
+            />
+          </div>
+          
           <button 
             type="submit" 
             id="segubeca_form"
@@ -514,6 +526,33 @@ const advisors = [
       formMessage.classList.add('hidden');
 
       const formData = new FormData(form);
+      
+      // Verificación Honeypot - Si el campo 'website' tiene contenido, es un bot
+      const honeypotValue = String(formData.get('website') || '').trim();
+      if (honeypotValue !== '') {
+        console.log('🤖 Bot detectado por honeypot - Bloqueando envío');
+        
+        // Simular éxito visualmente para el bot pero no hacer nada
+        formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
+        formMessage.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.2rem;">✅</span>
+            <div>
+              <strong>¡Perfecto!</strong><br>
+              <span style="font-size: 0.875rem;">Tu información fue recibida exitosamente.</span>
+            </div>
+          </div>
+        `;
+        formMessage.classList.remove('hidden');
+        form.reset();
+        
+        // Restaurar el botón y salir sin hacer nada más
+        submitButton.disabled = false;
+        buttonText.classList.remove('hidden');
+        buttonLoading.classList.add('hidden');
+        return;
+      }
+      
       const data = {
         parentName: String(formData.get('parentName') || ''),
         childName: String(formData.get('childName') || ''),
