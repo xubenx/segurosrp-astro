@@ -35,7 +35,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Obtener los datos del formulario
     const body = await request.json();
-    const { name, email, phone, message, pageUrl, pageTitle } = body;
+    const { name, email, phone, message, monthlyAmount, age, pageUrl, pageTitle } = body;
 
     // Validar que todos los campos requeridos estén presentes
     if (!name || !email || !message) {
@@ -61,6 +61,8 @@ export const POST: APIRoute = async ({ request }) => {
 👤 *Nombre:* ${name}
 📧 *Email:* ${email}
 📱 *Teléfono:* ${phone || 'No proporcionado'}
+💰 *Monto mensual deseado:* ${monthlyAmount || 'No especificado'}
+🎂 *Edad:* ${age || 'No especificada'}
 
 💬 *Mensaje:*
 ${message}

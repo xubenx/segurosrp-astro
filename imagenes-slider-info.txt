@@ -1,0 +1,16 @@
+# Crear imágenes optimizadas para el slider de seguros de salud
+
+# Imagen 1: Familia feliz (la primera imagen que enviaste)
+# Esta será familia-salud.webp
+
+# Imagen 2: Viajero con mochila (la segunda imagen)  
+# Esta será viajero-salud.webp
+
+# Imagen 3: Persona con manta en montañas (la tercera imagen)
+# Esta será montanas-salud.webp
+
+echo "Las imágenes del slider necesitan ser agregadas manualmente al directorio public/"
+echo "Nombres requeridos:"
+echo "- familia-salud.webp (imagen de la familia corriendo en el campo de lavanda)"
+echo "- viajero-salud.webp (imagen del viajero con mochila amarilla en la ciudad)" 
+echo "- montanas-salud.webp (imagen de la persona con manta viendo las montañas)"

@@ -347,6 +347,19 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 							</div>
 
 							<div>
+								<label for="rangoPresupuesto" class="block text-sm font-medium text-gray-700 mb-2">¿Qué monto desea asegurar mensualmente?</label>
+								<select id="rangoPresupuesto" name="rangoPresupuesto"
+									class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent"
+									aria-describedby="rangoPresupuesto-help">
+									<option value="">Selecciona un rango (opcional)</option>
+									<option value="2000-3500">$2,000 - $3,500</option>
+									<option value="3500-5000">$3,500 - $5,000</option>
+									<option value="5000+">Más de $5,000</option>
+								</select>
+								<div id="rangoPresupuesto-help" class="sr-only">Selecciona el rango de presupuesto mensual que tienes en mente</div>
+							</div>
+
+							<div>
 								<label for="mensaje" class="block text-sm font-medium text-gray-700 mb-2">Mensaje adicional</label>
 								<textarea id="mensaje" name="mensaje" rows="3"
 									class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent"
@@ -355,8 +368,7 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 								<div id="mensaje-help" class="sr-only">Opcional: Describe tus necesidades específicas de seguro</div>
 							</div>
 
-							<!-- Campo Honeypot - Oculto para usuarios reales, visible para bots -->
-							<div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+							<div style="opacity: 0; position: absolute; left: -9999px;  pointer-events: none;" aria-hidden="true">
 								<label for="website">Website (no llenar si eres humano)</label>
 								<input 
 									type="text" 
@@ -617,7 +629,8 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 						telefono: formData.get('telefono'),
 						edad: formData.get('edad'),
 						tipoSeguro: formData.get('tipoSeguro'),
-						message: `Edad: ${formData.get('edad')}, Tipo de seguro: ${formData.get('tipoSeguro')}. ${formData.get('mensaje') || ''}`,
+						rangoPresupuesto: formData.get('rangoPresupuesto'),
+						message: `Edad: ${formData.get('edad')}, Tipo de seguro: ${formData.get('tipoSeguro')}, Rango presupuesto: ${formData.get('rangoPresupuesto') || 'No especificado'}. ${formData.get('mensaje') || ''}`,
 						source: 'Landing Asesores Monterrey NYL',
 						campaign: 'SEM Google Ads - Asesores Seguros Monterrey'
 					};

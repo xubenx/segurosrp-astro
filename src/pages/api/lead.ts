@@ -41,6 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
       telefono, 
       edad, 
       tipoSeguro, 
+      rangoPresupuesto,
       message,
       source,
       campaign 
@@ -74,6 +75,7 @@ export const POST: APIRoute = async ({ request }) => {
 🎯 *Información de Cotización:*
 • *Edad:* ${edad}
 • *Tipo de Seguro:* ${tipoSeguro}
+💰 *Rango de Presupuesto:* ${rangoPresupuesto || 'No especificado'}
 
 💬 *Mensaje adicional:*
 ${message || 'Sin mensaje adicional'}
