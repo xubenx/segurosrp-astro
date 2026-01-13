@@ -4,31 +4,38 @@
 const certifications = [
   {
     name: "AMIS",
-    logo: "/certificaciones/1.png"
+    logo: "/certificaciones/1.png",
+    description: "Asociación Mexicana de Instituciones de Seguros"
   },
   {
     name: "CNSF",
-    logo: "/certificaciones/2.png"
+    logo: "/certificaciones/2.png",
+    description: "Comisión Nacional de Seguros y Fianzas"
   },
   {
     name: "AMASFAC",
-    logo: "/certificaciones/3.png"
+    logo: "/certificaciones/3.png",
+    description: "Asociación Mexicana de Agentes de Seguros"
   },
   {
-    name: "ISO",
-    logo: "/certificaciones/4.png"
+    name: "Seguros Monterrey",
+    logo: "/certificaciones/4.png",
+    description: "Agente autorizado"
   },
   {
-    name: "CNSF",
-    logo: "/certificaciones/5.png"
+    name: "New York Life",
+    logo: "/certificaciones/5.png",
+    description: "Respaldo internacional"
   },
   {
-    name: "AMASFAC",
-    logo: "/certificaciones/6.png"
+    name: "CONDUSEF",
+    logo: "/certificaciones/6.png",
+    description: "Registro ante CONDUSEF"
   },
   {
-    name: "ISO",
-    logo: "/certificaciones/7.png"
+    name: "Certificación",
+    logo: "/certificaciones/7.png",
+    description: "Agentes certificados"
   }
 ];
 ---
@@ -108,13 +115,31 @@ const certifications = [
   transition: all 0.7s ease-in-out;
   border-radius: 12px;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+}
+
+.cert-description {
+  color: white;
+  font-size: 0.65rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  max-width: 120px;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .cert-description {
+    font-size: 0.75rem;
+    max-width: 160px;
+  }
 }
 
 .cert-image {
@@ -195,6 +220,11 @@ const certifications = [
 
 <script>
   class CertificationsZoom {
+    private carousel: HTMLElement | null;
+    private track: HTMLElement | null;
+    private items: Element[];
+    private intervalId: ReturnType<typeof setInterval> | null = null;
+
     constructor() {
       this.carousel = document.getElementById('certificationsCarousel');
       this.track = document.getElementById('carouselTrack');
@@ -217,21 +247,22 @@ const certifications = [
       }, 100);
 
       // Pausar/reanudar en hover
-      this.carousel.addEventListener('mouseenter', () => {
-        this.track.style.animationPlayState = 'paused';
+      this.carousel?.addEventListener('mouseenter', () => {
+        if (this.track) this.track.style.animationPlayState = 'paused';
       });
 
-      this.carousel.addEventListener('mouseleave', () => {
-        this.track.style.animationPlayState = 'running';
+      this.carousel?.addEventListener('mouseleave', () => {
+        if (this.track) this.track.style.animationPlayState = 'running';
       });
-
     }
 
     updateCenterItem() {
+      if (!this.carousel) return;
+      
       const carouselRect = this.carousel.getBoundingClientRect();
       const centerX = carouselRect.left + carouselRect.width / 2;
 
-      let closestItem = null;
+      let closestItem: Element | null = null;
       let minDistance = Infinity;
 
       this.items.forEach(item => {
@@ -254,9 +285,9 @@ const certifications = [
       });
 
       // Marcar el item más cercano como central
-      if (closestItem && minDistance < carouselRect.width * 0.2) {
-        closestItem.classList.add('center-item');
-        closestItem.classList.remove('near-center');
+      if (closestItem !== null && minDistance < carouselRect.width * 0.2) {
+        (closestItem as Element).classList.add('center-item');
+        (closestItem as Element).classList.remove('near-center');
       }
     }
 

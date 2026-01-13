@@ -1,6 +1,7 @@
 ---
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/plan-de-retiro-seguros-monterrey`;
@@ -24,34 +25,37 @@ const business = {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     
     <!-- Google Tag Manager - Carga Diferida -->
-    <script>
+    <script is:inline>
       // Inicializar dataLayer
-      window.dataLayer = window.dataLayer || [];
-      
-      // Función para cargar GTM
-      function loadGTM() {
-        if (window.gtmLoaded) return;
-        window.gtmLoaded = true;
+      (function() {
+        var w = window;
+        w.dataLayer = w.dataLayer || [];
         
-        // Google Tag Manager
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-5C5DGHJC');
-      }
-      
-      // Cargar GTM después de la primera interacción del usuario
-      const events = ['mousedown', 'touchstart', 'scroll', 'keydown'];
-      const loadOnce = () => {
-        loadGTM();
-        events.forEach(event => window.removeEventListener(event, loadOnce));
-      };
-      
-      events.forEach(event => window.addEventListener(event, loadOnce, { passive: true }));
-      
-      // Fallback: cargar después de 5 segundos si no hay interacción
-      setTimeout(loadGTM, 5000);
+        // Función para cargar GTM
+        function loadGTM() {
+          if (w.gtmLoaded) return;
+          w.gtmLoaded = true;
+          
+          // Google Tag Manager
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5C5DGHJC');
+        }
+        
+        // Cargar GTM después de la primera interacción del usuario
+        var events = ['mousedown', 'touchstart', 'scroll', 'keydown'];
+        var loadOnce = function() {
+          loadGTM();
+          events.forEach(function(event) { window.removeEventListener(event, loadOnce); });
+        };
+        
+        events.forEach(function(event) { window.addEventListener(event, loadOnce, { passive: true }); });
+        
+        // Fallback: cargar después de 5 segundos si no hay interacción
+        setTimeout(loadGTM, 5000);
+      })();
     </script>
     <!-- End Google Tag Manager -->
     
@@ -145,6 +149,7 @@ const business = {
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
+    <Header />
     <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
 
     <!-- HERO: enfoque nacional, palabra clave exacta -->
@@ -175,8 +180,8 @@ const business = {
             </div>
             <div class="relative h-full flex flex-col justify-center items-center">
               <div class="relative">
-                <div class="absolute inset-0 bg-gradient-to-t from-rp-orange/20 to-transparent rounded-3xl"></div>
-                <img fetchpriority="high" src="/principal.webp" alt="Asesores de SegurosRP explicando planes de retiro de Seguros Monterrey" class="w-full h-auto max-h-[600px] object-contain rounded-3xl shadow-2xl" loading="eager" />
+                <div class="absolute inset-0 "></div>
+                <img fetchpriority="high" src="/principal.webp" alt="Asesores de SegurosRP explicando planes de retiro de Seguros Monterrey" class="w-full h-auto max-h-[600px] object-contain " loading="eager" />
               </div>
             </div>
           </div>

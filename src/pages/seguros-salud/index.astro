@@ -13,27 +13,28 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
   
   <main class="">
     <!-- Hero Section -->
-    <section class=" text-white pt-20 overflow-hidden">
+    <section class="relative min-h-[60vh] md:min-h-[70vh] text-white pt-20 overflow-hidden flex items-center">
       <!-- Imagen de fondo -->
       <div class="absolute inset-0 z-0">
         <img 
           src="/planes/alfa medical/hero-2.webp" 
           alt="Seguros de Gastos Médicos Mayores - RP Seguros" 
-          class="w-full h-full object-cover object-center "
+          class="w-full h-full object-cover object-center"
           loading="eager"
         />
         <!-- Overlay gradient -->
+        <div class="absolute inset-0 bg-black/20"></div>
       </div>
       
       <!-- Contenido -->
-      <div class="container mx-auto px-4 relative z-10 mt-20">
+      <div class="container mx-auto px-4 relative z-10 py-8 md:py-16">
         <div class="max-w-4xl mx-auto text-center">
-          <div class="bg-rp-light-blue/50 backdrop-blur-sm rounded-lg p-8">
-        <h1 class="text-5xl text-white font-bold mb-6">Seguros de Gastos Médicos Mayores</h1>
-        <p class="text-xl mb-8 text-white opacity-90">Protege tu salud y la de tus seres queridos ante el impacto económico que puede representar un gasto médico</p>
-        <a href="#productos" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-          Ver Nuestros Productos
-        </a>
+          <div class="bg-rp-light-blue/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-4 md:mb-6">Seguros de Gastos Médicos Mayores</h1>
+            <p class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-white opacity-90">Protege tu salud y la de tus seres queridos ante el impacto económico que puede representar un gasto médico</p>
+            <a href="#productos" class="inline-block bg-white text-blue-600 px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm md:text-base">
+              Ver Nuestros Productos
+            </a>
           </div>
         </div>
       </div>
@@ -41,10 +42,10 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
 
 
     <!-- Productos Slider -->
-    <section id="productos" class="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section id="productos" class="py-10 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Encuentra el Seguro de Gastos Médicos Mayores ideal para ti</h2>
-        <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">Protege tu salud y la de tu familia con nuestros planes diseñados para cada etapa de tu vida</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-800">Encuentra el Seguro de Gastos Médicos Mayores ideal para ti</h2>
+        <p class="text-base sm:text-lg md:text-xl text-center text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto">Protege tu salud y la de tu familia con nuestros planes diseñados para cada etapa de tu vida</p>
         
         <!-- Slider Container -->
         <div class="relative max-w-7xl mx-auto">
@@ -54,9 +55,9 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
               
               <!-- Slide 1: Familia Feliz -->
               <div class="min-w-full relative">
-                <div class="grid lg:grid-cols-2 min-h-[600px]">
+                <div class="flex flex-col lg:grid lg:grid-cols-2 min-h-[auto] lg:min-h-[600px]">
                   <!-- Imagen -->
-                  <div class="relative overflow-hidden bg-gradient-to-br from-rp-blue to-rp-light-blue">
+                  <div class="relative overflow-hidden bg-gradient-to-br from-rp-blue to-rp-light-blue h-48 sm:h-64 lg:h-full">
                     <img 
                       src="/seguros-gmm/flex.webp" 
                       alt="Familia protegida con Alfa Medical Flex" 
@@ -66,35 +67,35 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                   </div>
                   <!-- Contenido -->
-                  <div class="bg-white p-8 lg:p-12 flex flex-col justify-center">
-                    <div class="mb-6">
-                      <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full mb-4">
+                  <div class="bg-white p-4 sm:p-6 lg:p-12 flex flex-col justify-center">
+                    <div class="mb-3 lg:mb-6">
+                      <span class="inline-block bg-blue-100 text-blue-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-4">
                         Plan Flexible
                       </span>
-                      <h3 class="text-3xl font-bold text-gray-800 mb-4">Alfa Medical Flex</h3>
+                      <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2 lg:mb-4">Alfa Medical Flex</h3>
                     </div>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">Toma el control de tu salud acorde a tus necesidades. Es el Seguro de Gastos Médicos Mayores con el que puedes elegir dónde atenderte y cuánto pagarás en cada evento.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Libre elección de hospitales</span>
+                    <p class="text-gray-600 mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg leading-relaxed">Toma el control de tu salud acorde a tus necesidades. Es el Seguro de Gastos Médicos Mayores con el que puedes elegir dónde atenderte y cuánto pagarás en cada evento.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4 lg:mb-8">
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Libre elección de hospitales</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Administra tu participación</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Administra tu participación</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Coberturas personalizables</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Coberturas personalizables</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Atención 24/7</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Atención 24/7</span>
                       </div>
                     </div>
-                    <a href="/seguros-salud/alfa-medical-flex" class="inline-flex items-center bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold group">
+                    <a href="/seguros-salud/alfa-medical-flex" class="inline-flex items-center justify-center sm:justify-start bg-blue-600 text-white px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold group text-sm sm:text-base">
                       Ver más detalles
-                      <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                       </svg>
                     </a>
@@ -104,9 +105,9 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
 
               <!-- Slide 2: Viajero -->
               <div class="min-w-full relative">
-                <div class="grid lg:grid-cols-2 min-h-[600px]">
+                <div class="flex flex-col lg:grid lg:grid-cols-2 min-h-[auto] lg:min-h-[600px]">
                   <!-- Imagen -->
-                  <div class="relative overflow-hidden bg-gradient-to-br from-rp-orange to-rp-orange/25 lg:order-2">
+                  <div class="relative overflow-hidden bg-gradient-to-br from-rp-orange to-rp-orange/25 h-48 sm:h-64 lg:h-full lg:order-2">
                     <img 
                       src="/seguros-gmm/internacional.webp" 
                       alt="Viajero protegido con Alfa Medical Internacional" 
@@ -116,35 +117,35 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                   </div>
                   <!-- Contenido -->
-                  <div class="bg-gradient-to-br from-orange-50 to-white p-8 lg:p-12 flex flex-col justify-center lg:order-1">
-                    <div class="mb-6">
-                      <span class="inline-block bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1 rounded-full mb-4">
+                  <div class="bg-gradient-to-br from-orange-50 to-white p-4 sm:p-6 lg:p-12 flex flex-col justify-center lg:order-1">
+                    <div class="mb-3 lg:mb-6">
+                      <span class="inline-block bg-orange-100 text-orange-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-4">
                         Plan Internacional
                       </span>
-                      <h3 class="text-3xl font-bold text-gray-800 mb-4">Alfa Medical Internacional</h3>
+                      <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2 lg:mb-4">Alfa Medical Internacional</h3>
                     </div>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">Extiende tu protección en México y el mundo. Ideal para viajeros que buscan atención médica internacional con los mejores especialistas.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-                        <span class="text-gray-700">Protección internacional</span>
+                    <p class="text-gray-600 mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg leading-relaxed">Extiende tu protección en México y el mundo. Ideal para viajeros que buscan atención médica internacional con los mejores especialistas.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4 lg:mb-8">
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Protección internacional</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-                        <span class="text-gray-700">Servicio Concierge</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Servicio Concierge</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-                        <span class="text-gray-700">Cobertura más amplia</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Cobertura más amplia</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-                        <span class="text-gray-700">Evacuación médica</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Evacuación médica</span>
                       </div>
                     </div>
-                    <a href="/seguros-salud/alfa-medical-internacional" class="inline-flex items-center bg-rp-orange text-white px-8 py-3 rounded-lg hover:bg-orange-700 transition-colors font-semibold group">
+                    <a href="/seguros-salud/alfa-medical-internacional" class="inline-flex items-center justify-center sm:justify-start bg-rp-orange text-white px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg hover:bg-orange-700 transition-colors font-semibold group text-sm sm:text-base">
                       Ver más detalles
-                      <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                       </svg>
                     </a>
@@ -154,9 +155,9 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
 
               <!-- Slide 3: Montaña (Alfa Medical) -->
               <div class="min-w-full relative">
-                <div class="grid lg:grid-cols-2 min-h-[600px]">
+                <div class="flex flex-col lg:grid lg:grid-cols-2 min-h-[auto] lg:min-h-[600px]">
                   <!-- Imagen -->
-                  <div class="relative overflow-hidden bg-gradient-to-br from-rp-blue to-rp-light-blue">
+                  <div class="relative overflow-hidden bg-gradient-to-br from-rp-blue to-rp-light-blue h-48 sm:h-64 lg:h-full">
                     <img 
                       src="/seguros-gmm/alfa.webp" 
                       alt="Protección completa con Alfa Medical" 
@@ -166,35 +167,35 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                   </div>
                   <!-- Contenido -->
-                  <div class="bg-gradient-to-br from-blue-50 to-white p-8 lg:p-12 flex flex-col justify-center">
-                    <div class="mb-6">
-                      <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full mb-4">
+                  <div class="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-6 lg:p-12 flex flex-col justify-center">
+                    <div class="mb-3 lg:mb-6">
+                      <span class="inline-block bg-blue-100 text-blue-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-4">
                         Plan Tradicional
                       </span>
-                      <h3 class="text-3xl font-bold text-gray-800 mb-4">Alfa Medical</h3>
+                      <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2 lg:mb-4">Alfa Medical</h3>
                     </div>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">Accede a los mejores hospitales de México para ti y tu familia. Cuenta con diversos planes que se ajustan a las necesidades de tu familia.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Mejores hospitales</span>
+                    <p class="text-gray-600 mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg leading-relaxed">Accede a los mejores hospitales de México para ti y tu familia. Cuenta con diversos planes que se ajustan a las necesidades de tu familia.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4 lg:mb-8">
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Mejores hospitales</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Cobertura maternidad</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Cobertura maternidad</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Planes familiares</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Planes familiares</span>
                       </div>
-                      <div class="flex items-center space-x-3">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span class="text-gray-700">Red hospitalaria amplia</span>
+                      <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span class="text-gray-700 text-sm sm:text-base">Red hospitalaria amplia</span>
                       </div>
                     </div>
-                    <a href="/seguros-salud/alfa-medical" class="inline-flex items-center bg-rp-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold group">
+                    <a href="/seguros-salud/alfa-medical" class="inline-flex items-center justify-center sm:justify-start bg-rp-blue text-white px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold group text-sm sm:text-base">
                       Ver más detalles
-                      <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                       </svg>
                     </a>
@@ -232,11 +233,11 @@ const pageDescription = "Protege tu salud y la de tus seres queridos con nuestro
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-rp-light-blue text-white">
+    <section class="py-10 md:py-16 bg-rp-light-blue text-white">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">¿No sabes qué Seguro te conviene más?</h2>
-        <p class="text-xl mb-8 opacity-90">Deja tus datos y un experto te ayudará a elegir uno de acuerdo a tus necesidades.</p>
-        <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-3 md:mb-4">¿No sabes qué Seguro te conviene más?</h2>
+        <p class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90">Deja tus datos y un experto te ayudará a elegir uno de acuerdo a tus necesidades.</p>
+        <a href="#contacto" class="inline-block bg-white text-blue-600 px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-sm md:text-base">
           Quiero que me contacten
         </a>
       </div>

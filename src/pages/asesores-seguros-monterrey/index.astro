@@ -1,6 +1,7 @@
 ---
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
 import { Image } from "astro:assets";
 
 const site = "https://segurosrp.com";
@@ -126,7 +127,7 @@ const business = {
   </head>
 
   <body class="bg-gray-50 text-slate-800 antialiased">
-    
+    <Header />
     <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
 
     <!-- HERO: keywords principales sin confusión geográfica -->
@@ -174,10 +175,10 @@ const business = {
 					
 					<!-- Botones responsivos -->
 					<div class="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-center lg:justify-start max-w-lg mx-auto lg:mx-0">
-						<a href="#cotizar" class="w-full sm:w-auto bg-rp-orange-600 hover:bg-orange text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+						<a href="#contacto" class="w-full sm:w-auto bg-rp-orange-600 hover:bg-orange text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
 							Cotizar Ahora GRATIS
 						</a>
-						<a href="tel:+524461354113" class="w-full sm:w-auto bg-white text-rp-blue px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold text-center transition duration-300 hover:bg-rp-orange hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105">
+						<a href="#contacto" class="w-full sm:w-auto bg-white text-rp-blue px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold text-center transition duration-300 hover:bg-rp-orange hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105">
 							📞 Llamar Asesor
 						</a>
 					</div>

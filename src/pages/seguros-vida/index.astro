@@ -5,7 +5,41 @@ import Footer from '../../components/Footer.astro';
 import Contact from '../../components/Contact.astro';
 
 const pageTitle = "Seguros de Vida - Protege el futuro de tus seres queridos | RP Seguros";
-const pageDescription = "Protege el futuro de tus seres queridos con nuestros seguros de vida. Imagina Ser, Orvi, Nuevo Plenitud, Objetivo Vida, Realiza y más opciones para ti.";
+const pageDescription = "Protege el futuro de tus seres queridos con nuestros seguros de vida. Imagina Ser, Orvi, Nuevo Plenitud, SeguBeca, Vida Mujer y más opciones para ti.";
+
+const segurosVida = [
+  {
+    nombre: "Vida Mujer",
+    descripcion: "Seguro diseñado especialmente para proteger a la mujer en todas las etapas de su vida.",
+    href: "/seguros-vida/vida-mujer",
+    icono: "💗"
+  },
+  {
+    nombre: "SeguBeca",
+    descripcion: "Asegura el futuro educativo de tus hijos mientras proteges a tu familia.",
+    href: "/seguros-vida/segubeca",
+    icono: "🎓"
+  },
+  {
+    nombre: "Imagina Ser",
+    descripcion: "Ahorra para el retiro que imaginas con rendimientos garantizados en dólares o UDI.",
+    href: "/seguros-vida/imagina-ser",
+    icono: "🌅"
+  },
+  {
+    nombre: "Nuevo Plenitud",
+    descripcion: "Patrimonio garantizado para tu retiro, definido desde la contratación.",
+    href: "/seguros-vida/nuevo-plenitud",
+    icono: "🏦"
+  },
+  {
+    nombre: "Orvi 99",
+    descripcion: "El único seguro que te protege hasta los 99 años con ahorro e inversión garantizada.",
+    href: "/seguros-vida/orvi",
+    icono: "🛡️"
+  },
+
+];
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -13,23 +47,66 @@ const pageDescription = "Protege el futuro de tus seres queridos con nuestros se
   
   <main class="pt-20">
     <!-- Hero Section -->
-    <section class="h-screen text-white py-20">
-      <div class="absolute inset-0 b  g-black opacity-40"></div>
+    <section class="h-screen text-white py-20 relative">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
       <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/planes/nuevo plenitud/5.webp')"></div>
-      <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6 mt-40  ">Seguros de Vida</h1>
-        
-        <a href="#productos" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-        Ver Nuestros Productos
-        </a>
-      </div>
+      <div class="container mx-auto px-4 relative z-10 h-full flex items-center">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">Seguros de Vida</h1>
+          <p class="text-xl mb-8 text-gray-200">Protege el futuro de tus seres queridos con la mejor cobertura</p>
+          <a href="#productos" class="bg-white text-rp-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Ver Nuestros Productos
+          </a>
+        </div>
       </div>
     </section>
 
-      
+    <!-- Lista de Productos -->
+    <section id="productos" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestros Seguros de Vida</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Encuentra el plan perfecto para proteger a tu familia y asegurar su futuro
+          </p>
+        </div>
 
-          <section id="contacto" class="bg-white"><Contact /></section>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {segurosVida.map((seguro) => (
+            <a href={seguro.href} class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-rp-blue hover:-translate-y-1">
+              <div class="flex items-start gap-4">
+                <span class="text-4xl">{seguro.icono}</span>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-rp-blue transition-colors">
+                    {seguro.nombre}
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-4">{seguro.descripcion}</p>
+                  <span class="inline-flex items-center text-rp-blue font-semibold text-sm group-hover:gap-2 transition-all">
+                    Ver más 
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-rp-blue to-rp-light-blue text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">¿No sabes cuál elegir?</h2>
+        <p class="text-xl mb-8 opacity-90">Nuestros asesores te ayudarán a encontrar el seguro ideal para ti y tu familia</p>
+        <a href="#contacto" class="bg-white text-rp-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block">
+          Contactar un Asesor
+        </a>
+      </div>
+    </section>
+
+    <section id="contacto" class="bg-white"><Contact /></section>
 
   </main>
 

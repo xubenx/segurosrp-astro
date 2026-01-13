@@ -108,7 +108,7 @@ const getEmailTemplate = () => `
                     <p style="margin: 0px;">
                         <span class="colour" style="color:rgb(136, 136, 136)">
                             <span class="size" style="font-size: 12px; margin: 0px;">
-                                © 2025 segurosrp.com - Todos los derechos reservados.
+                                © 2026 segurosrp.com - Todos los derechos reservados.
                             </span>
                         </span>
                         <br>
