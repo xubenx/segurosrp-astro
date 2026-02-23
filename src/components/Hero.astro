@@ -1,5 +1,7 @@
 ---
 // Hero Section Component
+import { Image } from 'astro:assets';
+import principalImage from '../../public/cdmx.webp';
 ---
 
 <section id="inicio" class="h-screen md:h-screen bg-gradient-to-r from-rp-blue to-rp-light-blue text-white relative overflow-hidden">
@@ -19,13 +21,21 @@
             ¿Necesitas asesoría? ¡Hablemos!
             </a>
           </div>
-        <div class="relative h-full flex flex-col justify-end items-center">
-          <!-- Logo New York Life -->
-          
-          <img fetchpriority=high
- src="/principal.webp" alt="Familia protegida" class="w-full h-auto max-h-full object-contain object-bottom" loading="eager" />
-        </div>
       </div>
+    </div>
+    
+    <!-- Imagen desktop posicionada absolutamente en la esquina inferior derecha -->
+    <div class="hidden md:block absolute bottom-0 right-0 z-0">
+      <Image 
+        src={principalImage} 
+        alt="Familia protegida" 
+        class="h-screen w-auto object-contain object-bottom" 
+        width={500}
+        height={650}
+        format="webp"
+        loading="eager"
+        quality={100}
+      />
     </div>
 
     <!-- Mobile Layout -->
@@ -41,11 +51,17 @@
       </div>
     </div>
   </div>
-  <!-- Imagen posicionada absolutamente pegada al borde inferior en móvil -->
-  <div class="md:hidden absolute bottom-0 left-0 right-0 flex flex-col items-center">
-    <!-- Logo New York Life para móvil -->
-    
-    <img fetchpriority=high
- src="/principal.webp" alt="asesores certificados" class="w-full h-auto max-h-[50vh] object-contain object-bottom" loading="eager" />
+  <!-- Imagen móvil posicionada absolutamente pegada al borde inferior -->
+  <div class="md:hidden absolute bottom-0 right-0">
+      <Image 
+        src={principalImage} 
+        alt="asesores certificados" 
+        class="h-[50vh] w-auto object-contain object-bottom" 
+        width={300}
+        height={400}
+        format="webp"
+        loading="eager"
+        quality={85}
+      />
   </div>
 </section>

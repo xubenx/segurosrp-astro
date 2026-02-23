@@ -10,13 +10,13 @@
     "optimize:all": "node scripts/optimize-images.js"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
-    "@astrojs/vercel": "8.0.1",
+    "@astrojs/vercel": "^9.0.4",
     "@fortawesome/fontawesome-free": "^7.0.1",
     "@types/node-telegram-bot-api": "^0.64.11",
     "@types/nodemailer": "^7.0.1",
-    "astro": "^5.1.1",
+    "astro": "^5.17.3",
     "dotenv": "^17.2.2",
     "firebase": "^12.2.1",
     "googleapis": "^164.1.0",
