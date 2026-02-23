@@ -4,20 +4,20 @@ import { Image } from 'astro:assets';
 import principalImage from '../../public/cdmx.webp';
 ---
 
-<section id="inicio" class="h-screen md:h-screen bg-gradient-to-r from-rp-blue to-rp-light-blue text-white relative overflow-hidden">
+<section id="inicio" class="h-screen md:h-screen bg-gradient-to-r from-rp-blue to-rp-light-blue text-white relative overflow-hidden isolate">
   <!-- Imagen 30 años en esquina superior derecha -->
 
   
-  <div class="container mx-auto px-4 py-10 h-full">
+  <div class="container mx-auto px-4 py-10 h-full relative z-20">
     <!-- Desktop Layout -->
     <div class="hidden md:flex items-center h-full">
       <div class="grid md:grid-cols-2 gap-12 items-center w-full h-full">
-        <div class="flex flex-col justify-center ">
+        <div class="flex flex-col justify-center relative z-20">
             <h1 class="md:text-6xl font-bold leading-tight">
             ¡Somos Asesores Certificados en <span class="text-rp-orange">Seguros Monterrey!</span>
             </h1>
             <p class="text-xl mb-4 md:leading-none  ">Expertos en protección y tranquilidad para ti y tu familia</p>
-            <a href="https://api.whatsapp.com/send/?phone=524461354113" target="_blank" class="bg-rp-white text-rp-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-rp-orange hover:text-white transition duration-300 w-fit inline-block text-center">
+            <a href="https://api.whatsapp.com/send/?phone=524461354113" target="_blank" class="relative z-20 bg-rp-white text-rp-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-rp-orange hover:text-white transition duration-300 w-fit inline-block text-center">
             ¿Necesitas asesoría? ¡Hablemos!
             </a>
           </div>
@@ -25,7 +25,7 @@ import principalImage from '../../public/cdmx.webp';
     </div>
     
     <!-- Imagen desktop posicionada absolutamente en la esquina inferior derecha -->
-    <div class="hidden md:block absolute bottom-0 right-0 z-0">
+    <div class="hidden md:block absolute bottom-0 right-0 z-0 pointer-events-none">
       <Image 
         src={principalImage} 
         alt="Familia protegida" 
@@ -39,20 +39,20 @@ import principalImage from '../../public/cdmx.webp';
     </div>
 
     <!-- Mobile Layout -->
-    <div class="md:hidden flex flex-col h-full relative">
-      <div class="flex flex-col justify-start pt-24 sm:pt-28 pb-4 z-10 px-2">
+    <div class="md:hidden flex flex-col h-full relative z-20">
+      <div class="flex flex-col justify-start pt-24 sm:pt-28 pb-4 relative z-20 px-2">
         <h1 class="text-3xl font-bold mb-4 ">
           ¡Somos Asesores Certificados en <span class="text-rp-orange">Seguros Monterrey</span>!
         </h1>
         <p class="text-xl mb-6">Expertos en protección y tranquilidad para ti y tu familia</p>
-        <a href="https://api.whatsapp.com/send/?phone=524461354113" target="_blank" class="bg-rp-white text-rp-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-rp-orange hover:text-white transition duration-300 w-fit inline-block text-center">
+        <a href="https://api.whatsapp.com/send/?phone=524461354113" target="_blank" class="relative z-20 bg-rp-white text-rp-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-rp-orange hover:text-white transition duration-300 w-fit inline-block text-center">
           ¿Necesitas asesoría? ¡Hablemos!
         </a>
       </div>
     </div>
   </div>
   <!-- Imagen móvil posicionada absolutamente pegada al borde inferior -->
-  <div class="md:hidden absolute bottom-0 right-0">
+  <div class="md:hidden absolute bottom-0 right-0 z-0 pointer-events-none">
       <Image 
         src={principalImage} 
         alt="asesores certificados" 
