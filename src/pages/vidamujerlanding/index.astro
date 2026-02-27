@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Contact from '../../components/Contact.astro';
+import ContactVidaMujer from '../../components/ContactVidaMujer.astro';
 
 ---
 
@@ -334,13 +334,43 @@ import Contact from '../../components/Contact.astro';
           <a href="#contacto" class="bg-white hover:bg-pink-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
             Quiero Vida Mujer
           </a>
-          <a href="https://wa.me/524461354113" class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
+          <a
+            id="vidamujer_whatsapp"
+            href="https://wa.me/524461354113"
+            onclick="
+              if (typeof window.dataLayer !== 'undefined') {
+                window.dataLayer.push({
+                  event: 'vidamujer_whatsapp',
+                  event_category: 'conversion',
+                  event_label: 'Vida Mujer WhatsApp CTA',
+                  campaign: 'SEM Google Ads - Vida Mujer',
+                  source: 'Landing Vida Mujer',
+                  value: 1,
+                  currency: 'MXN',
+                  page_location: window.location.href
+                });
+              }
+              if (typeof window.gtag !== 'undefined') {
+                window.gtag('event', 'vidamujer_whatsapp', {
+                  event_category: 'conversion',
+                  event_label: 'Vida Mujer WhatsApp CTA',
+                  campaign: 'SEM Google Ads - Vida Mujer',
+                  source: 'Landing Vida Mujer',
+                  value: 1,
+                  currency: 'MXN',
+                  page_location: window.location.href
+                });
+              }
+              return true;
+            "
+            class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300"
+          >
             Hablar con Asesora
           </a>
         </div>
       </div>
     </section>
-    <section id="contacto" class="bg-white"><Contact /></section>
+    <section id="contacto" class="bg-white"><ContactVidaMujer /></section>
 
     <Footer/>
   </main>

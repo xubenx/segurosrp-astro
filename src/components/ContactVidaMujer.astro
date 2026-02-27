@@ -1,0 +1,360 @@
+---
+import { Image } from 'astro:assets';
+import advisor1 from '../../public/asesor_1.webp';
+import advisor2 from '../../public/asesor_2.webp';
+import advisor3 from '../../public/asesor_3.webp';
+
+const offices = [
+  {
+    city: "Querétaro",
+    address: "Nouvalia, Local 106 Planta Baja, Piso 6, Querétaro, Qro.",
+    phone: "+52 (446) 135 4113",
+    phoneHref: "tel:+524461354113"
+  },
+  {
+    city: "Celaya",
+    address: "Av. Ferrocarril Central #709, Planta baja, Local 22, Los Laureles, Celaya, Gto.",
+    phone: "+52 (446) 135 4113",
+    phoneHref: "tel:+524616144326"
+  }
+];
+
+const advisors = [
+  {
+    name: "Lic. Silvia Plascencia",
+    specialty: "Asesora especializada en protección integral para la mujer",
+    image: advisor1,
+    phone: "+52 (446) 135 4113",
+    phoneHref: "tel:+524461354113"
+  },
+  {
+    name: "Lic. Michelle Ramírez",
+    specialty: "Asesora especializada en seguros educativos",
+    image: advisor2,
+    phone: "+52 (446) 135 4113",
+    phoneHref: "tel:+524461354113"
+  },
+  {
+    name: "Lic. José Ramírez",
+    specialty: "Asesor especializado en retiro y protección de patrimonio",
+    image: advisor3,
+    phone: "+52 (446) 135 4113",
+    phoneHref: "tel:+524461354113"
+  }
+];
+---
+
+<section id="contacto" class="py-10 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-rp-blue text-center mb-12">Contáctanos</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:ml-20">
+      <div class="order-1 lg:order-2 ">
+        <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6">Nuestros Asesores</h3>
+        <div class="space-y-6">
+          {advisors.map((advisor) => (
+            <div class="flex items-start space-x-4 bg-rp-blue rounded-2xl">
+              <div class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden rounded-lg flex-shrink-0">
+                <Image
+                  src={advisor.image}
+                  alt={advisor.name}
+                  tabindex="0"
+                  class="w-full h-full object-cover transition-transform duration-300 ease-out hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-rp-orange"
+                  style="will-change: transform; transform: translateZ(0);"
+                  width={128}
+                  height={128}
+                  densities={[1.5, 2]}
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-grow">
+                <h4 class="font-bold mt-4 text-white">{advisor.name}</h4>
+                <p class="text-sm text-rp-white">{advisor.specialty}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="order-2 lg:order-1">
+        <form id="vidaMujerForm" class="space-y-4 md:space-y-6" method="POST">
+          <div id="formMessageVidaMujer" class="hidden p-4 rounded-lg mb-4"></div>
+
+          <div>
+            <label for="nameVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+            <input
+              type="text"
+              id="nameVidaMujer"
+              name="name"
+              required
+              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+            />
+          </div>
+
+          <div>
+            <label for="emailVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
+            <input
+              type="email"
+              id="emailVidaMujer"
+              name="email"
+              required
+              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+            />
+          </div>
+
+          <div>
+            <label for="phoneVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+            <input
+              type="tel"
+              id="phoneVidaMujer"
+              name="phone"
+              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="monthlyAmountVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">¿Qué monto desea asegurar mensualmente?</label>
+              <select
+                id="monthlyAmountVidaMujer"
+                name="monthlyAmount"
+                class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+              >
+                <option value="">Selecciona un rango</option>
+                <option value="2500-3500">$2,500 - $3,500</option>
+                <option value="3500-5000">$3,500 - $5,000</option>
+                <option value="5000+">Más de $5,000</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="ageVidaMujer" class="block text-sm font-medium text-gray-700 mb-6">¿Qué edad tienes?</label>
+              <input
+                type="number"
+                id="ageVidaMujer"
+                name="age"
+                min="18"
+                max="100"
+                placeholder="Ej: 35"
+                class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="messageVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+            <textarea
+              id="messageVidaMujer"
+              name="message"
+              rows="4"
+              required
+              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+            ></textarea>
+          </div>
+
+          <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+            <label for="websiteVidaMujer">Website (no llenar si eres humano)</label>
+            <input
+              type="text"
+              name="website"
+              id="websiteVidaMujer"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="submitButtonVidaMujer"
+            class="w-full bg-orange-400 text-rp-blue px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300 text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span id="buttonTextVidaMujer">Enviar mensaje</span>
+            <span id="buttonLoadingVidaMujer" class="hidden">Enviando...</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-6">
+      <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6 text-center">Nuestras Oficinas</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {offices.map((office) => (
+          <div class="text-center">
+            <h4 class="text-lg md:text-xl font-semibold text-rp-blue mb-2">{office.city}</h4>
+            <p class="text-gray-700 mb-2 text-sm md:text-base">{office.address}</p>
+            <a href={office.phoneHref} class="text-black hover:text-orange-600 font-semibold text-sm md:text-base">
+              {office.phone}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('vidaMujerForm') as HTMLFormElement;
+    const formMessage = document.getElementById('formMessageVidaMujer') as HTMLElement;
+    const submitButton = document.getElementById('submitButtonVidaMujer') as HTMLButtonElement;
+    const buttonText = document.getElementById('buttonTextVidaMujer') as HTMLElement;
+    const buttonLoading = document.getElementById('buttonLoadingVidaMujer') as HTMLElement;
+
+    if (!form || !formMessage || !submitButton || !buttonText || !buttonLoading) {
+      console.error('Required Vida Mujer form elements not found');
+      return;
+    }
+
+    const trackingPayload = {
+      event_category: 'conversion',
+      event_label: 'Vida Mujer Contact Form Submit',
+      campaign: 'SEM Google Ads - Vida Mujer',
+      source: 'Landing Vida Mujer',
+      value: 1,
+      currency: 'MXN'
+    };
+
+    let formInteractionTracked = false;
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach((input) => {
+      input.addEventListener('focus', function() {
+        if (formInteractionTracked) return;
+        formInteractionTracked = true;
+
+        if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'form_start', {
+            form_id: 'vidaMujerForm',
+            page_location: window.location.href,
+            campaign: trackingPayload.campaign,
+            source: trackingPayload.source
+          });
+        }
+      });
+    });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      submitButton.disabled = true;
+      buttonText.classList.add('hidden');
+      buttonLoading.classList.remove('hidden');
+      formMessage.classList.add('hidden');
+
+      const formData = new FormData(form);
+      const honeypotValue = (formData.get('website') as string || '').trim();
+      if (honeypotValue !== '') {
+        formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
+        formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto.';
+        formMessage.classList.remove('hidden');
+        form.reset();
+        submitButton.disabled = false;
+        buttonText.classList.remove('hidden');
+        buttonLoading.classList.add('hidden');
+        return;
+      }
+
+      const data = {
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+        message: formData.get('message') as string,
+        monthlyAmount: formData.get('monthlyAmount') as string,
+        age: formData.get('age') as string,
+        pageUrl: window.location.href,
+        pageTitle: document.title,
+        source: trackingPayload.source,
+        campaign: trackingPayload.campaign
+      };
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          try {
+            await fetch('/api/sendToSheet', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                phone: data.phone
+              })
+            });
+          } catch (sheetError) {
+            console.error('Error al enviar a Google Sheet:', sheetError);
+          }
+
+          try {
+            await fetch('/api/send-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email: data.email })
+            });
+          } catch (emailError) {
+            console.error('Error al enviar email de confirmación:', emailError);
+          }
+
+          if (typeof window !== 'undefined' && typeof (window as any).dataLayer !== 'undefined') {
+            (window as any).dataLayer.push({
+              event: 'vidamujer_form',
+              ...trackingPayload,
+              form_id: 'vidaMujerForm',
+              page_location: window.location.href
+            });
+          }
+
+          if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'vidamujer_form', {
+              ...trackingPayload,
+              form_id: 'vidaMujerForm',
+              page_location: window.location.href
+            });
+
+            (window as any).gtag('event', 'generate_lead', {
+              campaign_id: 'vida-mujer-sem',
+              form_id: 'vidaMujerForm',
+              page_location: window.location.href,
+              campaign: trackingPayload.campaign,
+              source: trackingPayload.source
+            });
+          }
+
+          formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
+          formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto. También hemos enviado un email de confirmación.';
+          formMessage.classList.remove('hidden');
+          form.reset();
+        } else {
+          formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
+          if (response.status === 429) {
+            const retryAfter = result.retryAfter || 60;
+            formMessage.textContent = `⏰ Has enviado demasiadas solicitudes. Por favor, espera ${retryAfter} segundos antes de intentar de nuevo.`;
+          } else {
+            formMessage.textContent = result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+          }
+          formMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        console.error('Error de red:', error);
+        formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
+        formMessage.textContent = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
+        formMessage.classList.remove('hidden');
+      } finally {
+        submitButton.disabled = false;
+        buttonText.classList.remove('hidden');
+        buttonLoading.classList.add('hidden');
+      }
+    });
+  });
+</script>
