@@ -214,24 +214,6 @@ const advisors = [
       currency: 'MXN'
     };
 
-    let formInteractionTracked = false;
-    const inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach((input) => {
-      input.addEventListener('focus', function() {
-        if (formInteractionTracked) return;
-        formInteractionTracked = true;
-
-        if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-          (window as any).gtag('event', 'form_start', {
-            form_id: 'vidaMujerForm',
-            page_location: window.location.href,
-            campaign: trackingPayload.campaign,
-            source: trackingPayload.source
-          });
-        }
-      });
-    });
-
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -308,7 +290,7 @@ const advisors = [
 
           if (typeof window !== 'undefined' && typeof (window as any).dataLayer !== 'undefined') {
             (window as any).dataLayer.push({
-              event: 'vidamujer_form',
+              event: 'VidaMujer_Form',
               ...trackingPayload,
               form_id: 'vidaMujerForm',
               page_location: window.location.href
@@ -316,18 +298,10 @@ const advisors = [
           }
 
           if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-            (window as any).gtag('event', 'vidamujer_form', {
+            (window as any).gtag('event', 'VidaMujer_Form', {
               ...trackingPayload,
               form_id: 'vidaMujerForm',
               page_location: window.location.href
-            });
-
-            (window as any).gtag('event', 'generate_lead', {
-              campaign_id: 'vida-mujer-sem',
-              form_id: 'vidaMujerForm',
-              page_location: window.location.href,
-              campaign: trackingPayload.campaign,
-              source: trackingPayload.source
             });
           }
 
