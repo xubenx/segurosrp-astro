@@ -58,23 +58,23 @@ export const POST: APIRoute = async ({ request }) => {
     const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
 
     const telegramMessage = `
-👩 *NUEVO LEAD - VIDA MUJER* 💫
+  👩 NUEVO LEAD - VIDA MUJER 💫
 
-👤 *Nombre:* ${name}
-📧 *Email:* ${email}
-📱 *Teléfono:* ${phone}
-🎂 *Edad:* ${age || 'No especificada'}
-💰 *Monto mensual deseado:* ${monthlyAmount || 'No especificado'}
+  👤 Nombre: ${name}
+  📧 Email: ${email}
+  📱 Teléfono: ${phone}
+  🎂 Edad: ${age || 'No especificada'}
+  💰 Monto mensual deseado: ${monthlyAmount || 'No especificado'}
 
-💬 *Mensaje:*
-${message}
+  💬 Mensaje:
+  ${message}
 
-📊 *Tracking campaña:*
-• *Fuente:* ${source || 'Landing Vida Mujer'}
-• *Campaña:* ${campaign || 'SEM Google Ads - Vida Mujer'}
-• *URL:* ${pageUrl || 'No disponible'}
+  📊 Tracking campaña:
+  - Fuente: ${source || 'Landing Vida Mujer'}
+  - Campaña: ${campaign || 'SEM Google Ads - Vida Mujer'}
+  - URL: ${pageUrl || 'No disponible'}
 
-⏰ *Fecha:* ${new Date().toLocaleString('es-MX', {
+  ⏰ Fecha: ${new Date().toLocaleString('es-MX', {
   timeZone: 'America/Mexico_City',
   year: 'numeric',
   month: 'long',
@@ -92,21 +92,25 @@ ${message}
       ? `https://wa.me/+52${cleanPhone}?text=${encodedWhatsappMessage}`
       : `https://wa.me/?text=${encodedWhatsappMessage}`;
 
-    await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
-      parse_mode: 'Markdown',
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: cleanPhone && cleanPhone.length >= 10
-                ? `💬 Contactar a ${name} por WhatsApp`
-                : '💬 Contactar por WhatsApp',
-              url: whatsappUrl
-            }
+    try {
+      await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: cleanPhone && cleanPhone.length >= 10
+                  ? `💬 Contactar a ${name} por WhatsApp`
+                  : '💬 Contactar por WhatsApp',
+                url: whatsappUrl
+              }
+            ]
           ]
-        ]
-      }
-    });
+        }
+      });
+    } catch (telegramError) {
+      console.error('⚠️ Error enviando con botón, intentando envío simple:', telegramError);
+      await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage);
+    }
 
     console.log('✅ Lead Vida Mujer enviado exitosamente a Telegram');
 
