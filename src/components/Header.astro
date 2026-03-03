@@ -1,7 +1,5 @@
 ---
 // Header component
-import { Image } from "astro:assets";
-import logoImage from "../../public/logo_ryp.webp";
 
 const segurosIndividuales = [
   {
@@ -42,12 +40,12 @@ const paginasPrincipales = [
     <div class="flex justify-between items-center min-h-[3.5rem]">
       <a href="/" class="flex items-center flex-shrink-0">
         <div class="flex items-center space-x-2 sm:space-x-3">
-          <Image
-            src={logoImage}
+          <img
+            src="/logo_ryp.webp"
             alt="Seguros RP"
-            format="png"
             loading="eager"
-            quality={95}
+            width="160"
+            height="40"
             class="w-auto sm:w-auto h-10"
           />
         </div>
