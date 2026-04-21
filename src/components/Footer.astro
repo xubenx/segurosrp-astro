@@ -1,7 +1,5 @@
 ---
 // Footer component
-import { Image } from 'astro:assets';
-import logoImage from '../../public/rp_blancos.png';
 
 const socialLinks = [
   {
@@ -32,14 +30,14 @@ const socialLinks = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       <div class="text-center md:text-left">
         <div class=" p-2 rounded-lg inline-block mb-4">
-          <Image 
-            src={logoImage} 
-            alt="Seguros RP" 
+          <img
+            src="/rp_blancos.png"
+            alt="Seguros RP"
             class="w-40 h-auto"
-            
-            format="png"
             loading="lazy"
-            quality={95}
+            decoding="async"
+            width="2936"
+            height="610"
           />
         </div>
         <p class="text-gray-300 text-sm md:text-base">© 2026 Ramírez & Plascencia</p>

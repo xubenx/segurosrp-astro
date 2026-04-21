@@ -1,11 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import advisor1 from '../../public/asesor_1.webp';
-import advisor2 from '../../public/asesor_2.webp';
-import advisor3 from '../../public/asesor_3.webp';
-
-
-
 // Contact section component
 const offices = [
   {
@@ -26,21 +19,21 @@ const advisors = [
   {
     name: "Lic. Silvia Plascencia",
     specialty: "Asesora especializada en protección integral para la mujer",
-    image: advisor1,
+    image: '/asesor_1.webp',
     phone: "+52 (446) 135 4113",
     phoneHref: "tel:+524461354113"
   },
   {
     name: "Lic. Michelle Ramírez",
     specialty: "Asesora especializada en seguros educativos",
-    image: advisor2,
+    image: '/asesor_2.webp',
     phone: "+52 (446) 135 4113",
     phoneHref: "tel:+524461354113"
   },
   {
     name: "Lic. José Ramírez",
     specialty: "Asesor especializado en retiro y protección de patrimonio",
-    image: advisor3,
+    image: '/asesor_3.webp',
     phone: "+52 (446) 135 4113",
     phoneHref: "tel:+524461354113"
   }
@@ -60,16 +53,16 @@ const advisors = [
           {advisors.map((advisor) => (
         <div class="flex items-start space-x-4 bg-rp-blue rounded-2xl">
           <div class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden rounded-lg flex-shrink-0">
-            <Image 
-              src={advisor.image} 
+            <img
+              src={advisor.image}
               alt={advisor.name}
               tabindex="0"
               class="w-full h-full object-cover transition-transform duration-300 ease-out hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-rp-orange"
               style="will-change: transform; transform: translateZ(0);"
-              width={128}
-              height={128}
-              densities={[1.5, 2]}
+              width="128"
+              height="128"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="flex-grow">
