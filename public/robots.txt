@@ -4,6 +4,26 @@ Allow: /
 Disallow: /segubecalanding/
 Disallow: /asesores-seguros-monterrey-nyl/
 Disallow: /vidamujerlanding/
+Disallow: /ssr
+Disallow: /ssr-with-swr-caching
 
+# AI search crawlers — explicitly permitted for search visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
 
 Sitemap: https://segurosrp.com/sitemap.xml

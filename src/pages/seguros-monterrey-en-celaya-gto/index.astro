@@ -1,6 +1,7 @@
 ---
 import Contact from '../../components/Contact.astro';
 import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/seguros-monterrey-en-celaya`;
@@ -14,13 +15,13 @@ const business = {
   phone: "+52 446 135 4113",
   email: "info@segurosrp.com",
   address: {
-    street: "Av. Tecnológico 123",
+    street: "Av. Ferrocarril Central #709, Planta Baja, Local 22, Los Laureles",
     locality: "Celaya",
     region: "Guanajuato",
     postalCode: "38010",
     country: "MX",
   },
-  geo: { lat: 20.523, lng: -100.815 },
+  geo: { lat: 20.5235, lng: -100.8176 },
   openingHours: "Mo-Fr 09:00-18:00",
 };
 ---
@@ -87,7 +88,7 @@ const business = {
     <link rel="alternate" hreflang="es-MX" href={canonical} />
 
     <!-- Preload -->
-    <link rel="preload" as="image" href="/principal.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/cdmx.webp" fetchpriority="high" />
 
     <!-- Schema: LocalBusiness/InsuranceAgency -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -242,19 +243,21 @@ const business = {
     
     <a href="#contenido" class="sr-only">Saltar al contenido principal</a>
 
+    <Header />
+
     <!-- HERO (basado en tu código, con mejoras de a11y y SEO local) -->
-    <section id="inicio" class="min-h-screen gradient-bg text-white relative overflow-hidden" role="region" aria-labelledby="hero-title">
+    <section id="inicio" class="h-screen gradient-bg text-white relative overflow-hidden isolate" role="region" aria-labelledby="hero-title">
       <!-- Elementos decorativos -->
       <div class="absolute inset-0 opacity-10">
         <div class="absolute top-20 left-10 w-72 h-72 bg-rp-orange rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
         <div class="absolute top-40 right-10 w-96 h-96 bg-rp-light-blue rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
         <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
       </div>
-      
-      <div class="container mx-auto px-4 relative z-10">
+
+      <div class="container mx-auto px-4 relative z-10 h-full">
         <!-- Desktop -->
-        <div class="hidden md:flex items-center min-h-screen py-20">
-          <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+        <div class="hidden md:flex items-center h-full py-10">
+          <div class="grid md:grid-cols-2 gap-12 items-center w-full h-full">
             <div class="flex flex-col justify-center space-y-6">
               <div class="space-y-4">
                 <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
@@ -264,7 +267,7 @@ const business = {
                   Somos Expertos en <span class="gradient-text">Seguros Monterrey</span>
                 </h1>
                 <p class="text-xl text-blue-100 leading-relaxed">
-                  Protección integral para ti y tu familia con <strong>más de 25 años de experiencia</strong> en Celaya, Guanajuato y servicio nacional.
+                  Protección integral para ti y tu familia con <strong>más de 30 años de experiencia</strong> en Celaya, Guanajuato y servicio nacional.
                 </p>
               </div>
               
@@ -281,7 +284,7 @@ const business = {
               <!-- Stats rápidas -->
               <div class="grid grid-cols-3 gap-4 pt-8">
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-rp-orange">25+</div>
+                  <div class="text-2xl font-bold text-rp-orange">30+</div>
                   <div class="text-sm text-blue-200">Años de experiencia</div>
                 </div>
                 <div class="text-center">
@@ -295,17 +298,11 @@ const business = {
               </div>
             </div>
             
-            <div class="relative h-full flex flex-col justify-center items-center">
-              <div class="relative">
-                <div class="absolute inset-0 bg-gradient-to-t from-rp-orange/20 to-transparent rounded-3xl"></div>
-                <img fetchpriority="high" src="/principal.webp" alt="Asesores de SegurosRP atendiendo clientes en Celaya" class="w-full h-auto max-h-[600px] object-contain rounded-3xl shadow-2xl" loading="eager" />
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Mobile -->
-        <div class="md:hidden flex flex-col min-h-screen relative py-20">
+        <div class="md:hidden flex flex-col h-full relative z-20 py-20">
           <div class="flex flex-col justify-start space-y-6 z-10">
             <div class="space-y-4">
               <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
@@ -330,7 +327,7 @@ const business = {
             <!-- Stats móvil -->
             <div class="grid grid-cols-3 gap-3 pt-6">
               <div class="text-center">
-                <div class="text-xl font-bold text-rp-orange">25+</div>
+                <div class="text-xl font-bold text-rp-orange">30+</div>
                 <div class="text-xs text-blue-200">Años</div>
               </div>
               <div class="text-center">
@@ -344,14 +341,16 @@ const business = {
             </div>
           </div>
           
-          <!-- Imagen móvil -->
-          <div class="absolute bottom-0 left-0 right-0 flex flex-col items-center">
-            <div class="relative w-full">
-              <div class="absolute inset-0 bg-gradient-to-t from-rp-blue/50 to-transparent"></div>
-              <img fetchpriority="high" src="/principal.webp" alt="Equipo SegurosRP en Celaya" class="w-full h-auto max-h-[40vh] object-contain object-bottom" loading="eager" />
-            </div>
-          </div>
         </div>
+      </div>
+
+      <!-- Imagen desktop — absolute bottom-right igual que Hero.astro -->
+      <div class="hidden md:block absolute bottom-0 right-0 z-0 pointer-events-none">
+        <img fetchpriority="high" src="/cdmx.webp" alt="Familia protegida con Seguros Monterrey en Celaya" class="h-screen w-auto object-contain object-bottom" loading="eager" />
+      </div>
+      <!-- Imagen móvil -->
+      <div class="md:hidden absolute bottom-0 right-0 z-0 pointer-events-none">
+        <img fetchpriority="high" src="/cdmx.webp" alt="Familia protegida con Seguros Monterrey en Celaya" class="h-[50vh] w-auto object-contain object-bottom" loading="eager" />
       </div>
     </section>
 
@@ -364,7 +363,7 @@ const business = {
               Seguros Monterrey en <span class="gradient-text">Celaya</span> con SegurosRP
             </h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-              Tu tranquilidad es nuestro compromiso. Más de 25 años protegiendo familias en Guanajuato.
+              Tu tranquilidad es nuestro compromiso. Más de 30 años protegiendo familias en Guanajuato.
             </p>
           </div>
           
@@ -869,7 +868,7 @@ const business = {
               ¿Listo para <span class="gradient-text">Proteger</span> tu Futuro?
             </h2>
             <p class="text-xl md:text-2xl text-blue-100 mb-8">
-              Más de 25 años protegiendo familias en Celaya, Guanajuato. 
+              Más de 30 años protegiendo familias en Celaya, Guanajuato. 
               <br class="hidden md:block">
               <strong>Tu tranquilidad es nuestro compromiso.</strong>
             </p>

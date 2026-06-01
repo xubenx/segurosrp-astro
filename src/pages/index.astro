@@ -20,7 +20,93 @@ export const prerender = true;
 ---
 
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} canonical="https://segurosrp.com/">
+  <script type="application/ld+json" slot="head">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "InsuranceAgency",
+        "@id": "https://segurosrp.com/#organization",
+        "name": "SegurosRP — Ramírez & Plascencia",
+        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life. Especialistas en seguro de vida, gastos médicos mayores, plan de retiro y seguro educativo en México.",
+        "url": "https://segurosrp.com",
+        "telephone": "+52-446-135-4113",
+        "email": "info@segurosrp.com",
+        "foundingDate": "1998",
+        "areaServed": "México",
+        "logo": "https://segurosrp.com/logo_ryp.png",
+        "sameAs": [
+          "https://www.facebook.com/segurosrp/",
+          "https://www.instagram.com/ramirezplascencia_/",
+          "https://www.linkedin.com/company/ramirez-plascencia-despacho-de-seguros/",
+          "https://www.youtube.com/channel/UCkQ6zjjpXuHfIrRS1MFFIJA"
+        ],
+        "location": [
+          {
+            "@type": "Place",
+            "name": "Oficina Querétaro",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Nouvalia, Local 106 Planta Baja, Piso 6",
+              "addressLocality": "Santiago de Querétaro",
+              "addressRegion": "Querétaro",
+              "postalCode": "76090",
+              "addressCountry": "MX"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Oficina Celaya",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. Ferrocarril Central #709, Planta Baja, Local 22, Los Laureles",
+              "addressLocality": "Celaya",
+              "addressRegion": "Guanajuato",
+              "postalCode": "38010",
+              "addressCountry": "MX"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es Seguros Monterrey New York Life?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Seguros Monterrey New York Life es una de las aseguradoras de vida y salud más importantes de México, con respaldo de New York Life, una de las aseguradoras más antiguas y sólidas del mundo. Ofrece seguros de vida, gastos médicos mayores, planes de retiro y seguros educativos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Atienden en Querétaro y Celaya?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Ramírez & Plascencia tiene oficinas físicas en Santiago de Querétaro (Nouvalia, Local 106) y en Celaya, Gto. (Av. Ferrocarril Central #709). También ofrecemos asesoría nacional por videollamada y WhatsApp al +52 446 135 4113."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo contratar un seguro a distancia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Realizamos cotización, asesoría y contratación de forma completamente digital mediante videollamada y firma digital. Atendemos clientes en todo México sin necesidad de acudir a una oficina."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta un seguro de gastos médicos mayores?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El costo de un seguro de gastos médicos mayores depende de la edad, perfil de salud, deducible elegido y suma asegurada. Nuestros planes Alfa Medical, Alfa Medical Flex y Alfa Medical Internacional se adaptan a distintos presupuestos. Contáctanos para una cotización gratuita y personalizada."
+            }
+          }
+        ]
+      }
+    ]
+  })}</script>
 
   <Header />
   <Hero />
