@@ -284,7 +284,7 @@ const advisors = [
 
           if (typeof window !== 'undefined' && typeof (window as any).dataLayer !== 'undefined') {
             (window as any).dataLayer.push({
-              event: 'VidaMujer_Form',
+              event: 'vidamujer_form',
               ...trackingPayload,
               form_id: 'vidaMujerForm',
               page_location: window.location.href
@@ -292,7 +292,7 @@ const advisors = [
           }
 
           if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-            (window as any).gtag('event', 'VidaMujer_Form', {
+            (window as any).gtag('event', 'vidamujer_form', {
               ...trackingPayload,
               form_id: 'vidaMujerForm',
               page_location: window.location.href

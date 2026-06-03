@@ -805,13 +805,6 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 									'currency': 'MXN'
 								});
 								console.log('Evento asesores_form enviado a gtag');
-								
-								// Evento adicional para tracking del formulario de contacto
-								(window as any).gtag('event', 'generate_lead', {
-									'campaign_id': 'seguros-monterrey-nyl',
-									'form_id': 'quoteForm',
-									'page_location': window.location.href
-								});
 							}
 						} else {
 							alert('Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo o llama directamente.');
@@ -825,33 +818,8 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 		});
 	</script>
 
-	<!-- Meta tags específicos para SEM en el head -->
 	<Fragment slot="head">
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y67F0BJRHL"></script>
-		<script is:inline>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-Y67F0BJRHL');
-		</script>
-		
-		<meta name="keywords" content="{keywords}">
-		<meta name="robots" content="index, follow">
-		<meta property="og:title" content="{title}">
-		<meta property="og:description" content="{description}">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://segurosrp.com/asesores-seguros-monterrey-nyl/">
-		<meta property="og:image" content="https://segurosrp.com/Logo_New_York_Life.svg">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="{title}">
-		<meta name="twitter:description" content="{description}">
-		
-		<!-- Canonical URL -->
-		<link rel="canonical" href="https://segurosrp.com/asesores-seguros-monterrey-nyl/">
-		
-		<!-- Hreflang para SEO local -->
+		<meta name="keywords" content={keywords}>
 		<link rel="alternate" hreflang="es-mx" href="https://segurosrp.com/asesores-seguros-monterrey-nyl/">
 	</Fragment>
 </Layout>
