@@ -294,20 +294,24 @@ const paginasPrincipales = [
       }
     });
 
-    // Handle window resize
+    // Handle window resize — debounced to avoid main thread thrash
+    let resizeTimer;
     window.addEventListener("resize", function () {
-      if (
-        window.innerWidth >= 1024 &&
-        mobileMenu &&
-        hamburgerIcon &&
-        closeIcon &&
-        !mobileMenu.classList.contains("hidden")
-      ) {
-        mobileMenu.classList.add("hidden");
-        hamburgerIcon.classList.remove("hidden");
-        closeIcon.classList.add("hidden");
-        document.body.style.overflow = "";
-      }
-    });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        if (
+          window.innerWidth >= 1024 &&
+          mobileMenu &&
+          hamburgerIcon &&
+          closeIcon &&
+          !mobileMenu.classList.contains("hidden")
+        ) {
+          mobileMenu.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+          document.body.style.overflow = "";
+        }
+      }, 100);
+    }, { passive: true });
   });
 </script>

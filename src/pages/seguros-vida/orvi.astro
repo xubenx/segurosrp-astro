@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Contact from '../../components/Contact.astro';
+import YouTubeFacade from '../../components/YouTubeFacade.astro';
 
 const pageTitle = "Orvi 99 Seguro de Vida | Asesores Seguros Monterrey";
 const pageDescription = "Un seguro de vida que protege a tu familia y te ayuda a cumplir objetivos personales con ahorro e inversión garantizada.";
@@ -70,9 +71,9 @@ const pageDescription = "Un seguro de vida que protege a tu familia y te ayuda a
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
           
-          <!-- Ejemplo práctico -->
+          <!-- YouTube facade - carga el iframe solo al hacer clic -->
           <div class="flex justify-center items-center mb-12 md:mb-20">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/JYUaEfNC3yo?si=ap1tu6fGFVEtU37v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <YouTubeFacade videoId="JYUaEfNC3yo" title="Orvi 99 - Cómo funciona el seguro de vida" />
           </div>
         </div>
       </div>
@@ -148,9 +149,9 @@ const pageDescription = "Un seguro de vida que protege a tu familia y te ayuda a
 
     <!-- Banner 99 Años -->
     <section class="py-12 md:py-16 bg-gradient-to-r from-rp-blue  to-rp-light-blue relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-10" aria-hidden="true">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-white rounded-full hidden md:block" style="filter:blur(64px)"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full hidden md:block" style="filter:blur(64px)"></div>
       </div>
       
       <div class="container mx-auto px-4 relative z-10">
@@ -158,7 +159,7 @@ const pageDescription = "Un seguro de vida que protege a tu familia y te ayuda a
           <p class="text-white text-lg md:text-xl mb-4 font-medium">
             El único seguro de vida en México que te cubre hasta los
           </p>
-          <div class="text-7xl md:text-8xl lg:text-9xl font-extrabold text-yellow-300 mb-4 animate-pulse">
+          <div class="text-7xl md:text-8xl lg:text-9xl font-extrabold text-yellow-300 mb-4 motion-safe:animate-pulse">
             99 AÑOS
           </div>
           <div class="h-1 w-32 bg-yellow-300 mx-auto mb-6"></div>

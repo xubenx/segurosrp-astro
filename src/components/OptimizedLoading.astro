@@ -34,19 +34,21 @@
     }
   });
 
-  // Precargar recursos importantes al hacer hover en enlaces
-  document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('a[href^="/"]');
-    links.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        const href = link.getAttribute('href');
-        if (href && !document.querySelector(`link[rel="prefetch"][href="${href}"]`)) {
-          const prefetchLink = document.createElement('link');
-          prefetchLink.rel = 'prefetch';
-          prefetchLink.href = href;
-          document.head.appendChild(prefetchLink);
-        }
+  // Precargar recursos en hover — solo en dispositivos con puntero real (desktop)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('a[href^="/"]');
+      links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          const href = link.getAttribute('href');
+          if (href && !document.querySelector(`link[rel="prefetch"][href="${href}"]`)) {
+            const prefetchLink = document.createElement('link');
+            prefetchLink.rel = 'prefetch';
+            prefetchLink.href = href;
+            document.head.appendChild(prefetchLink);
+          }
+        }, { passive: true });
       });
     });
-  });
+  }
 </script>

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Contact from '../../components/Contact.astro';
+import YouTubeFacade from '../../components/YouTubeFacade.astro';
 
 const pageTitle = "Alfa Medical - Seguro de Gastos Médicos Mayores con Cobertura de Maternidad | RP Seguros";
 const pageDescription = "Protección total para ti y tu familia. Alfa Medical: seguro de gastos médicos mayores con la mejor cobertura de maternidad, 150 millones de suma asegurada y acceso a los mejores hospitales de México.";
@@ -26,8 +27,17 @@ const structuredData = {
   "offers": {
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
-    "price": "Consultar",
-    "priceCurrency": "MXN"
+    "priceCurrency": "MXN",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "priceCurrency": "MXN",
+      "description": "Prima mensual personalizada según edad, género y cobertura seleccionada. Solicita tu cotización sin costo."
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "RP Seguros",
+      "url": "https://segurosrp.com"
+    }
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -529,20 +539,9 @@ const faqData = {
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
           
-          <!-- Ejemplo práctico -->
+          <!-- YouTube facade -->
           <div class="flex justify-center items-center mb-12 md:mb-20">
-            <iframe 
-              width="100%" 
-              height="315" 
-              src="https://www.youtube.com/embed/bUs-24lla5w?si=-nF9NB_kMUq1xllp" 
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen
-              class="rounded-lg shadow-lg max-w-full md:max-w-[560px]"
-              style="max-width: 560px;"
-            ></iframe>
+            <YouTubeFacade videoId="bUs-24lla5w" title="Alfa Medical - Cómo funciona el seguro de gastos médicos" />
           </div>
         </div>
       </div>

@@ -1,0 +1,98 @@
+---
+export interface Props {
+  videoId: string;
+  title: string;
+  width?: number;
+  height?: number;
+}
+
+const { videoId, title, width = 560, height = 315 } = Astro.props;
+const thumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+---
+
+<div
+  class="yt-facade"
+  data-video-id={videoId}
+  data-title={title}
+  role="button"
+  tabindex="0"
+  aria-label={`Ver video: ${title}`}
+  style={`max-width:${width}px`}
+>
+  <img
+    src={thumbnail}
+    alt={title}
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+    class="yt-thumbnail"
+  />
+  <div class="yt-play-btn" aria-hidden="true">
+    <svg viewBox="0 0 68 48" width="68" height="48">
+      <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/>
+      <path d="M45 24 27 14v20" fill="#fff"/>
+    </svg>
+  </div>
+</div>
+
+<style>
+  .yt-facade {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .yt-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .yt-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.1s ease;
+  }
+  .yt-facade:hover .yt-play-btn,
+  .yt-facade:focus .yt-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  .yt-facade:focus {
+    outline: 3px solid #f00;
+    outline-offset: 2px;
+  }
+  .yt-facade iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.yt-facade').forEach((el) => {
+    function activate() {
+      const videoId = el.dataset.videoId;
+      const title = el.dataset.title || 'Video';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = title;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      el.innerHTML = '';
+      el.appendChild(iframe);
+    }
+    el.addEventListener('click', activate);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+  });
+</script>
