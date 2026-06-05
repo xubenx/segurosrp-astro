@@ -1,19 +1,4 @@
 ---
-const offices = [
-  {
-    city: "Querétaro",
-    address: "Nouvalia, Local 106 Planta Baja, Piso 6, Querétaro, Qro.",
-    phone: "+52 (446) 135 4113",
-    phoneHref: "tel:+524461354113"
-  },
-  {
-    city: "Celaya",
-    address: "Av. Ferrocarril Central #709, Planta baja, Local 22, Los Laureles, Celaya, Gto.",
-    phone: "+52 (446) 135 4113",
-    phoneHref: "tel:+524616144326"
-  }
-];
-
 const advisors = [
   {
     name: "Lic. Silvia Plascencia",
@@ -39,113 +24,111 @@ const advisors = [
 ];
 ---
 
-<section id="contacto" class="py-10 bg-white">
+<section class="py-16 bg-white">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-rp-blue text-center mb-12">Contáctanos</h2>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:ml-20">
-      <div class="order-1 lg:order-2 ">
-        <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6">Nuestros Asesores</h3>
-        <div class="space-y-6">
-          {advisors.map((advisor) => (
-            <div class="flex items-start space-x-4 bg-rp-blue rounded-2xl">
-              <div class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden rounded-lg flex-shrink-0">
-                <img
-                  src={advisor.image}
-                  alt={advisor.name}
-                  class="w-full h-full object-cover transition-transform duration-300 ease-out hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-rp-orange"
-                  style="will-change: transform; transform: translateZ(0);"
-                  width="128"
-                  height="128"
-                  loading="lazy"
-                />
-              </div>
-              <div class="flex-grow">
-                <h4 class="font-bold mt-4 text-white">{advisor.name}</h4>
-                <p class="text-sm text-rp-white">{advisor.specialty}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <!-- Pre-form message -->
+    <div class="max-w-2xl mx-auto text-center mb-10">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Solicita tu diagnóstico financiero</h2>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Diseñamos estrategias de protección y patrimonio para mujeres que buscan construir seguridad financiera mediante aportaciones desde <strong class="text-pink-600">$35,000 anuales</strong>.
+      </p>
+    </div>
 
-      <div class="order-2 lg:order-1">
-        <form id="vidaMujerForm" class="space-y-4 md:space-y-6" method="POST">
-          <div id="formMessageVidaMujer" class="hidden p-4 rounded-lg mb-4"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 max-w-6xl mx-auto">
 
+      <!-- FORMULARIO -->
+      <div class="order-1">
+        <form id="vidaMujerForm" class="space-y-5" method="POST">
+          <div id="formMessageVidaMujer" class="hidden p-4 rounded-lg mb-2"></div>
+
+          <!-- Nombre -->
           <div>
-            <label for="nameVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+            <label for="nameVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo *</label>
             <input
               type="text"
               id="nameVidaMujer"
               name="name"
               required
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+              placeholder="Ej: María González"
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
             />
           </div>
 
+          <!-- WhatsApp -->
           <div>
-            <label for="emailVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
-            <input
-              type="email"
-              id="emailVidaMujer"
-              name="email"
-              required
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-            />
-          </div>
-
-          <div>
-            <label for="phoneVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+            <label for="whatsappVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp *</label>
             <input
               type="tel"
-              id="phoneVidaMujer"
-              name="phone"
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
+              id="whatsappVidaMujer"
+              name="whatsapp"
+              required
+              placeholder="Ej: 4461234567"
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
             />
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label for="monthlyAmountVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">¿Qué monto desea asegurar mensualmente?</label>
-              <select
-                id="monthlyAmountVidaMujer"
-                name="monthlyAmount"
-                class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-              >
-                <option value="">Selecciona un rango</option>
-                <option value="3000-3500">$3,000 - $3,500</option>
-                <option value="3500-5000">$3,500 - $5,000</option>
-                <option value="5000+">Más de $5,000</option>
-              </select>
-            </div>
-
-
-            <div>
-              <label for="ageVidaMujer" class="block text-sm font-medium text-gray-700 mb-6">¿Qué edad tienes?</label>
-              <input
-                type="number"
-                id="ageVidaMujer"
-                name="age"
-                min="18"
-                max="100"
-                placeholder="Ej: 35"
-                class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-              />
-            </div>
-          </div>
-
+          <!-- Edad -->
           <div>
-            <label for="messageVidaMujer" class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
-            <textarea
-              id="messageVidaMujer"
-              name="message"
-              rows="4"
-              required
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-            ></textarea>
+            <label for="ageVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">Edad</label>
+            <input
+              type="number"
+              id="ageVidaMujer"
+              name="age"
+              min="18"
+              max="70"
+              placeholder="Ej: 35"
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
+            />
           </div>
 
+          <!-- Objetivo -->
+          <div>
+            <label for="objetivoVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">¿Cuál es tu principal objetivo? *</label>
+            <select
+              id="objetivoVidaMujer"
+              name="objetivo"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all bg-white"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="Proteger a mi familia">Proteger a mi familia</option>
+              <option value="Crear un ahorro a largo plazo">Crear un ahorro a largo plazo</option>
+              <option value="Protección por enfermedades femeninas">Protección por enfermedades femeninas</option>
+              <option value="Complementar mi estrategia patrimonial">Complementar mi estrategia patrimonial</option>
+            </select>
+          </div>
+
+          <!-- Profesión -->
+          <div>
+            <label for="dedicasVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">¿A qué te dedicas? *</label>
+            <input
+              type="text"
+              id="dedicasVidaMujer"
+              name="dedicas"
+              required
+              placeholder="Ej: Médica, Empresaria, Ejecutiva..."
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
+            />
+          </div>
+
+          <!-- Estrategia -->
+          <div>
+            <label for="estrategiaVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">¿Qué estrategia te interesa conocer? *</label>
+            <select
+              id="estrategiaVidaMujer"
+              name="estrategia"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all bg-white"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="Estrategia Esencial ($35,000 - $50,000 anuales)">Estrategia Esencial ($35,000 – $50,000 anuales)</option>
+              <option value="Estrategia Integral ($50,000 - $100,000 anuales)">Estrategia Integral ($50,000 – $100,000 anuales)</option>
+              <option value="Estrategia Patrimonial Premium (+$100,000 anuales)">Estrategia Patrimonial Premium (+$100,000 anuales)</option>
+            </select>
+          </div>
+
+          <!-- Honeypot -->
           <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
             <label for="websiteVidaMujer">Website (no llenar si eres humano)</label>
             <input
@@ -160,28 +143,42 @@ const advisors = [
           <button
             type="submit"
             id="submitButtonVidaMujer"
-            class="w-full bg-orange-400 text-rp-blue px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300 text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full bg-pink-500 hover:bg-pink-600 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] shadow-md"
           >
-            <span id="buttonTextVidaMujer">Enviar mensaje</span>
+            <span id="buttonTextVidaMujer">Solicitar propuesta personalizada</span>
             <span id="buttonLoadingVidaMujer" class="hidden">Enviando...</span>
           </button>
+
+          <p class="text-xs text-gray-400 text-center">Tu información es confidencial y no se comparte con terceros.</p>
         </form>
       </div>
-    </div>
 
-    <div class="bg-gray-50 rounded-lg p-6">
-      <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6 text-center">Nuestras Oficinas</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {offices.map((office) => (
-          <div class="text-center">
-            <h4 class="text-lg md:text-xl font-semibold text-rp-blue mb-2">{office.city}</h4>
-            <p class="text-gray-700 mb-2 text-sm md:text-base">{office.address}</p>
-            <a href={office.phoneHref} class="text-black hover:text-orange-600 font-semibold text-sm md:text-base">
-              {office.phone}
-            </a>
-          </div>
-        ))}
+      <!-- ASESORAS -->
+      <div class="order-2">
+        <h3 class="text-xl font-semibold text-gray-800 mb-6">Nuestras Especialistas</h3>
+        <div class="space-y-4 mb-8">
+          {advisors.map((advisor) => (
+            <div class="flex items-center gap-4 bg-gradient-to-r from-pink-600 to-pink-500 rounded-2xl overflow-hidden">
+              <div class="w-20 h-20 lg:w-24 lg:h-24 overflow-hidden flex-shrink-0">
+                <img
+                  src={advisor.image}
+                  alt={advisor.name}
+                  class="w-full h-full object-cover"
+                  width="96"
+                  height="96"
+                  loading="lazy"
+                />
+              </div>
+              <div class="py-3 pr-4">
+                <h4 class="font-bold text-white text-sm">{advisor.name}</h4>
+                <p class="text-pink-100 text-xs leading-snug mt-1">{advisor.specialty}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
+
     </div>
   </div>
 </section>
@@ -194,10 +191,7 @@ const advisors = [
     const buttonText = document.getElementById('buttonTextVidaMujer') as HTMLElement;
     const buttonLoading = document.getElementById('buttonLoadingVidaMujer') as HTMLElement;
 
-    if (!form || !formMessage || !submitButton || !buttonText || !buttonLoading) {
-      console.error('Required Vida Mujer form elements not found');
-      return;
-    }
+    if (!form || !formMessage || !submitButton || !buttonText || !buttonLoading) return;
 
     const trackingPayload = {
       event_category: 'conversion',
@@ -219,8 +213,8 @@ const advisors = [
       const formData = new FormData(form);
       const honeypotValue = (formData.get('website') as string || '').trim();
       if (honeypotValue !== '') {
-        formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-        formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto.';
+        formMessage.className = 'p-4 rounded-lg mb-2 bg-green-100 text-green-800 border border-green-200';
+        formMessage.textContent = '¡Solicitud enviada! Te contactaremos pronto.';
         formMessage.classList.remove('hidden');
         form.reset();
         submitButton.disabled = false;
@@ -231,13 +225,12 @@ const advisors = [
 
       const data = {
         name: formData.get('name') as string,
-        email: formData.get('email') as string,
-        phone: formData.get('phone') as string,
-        message: formData.get('message') as string,
-        monthlyAmount: formData.get('monthlyAmount') as string,
+        whatsapp: formData.get('whatsapp') as string,
         age: formData.get('age') as string,
+        objetivo: formData.get('objetivo') as string,
+        dedicas: formData.get('dedicas') as string,
+        estrategia: formData.get('estrategia') as string,
         pageUrl: window.location.href,
-        pageTitle: document.title,
         source: trackingPayload.source,
         campaign: trackingPayload.campaign
       };
@@ -245,9 +238,7 @@ const advisors = [
       try {
         const response = await fetch('/api/vida-mujer-contact', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
 
@@ -257,29 +248,11 @@ const advisors = [
           try {
             await fetch('/api/sendToSheet', {
               method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                name: data.name,
-                email: data.email,
-                phone: data.phone
-              })
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: data.name, phone: data.whatsapp })
             });
           } catch (sheetError) {
             console.error('Error al enviar a Google Sheet:', sheetError);
-          }
-
-          try {
-            await fetch('/api/send-email', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ email: data.email })
-            });
-          } catch (emailError) {
-            console.error('Error al enviar email de confirmación:', emailError);
           }
 
           if (typeof window !== 'undefined' && typeof (window as any).dataLayer !== 'undefined') {
@@ -287,6 +260,7 @@ const advisors = [
               event: 'vidamujer_form',
               ...trackingPayload,
               form_id: 'vidaMujerForm',
+              estrategia: data.estrategia,
               page_location: window.location.href
             });
           }
@@ -295,28 +269,28 @@ const advisors = [
             (window as any).gtag('event', 'vidamujer_form', {
               ...trackingPayload,
               form_id: 'vidaMujerForm',
+              estrategia: data.estrategia,
               page_location: window.location.href
             });
           }
 
-          formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-          formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto. También hemos enviado un email de confirmación.';
+          formMessage.className = 'p-4 rounded-lg mb-2 bg-green-100 text-green-800 border border-green-200';
+          formMessage.textContent = '¡Solicitud enviada! Una asesora te contactará pronto por WhatsApp.';
           formMessage.classList.remove('hidden');
           form.reset();
         } else {
-          formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
+          formMessage.className = 'p-4 rounded-lg mb-2 bg-red-100 text-red-800 border border-red-200';
           if (response.status === 429) {
             const retryAfter = result.retryAfter || 60;
             formMessage.textContent = `⏰ Has enviado demasiadas solicitudes. Por favor, espera ${retryAfter} segundos antes de intentar de nuevo.`;
           } else {
-            formMessage.textContent = result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+            formMessage.textContent = result.message || 'Error al enviar. Por favor, intenta de nuevo.';
           }
           formMessage.classList.remove('hidden');
         }
       } catch (error) {
-        console.error('Error de red:', error);
-        formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
-        formMessage.textContent = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
+        formMessage.className = 'p-4 rounded-lg mb-2 bg-red-100 text-red-800 border border-red-200';
+        formMessage.textContent = 'Error de conexión. Verifica tu internet e intenta de nuevo.';
         formMessage.classList.remove('hidden');
       } finally {
         submitButton.disabled = false;

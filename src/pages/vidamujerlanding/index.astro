@@ -4,336 +4,418 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ContactVidaMujer from '../../components/ContactVidaMujer.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
-
 ---
 
-<Layout title="Vida Mujer | Asesores Seguros Monterrey" noindex={true}>
-  <main class="">
+<Layout title="Vida Mujer | Estrategia de Protección y Patrimonio para Mujeres" noindex={true}>
+  <main>
     <Header/>
-    <!-- Hero Section -->
-    <section style="background-image: url('/planes/vm/hero.webp'); background-size: cover; background-position: center;" class="h-screen relative text-white py-24 lg:py-32 flex items-end">
-      <!-- Overlay para mejorar la legibilidad del texto -->
-      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-      
+
+    <!-- HERO -->
+    <section
+      style="background-image: url('/planes/vm/hero.webp'); background-size: cover; background-position: center;"
+      class="min-h-screen relative text-white py-24 lg:py-32 flex items-end"
+    >
+      <div class="absolute inset-0 bg-black bg-opacity-55"></div>
       <div class="container mx-auto px-4 relative z-10 pb-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-        <span class="text-pink-400">Vida Mujer</span>
-        </h1>
-        <p class="text-xl lg:text-2xl mb-8 text-pink-100">
-        Que te motive Proteger Mejor® todos los aspectos de tu vida
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contacto" class="bg-pink-500 hover:bg-pink-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
-          Me Interesa
-        </a>
-        <a href="#como-funciona" class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300">
-          Conocer Más
-        </a>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <!-- Sección de Beneficios Principales con Íconos -->
-    <section class="py-16 bg-gradient-to-br from-pink-50 via-white to-purple-50">
-      <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        
-        <!-- Protección Integral -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-          <div class="mb-6">
-          <img src="/planes/vm/icon1.webp" alt="Protección Integral" class="w-20 h-20 mx-auto mb-4 object-contain">
-          </div>
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Protección Integral</h3>
-          <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-          Tienes un respaldo financiero sólido en caso de fallecimiento, invalidez o pérdidas orgánicas
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-pink-300 font-semibold uppercase tracking-widest text-sm mb-4">No vendemos un seguro — diseñamos estrategias</p>
+          <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+            Protege tu futuro, tu salud y a quienes más amas con una
+            <span class="text-pink-400"> estrategia diseñada especialmente para mujeres</span>
+          </h1>
+          <p class="text-xl lg:text-2xl mb-10 text-pink-100">
+            Respaldo económico ante enfermedades femeninas, protección para tu familia y construcción de patrimonio desde $35,000 anuales.
           </p>
-        </div>
-
-        <!-- Ahorro Integral -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-          <div class="mb-6">
-          <img src="/planes/vm/icon2.webp" alt="Ahorro Integral" class="w-20 h-20 mx-auto mb-4 object-contain">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contacto"
+              class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Solicitar propuesta personalizada
+            </a>
+            <a
+              href="#estrategias"
+              class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-10 rounded-full transition-all duration-300"
+            >
+              Ver estrategias
+            </a>
           </div>
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Ahorro Integral</h3>
-          <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-          Construye un futuro próspero con un plan de ahorro a tu medida, en el que podrás recibir parte de tu ahorro a partir del quinto año
-          </p>
         </div>
-
-        <!-- Coberturas Especiales -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-          <div class="mb-6">
-          <img src="/planes/vm/icon3.webp" alt="Coberturas Especiales" class="w-20 h-20 mx-auto mb-4 object-contain">
-          </div>
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Coberturas Especiales</h3>
-          <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-          Enfrenta los desafíos de la vida con tranquilidad, con coberturas específicas para enfermedades: Cáncer de mama, cáncer de ovario, complicaciones en el embarazo
-          </p>
-        </div>
-
-        <!-- Apoyo en Momentos Difíciles -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-          <div class="mb-6">
-          <img src="/planes/vm/icon4.webp" alt="Apoyo en momentos difíciles" class="w-20 h-20 mx-auto mb-4 object-contain">
-          </div>
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">Apoyo en momentos difíciles</h3>
-          <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-          Te ofrecemos asistencia en caso de diagnóstico de enfermedades graves, para que puedas concentrarte en tu recuperación
-          </p>
-        </div>
-
-        </div>
-      </div>
       </div>
     </section>
 
-    <!-- Mini Banner 115% -->
-
-    <section class="py-16 bg-white">
+    <!-- BENEFICIOS PRINCIPALES -->
+    <section class="py-14 bg-gradient-to-br from-pink-50 via-white to-purple-50">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">¿Cómo funciona?</h2>
-          
-          <!-- YouTube facade -->
+          <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">Todo lo que incluye tu estrategia</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              'Protección por enfermedades femeninas',
+              'Protección por complicaciones del embarazo',
+              'Protección para la familia',
+              'Construcción de patrimonio',
+              'Recuperación de hasta el 115% de la suma asegurada al vencimiento',
+              'Anticipos disponibles a partir del año 5',
+            ].map((benefit) => (
+              <div class="flex items-start gap-3 bg-white px-6 py-4 rounded-xl shadow-sm border border-pink-100">
+                <span class="text-pink-500 text-xl font-bold mt-0.5">✔</span>
+                <span class="text-gray-700 font-medium">{benefit}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTRATEGIAS -->
+    <section id="estrategias" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Estrategias de Protección y Patrimonio</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Elige la estrategia que se adapta a tus objetivos y capacidad de inversión</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+          <!-- Esencial -->
+          <div class="border-2 border-pink-200 rounded-3xl p-8 flex flex-col hover:shadow-xl transition-all duration-300">
+            <div class="mb-6">
+              <p class="text-pink-500 font-semibold uppercase tracking-wider text-sm mb-2">Estrategia</p>
+              <h3 class="text-2xl font-bold text-gray-800 mb-3">Esencial</h3>
+              <p class="text-gray-500 text-sm mb-4">Diseñada para mujeres que desean comenzar a construir una base sólida de protección financiera.</p>
+              <div class="bg-pink-50 rounded-2xl px-5 py-3 inline-block">
+                <p class="text-pink-700 font-bold text-lg">$35,000 – $50,000</p>
+                <p class="text-pink-500 text-sm">inversión anual</p>
+              </div>
+            </div>
+            <ul class="space-y-3 flex-grow mb-8">
+              {[
+                'Seguro Vida Mujer',
+                'Protección por enfermedades femeninas',
+                'Protección por complicaciones del embarazo',
+                'Protección para la familia',
+                'Componente de ahorro a largo plazo',
+              ].map((item) => (
+                <li class="flex items-start gap-2 text-gray-600 text-sm">
+                  <span class="text-pink-400 mt-0.5">✔</span>{item}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-gray-400 mb-4 italic">Ideal para mujeres que desean iniciar la construcción de su patrimonio.</p>
+            <a href="#contacto" class="block text-center bg-pink-100 hover:bg-pink-500 text-pink-700 hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300">
+              Solicitar información
+            </a>
+          </div>
+
+          <!-- Integral (destacada) -->
+          <div class="border-2 border-pink-500 rounded-3xl p-8 flex flex-col relative shadow-xl bg-gradient-to-b from-pink-50 to-white">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="bg-pink-500 text-white text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-wider shadow">Más popular</span>
+            </div>
+            <div class="mb-6">
+              <p class="text-pink-500 font-semibold uppercase tracking-wider text-sm mb-2">Estrategia</p>
+              <h3 class="text-2xl font-bold text-gray-800 mb-3">Integral</h3>
+              <p class="text-gray-500 text-sm mb-4">Diseñada para mujeres que buscan una protección más robusta y acumulación patrimonial.</p>
+              <div class="bg-pink-100 rounded-2xl px-5 py-3 inline-block">
+                <p class="text-pink-700 font-bold text-lg">$50,000 – $100,000</p>
+                <p class="text-pink-500 text-sm">inversión anual</p>
+              </div>
+            </div>
+            <ul class="space-y-3 flex-grow mb-8">
+              {[
+                'Todos los beneficios de Vida Mujer',
+                'Seguro de Gastos Médicos Mayores',
+                'Protección financiera ante eventos de salud de alto costo',
+                'Acumulación patrimonial a largo plazo',
+                'Mayor capacidad de protección familiar',
+              ].map((item) => (
+                <li class="flex items-start gap-2 text-gray-600 text-sm">
+                  <span class="text-pink-500 mt-0.5 font-bold">✔</span>{item}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-gray-400 mb-4 italic">Ideal para profesionistas, ejecutivas y empresarias.</p>
+            <a href="#contacto" class="block text-center bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              Solicitar información
+            </a>
+          </div>
+
+          <!-- Patrimonial Premium -->
+          <div class="border-2 border-pink-200 rounded-3xl p-8 flex flex-col hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-pink-50 to-white">
+            <div class="mb-6">
+              <p class="text-pink-500 font-semibold uppercase tracking-wider text-sm mb-2">Estrategia</p>
+              <h3 class="text-2xl font-bold text-gray-800 mb-3">Patrimonial Premium</h3>
+              <p class="text-gray-500 text-sm mb-4">Diseñada para mujeres que buscan construir un legado financiero sólido.</p>
+              <div class="bg-pink-50 rounded-2xl px-5 py-3 inline-block">
+                <p class="text-pink-700 font-bold text-lg">Más de $100,000</p>
+                <p class="text-pink-500 text-sm">inversión anual</p>
+              </div>
+            </div>
+            <ul class="space-y-3 flex-grow mb-8">
+              {[
+                'Todos los beneficios de Vida Mujer',
+                'Seguro de Gastos Médicos Mayores',
+                'Fondo para el Retiro',
+                'Planeación patrimonial',
+                'Acumulación de capital a largo plazo',
+                'Protección integral para la familia',
+                'Estrategias de legado patrimonial',
+              ].map((item) => (
+                <li class="flex items-start gap-2 text-gray-600 text-sm">
+                  <span class="text-pink-400 mt-0.5">✔</span>{item}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs text-gray-400 mb-4 italic">Ideal para empresarias, directoras y mujeres con visión financiera de largo plazo.</p>
+            <a href="#contacto" class="block text-center bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300">
+              Solicitar información
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA (VIDEO) -->
+    <section id="como-funciona" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-10 text-gray-800">¿Cómo funciona Vida Mujer?</h2>
           <div class="flex justify-center items-center">
             <YouTubeFacade videoId="_-rNdi-XXE8" title="Vida Mujer - Cómo funciona el seguro" />
           </div>
-          <div>
-            <p class="text-black text-center">
-              Vida Mujer es el seguro más completo que toda mujer debería tener, sin importar su edad y momento de su vida en el que se encuentre.
-          </div>
+          <p class="text-gray-600 text-center mt-6 max-w-2xl mx-auto">
+            Vida Mujer es la estrategia más completa que toda mujer debería tener, sin importar su edad o el momento de vida en el que se encuentre.
+          </p>
         </div>
       </div>
     </section>
 
-   <!-- Coberturas Adicionales -->
-    <section class=" bg-white">
+    <!-- COBERTURAS ADICIONALES -->
+    <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-        Coberturas Adicionales
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Protección especializada para cada etapa de tu vida
-        </p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        
-        <!-- Protección por cáncer femenino -->
-        <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div class="mb-6">
-          <img src="/planes/vm/icon5.webp" alt="Protección por cáncer femenino" class="w-20 h-20 mx-auto mb-4 object-contain">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Coberturas Especializadas</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Protección diseñada para cada etapa de la vida de la mujer</p>
         </div>
-        <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por cáncer femenino</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          (mama, ovarios, útero, trompas de Falopio)
-        </p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[
+            { img: '/planes/vm/icon5.webp', title: 'Cáncer femenino', desc: 'Mama, ovarios, útero, trompas de Falopio' },
+            { img: '/planes/vm/icon6.webp', title: 'Padecimientos femeninos', desc: 'Enfermedad inflamatoria pélvica, prolapso genital, fibroadenomas' },
+            { img: '/planes/vm/icon7.webp', title: 'Complicaciones del embarazo', desc: 'Parto prematuro, partos múltiples, eclampsia, embarazo ectópico' },
+            { img: '/planes/vm/icon8.webp', title: 'Recién nacido', desc: 'Espina bífida, labio leporino, síndrome de Down, cardiopatía cianógena' },
+          ].map((cob) => (
+            <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <img src={cob.img} alt={cob.title} class="w-20 h-20 mx-auto mb-4 object-contain" />
+              <h3 class="text-base font-bold text-gray-800 mb-2">{cob.title}</h3>
+              <p class="text-gray-500 text-xs leading-relaxed">{cob.desc}</p>
+            </div>
+          ))}
         </div>
-
-        <!-- Protección por padecimientos femeninos -->
-        <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div class="mb-6">
-          <img src="/planes/vm/icon6.webp" alt="Protección por padecimientos femeninos" class="w-20 h-20 mx-auto mb-4 object-contain">
-        </div>
-        <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por padecimientos femeninos</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          (Enfermedad inflamatoria pélvica, prolapso genital, fibroadenomas)
-        </p>
-        </div>
-
-        <!-- Protección por complicaciones del embarazo -->
-        <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div class="mb-6">
-          <img src="/planes/vm/icon7.webp" alt="Protección por complicaciones del embarazo" class="w-20 h-20 mx-auto mb-4 object-contain">
-        </div>
-        <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por complicaciones del embarazo</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          (Parto prematuro, partos múltiples, eclampsia, embarazo ectópico)
-        </p>
-        </div>
-
-        <!-- Protección por complicaciones en el recién nacido -->
-        <div class="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div class="mb-6">
-          <img src="/planes/vm/icon8.webp" alt="Protección por complicaciones en el recién nacido" class="w-20 h-20 mx-auto mb-4 object-contain">
-        </div>
-        <h3 class="text-lg font-bold text-gray-800 mb-4">Protección por complicaciones en el recién nacido</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          (Espina bífida, labio leporino, síndrome de down, cardiopatía cianógena)
-        </p>
-        </div>
-
-      </div>
       </div>
     </section>
-    <section class="py-10 mt-12 md:py-12 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-400 relative overflow-hidden">
+
+    <!-- BANNER 115% -->
+    <section class="py-10 md:py-14 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-400 relative overflow-hidden">
       <div class="absolute inset-0 opacity-20" aria-hidden="true">
         <div class="absolute top-0 left-1/4 w-64 h-64 bg-yellow-300 rounded-full hidden md:block" style="filter:blur(64px)"></div>
         <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-pink-300 rounded-full hidden md:block" style="filter:blur(64px)"></div>
       </div>
-      
       <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
-          <p class="text-white text-base md:text-lg mb-3 font-medium">
-            El único plan que te garantiza el
-          </p>
-          <div class="flex items-center justify-center mb-3">
-            <div class="text-6xl md:text-7xl lg:text-8xl font-extrabold text-white motion-safe:animate-pulse">
-              115%
-            </div>
-          </div>
+          <p class="text-white text-base md:text-lg mb-3 font-medium">El único plan que te garantiza el</p>
+          <div class="text-6xl md:text-8xl font-extrabold text-white motion-safe:animate-pulse mb-3">115%</div>
           <div class="h-1 w-24 bg-white mx-auto mb-4"></div>
           <p class="text-white text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-            de rendimiento de tu suma asegurada al vencimiento del mismo
+            de rendimiento de tu suma asegurada al vencimiento del plan
           </p>
         </div>
       </div>
     </section>
 
+    <!-- CUSTOMER JOURNEY -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Así funciona nuestro proceso</h2>
+          <p class="text-xl text-gray-600">De la solicitud a tu estrategia activa en 7 pasos</p>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-6">
+            {[
+              { n: '1', title: 'Solicita tu diagnóstico financiero personalizado', desc: 'Completa el formulario o contáctanos por WhatsApp.' },
+              { n: '2', title: 'Análisis de tus objetivos', desc: 'Un especialista analiza tus objetivos, necesidades y etapa de vida.' },
+              { n: '3', title: 'Propuesta personalizada', desc: 'Recibes una propuesta a tu medida de protección y patrimonio.' },
+              { n: '4', title: 'Contratación digital', desc: 'Proceso 100% digital, sin trámites complicados.' },
+              { n: '5', title: 'Confirmación de emisión', desc: 'Recibes la confirmación oficial de tu póliza.' },
+              { n: '6', title: 'Kit de Bienvenida a domicilio', desc: 'Recibes en casa tu kit premium de bienvenida sin costo.' },
+              { n: '7', title: 'Acompañamiento continuo', desc: 'Comienza tu estrategia con seguimiento personalizado de tu asesora.' },
+            ].map((step) => (
+              <div class="flex items-start gap-5">
+                <div class="w-12 h-12 rounded-full bg-pink-500 text-white font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-md">
+                  {step.n}
+                </div>
+                <div class="flex-grow bg-gray-50 rounded-2xl px-6 py-4 border border-gray-100">
+                  <h3 class="font-bold text-gray-800 mb-1">{step.title}</h3>
+                  <p class="text-gray-500 text-sm">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Beneficios Principales -->
+    <!-- KIT DE BIENVENIDA -->
+    <section class="py-16 bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-10">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Kit de Bienvenida</h2>
+          <p class="text-xl text-gray-600">Lo que recibirás al convertirte en clienta</p>
+          <p class="text-gray-500 mt-3">Nuestro compromiso es brindarte una experiencia premium desde el primer día.</p>
+        </div>
+        <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-pink-100">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {[
+              'Carta personalizada de bienvenida',
+              'Resumen ejecutivo de tu estrategia contratada',
+              'Información de coberturas y beneficios',
+              'Directorio de atención y soporte',
+              'Información para reportar siniestros',
+              'Material de educación financiera y patrimonial',
+              'Obsequio de bienvenida',
+            ].map((item) => (
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-sm font-bold flex-shrink-0">✔</span>
+                <span class="text-gray-700 text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
+          <div class="text-center border-t border-pink-100 pt-6">
+            <p class="text-pink-600 font-semibold">📦 Entrega a domicilio sin costo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            ¿Por qué Vida Mujer es para ti?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Un seguro diseñado especialmente para la mujer moderna
-          </p>
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Mujeres que ya protegen su patrimonio</h2>
+          <p class="text-gray-500">Testimonios de nuestras clientas</p>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              initials: 'CV',
+              name: 'Carmen Vega',
+              age: 34,
+              city: 'Querétaro',
+              profession: 'Diseñadora independiente',
+              quote: 'Vida Mujer me dio la tranquilidad que necesitaba. Los anticipos por eventos especiales fueron perfectos cuando nació mi bebé.',
+            },
+            {
+              initials: 'PS',
+              name: 'Patricia Silva',
+              age: 41,
+              city: 'Monterrey',
+              profession: 'Ejecutiva de Ventas',
+              quote: 'La flexibilidad en los pagos y los beneficios específicos para la mujer hacen de esta estrategia una opción única. Lo recomiendo ampliamente.',
+            },
+            {
+              initials: 'MR',
+              name: 'Mónica Rodríguez',
+              age: 38,
+              city: 'CDMX',
+              profession: 'Empresaria',
+              quote: 'Me siento respaldada todos los días. Vida Mujer entiende las necesidades reales de las mujeres trabajadoras y emprendedoras.',
+            },
+          ].map((t) => (
+            <div class="bg-gray-50 p-7 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300">
+              <div class="flex text-yellow-400 mb-4">★★★★★</div>
+              <p class="text-gray-600 italic mb-6 leading-relaxed">"{t.quote}"</p>
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-pink-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-pink-700 font-bold text-lg">{t.initials}</span>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800">{t.name}</p>
+                  <p class="text-sm text-pink-600">{t.profession}</p>
+                  <p class="text-xs text-gray-400">{t.age} años · {t.city}</p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Protege a tus Seres Queridos</h3>
-            <p class="text-gray-600">
-              Brinda seguridad económica a tu familia con una protección integral diseñada para la mujer.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-pink-50 to-pink-50 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Logra Metas a Corto y Mediano Plazo</h3>
-            <p class="text-gray-600">
-              Disfruta de un atractivo esquema de ahorro que te permite materializar tus proyectos personales.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl text-center">
-            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Asegura tu Futuro</h3>
-            <p class="text-gray-600">
-              Garantiza tu bienestar y el de tus dependientes con coberturas especiales para la salud femenina.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-
-
-    <!-- Testimonios -->
-    <section class="py-16 bg-gray-50">
+    <!-- FAQ -->
+    <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            Testimonios de mujeres empoderadas
-          </h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-pink-500">
-            <div class="mb-4">
-              <div class="flex text-yellow-400 mb-2">
-                <span>★★★★★</span>
-              </div>
-              <p class="text-gray-600 italic">
-                "Vida Mujer me dio la tranquilidad que necesitaba. Los anticipos por eventos especiales fueron perfectos cuando nació mi bebé."
-              </p>
-            </div>
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4">
-                <span class="text-pink-600 font-bold">CV</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-800">Carmen Vega</p>
-                <p class="text-sm text-gray-500">Diseñadora</p>
-              </div>
-            </div>
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Preguntas frecuentes</h2>
+            <p class="text-gray-600">Resolvemos tus dudas más importantes</p>
           </div>
-
-          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-pink-500">
-            <div class="mb-4">
-              <div class="flex text-yellow-400 mb-2">
-                <span>★★★★★</span>
-              </div>
-              <p class="text-gray-600 italic">
-                "La flexibilidad en los pagos y los beneficios específicos para la mujer hacen de este seguro una opción única. Lo recomiendo ampliamente."
-              </p>
-            </div>
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4">
-                <span class="text-pink-600 font-bold">PS</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-800">Patricia Silva</p>
-                <p class="text-sm text-gray-500">Ejecutiva</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-pink-500">
-            <div class="mb-4">
-              <div class="flex text-yellow-400 mb-2">
-                <span>★★★★★</span>
-              </div>
-              <p class="text-gray-600 italic">
-                "Me siento respaldada todos los días. Vida Mujer entiende las necesidades reales de las mujeres trabajadoras y emprendedoras."
-              </p>
-            </div>
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4">
-                <span class="text-pink-600 font-bold">MR</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-800">Mónica Rodríguez</p>
-                <p class="text-sm text-gray-500">Emprendedora</p>
-              </div>
-            </div>
+          <div class="space-y-4">
+            {[
+              {
+                q: '¿Qué sucede si me diagnostican cáncer?',
+                a: 'Recibes un anticipo de la suma asegurada para hacer frente a los gastos relacionados con el diagnóstico y tratamiento, sin necesidad de esperar al vencimiento de la póliza.',
+              },
+              {
+                q: '¿Puedo recuperar mi dinero?',
+                a: 'Sí. Al vencimiento del plan, recuperas hasta el 115% de la suma asegurada contratada, lo que significa que tu inversión te regresa con rendimiento.',
+              },
+              {
+                q: '¿Qué ocurre si dejo de pagar?',
+                a: 'Dependiendo del tiempo de vigencia y las aportaciones realizadas, existen opciones de seguro prorrogado, seguro saldado o rescate del valor acumulado. Tu asesora te explicará las condiciones específicas de tu contrato.',
+              },
+              {
+                q: '¿Puedo realizar retiros anticipados?',
+                a: 'Sí. A partir del 5to año de vigencia puedes acceder a anticipos de tu suma asegurada para eventos como matrimonio, nacimiento de un hijo u otras metas de vida.',
+              },
+              {
+                q: '¿Qué protección existe durante el embarazo?',
+                a: 'Vida Mujer cubre complicaciones graves del embarazo como parto prematuro, partos múltiples, eclampsia y embarazo ectópico, así como complicaciones en el recién nacido.',
+              },
+              {
+                q: '¿Cuánto necesito invertir para comenzar?',
+                a: 'La Estrategia Esencial inicia desde $35,000 anuales. Tu asesora diseñará una propuesta personalizada de acuerdo con tus objetivos y capacidad de inversión.',
+              },
+              {
+                q: '¿Cómo funciona el proceso de contratación?',
+                a: 'Es 100% digital. Solicitas tu diagnóstico, recibes una propuesta personalizada, firmas de forma electrónica y en poco tiempo recibes la confirmación de tu póliza junto con tu Kit de Bienvenida.',
+              },
+            ].map((faq) => (
+              <details class="group bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-gray-800 hover:bg-pink-50 transition-colors list-none">
+                  <span>{faq.q}</span>
+                  <span class="ml-4 text-pink-500 text-xl transition-transform duration-300 group-open:rotate-45 flex-shrink-0">+</span>
+                </summary>
+                <div class="px-6 pb-5 text-gray-600 leading-relaxed text-sm border-t border-gray-100 pt-4">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA FINAL -->
     <section class="py-16 bg-gradient-to-br from-pink-600 via-pink-500 to-pink-400 text-white">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl lg:text-4xl font-bold mb-6">
-          Protege todos los aspectos de tu vida
-        </h2>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">¿Lista para construir tu estrategia de protección y patrimonio?</h2>
         <p class="text-xl mb-8 text-pink-100 max-w-2xl mx-auto">
-          Vida Mujer está diseñado para entenderte y apoyarte en cada rol que desempeñas. Disfruta cada día sintiéndote respaldada.
+          Diseñamos estrategias para mujeres que buscan construir seguridad financiera con aportaciones desde $35,000 anuales.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contacto" class="bg-white hover:bg-pink-600 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
-            Quiero Vida Mujer
+          <a href="#contacto" class="bg-white hover:bg-gray-100 text-pink-700 font-semibold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Solicitar propuesta personalizada
           </a>
           <a
             id="vidamujer_whatsapp"
@@ -364,14 +446,18 @@ import YouTubeFacade from '../../components/YouTubeFacade.astro';
               }
               return true;
             "
-            class="border-2 border-white text-white hover:bg-white hover:text-pink-900 font-semibold py-4 px-8 rounded-full transition-all duration-300"
+            class="border-2 border-white text-white hover:bg-white hover:text-pink-700 font-semibold py-4 px-10 rounded-full transition-all duration-300"
           >
-            Hablar con Asesora
+            Hablar con Asesora por WhatsApp
           </a>
         </div>
       </div>
     </section>
-    <section id="contacto" class="bg-white"><ContactVidaMujer /></section>
+
+    <!-- FORMULARIO -->
+    <section id="contacto" class="bg-white scroll-mt-4">
+      <ContactVidaMujer />
+    </section>
 
     <Footer/>
   </main>

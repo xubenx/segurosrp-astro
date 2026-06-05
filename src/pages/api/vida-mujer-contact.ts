@@ -18,63 +18,53 @@ export const POST: APIRoute = async ({ request }) => {
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
       console.error('❌ Variables de entorno de Telegram no configuradas para Vida Mujer');
       return new Response(
-        JSON.stringify({
-          success: false,
-          message: 'Error de configuración del servidor'
-        }),
-        {
-          status: 500,
-          headers: { 'Content-Type': 'application/json' }
-        }
+        JSON.stringify({ success: false, message: 'Error de configuración del servidor' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
     const body = await request.json();
     const {
       name,
-      email,
+      whatsapp,
       phone,
-      message,
-      monthlyAmount,
       age,
+      objetivo,
+      dedicas,
+      estrategia,
       source,
       campaign,
       pageUrl
     } = body;
 
-    if (!name || !email || !phone || !message) {
+    const contactPhone = whatsapp || phone;
+
+    if (!name || !contactPhone || !objetivo || !dedicas || !estrategia) {
       return new Response(
-        JSON.stringify({
-          success: false,
-          message: 'Todos los campos obligatorios deben ser completados'
-        }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        }
+        JSON.stringify({ success: false, message: 'Por favor completa todos los campos requeridos' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
     const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
 
     const telegramMessage = `
-  👩 NUEVO LEAD - VIDA MUJER 💫
+👩 NUEVO LEAD - VIDA MUJER 💫
 
-  👤 Nombre: ${name}
-  📧 Email: ${email}
-  📱 Teléfono: ${phone}
-  🎂 Edad: ${age || 'No especificada'}
-  💰 Monto mensual deseado: ${monthlyAmount || 'No especificado'}
+👤 Nombre: ${name}
+📱 WhatsApp: ${contactPhone}
+🎂 Edad: ${age || 'No especificada'}
 
-  💬 Mensaje:
-  ${message}
+🎯 Objetivo principal: ${objetivo}
+💼 Se dedica a: ${dedicas}
+📊 Estrategia de interés: ${estrategia}
 
-  📊 Tracking campaña:
-  - Fuente: ${source || 'Landing Vida Mujer'}
-  - Campaña: ${campaign || 'SEM Google Ads - Vida Mujer'}
-  - URL: ${pageUrl || 'No disponible'}
+📊 Tracking campaña:
+- Fuente: ${source || 'Landing Vida Mujer'}
+- Campaña: ${campaign || 'SEM Google Ads - Vida Mujer'}
+- URL: ${pageUrl || 'No disponible'}
 
-  ⏰ Fecha: ${new Date().toLocaleString('es-MX', {
+⏰ Fecha: ${new Date().toLocaleString('es-MX', {
   timeZone: 'America/Mexico_City',
   year: 'numeric',
   month: 'long',
@@ -84,9 +74,9 @@ export const POST: APIRoute = async ({ request }) => {
 })}
     `.trim();
 
-    const cleanPhone = String(phone).replace(/[^\d]/g, '');
-    const whatsappMessage = `Hola ${name} 👋\n\nVi tu solicitud en la landing de Vida Mujer.\n\n¿Te parece si te comparto opciones para tu plan?`;
-    const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
+    const cleanPhone = String(contactPhone).replace(/[^\d]/g, '');
+    const whatsappMsg = `Hola ${name} 👋\n\nVi tu solicitud sobre la *${estrategia}* de Vida Mujer.\n\n¿Te parece si coordinamos un momento para platicar sobre tu propuesta personalizada?`;
+    const encodedWhatsappMessage = encodeURIComponent(whatsappMsg);
 
     const whatsappUrl = cleanPhone && cleanPhone.length >= 10
       ? `https://wa.me/+52${cleanPhone}?text=${encodedWhatsappMessage}`
@@ -115,27 +105,15 @@ export const POST: APIRoute = async ({ request }) => {
     console.log('✅ Lead Vida Mujer enviado exitosamente a Telegram');
 
     return new Response(
-      JSON.stringify({
-        success: true,
-        message: 'Lead Vida Mujer procesado correctamente'
-      }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      }
+      JSON.stringify({ success: true, message: 'Lead Vida Mujer procesado correctamente' }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error) {
     console.error('❌ Error al enviar lead Vida Mujer:', error);
 
     return new Response(
-      JSON.stringify({
-        success: false,
-        message: 'Error interno del servidor'
-      }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
+      JSON.stringify({ success: false, message: 'Error interno del servidor' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
 };
