@@ -422,14 +422,6 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 							         'currency': 'MXN'
 							       });
 							     }
-							     if (typeof window.gtag !== 'undefined') {
-							       window.gtag('event', 'asesores_whatsapp', {
-							         'event_category': 'conversion',
-							         'event_label': 'Asesores Monterrey WhatsApp Contact',
-							         'value': 1,
-							         'currency': 'MXN'
-							       });
-							     }
 							     return true;
 							   "
 							   class="w-full bg-green-500 hover:bg-green-600 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition duration-300 shadow-lg flex items-center justify-center gap-2 sm:gap-3 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
@@ -801,16 +793,7 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 								console.log('Evento asesores_form enviado a dataLayer');
 							}
 							
-							// También enviar a GA4 directamente si está disponible
-							if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-								(window as any).gtag('event', 'asesores_form', {
-									'event_category': 'conversion',
-									'event_label': 'Asesores Monterrey Contact Form Submit',
-									'value': 1,
-									'currency': 'MXN'
-								});
-								console.log('Evento asesores_form enviado a gtag');
-							}
+		
 						} else {
 							alert('Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo o llama directamente.');
 						}
