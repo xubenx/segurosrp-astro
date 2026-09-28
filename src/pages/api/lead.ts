@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import TelegramBot from 'node-telegram-bot-api';
 import { config } from 'dotenv';
+import { persistLead } from '../../lib/leads-store';
 import { rateLimitMiddleware } from '../../lib/rate-limiter';
 
 // Cargar variables de entorno
@@ -93,6 +94,22 @@ ${message || 'Sin mensaje adicional'}
   minute: '2-digit'
 })}
     `.trim();
+
+    await persistLead({
+      name: nombre,
+      email,
+      phone: telefono,
+      type: 'cotizacion',
+      source: source || 'Landing Asesores Monterrey NYL',
+      campaign: campaign || '',
+      message: message || '',
+      answers: {
+        Edad: String(edad),
+        'Tipo de seguro': String(tipoSeguro),
+        ...(rangoPresupuesto ? { Presupuesto: String(rangoPresupuesto) } : {}),
+      },
+      raw: telegramMessage,
+    });
 
     // Crear el mensaje prediseñado para WhatsApp
     const whatsappMessage = `Hola ${nombre} 👋

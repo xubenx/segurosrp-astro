@@ -3,7 +3,12 @@ interface Props {
   title?: string;
 }
 
-const { title = 'Sistema de blog' } = Astro.props;
+const { title = 'Sistema SegurosRP' } = Astro.props;
+const path = Astro.url.pathname;
+const linkClass = (href: string) =>
+  path === href || (href !== '/sistema' && path.startsWith(href))
+    ? 'text-rp-orange'
+    : 'hover:text-rp-orange';
 ---
 
 <div class="min-h-screen bg-slate-100 text-slate-800">
@@ -14,8 +19,9 @@ const { title = 'Sistema de blog' } = Astro.props;
         <p class="text-blue-200 text-sm">{title}</p>
       </div>
       <nav class="flex items-center gap-3 text-sm">
-        <a href="/sistema" class="hover:text-rp-orange">Artículos</a>
-        <a href="/sistema/nuevo" class="hover:text-rp-orange">Nuevo</a>
+        <a href="/sistema/leads" class={linkClass('/sistema/leads')}>Leads</a>
+        <a href="/sistema" class={path === '/sistema' ? 'text-rp-orange' : 'hover:text-rp-orange'}>Artículos</a>
+        <a href="/sistema/nuevo" class={linkClass('/sistema/nuevo')}>Nuevo</a>
         <a href="/blog/plantillas" class="hover:text-rp-orange" target="_blank" rel="noopener">Plantillas</a>
         <a href="/blog" class="hover:text-rp-orange" target="_blank" rel="noopener">Ver blog</a>
         <form method="post" action="/api/sistema/logout">

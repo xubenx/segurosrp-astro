@@ -1,0 +1,183 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SistemaShell from '../../../components/sistema/SistemaShell.astro';
+import {
+  formatLeadDate,
+  LEAD_STATUSES,
+  STATUS_LABEL,
+  TYPE_LABEL,
+  whatsappHref,
+} from '../../../lib/leads';
+import { getLead } from '../../../lib/leads-store';
+
+const id = Astro.params.id || '';
+const lead = id ? await getLead(id) : null;
+if (!lead) {
+  return Astro.redirect('/sistema/leads');
+}
+
+const answers = Object.entries(lead.answers || {});
+const statusClass: Record<string, string> = {
+  nuevo: 'bg-sky-100 text-sky-800',
+  contactado: 'bg-amber-100 text-amber-800',
+  seguimiento: 'bg-orange-100 text-orange-800',
+  agendado: 'bg-violet-100 text-violet-800',
+  ganado: 'bg-emerald-100 text-emerald-800',
+  perdido: 'bg-slate-200 text-slate-600',
+};
+---
+
+<Layout title={`${lead.name || 'Lead'} | Sistema SegurosRP`} noindex={true} minimal={true}>
+  <SistemaShell title="Ficha del lead">
+    <a class="text-sm text-rp-orange font-semibold" href="/sistema/leads">← Todos los leads</a>
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mt-4 mb-6">
+      <div>
+        <h1 class="text-2xl font-bold text-rp-blue">{lead.name || 'Sin nombre'}</h1>
+        <p class="text-sm text-gray-500">{TYPE_LABEL[lead.type]} · {formatLeadDate(lead.createdAt)}</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        {lead.phone && (
+          <a class="bg-emerald-600 text-white px-4 py-2 rounded-full font-semibold" href={whatsappHref(lead.phone, lead.name)} target="_blank" rel="noopener">WhatsApp</a>
+        )}
+        {lead.email && (
+          <a class="bg-white border px-4 py-2 rounded-full font-semibold" href={`mailto:${lead.email}`}>Correo</a>
+        )}
+      </div>
+    </div>
+
+    <p id="save-msg" class="hidden mb-4 text-sm rounded-lg px-3 py-2"></p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section class="lg:col-span-2 space-y-6">
+        <div class="bg-white rounded-xl shadow p-5">
+          <h2 class="font-semibold text-rp-blue mb-3">Contacto</h2>
+          <dl class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+            <div><dt class="text-gray-500">Teléfono</dt><dd>{lead.phone || '—'}</dd></div>
+            <div><dt class="text-gray-500">Correo</dt><dd>{lead.email || '—'}</dd></div>
+            <div><dt class="text-gray-500">Fuente</dt><dd>{lead.source || '—'}</dd></div>
+            <div><dt class="text-gray-500">Campaña</dt><dd>{lead.campaign || '—'}</dd></div>
+            <div><dt class="text-gray-500">Oferta</dt><dd>{lead.oferta || '—'}</dd></div>
+            <div><dt class="text-gray-500">Puntos</dt><dd>{lead.puntos || '—'}</dd></div>
+          </dl>
+          {lead.pageUrl && (
+            <p class="text-xs text-gray-500 mt-3 break-all">URL: <a class="text-rp-orange" href={lead.pageUrl} target="_blank" rel="noopener">{lead.pageUrl}</a></p>
+          )}
+        </div>
+
+        {lead.diagnostico && (
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-semibold text-rp-blue mb-2">Diagnóstico</h2>
+            <p class="text-sm whitespace-pre-wrap">{lead.diagnostico}</p>
+          </div>
+        )}
+
+        {answers.length > 0 && (
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-semibold text-rp-blue mb-3">Respuestas</h2>
+            <dl class="space-y-2 text-sm">
+              {answers.map(([key, value]) => (
+                <div class="border-b border-slate-100 pb-2">
+                  <dt class="text-gray-500">{key}</dt>
+                  <dd class="font-medium">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+
+        {lead.message && (
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-semibold text-rp-blue mb-2">Mensaje</h2>
+            <p class="text-sm whitespace-pre-wrap">{lead.message}</p>
+          </div>
+        )}
+
+        {lead.raw && (
+          <details class="bg-white rounded-xl shadow p-5">
+            <summary class="font-semibold text-rp-blue cursor-pointer">Texto original</summary>
+            <pre class="mt-3 text-xs whitespace-pre-wrap text-gray-600">{lead.raw}</pre>
+          </details>
+        )}
+      </section>
+
+      <aside class="space-y-6">
+        <div class="bg-white rounded-xl shadow p-5">
+          <h2 class="font-semibold text-rp-blue mb-3">Estado</h2>
+          {lead.perfil && (
+            <p class="text-sm mb-3">Perfil <strong>{lead.perfil}</strong></p>
+          )}
+          <form id="status-form" class="space-y-3">
+            <select name="status" class="w-full border rounded-lg px-3 py-2">
+              {LEAD_STATUSES.map((status) => (
+                <option value={status} selected={lead.status === status}>{STATUS_LABEL[status]}</option>
+              ))}
+            </select>
+            <textarea name="notes" class="w-full border rounded-lg px-3 py-2" rows="3" placeholder="Notas internas">{lead.notes}</textarea>
+            <button class="w-full bg-rp-blue text-white py-2 rounded-full font-semibold" type="submit">Guardar estado</button>
+          </form>
+          <p class={`mt-3 inline-block text-xs font-semibold px-2 py-1 rounded-full ${statusClass[lead.status]}`}>{STATUS_LABEL[lead.status]}</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-5">
+          <h2 class="font-semibold text-rp-blue mb-3">Seguimiento</h2>
+          <form id="followup-form" class="mb-4">
+            <textarea name="followup" required class="w-full border rounded-lg px-3 py-2" rows="3" placeholder="Ej. Llamé, agendamos para el jueves."></textarea>
+            <button class="mt-2 w-full bg-rp-orange text-white py-2 rounded-full font-semibold" type="submit">Agregar nota</button>
+          </form>
+          {lead.followups.length === 0 ? (
+            <p class="text-sm text-gray-500">Todavía no hay seguimiento.</p>
+          ) : (
+            <ul class="space-y-3">
+              {lead.followups.map((item) => (
+                <li class="text-sm border-l-2 border-rp-orange pl-3">
+                  <p class="text-xs text-gray-500">{formatLeadDate(item.at)} · {item.author}</p>
+                  <p class="whitespace-pre-wrap">{item.text}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </aside>
+    </div>
+  </SistemaShell>
+</Layout>
+
+<script define:vars={{ leadId: lead.id }}>
+  const msg = document.getElementById('save-msg');
+  function show(text, ok = true) {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.className = `mb-4 text-sm rounded-lg px-3 py-2 ${ok ? 'bg-emerald-50 text-emerald-800 border border-emerald-100' : 'bg-red-50 text-red-700 border border-red-100'}`;
+  }
+
+  async function patch(body) {
+    const res = await fetch(`/api/sistema/leads/${leadId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      show(json.message || 'No se pudo guardar', false);
+      return false;
+    }
+    return true;
+  }
+
+  document.getElementById('status-form')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (await patch(data)) {
+      show('Estado guardado');
+      setTimeout(() => window.location.reload(), 400);
+    }
+  });
+
+  document.getElementById('followup-form')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const followup = new FormData(form).get('followup');
+    if (await patch({ followup })) window.location.reload();
+  });
+</script>

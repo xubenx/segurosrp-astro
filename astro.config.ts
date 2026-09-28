@@ -23,7 +23,7 @@ export default defineConfig({
 
   vite: {
     ssr: {
-      external: ['nodemailer', 'firebase/app', 'firebase/firestore', 'node-telegram-bot-api']
+      external: ['nodemailer', 'firebase/app', 'firebase/firestore', 'firebase-admin', 'node-telegram-bot-api', 'telegram']
     },
     build: {
       // Asegurar que el CSS se inline correctamente

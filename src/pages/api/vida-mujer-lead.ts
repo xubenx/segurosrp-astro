@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import TelegramBot from 'node-telegram-bot-api';
+import { persistLead } from '../../lib/leads-store';
 import { config } from 'dotenv';
 
 // Cargar variables de entorno
@@ -86,6 +87,22 @@ ${notes || 'No especificado'}
   minute: '2-digit'
 })}
     `.trim();
+
+    await persistLead({
+      name,
+      email,
+      phone,
+      type: 'vida-mujer',
+      source: source || 'Vida Mujer Landing',
+      campaign: campaign || '',
+      message: notes || '',
+      answers: {
+        Ciudad: city || '',
+        Edad: String(age),
+        Contacto: contact || '',
+      },
+      raw: telegramMessage,
+    });
 
     // Crear el mensaje prediseñado para WhatsApp
     const whatsappMessage = `Hola ${name} 👋

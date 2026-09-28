@@ -11,8 +11,8 @@ const error = Astro.url.searchParams.get('error');
       action="/api/sistema/login"
       class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md"
     >
-      <h1 class="text-2xl font-bold text-rp-blue mb-1">Sistema de blog</h1>
-      <p class="text-gray-500 text-sm mb-6">Solo para el equipo que publica artículos.</p>
+      <h1 class="text-2xl font-bold text-rp-blue mb-1">Sistema SegurosRP</h1>
+      <p class="text-gray-500 text-sm mb-6">Leads y publicación de artículos.</p>
       {error && (
         <p class="mb-4 text-sm text-red-700 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
           {error === 'credenciales' ? 'Usuario o contraseña incorrectos.' : 'No se pudo iniciar sesión. Revisa SISTEMA_USER y SISTEMA_PASSWORD.'}

@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import TelegramBot from 'node-telegram-bot-api';
 import { config } from 'dotenv';
+import { persistLead } from '../../lib/leads-store';
 import { rateLimitMiddleware } from '../../lib/rate-limiter';
 
 // Cargar variables de entorno
@@ -92,6 +93,21 @@ export const POST: APIRoute = async ({ request }) => {
   minute: '2-digit'
 })}
     `.trim();
+
+    await persistLead({
+      name: parentName,
+      email,
+      phone: whatsapp,
+      type: 'segubeca',
+      source: source || 'Segubeca Landing',
+      campaign: campaign || '',
+      answers: {
+        Hijo: `${childName} (${childAge} años)`,
+        'Edad padre/madre': String(parentAge || ''),
+        'Ahorro mensual': String(monthlySavings || ''),
+      },
+      raw: telegramMessage,
+    });
 
     // Crear el mensaje prediseñado para WhatsApp
     const whatsappMessage = `Hola ${parentName} 👋

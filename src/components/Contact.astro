@@ -1,5 +1,18 @@
 ---
-// Contact section component
+import DiagnosticoLead from './DiagnosticoLead.astro';
+
+interface Props {
+  source?: string;
+  campaign?: string;
+  trackingEvent?: string;
+}
+
+const {
+  source = 'Inicio SegurosRP',
+  campaign = 'Organico - Home',
+  trackingEvent = 'home_form',
+} = Astro.props;
+
 const offices = [
   {
     city: "Querétaro",
@@ -20,22 +33,16 @@ const advisors = [
     name: "Lic. Silvia Plascencia",
     specialty: "Asesora especializada en protección integral para la mujer",
     image: '/asesor_1.webp',
-    phone: "+52 (446) 135 4113",
-    phoneHref: "tel:+524461354113"
   },
   {
     name: "Lic. Michelle Ramírez",
     specialty: "Asesora especializada en seguros educativos",
     image: '/asesor_2.webp',
-    phone: "+52 (446) 135 4113",
-    phoneHref: "tel:+524461354113"
   },
   {
     name: "Lic. José Ramírez",
     specialty: "Asesor especializado en retiro y protección de patrimonio",
     image: '/asesor_3.webp',
-    phone: "+52 (446) 135 4113",
-    phoneHref: "tel:+524461354113"
   }
 ];
 ---
@@ -44,10 +51,8 @@ const advisors = [
   <div class="container mx-auto px-4">
     <h2 class="text-4xl font-bold text-rp-blue text-center mb-12">Contáctanos</h2>
     
-    <!-- Formulario e Imágenes en 2 columnas -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:ml-20">
-      <!-- Cards de Asesores -->
-      <div class="order-1 lg:order-2 ">
+      <div class="order-1 lg:order-2">
         <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6">Nuestros Asesores</h3>
         <div class="space-y-6">
           {advisors.map((advisor) => (
@@ -74,108 +79,16 @@ const advisors = [
         </div>
       </div>
       
-      <!-- Formulario de contacto -->
-      <div class="order-2 lg:order-1">
-        <form id="contactForm" class="space-y-4 md:space-y-6" method="POST">
-          <div id="formMessage" class="hidden p-4 rounded-lg mb-4"></div>
-          
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              required
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-            />
-          </div>
-          
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              required
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-            />
-          </div>
-          
-          <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone" 
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-            />
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label for="monthlyAmount" class="block text-sm font-medium text-gray-700 mb-2">¿Qué monto desea asegurar mensualmente?</label>
-              <select 
-                id="monthlyAmount" 
-                name="monthlyAmount"
-                class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-              >
-                <option value="">Selecciona un rango</option>
-                <option value="2500-3500">$2,500 - $3,500</option>
-                <option value="3500-5000">$3,500 - $5,000</option>
-                <option value="5000+">Más de $5,000</option>
-              </select>
-            </div>
-            
-            <div>
-              <label for="age" class="block text-sm font-medium text-gray-700 mb-6">¿Qué edad tienes?</label>
-              <input 
-                type="number" 
-                id="age" 
-                name="age" 
-                min="18" 
-                max="100" 
-                placeholder="Ej: 35"
-                class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-              />
-            </div>
-          </div>
-          
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              rows="4" 
-              required
-              class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rp-orange focus:border-transparent text-sm md:text-base"
-            ></textarea>
-          </div>
-          
-          <!-- Campo Honeypot - Oculto para usuarios reales, visible para bots -->
-          <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
-            <label for="website">Website (no llenar si eres humano)</label>
-            <input 
-              type="text" 
-              name="website" 
-              id="website" 
-              tabindex="-1" 
-              autocomplete="off"
-            />
-          </div>
-          
-          <button 
-            type="submit" 
-            id="submitButton"
-            class="w-full bg-orange-400 text-rp-blue px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300 text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <span id="buttonText">Enviar mensaje</span>
-            <span id="buttonLoading" class="hidden">Enviando...</span>
-          </button>
-        </form>
+      <div class="order-2 lg:order-1 rounded-2xl border border-gray-200 bg-gray-50 p-5 md:p-7">
+        <DiagnosticoLead
+          source={source}
+          campaign={campaign}
+          trackingEvent={trackingEvent}
+          heading="Diagnóstico patrimonial"
+        />
       </div>
     </div>
 
-    <!-- Información de oficinas de manera horizontal -->
     <div class="bg-gray-50 rounded-lg p-6">
       <h3 class="text-xl md:text-2xl font-semibold text-rp-blue mb-6 text-center">Nuestras Oficinas</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -192,164 +105,3 @@ const advisors = [
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm') as HTMLFormElement;
-    const formMessage = document.getElementById('formMessage') as HTMLElement;
-    const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
-    const buttonText = document.getElementById('buttonText') as HTMLElement;
-    const buttonLoading = document.getElementById('buttonLoading') as HTMLElement;
-
-    if (!form || !formMessage || !submitButton || !buttonText || !buttonLoading) {
-      console.error('Required form elements not found');
-      return;
-    }
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Deshabilitar el botón y mostrar loading
-      submitButton.disabled = true;
-      buttonText.classList.add('hidden');
-      buttonLoading.classList.remove('hidden');
-      
-      // Ocultar mensajes anteriores
-      formMessage.classList.add('hidden');
-      
-      // Obtener datos del formulario
-      const formData = new FormData(form);
-      
-      // Verificación Honeypot - Si el campo 'website' tiene contenido, es un bot
-      const honeypotValue = (formData.get('website') as string || '').trim();
-      if (honeypotValue !== '') {
-        console.log('🤖 Bot detectado por honeypot - Bloqueando envío');
-        
-        // Simular éxito visualmente para el bot pero no hacer nada
-        formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-        formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto.';
-        formMessage.classList.remove('hidden');
-        form.reset();
-        
-        // Restaurar el botón y salir sin hacer nada más
-        submitButton.disabled = false;
-        buttonText.classList.remove('hidden');
-        buttonLoading.classList.add('hidden');
-        return;
-      }
-      
-      const data = {
-        name: formData.get('name') as string,
-        email: formData.get('email') as string,
-        phone: formData.get('phone') as string,
-        message: formData.get('message') as string,
-        monthlyAmount: formData.get('monthlyAmount') as string,
-        age: formData.get('age') as string,
-        pageUrl: window.location.href,
-        pageTitle: document.title
-      };
-
-      console.log('📤 Enviando datos del formulario:', data);
-
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-
-        console.log('📥 Respuesta recibida:', response.status, response.statusText);
-
-        const result = await response.json();
-        console.log('📋 Resultado parseado:', result);
-
-        if (response.ok) {
-          // Éxito en el envío del formulario, ahora enviar a Google Sheet
-          try {
-            console.log('📊 Enviando datos a Google Sheet');
-            const sheetResponse = await fetch('/api/sendToSheet', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                name: data.name,
-                email: data.email,
-                phone: data.phone
-              })
-            });
-
-            const sheetResult = await sheetResponse.json();
-            console.log('📊 Resultado de Google Sheet:', sheetResult);
-
-            if (sheetResponse.ok) {
-              console.log('✅ Datos guardados en Google Sheet exitosamente');
-            } else {
-              console.warn('⚠️ No se pudieron guardar los datos en Google Sheet:', sheetResult.message);
-            }
-          } catch (sheetError) {
-            console.error('❌ Error al enviar a Google Sheet:', sheetError);
-          }
-
-          // Éxito en el envío del formulario, ahora enviar email de confirmación
-          try {
-            console.log('📧 Enviando email de confirmación a:', data.email);
-            const emailResponse = await fetch('/api/send-email', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ email: data.email })
-            });
-
-            const emailResult = await emailResponse.json();
-            console.log('📧 Resultado del email:', emailResult);
-
-            if (emailResponse.ok) {
-              console.log('✅ Email de confirmación enviado exitosamente');
-            } else {
-              console.warn('⚠️ No se pudo enviar el email de confirmación:', emailResult.message);
-            }
-          } catch (emailError) {
-            console.error('❌ Error al enviar email de confirmación:', emailError);
-          }
-
-          // Mostrar mensaje de éxito
-          formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-200';
-          formMessage.textContent = '¡Mensaje enviado correctamente! Te contactaremos pronto. También hemos enviado un email de confirmación.';
-          formMessage.classList.remove('hidden');
-          
-          // Limpiar el formulario
-          form.reset();
-        } else {
-          // Error del servidor
-          console.error('❌ Error del servidor:', result);
-          formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
-          
-          // Manejo específico para rate limiting
-          if (response.status === 429) {
-            const retryAfter = result.retryAfter || 60;
-            formMessage.textContent = `⏰ Has enviado demasiadas solicitudes. Por favor, espera ${retryAfter} segundos antes de intentar de nuevo.`;
-          } else {
-            formMessage.textContent = result.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
-          }
-          
-          formMessage.classList.remove('hidden');
-        }
-      } catch (error) {
-        // Error de red
-        console.error('❌ Error de red:', error);
-        formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-200';
-        formMessage.textContent = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
-        formMessage.classList.remove('hidden');
-      } finally {
-        // Restaurar el botón
-        submitButton.disabled = false;
-        buttonText.classList.remove('hidden');
-        buttonLoading.classList.add('hidden');
-      }
-    });
-  });
-</script>

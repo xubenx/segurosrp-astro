@@ -9,6 +9,18 @@ const posts = await listPosts();
 
 <Layout title="Artículos | Sistema SegurosRP" noindex={true} minimal={true}>
   <SistemaShell title="Artículos publicados">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <a href="/sistema/leads" class="block bg-white rounded-xl shadow p-6 hover:shadow-md transition">
+        <p class="text-sm text-rp-orange font-semibold mb-1">CRM</p>
+        <h2 class="text-xl font-bold text-rp-blue mb-1">Leads</h2>
+        <p class="text-sm text-gray-500">Mensajes, diagnóstico, estados y seguimiento de clientes.</p>
+      </a>
+      <a href="/sistema/nuevo" class="block bg-white rounded-xl shadow p-6 hover:shadow-md transition">
+        <p class="text-sm text-rp-orange font-semibold mb-1">Blog</p>
+        <h2 class="text-xl font-bold text-rp-blue mb-1">Artículos</h2>
+        <p class="text-sm text-gray-500">Publica en GitHub y Vercel vuelve a desplegar solo.</p>
+      </a>
+    </div>
     <div class="flex items-center justify-between mb-6">
       <h1 class="text-2xl font-bold text-rp-blue">Blog</h1>
       <a href="/sistema/nuevo" class="bg-rp-orange text-white px-4 py-2 rounded-full font-semibold">Nuevo artículo</a>

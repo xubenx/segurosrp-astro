@@ -7,7 +7,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "optimize:team": "node scripts/optimize-team-image.js",
-    "optimize:all": "node scripts/optimize-images.js"
+    "optimize:all": "node scripts/optimize-images.js",
+    "telegram:session": "node scripts/telegram-session.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
@@ -19,12 +20,14 @@
     "astro": "^5.17.3",
     "dotenv": "^17.2.2",
     "firebase": "^12.2.1",
+    "firebase-admin": "^14.5.0",
     "googleapis": "^164.1.0",
     "node-telegram-bot-api": "^0.66.0",
     "nodemailer": "^7.0.6",
     "react": "18.3.1",
     "sharp": "^0.34.4",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "telegram": "^2.26.22"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

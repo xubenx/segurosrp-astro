@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import TelegramBot from 'node-telegram-bot-api';
 import { config } from 'dotenv';
+import { persistLead } from '../../lib/leads-store';
 import { rateLimitMiddleware } from '../../lib/rate-limiter';
 
 // Cargar variables de entorno
@@ -17,21 +18,6 @@ export const POST: APIRoute = async ({ request }) => {
     // Obtener las variables de entorno
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
-    // Verificar que las variables de entorno estén configuradas
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-      console.error('❌ Variables de entorno de Telegram no configuradas');
-      return new Response(
-        JSON.stringify({ 
-          success: false, 
-          message: 'Error de configuración del servidor' 
-        }),
-        { 
-          status: 500,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
-    }
 
     // Obtener los datos del formulario
     const body = await request.json();
@@ -52,7 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Crear instancia del bot
-    const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
+    const bot = TELEGRAM_BOT_TOKEN ? new TelegramBot(TELEGRAM_BOT_TOKEN) : null;
 
     // Formatear el mensaje para Telegram
     const telegramMessage = `
@@ -80,6 +66,21 @@ ${message}
 })}
     `.trim();
 
+    await persistLead({
+      name,
+      email,
+      phone: phone || '',
+      type: 'contacto',
+      source: pageTitle || 'Formulario de contacto',
+      pageUrl: pageUrl || '',
+      message: message || '',
+      answers: {
+        ...(monthlyAmount ? { 'Monto mensual': String(monthlyAmount) } : {}),
+        ...(age ? { Edad: String(age) } : {}),
+      },
+      raw: telegramMessage,
+    });
+
     // Crear el mensaje prediseñado para WhatsApp
     const whatsappMessage = `Hola ${name} 👋
 
@@ -104,23 +105,28 @@ Vi que te contactaste a través de nuestra página web.
     }
 
     // Enviar mensaje a Telegram con botón inline
-    await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
-      parse_mode: 'Markdown',
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: cleanPhone && cleanPhone.length >= 10 
-                ? `💬 Responder a ${name} (${phone})` 
-                : `💬 Responder por WhatsApp a ${name}`,
-              url: whatsappUrl
-            }
+    if (bot && TELEGRAM_CHAT_ID) {
+      try {
+        await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
+        parse_mode: 'Markdown',
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: cleanPhone && cleanPhone.length >= 10 
+                  ? `💬 Responder a ${name} (${phone})` 
+                  : `💬 Responder por WhatsApp a ${name}`,
+                url: whatsappUrl
+              }
+            ]
           ]
-        ]
+        }
+      });
+      console.log('✅ Mensaje enviado exitosamente a Telegram');
+    } catch (error) {
+      console.error('Telegram contacto falló, el lead ya está en el CRM:', error);
       }
-    });
-
-    console.log('✅ Mensaje enviado exitosamente a Telegram');
+    }
 
     return new Response(
       JSON.stringify({ 

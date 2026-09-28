@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import TelegramBot from 'node-telegram-bot-api';
 import { config } from 'dotenv';
+import { persistLead } from '../../lib/leads-store';
 import { rateLimitMiddleware } from '../../lib/rate-limiter';
 
 config();
@@ -73,6 +74,22 @@ export const POST: APIRoute = async ({ request }) => {
   minute: '2-digit'
 })}
     `.trim();
+
+    await persistLead({
+      name,
+      phone: contactPhone,
+      type: 'vida-mujer',
+      source: source || 'Landing Vida Mujer',
+      campaign: campaign || '',
+      pageUrl: pageUrl || '',
+      answers: {
+        Edad: String(age || ''),
+        Objetivo: String(objetivo),
+        Dedicación: String(dedicas),
+        Estrategia: String(estrategia),
+      },
+      raw: telegramMessage,
+    });
 
     const cleanPhone = String(contactPhone).replace(/[^\d]/g, '');
     const whatsappMsg = `Hola ${name} 👋\n\nVi tu solicitud sobre la *${estrategia}* de Vida Mujer.\n\n¿Te parece si coordinamos un momento para platicar sobre tu propuesta personalizada?`;
