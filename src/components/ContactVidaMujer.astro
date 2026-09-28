@@ -1,4 +1,6 @@
 ---
+import DiagnosticoLead from './DiagnosticoLead.astro';
+
 const advisors = [
   {
     name: "Lic. Silvia Plascencia",
@@ -24,7 +26,7 @@ const advisors = [
 ];
 ---
 
-<section class="py-16 bg-white">
+<section id="contacto" class="py-16 bg-white">
   <div class="container mx-auto px-4">
 
     <!-- Pre-form message -->
@@ -39,118 +41,14 @@ const advisors = [
 
       <!-- FORMULARIO -->
       <div class="order-1">
-        <form id="vidaMujerForm" class="space-y-5" method="POST">
-          <div id="formMessageVidaMujer" class="hidden p-4 rounded-lg mb-2"></div>
-
-          <!-- Nombre -->
-          <div>
-            <label for="nameVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo *</label>
-            <input
-              type="text"
-              id="nameVidaMujer"
-              name="name"
-              required
-              placeholder="Ej: María González"
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
-            />
-          </div>
-
-          <!-- WhatsApp -->
-          <div>
-            <label for="whatsappVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp *</label>
-            <input
-              type="tel"
-              id="whatsappVidaMujer"
-              name="whatsapp"
-              required
-              placeholder="Ej: 4461234567"
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
-            />
-          </div>
-
-          <!-- Edad -->
-          <div>
-            <label for="ageVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">Edad</label>
-            <input
-              type="number"
-              id="ageVidaMujer"
-              name="age"
-              min="18"
-              max="70"
-              placeholder="Ej: 35"
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
-            />
-          </div>
-
-          <!-- Objetivo -->
-          <div>
-            <label for="objetivoVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">¿Cuál es tu principal objetivo? *</label>
-            <select
-              id="objetivoVidaMujer"
-              name="objetivo"
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all bg-white"
-            >
-              <option value="">Selecciona una opción</option>
-              <option value="Proteger a mi familia">Proteger a mi familia</option>
-              <option value="Crear un ahorro a largo plazo">Crear un ahorro a largo plazo</option>
-              <option value="Protección por enfermedades femeninas">Protección por enfermedades femeninas</option>
-              <option value="Complementar mi estrategia patrimonial">Complementar mi estrategia patrimonial</option>
-            </select>
-          </div>
-
-          <!-- Profesión -->
-          <div>
-            <label for="dedicasVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">¿A qué te dedicas? *</label>
-            <input
-              type="text"
-              id="dedicasVidaMujer"
-              name="dedicas"
-              required
-              placeholder="Ej: Médica, Empresaria, Ejecutiva..."
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all"
-            />
-          </div>
-
-          <!-- Estrategia -->
-          <div>
-            <label for="estrategiaVidaMujer" class="block text-sm font-medium text-gray-700 mb-1">¿Qué estrategia te interesa conocer? *</label>
-            <select
-              id="estrategiaVidaMujer"
-              name="estrategia"
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm transition-all bg-white"
-            >
-              <option value="">Selecciona una opción</option>
-              <option value="Estrategia Esencial ($35,000 - $50,000 anuales)">Estrategia Esencial ($35,000 – $50,000 anuales)</option>
-              <option value="Estrategia Integral ($50,000 - $100,000 anuales)">Estrategia Integral ($50,000 – $100,000 anuales)</option>
-              <option value="Estrategia Patrimonial Premium (+$100,000 anuales)">Estrategia Patrimonial Premium (+$100,000 anuales)</option>
-            </select>
-          </div>
-
-          <!-- Honeypot -->
-          <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
-            <label for="websiteVidaMujer">Website (no llenar si eres humano)</label>
-            <input
-              type="text"
-              name="website"
-              id="websiteVidaMujer"
-              tabindex="-1"
-              autocomplete="off"
-            />
-          </div>
-
-          <button
-            type="submit"
-            id="submitButtonVidaMujer"
-            class="w-full bg-pink-500 hover:bg-pink-600 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] shadow-md"
-          >
-            <span id="buttonTextVidaMujer">Solicitar propuesta personalizada</span>
-            <span id="buttonLoadingVidaMujer" class="hidden">Enviando...</span>
-          </button>
-
-          <p class="text-xs text-gray-400 text-center">Tu información es confidencial y no se comparte con terceros.</p>
-        </form>
+        <DiagnosticoLead
+          preset="familia"
+          theme="vidamujer"
+          source="Landing Vida Mujer"
+          campaign="SEM Google Ads - Vida Mujer"
+          trackingEvent="vidamujer_form"
+          heading="Diagnóstico para mujeres"
+        />
       </div>
 
       <!-- ASESORAS -->
@@ -183,120 +81,3 @@ const advisors = [
   </div>
 </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('vidaMujerForm') as HTMLFormElement;
-    const formMessage = document.getElementById('formMessageVidaMujer') as HTMLElement;
-    const submitButton = document.getElementById('submitButtonVidaMujer') as HTMLButtonElement;
-    const buttonText = document.getElementById('buttonTextVidaMujer') as HTMLElement;
-    const buttonLoading = document.getElementById('buttonLoadingVidaMujer') as HTMLElement;
-
-    if (!form || !formMessage || !submitButton || !buttonText || !buttonLoading) return;
-
-    const trackingPayload = {
-      event_category: 'conversion',
-      event_label: 'Vida Mujer Contact Form Submit',
-      campaign: 'SEM Google Ads - Vida Mujer',
-      source: 'Landing Vida Mujer',
-      value: 1,
-      currency: 'MXN'
-    };
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      submitButton.disabled = true;
-      buttonText.classList.add('hidden');
-      buttonLoading.classList.remove('hidden');
-      formMessage.classList.add('hidden');
-
-      const formData = new FormData(form);
-      const honeypotValue = (formData.get('website') as string || '').trim();
-      if (honeypotValue !== '') {
-        formMessage.className = 'p-4 rounded-lg mb-2 bg-green-100 text-green-800 border border-green-200';
-        formMessage.textContent = '¡Solicitud enviada! Te contactaremos pronto.';
-        formMessage.classList.remove('hidden');
-        form.reset();
-        submitButton.disabled = false;
-        buttonText.classList.remove('hidden');
-        buttonLoading.classList.add('hidden');
-        return;
-      }
-
-      const data = {
-        name: formData.get('name') as string,
-        whatsapp: formData.get('whatsapp') as string,
-        age: formData.get('age') as string,
-        objetivo: formData.get('objetivo') as string,
-        dedicas: formData.get('dedicas') as string,
-        estrategia: formData.get('estrategia') as string,
-        pageUrl: window.location.href,
-        source: trackingPayload.source,
-        campaign: trackingPayload.campaign
-      };
-
-      try {
-        const response = await fetch('/api/vida-mujer-contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          try {
-            await fetch('/api/sendToSheet', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name: data.name, phone: data.whatsapp })
-            });
-          } catch (sheetError) {
-            console.error('Error al enviar a Google Sheet:', sheetError);
-          }
-
-          if (typeof window !== 'undefined' && typeof (window as any).dataLayer !== 'undefined') {
-            (window as any).dataLayer.push({
-              event: 'vidamujer_form',
-              ...trackingPayload,
-              form_id: 'vidaMujerForm',
-              estrategia: data.estrategia,
-              page_location: window.location.href
-            });
-          }
-
-          if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-            (window as any).gtag('event', 'vidamujer_form', {
-              ...trackingPayload,
-              form_id: 'vidaMujerForm',
-              estrategia: data.estrategia,
-              page_location: window.location.href
-            });
-          }
-
-          formMessage.className = 'p-4 rounded-lg mb-2 bg-green-100 text-green-800 border border-green-200';
-          formMessage.textContent = '¡Solicitud enviada! Una asesora te contactará pronto por WhatsApp.';
-          formMessage.classList.remove('hidden');
-          form.reset();
-        } else {
-          formMessage.className = 'p-4 rounded-lg mb-2 bg-red-100 text-red-800 border border-red-200';
-          if (response.status === 429) {
-            const retryAfter = result.retryAfter || 60;
-            formMessage.textContent = `⏰ Has enviado demasiadas solicitudes. Por favor, espera ${retryAfter} segundos antes de intentar de nuevo.`;
-          } else {
-            formMessage.textContent = result.message || 'Error al enviar. Por favor, intenta de nuevo.';
-          }
-          formMessage.classList.remove('hidden');
-        }
-      } catch (error) {
-        formMessage.className = 'p-4 rounded-lg mb-2 bg-red-100 text-red-800 border border-red-200';
-        formMessage.textContent = 'Error de conexión. Verifica tu internet e intenta de nuevo.';
-        formMessage.classList.remove('hidden');
-      } finally {
-        submitButton.disabled = false;
-        buttonText.classList.remove('hidden');
-        buttonLoading.classList.add('hidden');
-      }
-    });
-  });
-</script>

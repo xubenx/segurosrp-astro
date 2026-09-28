@@ -1,0 +1,22 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SistemaShell from '../../../components/sistema/SistemaShell.astro';
+import PostForm from '../../../components/sistema/PostForm.astro';
+import { getPost } from '../../../lib/github-content';
+
+const { slug } = Astro.params;
+const post = slug ? await getPost(slug) : null;
+
+if (!post) {
+  return Astro.redirect('/sistema');
+}
+---
+
+<Layout title={`Editar: ${post.title}`} noindex={true} minimal={true}>
+  <SistemaShell title="Editar artículo">
+    <h1 class="text-2xl font-bold text-rp-blue mb-6">Editar artículo</h1>
+    <div class="bg-white rounded-xl shadow p-6">
+      <PostForm post={post} />
+    </div>
+  </SistemaShell>
+</Layout>

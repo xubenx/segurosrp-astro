@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SistemaShell from '../../components/sistema/SistemaShell.astro';
+import PostForm from '../../components/sistema/PostForm.astro';
+---
+
+<Layout title="Nuevo artículo | Sistema SegurosRP" noindex={true} minimal={true}>
+  <SistemaShell title="Nuevo artículo">
+    <h1 class="text-2xl font-bold text-rp-blue mb-6">Publicar artículo</h1>
+    <div class="bg-white rounded-xl shadow p-6">
+      <PostForm />
+    </div>
+  </SistemaShell>
+</Layout>

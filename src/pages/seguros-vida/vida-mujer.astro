@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Contact from '../../components/Contact.astro';
+import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
 
 ---
@@ -341,7 +341,20 @@ import YouTubeFacade from '../../components/YouTubeFacade.astro';
         </div>
       </div>
     </section>
-              <section id="contacto" class="bg-white"><Contact /></section>
+    <section id="contacto" class="bg-white py-12">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <div class="rounded-2xl border border-pink-100 shadow-lg p-6 md:p-8">
+          <DiagnosticoLead
+            preset="familia"
+            theme="vidamujer"
+            source="Vida Mujer producto"
+            campaign="Vida Mujer"
+            trackingEvent="vidamujer_form"
+            heading="Escudo Familiar"
+          />
+        </div>
+      </div>
+    </section>
 
     <Footer/>
   </main>

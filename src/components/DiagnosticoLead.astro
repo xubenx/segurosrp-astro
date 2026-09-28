@@ -1,0 +1,401 @@
+---
+interface Props {
+  preset?: '' | 'retiro' | 'universidad' | 'patrimonio' | 'familia' | 'empresa' | 'gmm';
+  theme?: 'default' | 'segubeca' | 'vidamujer';
+  source: string;
+  campaign: string;
+  trackingEvent: string;
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  preset = '',
+  theme = 'default',
+  source,
+  campaign,
+  trackingEvent,
+  heading = 'Diagnóstico patrimonial',
+  subheading = 'Responde unas preguntas en 2 minutos y recibe tu cifra personalizada, sin costo.',
+} = Astro.props;
+---
+
+<div class:list={['dx', `dx-${theme}`]} data-dx data-preset={preset} data-source={source} data-campaign={campaign} data-track={trackingEvent}>
+  <div class="dx-head">
+    <div>
+      <p class="dx-kicker">{heading}</p>
+      <p class="dx-count" data-dx-count></p>
+    </div>
+  </div>
+  <div class="dx-bar" aria-hidden="true"><i data-dx-bar></i></div>
+  <div data-dx-screen aria-live="polite"></div>
+  <p class="dx-err" data-dx-err role="alert"></p>
+  <div class="dx-nav" data-dx-nav>
+    <button type="button" class="dx-btn" data-dx-back>Atrás</button>
+    <button type="button" class="dx-btn dx-primary" data-dx-next>Continuar</button>
+  </div>
+</div>
+
+<style>
+  .dx {
+    --dx-ink: #00305c;
+    --dx-soft: #5b6f86;
+    --dx-line: #d5dde6;
+    --dx-card: #ffffff;
+    --dx-accent: #fe8f34;
+    --dx-accent-ink: #00305c;
+    --dx-err: #b3261e;
+    color: var(--dx-ink);
+  }
+  .dx-segubeca {
+    --dx-ink: #145995;
+    --dx-soft: #3d6d99;
+    --dx-accent: #e2a130;
+    --dx-accent-ink: #0f1f32;
+  }
+  .dx-vidamujer {
+    --dx-ink: #9d174d;
+    --dx-soft: #be185d;
+    --dx-accent: #ec4899;
+    --dx-accent-ink: #ffffff;
+  }
+  .dx-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+  .dx-kicker { margin: 0; font-weight: 700; font-size: 1.05rem; color: var(--dx-ink); }
+  .dx-count { margin: 0; color: var(--dx-soft); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+  .dx-bar { height: 8px; border-radius: 999px; background: var(--dx-line); overflow: hidden; margin-bottom: 22px; }
+  .dx-bar i { display: block; height: 100%; width: 0; background: var(--dx-accent); border-radius: 999px; transition: width .35s ease; }
+  .dx-err { color: var(--dx-err); font-size: .92rem; min-height: 1.4em; margin: 12px 0 0; }
+  .dx-nav { display: flex; gap: 10px; margin-top: 18px; }
+  .dx-btn {
+    font: inherit; font-weight: 700; border-radius: 14px; padding: 14px 18px; cursor: pointer;
+    border: 1.5px solid var(--dx-line); background: #fff; color: var(--dx-ink); text-align: center; text-decoration: none;
+  }
+  .dx-primary { flex: 1; background: var(--dx-accent); border-color: var(--dx-accent); color: var(--dx-accent-ink); }
+  .dx-btn[hidden], .dx-nav[hidden] { display: none; }
+
+  .dx :global(h1) {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    line-height: 1.25;
+    margin: 0 0 8px;
+    color: var(--dx-ink);
+    font-weight: 800;
+  }
+  .dx :global(.dx-help) { color: var(--dx-soft); margin: 0 0 8px; font-size: 0.98rem; }
+  .dx :global(.dx-hint) {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: .02em;
+    color: var(--dx-ink); background: color-mix(in srgb, var(--dx-accent) 16%, white);
+    border-radius: 999px; padding: 4px 10px; margin: 0 0 14px;
+  }
+  .dx :global(.dx-opts) { display: grid; gap: 10px; }
+  .dx :global(.dx-opt) {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    min-height: 64px; padding: 14px 16px;
+    background: #fff; color: var(--dx-ink);
+    border: 2px solid var(--dx-line); border-radius: 16px;
+    font: inherit; font-size: 1.02rem; font-weight: 600; line-height: 1.35;
+    cursor: pointer; box-shadow: 0 1px 2px rgba(0, 48, 92, 0.04);
+    transition: border-color .15s, background .15s, box-shadow .15s, transform .15s;
+  }
+  .dx :global(.dx-opt:hover) {
+    border-color: var(--dx-accent);
+    box-shadow: 0 8px 18px rgba(0, 48, 92, 0.08);
+    transform: translateY(-1px);
+  }
+  .dx :global(.dx-opt:focus-visible) { outline: 3px solid var(--dx-accent); outline-offset: 2px; }
+  .dx :global(.dx-opt[aria-pressed="true"]) {
+    border-color: var(--dx-accent);
+    background: color-mix(in srgb, var(--dx-accent) 16%, white);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--dx-accent) 22%, transparent);
+  }
+  .dx :global(.dx-mark) {
+    flex: none; width: 24px; height: 24px;
+    border: 2px solid var(--dx-line); background: #fff;
+    display: grid; place-items: center; color: transparent;
+  }
+  .dx :global(.dx-opt.dx-single .dx-mark) { border-radius: 50%; }
+  .dx :global(.dx-opt.dx-multi .dx-mark) { border-radius: 7px; }
+  .dx :global(.dx-opt[aria-pressed="true"] .dx-mark) {
+    background: var(--dx-accent); border-color: var(--dx-accent); color: var(--dx-accent-ink);
+  }
+  .dx :global(.dx-label) { flex: 1; }
+  .dx :global(.dx-field) { display: grid; gap: 6px; margin-bottom: 14px; }
+  .dx :global(.dx-field label) { font-weight: 700; font-size: .95rem; }
+  .dx :global(input[type=text]),
+  .dx :global(input[type=tel]),
+  .dx :global(input[type=email]) {
+    font: inherit; padding: 14px; border-radius: 12px; border: 2px solid var(--dx-line); width: 100%;
+  }
+  .dx :global(input:focus) { outline: none; border-color: var(--dx-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--dx-accent) 20%, transparent); }
+  .dx :global(.dx-check) { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; color: var(--dx-soft); }
+  .dx :global(.dx-big) { font-weight: 800; font-size: clamp(2.2rem, 8vw, 3.1rem); line-height: 1; margin: 6px 0 8px; color: var(--dx-ink); }
+  .dx :global(.dx-sub) { color: var(--dx-soft); margin: 0 0 16px; }
+  .dx :global(.dx-tag) {
+    display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: .82rem; font-weight: 700;
+    background: color-mix(in srgb, var(--dx-accent) 28%, transparent); margin-bottom: 12px;
+  }
+  .dx :global(.dx-plan), .dx :global(.dx-note) {
+    background: #f8fafc; border: 1.5px solid var(--dx-line); border-radius: 14px; padding: 14px 16px; margin: 0 0 14px; font-size: .95rem;
+  }
+  .dx :global(.dx-plan) { border-color: var(--dx-accent); background: color-mix(in srgb, var(--dx-accent) 14%, white); }
+  .dx :global(.dx-plan span) { display: block; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--dx-soft); }
+  .dx :global(.dx-plan b) { display: block; font-size: 1.1rem; margin: 4px 0 6px; }
+  .dx :global(.dx-more) { margin: 6px 0 0; padding-left: 1.1em; }
+  .dx :global(.dx-more li) { margin-bottom: 6px; }
+  .dx :global(.dx-tablewrap) { overflow-x: auto; }
+  .dx :global(table) { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .dx :global(th), .dx :global(td) { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--dx-line); }
+  .dx :global(td:not(:first-child)), .dx :global(th:not(:first-child)) { text-align: right; }
+  .dx :global(tr.dx-sel td) { color: var(--dx-ink); font-weight: 600; }
+  .dx :global(.dx-ctas) { display: grid; gap: 10px; margin: 16px 0; }
+  .dx :global(.dx-steps) { margin: 12px 0 0; padding-left: 1.2em; color: var(--dx-soft); font-size: .93rem; }
+  .dx :global(.dx-fine) { color: var(--dx-soft); font-size: .8rem; margin-top: 18px; }
+  .dx :global(.dx-status), .dx :global(.dx-warn) { margin: 10px 0 0; }
+</style>
+
+<script>
+  import {
+    DX_CONFIG,
+    OBJS,
+    answerLabel,
+    classify,
+    diagnostico,
+    presetIndex,
+    seedAnswers,
+    txt,
+    visibleQuestions,
+    type DxAnswers,
+    type DxQuestion,
+  } from '../lib/diagnostico';
+
+  function boot(root: HTMLElement) {
+    const preset = presetIndex(root.dataset.preset || '');
+    const ans: DxAnswers = seedAnswers(preset);
+    let step = 0;
+    const screen = root.querySelector('[data-dx-screen]') as HTMLElement;
+    const err = root.querySelector('[data-dx-err]') as HTMLElement;
+    const bar = root.querySelector('[data-dx-bar]') as HTMLElement;
+    const count = root.querySelector('[data-dx-count]') as HTMLElement;
+    const nav = root.querySelector('[data-dx-nav]') as HTMLElement;
+    const back = root.querySelector('[data-dx-back]') as HTMLButtonElement;
+    const next = root.querySelector('[data-dx-next]') as HTMLButtonElement;
+    const contactStep = () => visibleQuestions(ans, preset).length;
+    const resultStep = () => contactStep() + 1;
+    let sent = false;
+    let started = false;
+
+    const esc = (s: string) =>
+      String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] || c));
+
+    function track(evento: string, datos?: Record<string, unknown>) {
+      try {
+        const w = window as any;
+        if (w.fbq) w.fbq('trackCustom', evento, datos || {});
+        if (w.dataLayer) w.dataLayer.push({ event: evento, ...datos });
+      } catch {}
+    }
+
+    function render() {
+      err.textContent = '';
+      const V = visibleQuestions(ans, preset);
+      const total = V.length + 1;
+      bar.style.width = Math.min(step, total) / total * 100 + '%';
+      count.textContent = step < total ? `${step + 1} de ${total}` : '';
+      nav.hidden = step === resultStep();
+      back.hidden = step <= 0;
+      next.textContent = step === contactStep() ? 'Ver mi diagnóstico' : 'Continuar';
+      if (!started) {
+        started = true;
+        track('InicioDiagnostico', { objetivo: preset >= 0 ? OBJS[preset].key : 'general' });
+      }
+
+      if (step < V.length) {
+        const q = V[step];
+        const help = txt(q.h, ans);
+        const hint = q.multi ? 'Puedes elegir varias' : 'Elige una opción';
+        screen.innerHTML = `<h1 id="dx-qt"></h1>${help ? '<p class="dx-help" id="dx-qh"></p>' : ''}<p class="dx-hint">${hint}</p><div class="dx-opts" role="${q.multi ? 'group' : 'radiogroup'}" aria-labelledby="dx-qt"></div>`;
+        (screen.querySelector('#dx-qt') as HTMLElement).textContent = txt(q.t, ans);
+        const qh = screen.querySelector('#dx-qh');
+        if (qh) qh.textContent = help;
+        const box = screen.querySelector('.dx-opts') as HTMLElement;
+        const idxs = q.only ? q.only(ans) : q.o.map((_, i) => i);
+        idxs.forEach((i) => {
+          const on = q.multi ? ((ans[q.id] as number[]) || []).includes(i) : ans[q.id] === i;
+          const b = document.createElement('button');
+          b.className = `dx-opt ${q.multi ? 'dx-multi' : 'dx-single'}`;
+          b.type = 'button';
+          b.setAttribute('role', q.multi ? 'checkbox' : 'radio');
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          b.setAttribute('aria-checked', on ? 'true' : 'false');
+          b.innerHTML = `<span class="dx-mark" aria-hidden="true">${on ? '✓' : ''}</span><span class="dx-label"></span>`;
+          (b.querySelector('.dx-label') as HTMLElement).textContent = q.o[i][0];
+          b.onclick = () => choose(q, i);
+          box.appendChild(b);
+        });
+        next.hidden = !q.multi;
+        return;
+      }
+
+      next.hidden = false;
+
+      if (step === contactStep()) {
+        screen.innerHTML = `
+          <h1>Tu diagnóstico está listo. ¿A nombre de quién lo preparamos?</h1>
+          <p class="dx-help">Verás tu cifra en la siguiente pantalla. Un asesor te contacta según tu perfil.</p>
+          <div class="dx-field"><label for="dx-n">Nombre</label><input id="dx-n" type="text" autocomplete="name" value="${esc(ans.nombre || '')}"></div>
+          <div class="dx-field"><label for="dx-w">WhatsApp</label><input id="dx-w" type="tel" inputmode="tel" autocomplete="tel" placeholder="10 dígitos" value="${esc(ans.tel || '')}"></div>
+          <div class="dx-field"><label for="dx-e">Correo</label><input id="dx-e" type="email" autocomplete="email" value="${esc(ans.mail || '')}"></div>
+          <label class="dx-check"><input id="dx-p" type="checkbox" ${ans.priv ? 'checked' : ''}> <span>Acepto el <a href="${DX_CONFIG.avisoPrivacidad}" target="_blank" rel="noopener">aviso de privacidad</a> y que me contacten con mi diagnóstico.</span></label>
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><input id="dx-hp" name="website" tabindex="-1" autocomplete="off"></div>`;
+        return;
+      }
+
+      showResult();
+    }
+
+    function choose(q: DxQuestion, i: number) {
+      if (q.multi) {
+        const s = new Set<number>((ans[q.id] as number[]) || []);
+        if (s.has(i)) s.delete(i);
+        else if (q.exclusive === i) {
+          s.clear();
+          s.add(i);
+        } else {
+          s.add(i);
+          if (q.exclusive !== undefined) s.delete(q.exclusive);
+        }
+        ans[q.id] = [...s].sort((a, b) => a - b);
+        render();
+        return;
+      }
+      ans[q.id] = i;
+      render();
+      setTimeout(go, 220);
+    }
+
+    async function go() {
+      const V = visibleQuestions(ans, preset);
+      if (step < V.length) {
+        const q = V[step];
+        if (q.multi) {
+          if (!((ans[q.id] as number[]) || []).length) {
+            err.textContent = 'Elige al menos una opción.';
+            return;
+          }
+          if (ans.intereses?.length === 1) ans.objetivo = ans.intereses[0];
+          else if (!ans.intereses?.includes(ans.objetivo)) delete ans.objetivo;
+        } else if (ans[q.id] === undefined) {
+          err.textContent = 'Elige una opción para continuar.';
+          return;
+        }
+      } else if (step === contactStep()) {
+        const hp = (root.querySelector('#dx-hp') as HTMLInputElement)?.value?.trim();
+        if (hp) {
+          step++;
+          render();
+          return;
+        }
+        ans.nombre = (root.querySelector('#dx-n') as HTMLInputElement).value.trim();
+        ans.tel = (root.querySelector('#dx-w') as HTMLInputElement).value.replace(/\D/g, '');
+        ans.mail = (root.querySelector('#dx-e') as HTMLInputElement).value.trim();
+        ans.priv = (root.querySelector('#dx-p') as HTMLInputElement).checked;
+        if (!ans.nombre) { err.textContent = 'Escribe tu nombre.'; return; }
+        if (ans.tel.length < 10) { err.textContent = 'Escribe tu WhatsApp a 10 dígitos.'; return; }
+        if (!/^\S+@\S+\.\S+$/.test(ans.mail)) { err.textContent = 'Escribe un correo válido.'; return; }
+        if (!ans.priv) { err.textContent = 'Necesitamos tu autorización del aviso de privacidad.'; return; }
+      }
+      step++;
+      render();
+      root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    async function showResult() {
+      const { tier, score } = classify(ans, preset);
+      const d = diagnostico(ans);
+      const V = visibleQuestions(ans, preset);
+      const objetivo = OBJS[ans.objetivo] || OBJS[0];
+      const quien = ['', 'tu pareja', 'tu socio', 'tu contador o equipo'][ans.decision] || '';
+      const answers = Object.fromEntries(V.map((q) => [q.id, answerLabel(q, ans)]));
+      const lineas = V.map((q) => `• ${txt(q.t, ans).split('?')[0].replace('¿', '').slice(0, 55)}: ${answerLabel(q, ans)}`).join('\n');
+
+      if (!sent) {
+        sent = true;
+        const payload = {
+          nombre: ans.nombre,
+          email: ans.mail,
+          telefono: ans.tel,
+          perfil: tier,
+          puntos: score,
+          oferta: objetivo.oferta,
+          diagnostico: d.resumen,
+          respuestas: answers,
+          source: root.dataset.source,
+          campaign: root.dataset.campaign,
+          pageUrl: location.href,
+        };
+        try {
+          await fetch('/api/diagnostico', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        } catch {}
+        try {
+          await fetch('/api/sendToSheet', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: ans.nombre, email: ans.mail, phone: ans.tel }),
+          });
+        } catch {}
+        try {
+          await fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: ans.mail }),
+          });
+        } catch {}
+        track(root.dataset.track || 'diagnostico_form', { perfil: tier, puntos: score, objetivo: objetivo.key });
+        track('Perfil_' + tier, { puntos: score, objetivo: objetivo.key });
+      }
+
+      const wa = `https://wa.me/${DX_CONFIG.whatsapp}?text=${encodeURIComponent(
+        `Hola, soy ${ans.nombre}. Hice el ${objetivo.oferta}.\n\n${lineas}\n\n${d.resumen}\nWhatsApp: ${ans.tel}\nCorreo: ${ans.mail}\n[Perfil ${tier} · ${score} pts]`,
+      )}`;
+      const cal = new URL(DX_CONFIG.calendly);
+      cal.searchParams.set('name', ans.nombre);
+      cal.searchParams.set('email', ans.mail);
+      cal.searchParams.set('a1', ans.tel);
+      cal.searchParams.set('a2', `Perfil ${tier} (${score} pts). ${objetivo.oferta}. ${d.resumen}`);
+
+      const cierre = {
+        A: ['Elige el horario para tu sesión', 'En 30 minutos revisamos tu cifra y armamos tu plan a la medida.'],
+        B: ['Agenda una llamada corta', 'Podemos diseñar un plan que empiece a tu ritmo.'],
+        C: ['', 'Te enviaremos una guía para empezar. Cuando estés listo, aquí estaremos.'],
+      }[tier];
+
+      screen.innerHTML = `
+        <span class="dx-tag">${esc(objetivo.oferta)}</span>
+        <p class="dx-sub">${esc(d.pre)}</p>
+        <p class="dx-big">${d.big}<span style="font-size:.4em">${d.unit}</span></p>
+        <p class="dx-sub">${esc(d.post)}</p>
+        <div class="dx-plan"><span>Tu primer paso</span><b>${esc(d.planTitle)}</b>${d.planBody}</div>
+        ${d.extraHtml}${d.notesHtml.join('')}
+        <p class="dx-help">${esc(cierre[1])}</p>
+        ${quien && tier !== 'C' ? `<p class="dx-help">Como esta decisión la tomas con ${esc(quien)}, invítale a la sesión.</p>` : ''}
+        <div class="dx-ctas">
+          ${tier !== 'C' ? `<a class="dx-btn dx-primary" href="${cal.toString()}" target="_blank" rel="noopener">${esc(cierre[0])}</a>` : ''}
+          <a class="dx-btn ${tier === 'C' ? 'dx-primary' : ''}" href="${wa}" target="_blank" rel="noopener">${tier === 'C' ? 'Recibir la guía por WhatsApp' : 'Prefiero escribir por WhatsApp'}</a>
+        </div>
+        ${tier !== 'C' ? `<ol class="dx-steps"><li>Eliges tu horario (videollamada de 30 min).</li><li>Te confirmamos por WhatsApp.</li><li>En la sesión revisamos tu cifra. Sin compromiso.</li></ol>` : ''}
+        <p class="dx-fine">${esc(d.fine)} Es una estimación, no una garantía ni una oferta; tu plan se define en la asesoría.</p>`;
+      bar.style.width = '100%';
+      count.textContent = '';
+    }
+
+    next.onclick = () => { go(); };
+    back.onclick = () => { if (step > 0) { step--; render(); } };
+    render();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-dx]').forEach(boot);
+</script>

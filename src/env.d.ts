@@ -8,6 +8,12 @@ interface ImportMetaEnv {
 	readonly SMTP_PASS: string;
 	readonly FROM_EMAIL: string;
 	readonly RECIPIENT_EMAIL: string;
+	readonly SISTEMA_USER: string;
+	readonly SISTEMA_PASSWORD: string;
+	readonly SISTEMA_SECRET: string;
+	readonly GITHUB_TOKEN: string;
+	readonly GITHUB_REPO: string;
+	readonly GITHUB_BRANCH: string;
 }
 
 interface ImportMeta {

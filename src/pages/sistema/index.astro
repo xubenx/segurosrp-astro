@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SistemaShell from '../../components/sistema/SistemaShell.astro';
+import { listPosts } from '../../lib/github-content';
+import { formatDate } from '../../lib/blog';
+
+const posts = await listPosts();
+---
+
+<Layout title="Artículos | Sistema SegurosRP" noindex={true} minimal={true}>
+  <SistemaShell title="Artículos publicados">
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold text-rp-blue">Blog</h1>
+      <a href="/sistema/nuevo" class="bg-rp-orange text-white px-4 py-2 rounded-full font-semibold">Nuevo artículo</a>
+    </div>
+    <p class="text-sm text-gray-500 mb-6">
+      Al guardar, el archivo se escribe en GitHub y Vercel vuelve a desplegar el sitio. No hace falta que un desarrollador publique el contenido.
+    </p>
+    {posts.length === 0 ? (
+      <p class="text-gray-600">Aún no hay artículos. Crea el primero o revisa las <a class="text-rp-orange underline" href="/blog/plantillas">plantillas</a>.</p>
+    ) : (
+      <div class="overflow-x-auto bg-white rounded-xl shadow">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50 text-left">
+            <tr>
+              <th class="px-4 py-3">Título</th>
+              <th class="px-4 py-3">Plantilla</th>
+              <th class="px-4 py-3">Estado</th>
+              <th class="px-4 py-3">Fecha</th>
+              <th class="px-4 py-3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((post) => (
+              <tr class="border-t">
+                <td class="px-4 py-3 font-medium">{post.title}</td>
+                <td class="px-4 py-3">{post.template}</td>
+                <td class="px-4 py-3">{post.draft ? 'Borrador' : 'Publicado'}</td>
+                <td class="px-4 py-3">{formatDate(post.publishedAt)}</td>
+                <td class="px-4 py-3 text-right space-x-3">
+                  {!post.draft && (
+                    <a class="text-rp-orange" href={`/blog/${post.slug}`} target="_blank">Ver</a>
+                  )}
+                  <a class="text-rp-blue font-semibold" href={`/sistema/editar/${post.slug}`}>Editar</a>
+                  <button
+                    class="text-red-600"
+                    data-delete={post.slug}
+                    type="button"
+                  >
+                    Borrar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </SistemaShell>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-delete]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const slug = button.dataset.delete;
+      if (!slug || !confirm('¿Eliminar este artículo de GitHub?')) return;
+      const res = await fetch(`/api/sistema/posts/${slug}`, { method: 'DELETE' });
+      const json = await res.json();
+      if (!res.ok) {
+        alert(json.message || 'No se pudo borrar');
+        return;
+      }
+      window.location.reload();
+    });
+  });
+</script>

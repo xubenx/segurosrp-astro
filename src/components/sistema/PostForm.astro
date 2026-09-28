@@ -1,0 +1,290 @@
+---
+import {
+  BLOG_CATEGORIES,
+  BLOG_TEMPLATES,
+  TEMPLATE_META,
+  DEFAULT_AUTHOR,
+  type BlogPost,
+} from '../../lib/blog';
+
+interface Props {
+  post?: BlogPost;
+}
+
+const { post } = Astro.props;
+const isEdit = Boolean(post);
+const today = new Date().toISOString().slice(0, 10);
+---
+
+<form id="post-form" class="space-y-8" data-edit={isEdit ? '1' : '0'}>
+  <section>
+    <h2 class="text-lg font-bold text-rp-blue mb-3">1. Plantilla</h2>
+    <p class="text-sm text-gray-500 mb-4">
+      Así se verá el artículo. <a class="text-rp-orange underline" href="/blog/plantillas" target="_blank">Ver ejemplos con lorem ipsum</a>
+    </p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {BLOG_TEMPLATES.map((id) => (
+        <label class="cursor-pointer border rounded-xl p-4 has-[:checked]:border-rp-orange has-[:checked]:bg-orange-50">
+          <input
+            type="radio"
+            name="template"
+            value={id}
+            class="sr-only"
+            required
+            checked={post ? post.template === id : id === 'hero'}
+          />
+          <span class="block font-semibold text-rp-blue">{TEMPLATE_META[id].name}</span>
+          <span class="block text-xs text-gray-500 mt-1">{TEMPLATE_META[id].summary}</span>
+        </label>
+      ))}
+    </div>
+  </section>
+
+  <section class="grid md:grid-cols-2 gap-4">
+    <label class="block md:col-span-2">
+      <span class="text-sm font-semibold">Título</span>
+      <input name="title" required value={post?.title ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
+    </label>
+    <label class="block">
+      <span class="text-sm font-semibold">Slug (URL)</span>
+      <input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={post?.slug ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
+    </label>
+    <label class="block">
+      <span class="text-sm font-semibold">Fecha</span>
+      <input type="date" name="publishedAt" required value={post?.publishedAt?.slice(0, 10) ?? today} class="mt-1 w-full border rounded-lg px-3 py-2" />
+    </label>
+    <label class="block md:col-span-2">
+      <span class="text-sm font-semibold">Descripción SEO (140–160 caracteres)</span>
+      <textarea name="description" required maxlength="180" rows="2" class="mt-1 w-full border rounded-lg px-3 py-2">{post?.description ?? ''}</textarea>
+    </label>
+    <label class="block">
+      <span class="text-sm font-semibold">Autor</span>
+      <input name="author" value={post?.author ?? DEFAULT_AUTHOR} class="mt-1 w-full border rounded-lg px-3 py-2" />
+    </label>
+    <label class="block">
+      <span class="text-sm font-semibold">Categoría</span>
+      <select name="category" class="mt-1 w-full border rounded-lg px-3 py-2">
+        {BLOG_CATEGORIES.map((cat) => (
+          <option value={cat} selected={post?.category === cat}>{cat}</option>
+        ))}
+      </select>
+    </label>
+    <label class="block md:col-span-2">
+      <span class="text-sm font-semibold">Etiquetas (separadas por coma)</span>
+      <input name="tags" value={post?.tags?.join(', ') ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
+    </label>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-lg font-bold text-rp-blue">2. Medios</h2>
+    <p class="text-xs text-gray-500">JPG, PNG o WebP. Máximo 1.8 MB por archivo.</p>
+    <label class="block">
+      <span class="text-sm font-semibold">Imagen de portada (archivo o URL)</span>
+      <input type="file" name="coverFile" accept="image/*" class="mt-1 block" />
+      <input name="coverImage" placeholder="/familia.webp o https://..." value={post?.coverImage ?? ''} class="mt-2 w-full border rounded-lg px-3 py-2" />
+    </label>
+    <label class="block">
+      <span class="text-sm font-semibold">Texto alternativo de la portada</span>
+      <input name="coverAlt" value={post?.coverAlt ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
+    </label>
+    <div data-show="mid-image" class="hidden space-y-2">
+      <label class="block">
+        <span class="text-sm font-semibold">Imagen al centro</span>
+        <input type="file" name="midFile" accept="image/*" class="mt-1 block" />
+        <input name="midImage" value={post?.midImage ?? ''} class="mt-2 w-full border rounded-lg px-3 py-2" />
+      </label>
+    </div>
+    <div data-show="video" class="hidden">
+      <label class="block">
+        <span class="text-sm font-semibold">URL de YouTube</span>
+        <input name="videoUrl" value={post?.videoUrl ?? ''} placeholder="https://www.youtube.com/watch?v=..." class="mt-1 w-full border rounded-lg px-3 py-2" />
+      </label>
+    </div>
+    <div data-show="quote" class="hidden space-y-2">
+      <label class="block">
+        <span class="text-sm font-semibold">Cita destacada</span>
+        <textarea name="quote" rows="3" class="mt-1 w-full border rounded-lg px-3 py-2">{post?.quote ?? ''}</textarea>
+      </label>
+      <label class="block">
+        <span class="text-sm font-semibold">Autor de la cita</span>
+        <input name="quoteAuthor" value={post?.quoteAuthor ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
+      </label>
+    </div>
+    <div data-show="gallery" class="hidden">
+      <label class="block">
+        <span class="text-sm font-semibold">Galería (hasta 3 imágenes)</span>
+        <input type="file" name="galleryFiles" accept="image/*" multiple class="mt-1 block" />
+      </label>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-lg font-bold text-rp-blue">3. Texto</h2>
+    <label class="block">
+      <span class="text-sm font-semibold">Introducción (respuesta directa, 40–80 palabras — sirve para SEO y AI search)</span>
+      <textarea name="intro" required rows="4" class="mt-1 w-full border rounded-lg px-3 py-2">{post?.intro ?? ''}</textarea>
+    </label>
+    <label class="block">
+      <span class="text-sm font-semibold">Cuerpo. Usa ## para subtítulos, - para listas y **negritas**</span>
+      <textarea name="body" required rows="14" class="mt-1 w-full border rounded-lg px-3 py-2 font-mono text-sm">{post?.body ?? ''}</textarea>
+    </label>
+  </section>
+
+  <section>
+    <h2 class="text-lg font-bold text-rp-blue mb-3">4. Preguntas frecuentes (recomendado)</h2>
+    <div class="space-y-4">
+      {[0, 1, 2].map((i) => (
+        <div class="grid md:grid-cols-2 gap-3">
+          <input
+            name={`faq_q_${i}`}
+            placeholder={`Pregunta ${i + 1}`}
+            value={post?.faq?.[i]?.question ?? ''}
+            class="border rounded-lg px-3 py-2"
+          />
+          <input
+            name={`faq_a_${i}`}
+            placeholder="Respuesta"
+            value={post?.faq?.[i]?.answer ?? ''}
+            class="border rounded-lg px-3 py-2"
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <label class="flex items-center gap-2">
+    <input type="checkbox" name="draft" checked={post?.draft === true} />
+    <span>Guardar como borrador (no aparece en /blog hasta publicar)</span>
+  </label>
+
+  <p id="form-status" class="text-sm min-h-[1.5rem]"></p>
+  <button type="submit" class="bg-rp-orange text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-600">
+    {isEdit ? 'Guardar cambios' : 'Publicar en GitHub'}
+  </button>
+</form>
+
+<script>
+  const form = document.getElementById('post-form') as HTMLFormElement | null;
+  if (form) {
+    const title = form.querySelector('[name="title"]') as HTMLInputElement;
+    const slug = form.querySelector('[name="slug"]') as HTMLInputElement;
+    const isEdit = form.dataset.edit === '1';
+
+    function slugify(value: string) {
+      return value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 80);
+    }
+
+    title?.addEventListener('input', () => {
+      if (!isEdit && slug && !slug.dataset.touched) slug.value = slugify(title.value);
+    });
+    slug?.addEventListener('input', () => {
+      slug.dataset.touched = '1';
+    });
+
+    function syncTemplate() {
+      const selected = (form.querySelector('[name="template"]:checked') as HTMLInputElement)?.value;
+      form.querySelectorAll<HTMLElement>('[data-show]').forEach((el) => {
+        el.classList.toggle('hidden', el.dataset.show !== selected);
+      });
+    }
+    form.querySelectorAll('[name="template"]').forEach((el) => el.addEventListener('change', syncTemplate));
+    syncTemplate();
+
+    async function fileToPayload(file: File, field: string) {
+      const data = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = String(reader.result || '');
+          resolve(result.split(',')[1] || '');
+        };
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(file);
+      });
+      return { field, filename: file.name, contentType: file.type, data };
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const status = document.getElementById('form-status');
+      const submit = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      submit.disabled = true;
+      if (status) status.textContent = 'Guardando...';
+
+      const fd = new FormData(form);
+      const faq = [0, 1, 2]
+        .map((i) => ({
+          question: String(fd.get(`faq_q_${i}`) || '').trim(),
+          answer: String(fd.get(`faq_a_${i}`) || '').trim(),
+        }))
+        .filter((item) => item.question && item.answer);
+
+      const images: Awaited<ReturnType<typeof fileToPayload>>[] = [];
+      const coverFile = (form.querySelector('[name="coverFile"]') as HTMLInputElement)?.files?.[0];
+      if (coverFile) images.push(await fileToPayload(coverFile, 'coverImage'));
+      const midFile = (form.querySelector('[name="midFile"]') as HTMLInputElement)?.files?.[0];
+      if (midFile) images.push(await fileToPayload(midFile, 'midImage'));
+      const galleryFiles = (form.querySelector('[name="galleryFiles"]') as HTMLInputElement)?.files;
+      if (galleryFiles) {
+        for (const file of Array.from(galleryFiles).slice(0, 3)) {
+          images.push(await fileToPayload(file, 'gallery'));
+        }
+      }
+
+      const payload = {
+        slug: String(fd.get('slug')),
+        images,
+        post: {
+          title: String(fd.get('title')),
+          description: String(fd.get('description')),
+          author: String(fd.get('author')),
+          publishedAt: String(fd.get('publishedAt')),
+          updatedAt: new Date().toISOString().slice(0, 10),
+          category: String(fd.get('category')),
+          tags: String(fd.get('tags') || '')
+            .split(',')
+            .map((t) => t.trim())
+            .filter(Boolean),
+          template: String(fd.get('template')),
+          coverImage: String(fd.get('coverImage') || '/familia.webp'),
+          coverAlt: String(fd.get('coverAlt')),
+          midImage: String(fd.get('midImage') || '') || undefined,
+          videoUrl: String(fd.get('videoUrl') || '') || undefined,
+          quote: String(fd.get('quote') || '') || undefined,
+          quoteAuthor: String(fd.get('quoteAuthor') || '') || undefined,
+          intro: String(fd.get('intro')),
+          body: String(fd.get('body')),
+          faq,
+          draft: fd.get('draft') === 'on',
+        },
+      };
+
+      try {
+        const res = await fetch('/api/sistema/posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (!res.ok || !json.success) throw new Error(json.message || 'No se pudo guardar');
+        if (status) {
+          status.className = 'text-sm text-green-700';
+          status.textContent = json.message;
+        }
+        if (!isEdit) window.location.href = '/sistema';
+      } catch (error) {
+        if (status) {
+          status.className = 'text-sm text-red-700';
+          status.textContent = error instanceof Error ? error.message : 'Error al guardar';
+        }
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+</script>

@@ -1,0 +1,203 @@
+---
+import YouTubeFacade from '../YouTubeFacade.astro';
+import { renderBlogBody } from '../../lib/blog-markdown';
+import {
+  formatDate,
+  readingMinutes,
+  youtubeId,
+  type BlogPost,
+} from '../../lib/blog';
+
+interface Props {
+  post: BlogPost;
+  example?: boolean;
+}
+
+const { post, example = false } = Astro.props;
+const bodyHtml = renderBlogBody(post.body);
+const video = youtubeId(post.videoUrl);
+const minutes = readingMinutes(post);
+const dateLabel = formatDate(post.publishedAt);
+---
+
+<article class="blog-article">
+  {example && (
+    <p class="mb-6 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-sm px-4 py-3">
+      Vista de plantilla con texto de ejemplo. Así se verá un artículo real cuando el equipo lo publique en
+      <a href="/sistema" class="underline font-semibold">/sistema</a>.
+    </p>
+  )}
+
+  {post.template === 'hero' && (
+    <figure class="mb-8 -mx-4 md:mx-0 overflow-hidden md:rounded-2xl">
+      <img
+        src={post.coverImage}
+        alt={post.coverAlt || post.title}
+        class="w-full h-[240px] md:h-[420px] object-cover"
+        width="1200"
+        height="630"
+      />
+    </figure>
+  )}
+
+  {post.template === 'split' ? (
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-10">
+      <img
+        src={post.coverImage}
+        alt={post.coverAlt || post.title}
+        class="w-full h-72 md:h-full min-h-[280px] object-cover rounded-2xl"
+        width="800"
+        height="600"
+      />
+      <header>
+        <p class="text-rp-orange font-semibold text-sm uppercase tracking-wide mb-3">{post.category}</p>
+        <h1 class="text-3xl md:text-5xl font-bold text-rp-blue leading-tight mb-4">{post.title}</h1>
+        <p class="text-gray-500 text-sm mb-4">
+          {post.author} · {dateLabel} · {minutes} min de lectura
+        </p>
+        <p class="blog-intro text-lg text-gray-700 leading-relaxed">{post.intro}</p>
+      </header>
+    </div>
+  ) : (
+    <header class="mb-8">
+      <p class="text-rp-orange font-semibold text-sm uppercase tracking-wide mb-3">{post.category}</p>
+      <h1 class="text-3xl md:text-5xl font-bold text-rp-blue leading-tight mb-4">{post.title}</h1>
+      <p class="text-gray-500 text-sm">
+        {post.author} · {dateLabel} · {minutes} min de lectura
+      </p>
+    </header>
+  )}
+
+  {post.template === 'video' && (
+    <div class="mb-8">
+      {video ? (
+        <YouTubeFacade videoId={video} title={post.title} />
+      ) : (
+        <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">
+          Pega una URL de YouTube en el editor
+        </div>
+      )}
+    </div>
+  )}
+
+  {post.template === 'quote' && post.quote && (
+    <blockquote class="mb-8 border-l-4 border-rp-orange bg-rp-gray rounded-r-xl px-6 py-5">
+      <p class="text-xl md:text-2xl text-rp-blue font-semibold leading-snug">“{post.quote}”</p>
+      {post.quoteAuthor && <footer class="mt-3 text-sm text-gray-600">— {post.quoteAuthor}</footer>}
+    </blockquote>
+  )}
+
+  {post.template !== 'split' && post.template !== 'hero' && post.template !== 'video' && (
+    <p class="blog-intro text-lg text-gray-700 leading-relaxed mb-8">{post.intro}</p>
+  )}
+
+  {post.template === 'hero' && (
+    <p class="blog-intro text-lg text-gray-700 leading-relaxed mb-8">{post.intro}</p>
+  )}
+
+  {post.template === 'video' && (
+    <p class="blog-intro text-lg text-gray-700 leading-relaxed mb-8">{post.intro}</p>
+  )}
+
+  {post.template === 'mid-image' && post.midImage && (
+    <figure class="my-10">
+      <img
+        src={post.midImage}
+        alt={post.midImageAlt || post.title}
+        class="w-full rounded-2xl object-cover max-h-[420px]"
+        width="1000"
+        height="560"
+      />
+    </figure>
+  )}
+
+  {post.template === 'gallery' && post.gallery?.length && (
+    <div class="grid sm:grid-cols-3 gap-3 my-10">
+      {post.gallery.map((img) => (
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="w-full h-40 object-cover rounded-xl"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  )}
+
+  {post.template === 'quote' && (
+    <figure class="my-8">
+      <img
+        src={post.coverImage}
+        alt={post.coverAlt || post.title}
+        class="w-full max-h-[380px] object-cover rounded-2xl"
+        width="1000"
+        height="520"
+      />
+    </figure>
+  )}
+
+  <div class="blog-body prose-blog" set:html={bodyHtml} />
+
+  {post.faq && post.faq.length > 0 && (
+    <section class="mt-12 border-t border-gray-200 pt-8">
+      <h2 class="text-2xl font-bold text-rp-blue mb-6">Preguntas frecuentes</h2>
+      <div class="space-y-4">
+        {post.faq.map((item) => (
+          <details class="group rounded-xl border border-gray-200 bg-white px-5 py-4">
+            <summary class="cursor-pointer font-semibold text-rp-blue list-none flex justify-between gap-4">
+              {item.question}
+              <span class="text-rp-orange group-open:rotate-45 transition">+</span>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <aside class="mt-12 rounded-2xl bg-rp-blue text-white p-8">
+    <h2 class="text-2xl font-bold mb-3">¿Quieres una cotización a tu medida?</h2>
+    <p class="text-blue-100 mb-6">
+      Un asesor certificado de Seguros Monterrey New York Life te explica opciones de vida, salud, retiro o educación sin compromiso.
+    </p>
+    <a
+      href="/contacto"
+      class="inline-block bg-rp-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition"
+    >
+      Hablar con un asesor
+    </a>
+  </aside>
+</article>
+
+<style>
+  .prose-blog :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00305c;
+    margin: 2rem 0 0.75rem;
+  }
+  .prose-blog :global(h3) {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00305c;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .prose-blog :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: #374151;
+  }
+  .prose-blog :global(ul),
+  .prose-blog :global(ol) {
+    margin: 0 0 1rem 1.25rem;
+    color: #374151;
+  }
+  .prose-blog :global(li) {
+    margin-bottom: 0.35rem;
+    line-height: 1.6;
+  }
+  .prose-blog :global(a) {
+    color: #fe8f34;
+    font-weight: 600;
+  }
+</style>

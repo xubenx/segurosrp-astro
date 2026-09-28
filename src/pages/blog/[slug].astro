@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BlogArticle from '../../components/blog/BlogArticle.astro';
+import { articleSchema, ogImage, SITE_URL, type BlogPost } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', ({ data }) => data.draft !== true);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { post: { ...entry.data, slug: entry.id } satisfies BlogPost },
+  }));
+}
+
+export const prerender = true;
+
+const { post } = Astro.props;
+const canonical = `${SITE_URL}/blog/${post.slug}`;
+---
+
+<Layout
+  title={`${post.title} | Blog SegurosRP`}
+  description={post.description}
+  canonical={canonical}
+  ogImage={ogImage(post)}
+  ogType="article"
+  articlePublishedTime={post.publishedAt}
+  articleModifiedTime={post.updatedAt || post.publishedAt}
+  articleAuthor={post.author}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema(post))} />
+  <Header />
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <nav class="text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-rp-orange">Inicio</a>
+        <span class="mx-2">/</span>
+        <a href="/blog" class="hover:text-rp-orange">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-700">{post.title}</span>
+      </nav>
+      <BlogArticle post={post} />
+    </div>
+  </main>
+  <Footer />
+</Layout>

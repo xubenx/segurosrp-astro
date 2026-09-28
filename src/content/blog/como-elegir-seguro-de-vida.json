@@ -1,0 +1,28 @@
+{
+  "title": "Cómo elegir el mejor seguro de vida en México",
+  "description": "Guía práctica para elegir un seguro de vida: suma asegurada, plazo, beneficiarios y errores frecuentes. Asesoría de Ramírez & Plascencia.",
+  "author": "Ramírez & Plascencia",
+  "publishedAt": "2026-08-13",
+  "category": "Vida",
+  "tags": ["seguro de vida", "Seguros Monterrey", "guía"],
+  "template": "hero",
+  "coverImage": "/familia.webp",
+  "coverAlt": "Familia mexicana protegida con un seguro de vida",
+  "intro": "Un seguro de vida es un contrato que entrega una suma asegurada a tus beneficiarios si falleces o, en algunos planes, si quedas inválido. Elegir bien empieza por definir cuánto dinero necesitaría tu familia para mantenerse 5 a 10 años, no por el precio de la prima mensual.",
+  "body": "## ¿Qué cubre un seguro de vida?\n\nUn seguro de vida tradicional paga la suma asegurada a las personas que tú designaste como beneficiarios. En Seguros Monterrey New York Life existen planes temporales (por un plazo) y planes de vida entera o dotal, que combinan protección con ahorro.\n\nLos productos que más asesoramos son Imagina Ser, Orvi, Nuevo Plenitud y Vida Mujer. Cada uno responde a un objetivo distinto: protección pura, retiro o un mixto con ahorro.\n\n## Cómo calcular la suma asegurada\n\nUna regla útil es multiplicar el ingreso anual neto por 10 y sumar deudas (hipoteca, auto, tarjetas). Si hay hijos en edad escolar, agrega el costo estimado de su educación.\n\n- Ingreso anual × 10\n- Deudas pendientes\n- Educación de los hijos\n- Gastos funerarios y trámites\n\n## Errores frecuentes al contratar\n\nContratar solo por precio deja a la familia corta de capital. Otro error es no revisar beneficiarios después de un matrimonio, divorcio o nacimiento. El tercero: no declarar padecimientos; eso puede anular la reclamación.\n\n## ¿Temporal o con ahorro?\n\nSi tu prioridad es proteger un crédito o a hijos pequeños con el menor costo, un temporal (como Orvi) suele alcanzar. Si además quieres un plan de retiro con rendimientos, Imagina Ser o Nuevo Plenitud encajan mejor.\n\nLa decisión correcta es la que puedes pagar de forma constante y que cubre el hueco económico real de tu hogar.",
+  "faq": [
+    {
+      "question": "¿Cuánto debe cubrir un seguro de vida?",
+      "answer": "Como punto de partida, entre 8 y 12 veces tu ingreso anual más deudas. Un asesor certificado ajusta esa cifra con la edad de tus hijos y el costo de su educación."
+    },
+    {
+      "question": "¿A qué edad conviene contratarlo?",
+      "answer": "Entre más joven, más baja es la prima y más fácil es calificar médicamente. No hay una edad “tarde”, pero esperar suele encarecer la misma cobertura."
+    },
+    {
+      "question": "¿El seguro de vida sirve si ya tengo prestaciones de la empresa?",
+      "answer": "La cobertura laboral suele ser temporal y se pierde al cambiar de trabajo. Un plan individual te sigue y tú eliges a los beneficiarios."
+    }
+  ],
+  "draft": false
+}

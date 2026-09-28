@@ -6,6 +6,11 @@ Disallow: /asesores-seguros-monterrey-nyl/
 Disallow: /vidamujerlanding/
 Disallow: /ssr
 Disallow: /ssr-with-swr-caching
+Disallow: /sistema
+Disallow: /sistema/
+Disallow: /login
+Disallow: /blog/plantillas
+Disallow: /blog/plantillas/
 
 # AI search crawlers — explicitly permitted for search visibility
 User-agent: GPTBot

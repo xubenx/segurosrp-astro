@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BlogCard from '../../components/blog/BlogCard.astro';
+import { getPublishedPosts } from '../../lib/blog-collection';
+import { SITE_URL } from '../../lib/blog';
+
+export const prerender = true;
+
+const posts = await getPublishedPosts();
+const pageTitle = 'Blog de seguros | SegurosRP — Ramírez & Plascencia';
+const pageDescription =
+  'Guías claras de seguro de vida, gastos médicos, retiro y educación. Artículos de asesores certificados de Seguros Monterrey New York Life.';
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={`${SITE_URL}/blog`}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Blog',
+        '@id': `${SITE_URL}/blog#blog`,
+        name: 'Blog SegurosRP',
+        description: pageDescription,
+        url: `${SITE_URL}/blog`,
+        inLanguage: 'es-MX',
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+        ],
+      },
+    ],
+  })} />
+  <Header />
+  <main class="pt-24 pb-16">
+    <section class="bg-gradient-to-br from-rp-blue via-blue-800 to-rp-light-blue text-white py-14">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <p class="text-rp-orange font-semibold mb-3">Blog</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Temas de interés para tu familia</h1>
+        <p class="text-lg text-blue-100 max-w-2xl">
+          Explicamos seguros de vida, gastos médicos, retiro y educación en lenguaje claro. Cada artículo está pensado para que puedas decidir con información, no con presión.
+        </p>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 py-12">
+      {posts.length === 0 ? (
+        <p class="text-gray-600 text-center py-16">Aún no hay artículos publicados.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {posts.map((post) => <BlogCard post={post} />)}
+        </div>
+      )}
+    </section>
+  </main>
+  <Footer />
+</Layout>
