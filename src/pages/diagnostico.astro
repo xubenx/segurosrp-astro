@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DiagnosticoLead from '../components/DiagnosticoLead.astro';
+import { SITE_URL } from '../lib/blog';
+---
+
+<Layout
+  title="Diagnóstico patrimonial | SegurosRP"
+  description="Responde unas preguntas en 2 minutos y recibe tu cifra personalizada, sin costo. Asesores certificados de Seguros Monterrey New York Life."
+  canonical={`${SITE_URL}/diagnostico`}
+  minimal={true}
+>
+  <Header />
+  <main class="bg-slate-100 flex justify-center px-4 pt-28 pb-16 min-h-[70vh]">
+    <div class="w-full max-w-xl rounded-2xl border border-gray-200 bg-gray-50 p-5 md:p-7 shadow-sm">
+      <DiagnosticoLead
+        source="Página Diagnóstico"
+        campaign="Organico - Diagnostico"
+        trackingEvent="diagnostico_form"
+      />
+    </div>
+  </main>
+  <Footer />
+</Layout>

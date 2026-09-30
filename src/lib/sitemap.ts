@@ -5,6 +5,7 @@ const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/nosotros', changefreq: 'monthly', priority: '0.8' },
   { path: '/contacto', changefreq: 'monthly', priority: '0.8' },
+  { path: '/diagnostico', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog', changefreq: 'weekly', priority: '0.9' },
   { path: '/asesores-seguros-monterrey', changefreq: 'monthly', priority: '0.7' },
   { path: '/asesores-seguros-monterrey-nyl', changefreq: 'monthly', priority: '0.7' },

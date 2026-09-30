@@ -42,17 +42,17 @@ const field = 'field';
           </div>
         </div>
         <div class="grid sm:grid-cols-2 gap-3">
-          {BLOG_TEMPLATES.map((id) => (
+      {BLOG_TEMPLATES.map((id) => (
             <div class="style-card">
               <label class="cursor-pointer block">
-                <input
-                  type="radio"
-                  name="template"
-                  value={id}
-                  class="sr-only"
-                  required
-                  checked={post ? post.template === id : id === 'hero'}
-                />
+          <input
+            type="radio"
+            name="template"
+            value={id}
+            class="sr-only"
+            required
+            checked={post ? post.template === id : id === 'hero'}
+          />
                 <div class="wire" aria-hidden="true">
                   {id === 'hero' && (
                     <div>
@@ -105,31 +105,31 @@ const field = 'field';
                 </div>
                 <span class="block font-semibold text-rp-blue text-sm mt-2">{TEMPLATE_META[id].name}</span>
                 <span class="block text-xs text-slate-500 mt-1 leading-relaxed">{TEMPLATE_META[id].summary}</span>
-              </label>
+        </label>
               <button type="button" class="mt-2 text-xs font-semibold text-rp-orange hover:underline" data-preview-template={id}>
                 Ver ejemplo
               </button>
             </div>
-          ))}
-        </div>
-      </section>
+      ))}
+    </div>
+  </section>
 
       <section class="panel space-y-4">
         <h2 class="text-base font-bold text-rp-blue">Datos</h2>
         <label class="block">
           <span class="label">Título</span>
           <input name="title" required value={post?.title ?? ''} placeholder="Cómo elegir un seguro de vida para tu familia" class={field} />
-        </label>
+    </label>
         <div class="grid sm:grid-cols-2 gap-4">
-          <label class="block">
+    <label class="block">
             <span class="label">Dirección del artículo</span>
             <input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={post?.slug ?? ''} class={field} />
             <span class="hint">Se arma sola con el título. Cámbiala si quieres otra URL.</span>
-          </label>
-          <label class="block">
+    </label>
+    <label class="block">
             <span class="label">Fecha de publicación</span>
             <input type="date" name="publishedAt" required value={post?.publishedAt?.slice(0, 10) ?? today} class={field} />
-          </label>
+    </label>
         </div>
         <label class="block">
           <span class="label flex justify-between gap-3">
@@ -138,20 +138,20 @@ const field = 'field';
           </span>
           <textarea name="description" required maxlength="180" rows="2" placeholder="Una frase clara de lo que la persona va a entender al leerlo." class={field}>{post?.description ?? ''}</textarea>
           <span class="hint">Lo ideal son 140–160 caracteres. No se ve en el artículo, sí en Google.</span>
-        </label>
+    </label>
         <div class="grid sm:grid-cols-2 gap-4">
-          <label class="block">
+    <label class="block">
             <span class="label">Autor</span>
             <input name="author" value={post?.author ?? DEFAULT_AUTHOR} class={field} />
-          </label>
-          <label class="block">
+    </label>
+    <label class="block">
             <span class="label">Categoría</span>
             <select name="category" class={field}>
-              {BLOG_CATEGORIES.map((cat) => (
-                <option value={cat} selected={post?.category === cat}>{cat}</option>
-              ))}
-            </select>
-          </label>
+        {BLOG_CATEGORIES.map((cat) => (
+          <option value={cat} selected={post?.category === cat}>{cat}</option>
+        ))}
+      </select>
+    </label>
         </div>
         <label class="block">
           <span class="label">Etiquetas</span>
@@ -183,86 +183,86 @@ const field = 'field';
             placeholder={'## Por qué importa\n\nCuéntalo con calma.\n\n## Puntos clave\n\n- Primer punto\n- Segundo punto'}
           >{post?.body ?? ''}</textarea>
           <span class="hint">## subtítulo · - lista · **negrita**</span>
-        </label>
-      </section>
+    </label>
+  </section>
 
       <section class="panel space-y-4">
         <div>
           <h2 class="text-base font-bold text-rp-blue">Fotos y extras</h2>
           <p class="text-sm text-slate-500 mt-1">Solo verás lo que usa el estilo elegido. JPG, PNG o WebP, hasta 1.8 MB.</p>
         </div>
-        <label class="block">
+    <label class="block">
           <span class="label">Imagen principal</span>
           <input type="file" name="coverFile" accept="image/*" class="mt-1 block text-sm" />
           <input name="coverImage" placeholder="/familia.webp o una URL" value={post?.coverImage ?? ''} class={`${field} mt-2`} />
-        </label>
-        <label class="block">
+    </label>
+    <label class="block">
           <span class="label">Qué muestra esa imagen</span>
           <input name="coverAlt" value={post?.coverAlt ?? ''} placeholder="Familia caminando junta" class={field} />
-        </label>
+    </label>
         <div data-show="mid-image" class:list={['space-y-2', { hidden: (post?.template ?? 'hero') !== 'mid-image' }]}>
-          <label class="block">
+      <label class="block">
             <span class="label">Imagen a la mitad del texto</span>
             <input type="file" name="midFile" accept="image/*" class="mt-1 block text-sm" />
             <input name="midImage" value={post?.midImage ?? ''} placeholder="URL o déjala vacía si subes archivo" class={`${field} mt-2`} />
-          </label>
-        </div>
+      </label>
+    </div>
         <div data-show="video" class:list={[{ hidden: (post?.template ?? 'hero') !== 'video' }]}>
-          <label class="block">
+      <label class="block">
             <span class="label">Video de YouTube</span>
             <input name="videoUrl" value={post?.videoUrl ?? ''} placeholder="https://www.youtube.com/watch?v=..." class={field} />
-          </label>
-        </div>
+      </label>
+    </div>
         <div data-show="quote" class:list={['space-y-3', { hidden: (post?.template ?? 'hero') !== 'quote' }]}>
-          <label class="block">
+      <label class="block">
             <span class="label">Frase destacada</span>
             <textarea name="quote" rows="3" placeholder="La frase que quieres que se lea primero." class={field}>{post?.quote ?? ''}</textarea>
-          </label>
-          <label class="block">
+      </label>
+      <label class="block">
             <span class="label">Quién la dice</span>
             <input name="quoteAuthor" value={post?.quoteAuthor ?? ''} placeholder="Nombre del asesor" class={field} />
-          </label>
-        </div>
+      </label>
+    </div>
         <div data-show="gallery" class:list={[{ hidden: (post?.template ?? 'hero') !== 'gallery' }]}>
-          <label class="block">
+      <label class="block">
             <span class="label">Galería, hasta 3 imágenes</span>
             <input type="file" name="galleryFiles" accept="image/*" multiple class="mt-1 block text-sm" />
-          </label>
-        </div>
-      </section>
+      </label>
+    </div>
+  </section>
 
       <section class="panel">
         <h2 class="text-base font-bold text-rp-blue mb-1">Preguntas frecuentes</h2>
         <p class="text-sm text-slate-500 mb-4">Opcional. Si las llenas, aparecen al final del artículo.</p>
         <div class="space-y-3">
-          {[0, 1, 2].map((i) => (
+      {[0, 1, 2].map((i) => (
             <div class="rounded-xl border border-slate-100 bg-slate-50 p-3 grid gap-2">
-              <input
-                name={`faq_q_${i}`}
-                placeholder={`Pregunta ${i + 1}`}
-                value={post?.faq?.[i]?.question ?? ''}
+          <input
+            name={`faq_q_${i}`}
+            placeholder={`Pregunta ${i + 1}`}
+            value={post?.faq?.[i]?.question ?? ''}
                 class={field}
-              />
-              <input
-                name={`faq_a_${i}`}
+          />
+          <input
+            name={`faq_a_${i}`}
                 placeholder="Respuesta corta"
-                value={post?.faq?.[i]?.answer ?? ''}
+            value={post?.faq?.[i]?.answer ?? ''}
                 class={field}
-              />
-            </div>
-          ))}
+          />
         </div>
-      </section>
+      ))}
+    </div>
+  </section>
 
       <div class="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
         <label class="flex items-center gap-2 text-sm text-slate-600">
           <input type="checkbox" name="draft" checked={post?.draft === true} class="accent-rp-orange" />
           Guardar como borrador
-        </label>
+  </label>
         <p id="form-status" class="text-sm sm:ml-auto min-h-[1.25rem]" aria-live="polite"></p>
         <button type="submit" class="bg-rp-orange text-white font-semibold px-5 py-2.5 rounded-full hover:bg-orange-600 disabled:opacity-60">
           {isEdit ? 'Guardar cambios' : 'Publicar'}
-        </button>
+  </button>
       </div>
     </div>
 

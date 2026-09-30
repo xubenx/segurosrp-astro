@@ -7,6 +7,16 @@ export default defineConfig({
   site: 'https://segurosrp.com/',
   output: 'server',
 
+  // En Vercel la función ve el host como localhost. Sin esto, el POST del
+  // login se rechaza: "Cross-site POST form submissions are forbidden".
+  security: {
+    allowedDomains: [
+      { hostname: 'segurosrp.com' },
+      { hostname: 'www.segurosrp.com' },
+      { hostname: '**.vercel.app' },
+    ],
+  },
+
   adapter: vercel({
     webAnalytics: {
       enabled: true,
