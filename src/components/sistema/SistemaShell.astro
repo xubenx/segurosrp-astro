@@ -6,7 +6,7 @@ interface Props {
   wide?: boolean;
 }
 
-const { title = 'Sistema SegurosRP', wide = false } = Astro.props;
+const { title = 'Ramirez y Plascencia', wide = false } = Astro.props;
 const path = Astro.url.pathname;
 const frame = wide ? 'max-w-[1440px]' : 'max-w-6xl';
 const linkClass = (href: string) =>
@@ -19,7 +19,7 @@ const linkClass = (href: string) =>
   <header class="bg-rp-blue text-white">
     <div class:list={[frame, 'mx-auto px-4 py-4 flex items-center justify-between gap-4']}>
       <div>
-        <a href="/sistema" class="font-bold text-lg">Sistema SegurosRP</a>
+        <a href="/sistema" class="font-bold text-lg">Ramirez y Plascencia</a>
         <p class="text-blue-200 text-sm">{title}</p>
       </div>
       <nav class="flex flex-wrap items-center justify-end gap-x-3 gap-y-2 text-sm">
