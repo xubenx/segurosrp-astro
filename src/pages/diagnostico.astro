@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DiagnosticoLead from '../components/DiagnosticoLead.astro';
+
+const objetivo = Astro.url.searchParams.get('obj') || '';
+const preset =
+  objetivo === 'retiro' ||
+  objetivo === 'universidad' ||
+  objetivo === 'patrimonio' ||
+  objetivo === 'familia' ||
+  objetivo === 'empresa' ||
+  objetivo === 'gmm'
+    ? objetivo
+    : '';
+---
+
+<Layout
+  title="Diagnóstico Patrimonial gratis | SegurosRP · Michelle Ramírez"
+  description="Responde unas preguntas en 2 minutos y recibe tu cifra personalizada para retiro, universidad, patrimonio o gastos médicos. Con Michelle Ramírez Plascencia, asesora patrimonial de Seguros Monterrey New York Life."
+  canonical="https://segurosrp.com/diagnostico"
+>
+  <Header />
+  <main class="bg-gradient-to-b from-slate-50 to-white">
+    <section class="container mx-auto px-4 py-10 md:py-16">
+      <div class="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-5 md:p-8 shadow-sm">
+        <DiagnosticoLead
+          preset={preset}
+          source="Diagnóstico Patrimonial"
+          campaign="Organico - Diagnostico"
+          trackingEvent="diagnostico_page"
+          heading="Diagnóstico patrimonial"
+        />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

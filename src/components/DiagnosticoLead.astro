@@ -151,11 +151,46 @@ const {
   .dx :global(.dx-steps) { margin: 12px 0 0; padding-left: 1.2em; color: var(--dx-soft); font-size: .93rem; }
   .dx :global(.dx-fine) { color: var(--dx-soft); font-size: .8rem; margin-top: 18px; }
   .dx :global(.dx-status), .dx :global(.dx-warn) { margin: 10px 0 0; }
+  .dx :global(.dx-advisor) {
+    display: flex; gap: 14px; align-items: center; margin: 18px 0 12px;
+  }
+  .dx :global(.dx-avatar) {
+    flex: none; width: 84px; height: 84px; border-radius: 50%; overflow: hidden;
+    background: var(--dx-accent); color: var(--dx-accent-ink);
+    display: grid; place-items: center; font-weight: 800; font-size: 1.4rem;
+  }
+  .dx :global(.dx-avatar img) { width: 100%; height: 100%; object-fit: cover; }
+  .dx :global(.dx-advisor b) { display: block; font-size: 1.02rem; }
+  .dx :global(.dx-advisor span) { color: var(--dx-soft); font-size: .92rem; }
+  .dx :global(.dx-cedula) {
+    font-size: .88rem; font-weight: 700; margin: 0 0 14px; color: var(--dx-ink);
+  }
+  .dx :global(.dx-stats) {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 16px;
+  }
+  .dx :global(.dx-stats div) {
+    background: color-mix(in srgb, var(--dx-accent) 10%, #fff);
+    border: 1.5px solid var(--dx-line); border-radius: 12px;
+    padding: 10px 8px; text-align: center;
+  }
+  .dx :global(.dx-stats b) {
+    display: block; font-size: 1.25rem; line-height: 1.1; color: var(--dx-ink);
+  }
+  .dx :global(.dx-stats span) {
+    display: block; color: var(--dx-soft); font-size: .72rem; line-height: 1.25; margin-top: 4px;
+  }
+  .dx :global(.dx-facts) { color: var(--dx-soft); font-size: .88rem; margin: 0; }
+  .dx :global(.dx-facts a) { color: inherit; }
+  @media (max-width: 420px) {
+    .dx :global(.dx-stats) { grid-template-columns: 1fr; }
+    .dx :global(.dx-avatar) { width: 72px; height: 72px; }
+  }
 </style>
 
 <script>
   import {
     DX_CONFIG,
+    OBJ,
     OBJS,
     answerLabel,
     classify,
@@ -171,11 +206,13 @@ const {
   function boot(root: HTMLElement) {
     const preset = presetIndex(root.dataset.preset || '');
     const ans: DxAnswers = seedAnswers(preset);
-    let step = 0;
+    const INTRO = -1;
+    let step = INTRO;
     const screen = root.querySelector('[data-dx-screen]') as HTMLElement;
     const err = root.querySelector('[data-dx-err]') as HTMLElement;
     const bar = root.querySelector('[data-dx-bar]') as HTMLElement;
     const count = root.querySelector('[data-dx-count]') as HTMLElement;
+    const kicker = root.querySelector('.dx-kicker') as HTMLElement | null;
     const nav = root.querySelector('[data-dx-nav]') as HTMLElement;
     const back = root.querySelector('[data-dx-back]') as HTMLButtonElement;
     const next = root.querySelector('[data-dx-next]') as HTMLButtonElement;
@@ -195,18 +232,53 @@ const {
       } catch {}
     }
 
+    function renderIntro() {
+      const oferta = preset >= 0 ? OBJS[preset].oferta : 'Diagnóstico Patrimonial';
+      const h1 = preset >= 0 ? OBJS[preset].h1 : '¿Cuánto necesitas para proteger lo que más te importa?';
+      const help =
+        preset >= 0
+          ? 'Responde unas preguntas en 2 minutos y recibe tu cifra personalizada, sin costo.'
+          : 'Retiro, universidad de tus hijos, patrimonio o gastos médicos. Responde unas preguntas en 2 minutos y recibe tu cifra personalizada, sin costo.';
+      const cargo = preset === OBJ.EDU ? DX_CONFIG.asesorCargoEdu : DX_CONFIG.asesorCargo;
+      const foto = DX_CONFIG.asesorFoto
+        ? `<img alt="Foto de ${esc(DX_CONFIG.asesorNombre)}" src="${esc(DX_CONFIG.asesorFoto)}" width="84" height="84" loading="eager" decoding="async">`
+        : esc(DX_CONFIG.asesorIniciales);
+      const stats = DX_CONFIG.stats
+        .map(([n, l]) => `<div><b>${esc(n)}</b><span>${esc(l)}</span></div>`)
+        .join('');
+      if (kicker) kicker.textContent = oferta;
+      screen.innerHTML = `
+        <span class="dx-tag">${esc(oferta)} · gratis</span>
+        <h1>${esc(h1)}</h1>
+        <p class="dx-help">${esc(help)}</p>
+        <div class="dx-advisor">
+          <div class="dx-avatar">${foto}</div>
+          <div>
+            <b>${esc(DX_CONFIG.asesorNombre)}</b>
+            <span>${esc(cargo)}</span><br>
+            <span>${esc(DX_CONFIG.clientesPropios)}</span>
+          </div>
+        </div>
+        <p class="dx-cedula">✓ ${esc(DX_CONFIG.cedula)}</p>
+        <div class="dx-stats">${stats}</div>
+        <p class="dx-facts">${esc(DX_CONFIG.despacho)} · <a href="${esc(DX_CONFIG.web)}" target="_blank" rel="noopener">${esc(DX_CONFIG.web.replace('https://', ''))}</a><br>Tus respuestas son confidenciales.</p>`;
+    }
+
     function render() {
       err.textContent = '';
       const V = visibleQuestions(ans, preset);
       const total = V.length + 1;
-      bar.style.width = Math.min(step, total) / total * 100 + '%';
-      count.textContent = step < total ? `${step + 1} de ${total}` : '';
+      bar.style.width = step < 0 ? '0%' : Math.min(step, total) / total * 100 + '%';
+      count.textContent = step >= 0 && step < total ? `${step + 1} de ${total}` : '';
       nav.hidden = step === resultStep();
-      back.hidden = step <= 0;
-      next.textContent = step === contactStep() ? 'Ver mi diagnóstico' : 'Continuar';
-      if (!started) {
-        started = true;
-        track('InicioDiagnostico', { objetivo: preset >= 0 ? OBJS[preset].key : 'general' });
+      back.hidden = step === INTRO;
+      next.hidden = false;
+      next.textContent =
+        step === INTRO ? 'Empezar mi diagnóstico' : step === contactStep() ? 'Ver mi diagnóstico' : 'Continuar';
+
+      if (step === INTRO) {
+        renderIntro();
+        return;
       }
 
       if (step < V.length) {
@@ -274,6 +346,16 @@ const {
     }
 
     async function go() {
+      if (step === INTRO) {
+        if (!started) {
+          started = true;
+          track('InicioDiagnostico', { objetivo: preset >= 0 ? OBJS[preset].key : 'general' });
+        }
+        step = 0;
+        render();
+        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
       const V = visibleQuestions(ans, preset);
       if (step < V.length) {
         const q = V[step];
@@ -393,7 +475,13 @@ const {
     }
 
     next.onclick = () => { go(); };
-    back.onclick = () => { if (step > 0) { step--; render(); } };
+    back.onclick = () => {
+      if (step > INTRO) {
+        step--;
+        render();
+        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
     render();
   }
 

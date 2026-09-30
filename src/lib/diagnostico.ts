@@ -8,6 +8,20 @@ export const DX_CONFIG = {
   aniosRetiro: 20,
   montoPlan: 4200,
   montoInicial: 2500,
+  asesorNombre: 'Michelle Ramírez Plascencia',
+  asesorIniciales: 'MR',
+  asesorFoto: '/michelle-ramirez.jpg',
+  asesorCargo: 'Asesora patrimonial · Seguros Monterrey New York Life',
+  asesorCargoEdu: 'Asesora especializada en seguros educativos · SMNYL',
+  cedula: 'Agente autorizada por la CNSF · Cédula C363191',
+  clientesPropios: 'Más de 200 clientes asesorados',
+  despacho: 'Ramírez & Plascencia · Querétaro y Celaya',
+  web: 'https://segurosrp.com',
+  stats: [
+    ['30+', 'años de experiencia del despacho'],
+    ['1,500+', 'clientes asegurados'],
+    ['$5M', 'pagados en gastos médicos en 2025'],
+  ] as [string, string][],
 };
 
 export const UNIS: [string, number][] = [
