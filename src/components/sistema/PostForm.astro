@@ -13,159 +13,736 @@ interface Props {
 
 const { post } = Astro.props;
 const isEdit = Boolean(post);
-const today = new Date().toISOString().slice(0, 10);
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Mexico_City' }).format(new Date());
+const gallerySeed = JSON.stringify(post?.gallery ?? []).replace(/</g, '\\u003c');
+const field = 'field';
 ---
 
-<form id="post-form" class="space-y-8" data-edit={isEdit ? '1' : '0'}>
-  <section>
-    <h2 class="text-lg font-bold text-rp-blue mb-3">1. Plantilla</h2>
-    <p class="text-sm text-gray-500 mb-4">
-      Así se verá el artículo. <a class="text-rp-orange underline" href="/blog/plantillas" target="_blank">Ver ejemplos con lorem ipsum</a>
-    </p>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-      {BLOG_TEMPLATES.map((id) => (
-        <label class="cursor-pointer border rounded-xl p-4 has-[:checked]:border-rp-orange has-[:checked]:bg-orange-50">
-          <input
-            type="radio"
-            name="template"
-            value={id}
-            class="sr-only"
-            required
-            checked={post ? post.template === id : id === 'hero'}
-          />
-          <span class="block font-semibold text-rp-blue">{TEMPLATE_META[id].name}</span>
-          <span class="block text-xs text-gray-500 mt-1">{TEMPLATE_META[id].summary}</span>
-        </label>
-      ))}
+<form id="post-form" class="editor-layout" data-mobile="write" data-edit={isEdit ? '1' : '0'}>
+  <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-rp-blue">{isEdit ? 'Ajusta el artículo' : 'Arma el artículo'}</h1>
+      <p class="text-sm text-slate-500 mt-1 max-w-xl">
+        Escribe con calma. A la derecha se va formando la página, igual que se verá en el blog.
+      </p>
     </div>
-  </section>
+    <div class="xl:hidden grid grid-cols-2 gap-2">
+      <button type="button" data-pane="write" class="pane-btn is-on">Escribir</button>
+      <button type="button" data-pane="preview" class="pane-btn">Así se verá</button>
+    </div>
+  </div>
 
-  <section class="grid md:grid-cols-2 gap-4">
-    <label class="block md:col-span-2">
-      <span class="text-sm font-semibold">Título</span>
-      <input name="title" required value={post?.title ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Slug (URL)</span>
-      <input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={post?.slug ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Fecha</span>
-      <input type="date" name="publishedAt" required value={post?.publishedAt?.slice(0, 10) ?? today} class="mt-1 w-full border rounded-lg px-3 py-2" />
-    </label>
-    <label class="block md:col-span-2">
-      <span class="text-sm font-semibold">Descripción SEO (140–160 caracteres)</span>
-      <textarea name="description" required maxlength="180" rows="2" class="mt-1 w-full border rounded-lg px-3 py-2">{post?.description ?? ''}</textarea>
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Autor</span>
-      <input name="author" value={post?.author ?? DEFAULT_AUTHOR} class="mt-1 w-full border rounded-lg px-3 py-2" />
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Categoría</span>
-      <select name="category" class="mt-1 w-full border rounded-lg px-3 py-2">
-        {BLOG_CATEGORIES.map((cat) => (
-          <option value={cat} selected={post?.category === cat}>{cat}</option>
-        ))}
-      </select>
-    </label>
-    <label class="block md:col-span-2">
-      <span class="text-sm font-semibold">Etiquetas (separadas por coma)</span>
-      <input name="tags" value={post?.tags?.join(', ') ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
-    </label>
-  </section>
-
-  <section class="space-y-4">
-    <h2 class="text-lg font-bold text-rp-blue">2. Medios</h2>
-    <p class="text-xs text-gray-500">JPG, PNG o WebP. Máximo 1.8 MB por archivo.</p>
-    <label class="block">
-      <span class="text-sm font-semibold">Imagen de portada (archivo o URL)</span>
-      <input type="file" name="coverFile" accept="image/*" class="mt-1 block" />
-      <input name="coverImage" placeholder="/familia.webp o https://..." value={post?.coverImage ?? ''} class="mt-2 w-full border rounded-lg px-3 py-2" />
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Texto alternativo de la portada</span>
-      <input name="coverAlt" value={post?.coverAlt ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
-    </label>
-    <div data-show="mid-image" class="hidden space-y-2">
-      <label class="block">
-        <span class="text-sm font-semibold">Imagen al centro</span>
-        <input type="file" name="midFile" accept="image/*" class="mt-1 block" />
-        <input name="midImage" value={post?.midImage ?? ''} class="mt-2 w-full border rounded-lg px-3 py-2" />
-      </label>
-    </div>
-    <div data-show="video" class="hidden">
-      <label class="block">
-        <span class="text-sm font-semibold">URL de YouTube</span>
-        <input name="videoUrl" value={post?.videoUrl ?? ''} placeholder="https://www.youtube.com/watch?v=..." class="mt-1 w-full border rounded-lg px-3 py-2" />
-      </label>
-    </div>
-    <div data-show="quote" class="hidden space-y-2">
-      <label class="block">
-        <span class="text-sm font-semibold">Cita destacada</span>
-        <textarea name="quote" rows="3" class="mt-1 w-full border rounded-lg px-3 py-2">{post?.quote ?? ''}</textarea>
-      </label>
-      <label class="block">
-        <span class="text-sm font-semibold">Autor de la cita</span>
-        <input name="quoteAuthor" value={post?.quoteAuthor ?? ''} class="mt-1 w-full border rounded-lg px-3 py-2" />
-      </label>
-    </div>
-    <div data-show="gallery" class="hidden">
-      <label class="block">
-        <span class="text-sm font-semibold">Galería (hasta 3 imágenes)</span>
-        <input type="file" name="galleryFiles" accept="image/*" multiple class="mt-1 block" />
-      </label>
-    </div>
-  </section>
-
-  <section class="space-y-4">
-    <h2 class="text-lg font-bold text-rp-blue">3. Texto</h2>
-    <label class="block">
-      <span class="text-sm font-semibold">Introducción (respuesta directa, 40–80 palabras — sirve para SEO y AI search)</span>
-      <textarea name="intro" required rows="4" class="mt-1 w-full border rounded-lg px-3 py-2">{post?.intro ?? ''}</textarea>
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Cuerpo. Usa ## para subtítulos, - para listas y **negritas**</span>
-      <textarea name="body" required rows="14" class="mt-1 w-full border rounded-lg px-3 py-2 font-mono text-sm">{post?.body ?? ''}</textarea>
-    </label>
-  </section>
-
-  <section>
-    <h2 class="text-lg font-bold text-rp-blue mb-3">4. Preguntas frecuentes (recomendado)</h2>
-    <div class="space-y-4">
-      {[0, 1, 2].map((i) => (
-        <div class="grid md:grid-cols-2 gap-3">
-          <input
-            name={`faq_q_${i}`}
-            placeholder={`Pregunta ${i + 1}`}
-            value={post?.faq?.[i]?.question ?? ''}
-            class="border rounded-lg px-3 py-2"
-          />
-          <input
-            name={`faq_a_${i}`}
-            placeholder="Respuesta"
-            value={post?.faq?.[i]?.answer ?? ''}
-            class="border rounded-lg px-3 py-2"
-          />
+  <div class="grid xl:grid-cols-[minmax(0,1fr)_minmax(340px,440px)] gap-6 items-start">
+    <div class="editor-column space-y-5">
+      <section class="panel">
+        <div class="flex items-start justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-base font-bold text-rp-blue">Estilo</h2>
+            <p class="text-sm text-slate-500 mt-1">Elige cómo se acomodan la foto, el video o la cita.</p>
+          </div>
         </div>
-      ))}
+        <div class="grid sm:grid-cols-2 gap-3">
+          {BLOG_TEMPLATES.map((id) => (
+            <div class="style-card">
+              <label class="cursor-pointer block">
+                <input
+                  type="radio"
+                  name="template"
+                  value={id}
+                  class="sr-only"
+                  required
+                  checked={post ? post.template === id : id === 'hero'}
+                />
+                <div class="wire" aria-hidden="true">
+                  {id === 'hero' && (
+                    <div>
+                      <div class="h-7 rounded-md bg-slate-300 mb-1.5"></div>
+                      <div class="h-1.5 w-2/3 rounded bg-slate-400 mb-1"></div>
+                      <div class="h-1 rounded bg-slate-200"></div>
+                    </div>
+                  )}
+                  {id === 'split' && (
+                    <div class="grid grid-cols-2 gap-1.5 h-[52px]">
+                      <div class="rounded-md bg-slate-300"></div>
+                      <div class="space-y-1 pt-1">
+                        <div class="h-1.5 rounded bg-slate-400"></div>
+                        <div class="h-1 rounded bg-slate-200"></div>
+                        <div class="h-1 w-4/5 rounded bg-slate-200"></div>
+                      </div>
+                    </div>
+                  )}
+                  {id === 'mid-image' && (
+                    <div>
+                      <div class="h-1 rounded bg-slate-200 mb-1"></div>
+                      <div class="h-1 w-4/5 rounded bg-slate-200 mb-1.5"></div>
+                      <div class="h-5 rounded-md bg-slate-300 mb-1.5"></div>
+                      <div class="h-1 rounded bg-slate-200"></div>
+                    </div>
+                  )}
+                  {id === 'video' && (
+                    <div>
+                      <div class="h-7 rounded-md bg-slate-800 text-white text-[10px] flex items-center justify-center mb-1.5">▶</div>
+                      <div class="h-1 rounded bg-slate-200"></div>
+                    </div>
+                  )}
+                  {id === 'gallery' && (
+                    <div>
+                      <div class="grid grid-cols-3 gap-1 mb-1.5">
+                        <div class="h-6 rounded bg-slate-300"></div>
+                        <div class="h-6 rounded bg-slate-400"></div>
+                        <div class="h-6 rounded bg-slate-300"></div>
+                      </div>
+                      <div class="h-1 rounded bg-slate-200"></div>
+                    </div>
+                  )}
+                  {id === 'quote' && (
+                    <div>
+                      <div class="text-rp-orange font-serif text-lg leading-none">“</div>
+                      <div class="h-1 rounded bg-slate-300 mb-1"></div>
+                      <div class="h-5 rounded-md bg-slate-200"></div>
+                    </div>
+                  )}
+                </div>
+                <span class="block font-semibold text-rp-blue text-sm mt-2">{TEMPLATE_META[id].name}</span>
+                <span class="block text-xs text-slate-500 mt-1 leading-relaxed">{TEMPLATE_META[id].summary}</span>
+              </label>
+              <button type="button" class="mt-2 text-xs font-semibold text-rp-orange hover:underline" data-preview-template={id}>
+                Ver ejemplo
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="panel space-y-4">
+        <h2 class="text-base font-bold text-rp-blue">Datos</h2>
+        <label class="block">
+          <span class="label">Título</span>
+          <input name="title" required value={post?.title ?? ''} placeholder="Cómo elegir un seguro de vida para tu familia" class={field} />
+        </label>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="label">Dirección del artículo</span>
+            <input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={post?.slug ?? ''} class={field} />
+            <span class="hint">Se arma sola con el título. Cámbiala si quieres otra URL.</span>
+          </label>
+          <label class="block">
+            <span class="label">Fecha de publicación</span>
+            <input type="date" name="publishedAt" required value={post?.publishedAt?.slice(0, 10) ?? today} class={field} />
+          </label>
+        </div>
+        <label class="block">
+          <span class="label flex justify-between gap-3">
+            Descripción para buscadores
+            <span id="desc-count" class="font-normal text-slate-400">0 caracteres</span>
+          </span>
+          <textarea name="description" required maxlength="180" rows="2" placeholder="Una frase clara de lo que la persona va a entender al leerlo." class={field}>{post?.description ?? ''}</textarea>
+          <span class="hint">Lo ideal son 140–160 caracteres. No se ve en el artículo, sí en Google.</span>
+        </label>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="label">Autor</span>
+            <input name="author" value={post?.author ?? DEFAULT_AUTHOR} class={field} />
+          </label>
+          <label class="block">
+            <span class="label">Categoría</span>
+            <select name="category" class={field}>
+              {BLOG_CATEGORIES.map((cat) => (
+                <option value={cat} selected={post?.category === cat}>{cat}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <label class="block">
+          <span class="label">Etiquetas</span>
+          <input name="tags" value={post?.tags?.join(', ') ?? ''} placeholder="vida, familia, guía" class={field} />
+          <span class="hint">Sepáralas con coma.</span>
+        </label>
+      </section>
+
+      <section class="panel space-y-4">
+        <div>
+          <h2 class="text-base font-bold text-rp-blue">Texto</h2>
+          <p class="text-sm text-slate-500 mt-1">La introducción abre el artículo. El cuerpo lleva subtítulos y listas.</p>
+        </div>
+        <label class="block">
+          <span class="label flex justify-between gap-3">
+            Introducción
+            <span id="intro-count" class="font-normal text-slate-400">0 palabras</span>
+          </span>
+          <textarea name="intro" required rows="4" placeholder="Responde de una vez, en dos o tres frases, qué va a encontrar quien lea." class={field}>{post?.intro ?? ''}</textarea>
+          <span class="hint">Entre 40 y 80 palabras se lee bien y ayuda a que te encuentren.</span>
+        </label>
+        <label class="block">
+          <span class="label">Cuerpo del artículo</span>
+          <textarea
+            name="body"
+            required
+            rows="14"
+            class={`${field} font-mono text-sm leading-relaxed`}
+            placeholder={'## Por qué importa\n\nCuéntalo con calma.\n\n## Puntos clave\n\n- Primer punto\n- Segundo punto'}
+          >{post?.body ?? ''}</textarea>
+          <span class="hint">## subtítulo · - lista · **negrita**</span>
+        </label>
+      </section>
+
+      <section class="panel space-y-4">
+        <div>
+          <h2 class="text-base font-bold text-rp-blue">Fotos y extras</h2>
+          <p class="text-sm text-slate-500 mt-1">Solo verás lo que usa el estilo elegido. JPG, PNG o WebP, hasta 1.8 MB.</p>
+        </div>
+        <label class="block">
+          <span class="label">Imagen principal</span>
+          <input type="file" name="coverFile" accept="image/*" class="mt-1 block text-sm" />
+          <input name="coverImage" placeholder="/familia.webp o una URL" value={post?.coverImage ?? ''} class={`${field} mt-2`} />
+        </label>
+        <label class="block">
+          <span class="label">Qué muestra esa imagen</span>
+          <input name="coverAlt" value={post?.coverAlt ?? ''} placeholder="Familia caminando junta" class={field} />
+        </label>
+        <div data-show="mid-image" class:list={['space-y-2', { hidden: (post?.template ?? 'hero') !== 'mid-image' }]}>
+          <label class="block">
+            <span class="label">Imagen a la mitad del texto</span>
+            <input type="file" name="midFile" accept="image/*" class="mt-1 block text-sm" />
+            <input name="midImage" value={post?.midImage ?? ''} placeholder="URL o déjala vacía si subes archivo" class={`${field} mt-2`} />
+          </label>
+        </div>
+        <div data-show="video" class:list={[{ hidden: (post?.template ?? 'hero') !== 'video' }]}>
+          <label class="block">
+            <span class="label">Video de YouTube</span>
+            <input name="videoUrl" value={post?.videoUrl ?? ''} placeholder="https://www.youtube.com/watch?v=..." class={field} />
+          </label>
+        </div>
+        <div data-show="quote" class:list={['space-y-3', { hidden: (post?.template ?? 'hero') !== 'quote' }]}>
+          <label class="block">
+            <span class="label">Frase destacada</span>
+            <textarea name="quote" rows="3" placeholder="La frase que quieres que se lea primero." class={field}>{post?.quote ?? ''}</textarea>
+          </label>
+          <label class="block">
+            <span class="label">Quién la dice</span>
+            <input name="quoteAuthor" value={post?.quoteAuthor ?? ''} placeholder="Nombre del asesor" class={field} />
+          </label>
+        </div>
+        <div data-show="gallery" class:list={[{ hidden: (post?.template ?? 'hero') !== 'gallery' }]}>
+          <label class="block">
+            <span class="label">Galería, hasta 3 imágenes</span>
+            <input type="file" name="galleryFiles" accept="image/*" multiple class="mt-1 block text-sm" />
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 class="text-base font-bold text-rp-blue mb-1">Preguntas frecuentes</h2>
+        <p class="text-sm text-slate-500 mb-4">Opcional. Si las llenas, aparecen al final del artículo.</p>
+        <div class="space-y-3">
+          {[0, 1, 2].map((i) => (
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3 grid gap-2">
+              <input
+                name={`faq_q_${i}`}
+                placeholder={`Pregunta ${i + 1}`}
+                value={post?.faq?.[i]?.question ?? ''}
+                class={field}
+              />
+              <input
+                name={`faq_a_${i}`}
+                placeholder="Respuesta corta"
+                value={post?.faq?.[i]?.answer ?? ''}
+                class={field}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div class="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+        <label class="flex items-center gap-2 text-sm text-slate-600">
+          <input type="checkbox" name="draft" checked={post?.draft === true} class="accent-rp-orange" />
+          Guardar como borrador
+        </label>
+        <p id="form-status" class="text-sm sm:ml-auto min-h-[1.25rem]" aria-live="polite"></p>
+        <button type="submit" class="bg-rp-orange text-white font-semibold px-5 py-2.5 rounded-full hover:bg-orange-600 disabled:opacity-60">
+          {isEdit ? 'Guardar cambios' : 'Publicar'}
+        </button>
+      </div>
     </div>
-  </section>
 
-  <label class="flex items-center gap-2">
-    <input type="checkbox" name="draft" checked={post?.draft === true} />
-    <span>Guardar como borrador (no aparece en /blog hasta publicar)</span>
-  </label>
-
-  <p id="form-status" class="text-sm min-h-[1.5rem]"></p>
-  <button type="submit" class="bg-rp-orange text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-600">
-    {isEdit ? 'Guardar cambios' : 'Publicar en GitHub'}
-  </button>
+    <aside class="preview-column">
+      <div class="preview-sheet">
+        <div class="preview-bar">
+          <div>
+            <p class="text-[11px] uppercase tracking-wide text-slate-400 font-semibold">Vista previa</p>
+            <p id="preview-style-name" class="text-sm font-semibold text-rp-blue">Imagen arriba</p>
+          </div>
+          <span class="text-[11px] text-slate-400">Se actualiza al escribir</span>
+        </div>
+        <div id="live-preview" class="live-article"></div>
+      </div>
+    </aside>
+  </div>
 </form>
+<script type="application/json" id="gallery-seed" set:html={gallerySeed} />
+
+<style>
+  .panel {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1.15rem 1.15rem 1.25rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+  .label {
+    display: flex;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #334155;
+  }
+  .hint {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+  .field {
+    margin-top: 0.35rem;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 0.55rem 0.75rem;
+    background: white;
+    color: #0f172a;
+  }
+  .field:focus {
+    outline: 2px solid rgba(254, 143, 52, 0.45);
+    border-color: #fe8f34;
+  }
+  .style-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.9rem;
+    padding: 0.75rem;
+    background: white;
+  }
+  .style-card:has(:checked) {
+    border-color: #fe8f34;
+    background: #fff7ed;
+    box-shadow: 0 0 0 3px rgba(254, 143, 52, 0.18);
+  }
+  .wire {
+    height: 4.4rem;
+    border-radius: 0.7rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 0.45rem;
+    overflow: hidden;
+  }
+  .pane-btn {
+    border-radius: 999px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: white;
+    color: #00305c;
+    border: 1px solid #e2e8f0;
+  }
+  .pane-btn.is-on {
+    background: #00305c;
+    color: white;
+    border-color: #00305c;
+  }
+  .preview-sheet {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 48, 92, 0.06);
+  }
+  .preview-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    background: #f8fafc;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  @media (min-width: 1280px) {
+    .preview-sheet {
+      position: sticky;
+      top: 1rem;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+    }
+  }
+</style>
+
+<style is:global>
+  .live-article {
+    padding: 1.1rem 1.1rem 1.4rem;
+    color: #334155;
+  }
+  .live-article .ghost {
+    color: #94a3b8;
+    font-style: italic;
+  }
+  .live-article .ph {
+    border: 1px dashed #cbd5e1;
+    background: #f8fafc;
+    color: #94a3b8;
+    border-radius: 0.9rem;
+    min-height: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+  .live-article h1 {
+    font-size: 1.65rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #00305c;
+    margin-bottom: 0.6rem;
+  }
+  .live-article .kicker {
+    color: #fe8f34;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+  }
+  .live-article .meta {
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+  .live-article .intro {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  .live-article img.cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .live-article .split {
+    display: grid;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .live-article .quote {
+    border-left: 4px solid #fe8f34;
+    background: #f5f5f5;
+    border-radius: 0 0.8rem 0.8rem 0;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .live-article .quote p {
+    color: #00305c;
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+  .live-article .quote footer {
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+  .live-article .blog-body h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #00305c;
+    margin: 1.1rem 0 0.4rem;
+  }
+  .live-article .blog-body h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #00305c;
+    margin: 0.9rem 0 0.35rem;
+  }
+  .live-article .blog-body p {
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
+    color: #374151;
+  }
+  .live-article .blog-body ul,
+  .live-article .blog-body ol {
+    margin: 0 0 0.75rem 1.1rem;
+    color: #374151;
+  }
+  .live-article .blog-body li {
+    margin-bottom: 0.25rem;
+  }
+  .live-article .blog-body a {
+    color: #fe8f34;
+    font-weight: 600;
+  }
+  .live-article .faq {
+    margin-top: 1.1rem;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 0.9rem;
+  }
+  .live-article .faq h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #00305c;
+    margin-bottom: 0.55rem;
+  }
+  .live-article details {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 0.65rem 0.8rem;
+    margin-bottom: 0.45rem;
+    background: white;
+  }
+  .live-article summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #00305c;
+  }
+  .live-article .cta {
+    margin-top: 1rem;
+    background: #00305c;
+    color: white;
+    border-radius: 0.9rem;
+    padding: 1rem;
+  }
+  .live-article .cta h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .live-article .cta p {
+    color: #dbeafe;
+    font-size: 0.85rem;
+    margin-bottom: 0.7rem;
+  }
+  .live-article .cta span {
+    display: inline-block;
+    background: #fe8f34;
+    color: white;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    padding: 0.4rem 0.75rem;
+  }
+  @media (max-width: 1279px) {
+    form.editor-layout[data-mobile='write'] .preview-column {
+      display: none;
+    }
+    form.editor-layout[data-mobile='preview'] .editor-column {
+      display: none;
+    }
+  }
+</style>
 
 <script>
+  import { renderBlogBody } from '../../lib/blog-markdown';
+
+  const NAMES: Record<string, string> = {
+    hero: 'Imagen arriba',
+    'mid-image': 'Imagen al centro',
+    video: 'Video destacado',
+    gallery: 'Galería',
+    quote: 'Cita destacada',
+    split: 'Imagen lateral',
+  };
+
   const form = document.getElementById('post-form') as HTMLFormElement | null;
-  if (form) {
+  const previewRoot = document.getElementById('live-preview');
+
+  function val(name: string) {
+    const el = form?.querySelector(`[name="${name}"]`) as HTMLInputElement | HTMLTextAreaElement | null;
+    return el?.value?.trim() ?? '';
+  }
+
+  function safeSrc(value: string) {
+    if (value.startsWith('blob:') || value.startsWith('/') || value.startsWith('https://') || value.startsWith('http://')) {
+      return value;
+    }
+    return '';
+  }
+
+  function formatWhen(iso: string) {
+    if (!iso) return 'Fecha';
+    const date = new Date(`${iso.slice(0, 10)}T12:00:00`);
+    if (Number.isNaN(date.getTime())) return iso;
+    return new Intl.DateTimeFormat('es-MX', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'America/Mexico_City',
+    }).format(date);
+  }
+
+  function youtubeId(url: string) {
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);
+    return match?.[1] ?? '';
+  }
+
+  function words(text: string) {
+    return text.trim().split(/\s+/).filter(Boolean).length;
+  }
+
+  function el(tag: string, className?: string, text?: string) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function ghost(tag: string, className: string, text: string) {
+    const node = el(tag, `${className} ghost`, text);
+    return node;
+  }
+
+  function imageOrPlaceholder(src: string, alt: string, className: string, empty: string) {
+    const safe = safeSrc(src);
+    if (!safe) return el('div', 'ph', empty);
+    const img = document.createElement('img');
+    img.src = safe;
+    img.alt = alt;
+    img.className = className;
+    return img;
+  }
+
+  type SeedImage = { src: string; alt: string };
+  const blobs: { cover?: string; mid?: string; gallery: string[] } = { gallery: [] };
+  let savedGallery: SeedImage[] = [];
+  try {
+    savedGallery = JSON.parse(document.getElementById('gallery-seed')?.textContent || '[]');
+  } catch {
+    savedGallery = [];
+  }
+
+  function renderPreview() {
+    if (!form || !previewRoot) return;
+    const template = (form.querySelector('[name="template"]:checked') as HTMLInputElement)?.value || 'hero';
+    const title = val('title');
+    const intro = val('intro');
+    const body = val('body');
+    const category = val('category') || 'Guías';
+    const author = val('author') || 'Ramírez & Plascencia';
+    const dateLabel = formatWhen(val('publishedAt'));
+    const minutes = Math.max(1, Math.round(words(`${intro} ${body}`) / 200) || 1);
+    const cover = blobs.cover || val('coverImage');
+    const coverAlt = val('coverAlt') || title || 'Imagen del artículo';
+    const styleName = document.getElementById('preview-style-name');
+    if (styleName) styleName.textContent = NAMES[template] || template;
+
+    const desc = val('description');
+    const descCount = document.getElementById('desc-count');
+    if (descCount) {
+      descCount.textContent = `${desc.length} caracteres`;
+      descCount.className = desc.length >= 140 && desc.length <= 160 ? 'font-normal text-green-600' : 'font-normal text-slate-400';
+    }
+    const introCount = document.getElementById('intro-count');
+    if (introCount) {
+      const n = intro ? words(intro) : 0;
+      introCount.textContent = `${n} palabras`;
+      introCount.className = n >= 40 && n <= 80 ? 'font-normal text-green-600' : 'font-normal text-slate-400';
+    }
+
+    previewRoot.replaceChildren();
+
+    const header = el('header');
+    header.append(el('p', 'kicker', category));
+    header.append(title ? el('h1', '', title) : ghost('h1', '', 'Tu título aparecerá aquí'));
+    header.append(el('p', 'meta', `${author} · ${dateLabel} · ${minutes} min de lectura`));
+
+    const introNode = intro ? el('p', 'intro', intro) : ghost('p', 'intro', 'La introducción se verá aquí, un poco más grande que el resto.');
+
+    if (template === 'hero') {
+      previewRoot.append(imageOrPlaceholder(cover, coverAlt, 'cover', 'La imagen de portada aparecerá aquí'));
+      previewRoot.append(header, introNode);
+    } else if (template === 'split') {
+      const split = el('div', 'split');
+      split.append(imageOrPlaceholder(cover, coverAlt, 'cover', 'La imagen lateral aparecerá aquí'));
+      header.append(introNode);
+      split.append(header);
+      previewRoot.append(split);
+    } else {
+      previewRoot.append(header);
+      if (template === 'video') {
+        const id = youtubeId(val('videoUrl'));
+        if (id) {
+          previewRoot.append(imageOrPlaceholder(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`, 'Video', 'cover', ''));
+        } else {
+          previewRoot.append(el('div', 'ph', 'Pega un enlace de YouTube y el video se verá aquí'));
+        }
+      }
+      if (template === 'quote') {
+        const quote = val('quote');
+        const block = el('blockquote', 'quote');
+        block.append(quote ? el('p', '', `“${quote}”`) : ghost('p', '', '“La frase destacada se verá aquí.”'));
+        const who = val('quoteAuthor');
+        if (who) block.append(el('footer', '', `— ${who}`));
+        previewRoot.append(block);
+      }
+      previewRoot.append(introNode);
+      if (template === 'mid-image') {
+        previewRoot.append(imageOrPlaceholder(blobs.mid || val('midImage'), coverAlt, 'cover', 'La imagen del centro aparecerá aquí'));
+      }
+      if (template === 'gallery') {
+        const shots = blobs.gallery.length
+          ? blobs.gallery.map((src) => ({ src, alt: 'Imagen de la galería' }))
+          : savedGallery;
+        if (!shots.length) {
+          previewRoot.append(el('div', 'ph', 'Las fotos de la galería aparecerán aquí'));
+        } else {
+          const grid = el('div', 'grid grid-cols-3 gap-2 mb-4');
+          shots.slice(0, 3).forEach((shot) => {
+            const img = document.createElement('img');
+            img.src = safeSrc(shot.src);
+            img.alt = shot.alt;
+            img.className = 'w-full h-20 object-cover rounded-lg';
+            if (img.src) grid.append(img);
+          });
+          previewRoot.append(grid);
+        }
+      }
+      if (template === 'quote') {
+        previewRoot.append(imageOrPlaceholder(cover, coverAlt, 'cover', 'El retrato o la foto de la cita aparecerá aquí'));
+      }
+    }
+
+    const bodyWrap = el('div', 'blog-body');
+    if (body) bodyWrap.innerHTML = renderBlogBody(body);
+    else bodyWrap.append(ghost('p', '', 'Los subtítulos, listas y párrafos se arman aquí mientras escribes.'));
+    previewRoot.append(bodyWrap);
+
+    const faqs = [0, 1, 2]
+      .map((i) => ({ q: val(`faq_q_${i}`), a: val(`faq_a_${i}`) }))
+      .filter((item) => item.q && item.a);
+    if (faqs.length) {
+      const section = el('section', 'faq');
+      section.append(el('h2', '', 'Preguntas frecuentes'));
+      faqs.forEach((item) => {
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        summary.textContent = item.q;
+        const answer = el('p', 'mt-2 text-sm text-slate-600', item.a);
+        details.append(summary, answer);
+        section.append(details);
+      });
+      previewRoot.append(section);
+    }
+
+    const cta = el('aside', 'cta');
+    cta.append(el('h2', '', '¿Quieres una cotización a tu medida?'));
+    cta.append(el('p', '', 'Este bloque cierra todos los artículos. No tienes que escribirlo.'));
+    cta.append(el('span', '', 'Hablar con un asesor'));
+    previewRoot.append(cta);
+  }
+
+  if (form && previewRoot) {
     const title = form.querySelector('[name="title"]') as HTMLInputElement;
     const slug = form.querySelector('[name="slug"]') as HTMLInputElement;
     const isEdit = form.dataset.edit === '1';
@@ -189,12 +766,61 @@ const today = new Date().toISOString().slice(0, 10);
 
     function syncTemplate() {
       const selected = (form.querySelector('[name="template"]:checked') as HTMLInputElement)?.value;
-      form.querySelectorAll<HTMLElement>('[data-show]').forEach((el) => {
-        el.classList.toggle('hidden', el.dataset.show !== selected);
+      form.querySelectorAll<HTMLElement>('[data-show]').forEach((node) => {
+        node.classList.toggle('hidden', node.dataset.show !== selected);
       });
     }
-    form.querySelectorAll('[name="template"]').forEach((el) => el.addEventListener('change', syncTemplate));
+
+    function watchFile(name: string, kind: 'cover' | 'mid' | 'gallery') {
+      const input = form.querySelector(`[name="${name}"]`) as HTMLInputElement | null;
+      input?.addEventListener('change', () => {
+        if (kind === 'gallery') {
+          blobs.gallery.forEach((url) => URL.revokeObjectURL(url));
+          blobs.gallery = [...(input.files || [])].slice(0, 3).map((file) => URL.createObjectURL(file));
+        } else {
+          if (blobs[kind]) URL.revokeObjectURL(blobs[kind]);
+          const file = input.files?.[0];
+          blobs[kind] = file ? URL.createObjectURL(file) : undefined;
+        }
+        renderPreview();
+      });
+    }
+    watchFile('coverFile', 'cover');
+    watchFile('midFile', 'mid');
+    watchFile('galleryFiles', 'gallery');
+
+    let frame = 0;
+    const schedule = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        syncTemplate();
+        renderPreview();
+      });
+    };
+    form.addEventListener('input', schedule);
+    form.addEventListener('change', schedule);
     syncTemplate();
+    renderPreview();
+
+    form.querySelectorAll<HTMLButtonElement>('[data-pane]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const pane = button.dataset.pane === 'preview' ? 'preview' : 'write';
+        form.dataset.mobile = pane;
+        form.querySelectorAll<HTMLButtonElement>('[data-pane]').forEach((peer) => {
+          peer.classList.toggle('is-on', peer === button);
+        });
+      });
+    });
+
+    form.querySelectorAll<HTMLButtonElement>('[data-preview-template]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.previewTemplate;
+        const radio = form.querySelector(`[name="template"][value="${id}"]`) as HTMLInputElement | null;
+        if (radio) radio.checked = true;
+        schedule();
+        document.dispatchEvent(new CustomEvent('open-template-example', { detail: { id } }));
+      });
+    });
 
     async function fileToPayload(file: File, field: string) {
       const data = await new Promise<string>((resolve, reject) => {

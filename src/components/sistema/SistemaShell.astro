@@ -1,10 +1,14 @@
 ---
+import TemplateExamples from './TemplateExamples.astro';
+
 interface Props {
   title?: string;
+  wide?: boolean;
 }
 
-const { title = 'Sistema SegurosRP' } = Astro.props;
+const { title = 'Sistema SegurosRP', wide = false } = Astro.props;
 const path = Astro.url.pathname;
+const frame = wide ? 'max-w-[1440px]' : 'max-w-6xl';
 const linkClass = (href: string) =>
   path === href || (href !== '/sistema' && path.startsWith(href))
     ? 'text-rp-orange'
@@ -13,16 +17,16 @@ const linkClass = (href: string) =>
 
 <div class="min-h-screen bg-slate-100 text-slate-800">
   <header class="bg-rp-blue text-white">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+    <div class:list={[frame, 'mx-auto px-4 py-4 flex items-center justify-between gap-4']}>
       <div>
         <a href="/sistema" class="font-bold text-lg">Sistema SegurosRP</a>
         <p class="text-blue-200 text-sm">{title}</p>
       </div>
-      <nav class="flex items-center gap-3 text-sm">
+      <nav class="flex flex-wrap items-center justify-end gap-x-3 gap-y-2 text-sm">
         <a href="/sistema/leads" class={linkClass('/sistema/leads')}>Leads</a>
         <a href="/sistema" class={path === '/sistema' ? 'text-rp-orange' : 'hover:text-rp-orange'}>Artículos</a>
         <a href="/sistema/nuevo" class={linkClass('/sistema/nuevo')}>Nuevo</a>
-        <a href="/blog/plantillas" class="hover:text-rp-orange" target="_blank" rel="noopener">Plantillas</a>
+        <button type="button" id="open-template-gallery" class="bg-transparent border-0 p-0 cursor-pointer hover:text-rp-orange">Plantillas</button>
         <a href="/blog" class="hover:text-rp-orange" target="_blank" rel="noopener">Ver blog</a>
         <form method="post" action="/api/sistema/logout">
           <button class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-md" type="submit">Salir</button>
@@ -30,7 +34,8 @@ const linkClass = (href: string) =>
       </nav>
     </div>
   </header>
-  <main class="max-w-6xl mx-auto px-4 py-8">
+  <main class:list={[frame, 'mx-auto px-4 py-8']}>
     <slot />
   </main>
+  <TemplateExamples />
 </div>

@@ -80,7 +80,7 @@ export const TEMPLATE_PREVIEWS: Record<BlogTemplate, BlogPost> = {
     ],
   }),
   quote: base('quote', {
-    coverImage: '/michelle-ramirez.webp',
+    coverImage: '/familia.webp',
     quote:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit: proteger a la familia empieza por una decisión clara, no por un folleto.',
     quoteAuthor: 'Asesor de ejemplo — Ramírez & Plascencia',

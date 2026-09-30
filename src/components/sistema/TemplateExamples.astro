@@ -1,0 +1,172 @@
+---
+import BlogArticle from '../blog/BlogArticle.astro';
+import { BLOG_TEMPLATES, TEMPLATE_META } from '../../lib/blog';
+import { TEMPLATE_PREVIEWS } from '../../lib/blog-templates';
+---
+
+<dialog id="template-examples" class="tpl-dialog" aria-labelledby="tpl-dialog-title">
+  <div class="tpl-head">
+    <button type="button" data-tpl-back class="tpl-back" hidden>← Estilos</button>
+    <div class="min-w-0">
+      <p class="text-[11px] uppercase tracking-wide text-slate-400 font-semibold">Plantillas</p>
+      <h2 id="tpl-dialog-title" class="text-lg font-bold text-rp-blue truncate">Estilos de artículo</h2>
+    </div>
+    <button type="button" data-tpl-close class="tpl-close">Cerrar</button>
+  </div>
+  <div class="tpl-scroll">
+    <div data-tpl-grid>
+      <p class="text-sm text-slate-500 mb-5 max-w-2xl">
+        Cada estilo ordena fotos, video o cita de otra forma. Abre un ejemplo para verlo con texto de relleno. En el editor, tu artículo usa el mismo orden con lo que tú escribas.
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {BLOG_TEMPLATES.map((id) => (
+          <button type="button" class="tpl-card" data-open-template={id}>
+            <img src={TEMPLATE_PREVIEWS[id].coverImage} alt="" class="h-28 w-full object-cover" />
+            <span class="block p-4 text-left">
+              <span class="block font-semibold text-rp-blue">{TEMPLATE_META[id].name}</span>
+              <span class="block text-xs text-slate-500 mt-1 leading-relaxed">{TEMPLATE_META[id].summary}</span>
+              <span class="block mt-3 text-xs font-semibold text-rp-orange">Ver ejemplo</span>
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+    <div data-tpl-stage hidden>
+      {BLOG_TEMPLATES.map((id) => (
+        <div data-tpl-example={id} data-tpl-name={TEMPLATE_META[id].name} hidden>
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-8">
+            <BlogArticle post={TEMPLATE_PREVIEWS[id]} example />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .tpl-dialog {
+    width: min(980px, calc(100vw - 1.5rem));
+    max-height: min(92vh, 940px);
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 1.25rem;
+    box-shadow: 0 24px 80px rgba(0, 24, 48, 0.28);
+  }
+  .tpl-dialog::backdrop {
+    background: rgba(0, 20, 40, 0.62);
+  }
+  .tpl-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .tpl-scroll {
+    max-height: calc(92vh - 4.75rem);
+    overflow: auto;
+    padding: 1.25rem;
+    background: #f1f5f9;
+  }
+  .tpl-close,
+  .tpl-back {
+    border: 0;
+    background: #f1f5f9;
+    color: #00305c;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+  }
+  .tpl-close {
+    margin-left: auto;
+  }
+  .tpl-close:hover,
+  .tpl-back:hover {
+    background: #e2e8f0;
+  }
+  .tpl-card {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tpl-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 48, 92, 0.08);
+  }
+</style>
+
+<script>
+  const dialog = document.getElementById('template-examples') as HTMLDialogElement | null;
+  const grid = dialog?.querySelector<HTMLElement>('[data-tpl-grid]');
+  const stage = dialog?.querySelector<HTMLElement>('[data-tpl-stage]');
+  const title = document.getElementById('tpl-dialog-title');
+  const back = dialog?.querySelector<HTMLButtonElement>('[data-tpl-back]');
+  const panels = dialog ? [...dialog.querySelectorAll<HTMLElement>('[data-tpl-example]')] : [];
+
+  function showGrid() {
+    if (!grid || !stage || !title || !back) return;
+    grid.hidden = false;
+    stage.hidden = true;
+    back.hidden = true;
+    title.textContent = 'Estilos de artículo';
+    panels.forEach((panel) => {
+      panel.hidden = true;
+    });
+  }
+
+  function showExample(id: string) {
+    if (!grid || !stage || !title || !back || !dialog) return;
+    const match = panels.find((panel) => panel.dataset.tplExample === id);
+    if (!match) {
+      showGrid();
+      return;
+    }
+    grid.hidden = true;
+    stage.hidden = false;
+    back.hidden = false;
+    title.textContent = match.dataset.tplName || 'Ejemplo';
+    panels.forEach((panel) => {
+      panel.hidden = panel !== match;
+    });
+    dialog.querySelector('.tpl-scroll')?.scrollTo(0, 0);
+  }
+
+  function openTemplates(id?: string) {
+    if (!dialog) return;
+    if (id) showExample(id);
+    else showGrid();
+    if (!dialog.open) dialog.showModal();
+  }
+
+  document.getElementById('open-template-gallery')?.addEventListener('click', () => openTemplates());
+  back?.addEventListener('click', showGrid);
+  dialog?.querySelector('[data-tpl-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog?.querySelectorAll<HTMLButtonElement>('[data-open-template]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.openTemplate;
+      if (id) showExample(id);
+    });
+  });
+
+  document.addEventListener('open-template-example', (event) => {
+    const id = (event as CustomEvent<{ id?: string }>).detail?.id;
+    openTemplates(id);
+  });
+</script>

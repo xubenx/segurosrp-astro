@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SistemaShell from '../../components/sistema/SistemaShell.astro';
 import { listPosts } from '../../lib/github-content';
-import { formatDate } from '../../lib/blog';
+import { formatDate, TEMPLATE_META, type BlogTemplate } from '../../lib/blog';
 
 const posts = await listPosts();
 ---
@@ -29,7 +29,7 @@ const posts = await listPosts();
       Al guardar, el archivo se escribe en GitHub y Vercel vuelve a desplegar el sitio. No hace falta que un desarrollador publique el contenido.
     </p>
     {posts.length === 0 ? (
-      <p class="text-gray-600">Aún no hay artículos. Crea el primero o revisa las <a class="text-rp-orange underline" href="/blog/plantillas">plantillas</a>.</p>
+      <p class="text-gray-600">Aún no hay artículos. Crea el primero y, si quieres comparar estilos, ábrelos en Plantillas.</p>
     ) : (
       <div class="overflow-x-auto bg-white rounded-xl shadow">
         <table class="w-full text-sm">
@@ -46,7 +46,7 @@ const posts = await listPosts();
             {posts.map((post) => (
               <tr class="border-t">
                 <td class="px-4 py-3 font-medium">{post.title}</td>
-                <td class="px-4 py-3">{post.template}</td>
+                <td class="px-4 py-3">{TEMPLATE_META[post.template as BlogTemplate]?.name ?? post.template}</td>
                 <td class="px-4 py-3">{post.draft ? 'Borrador' : 'Publicado'}</td>
                 <td class="px-4 py-3">{formatDate(post.publishedAt)}</td>
                 <td class="px-4 py-3 text-right space-x-3">
