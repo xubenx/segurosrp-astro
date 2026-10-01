@@ -30,9 +30,7 @@ const getEmailTemplate = () => `
                     <table bgcolor="#00305c" width="100%" style="background-color: rgb(0, 48, 92); width: 100%; border-spacing: 0">
                         <tbody>
                             <tr>
-                                <td width="50%" style="padding: 10px 15px; width: 50%" align="left">
-                                    <img style="border: 0; max-width: 130px; display: block" width="130" alt="Logo Seguros Monterrey New York Life" src="https://segurosrp.com/nyl-white.png">
-                                </td>
+
                                 <td width="50%" style="padding: 10px 15px; width: 50%" align="right">
                                     <img style="border: 0; max-width: 110px; display: block" width="110" alt="Logo Despacho" src="https://segurosrp.com/rp_blancos_flip.png">
                                 </td>
