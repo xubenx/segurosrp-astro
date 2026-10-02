@@ -85,16 +85,7 @@ const getEmailTemplate = () => `
             </tr>
             <tr>
                 <td align="center" bgcolor="#ededed" style="background-color: rgb(237, 237, 237); padding: 20px 30px; text-align: center">
-                    <p style="margin: 0px;">
-                        <span class="colour" style="color:rgb(85, 85, 85)">
-                            <b>
-                                <span class="size" style="font-size: 14px; margin: 0px;">
-                                    Seguros Monterrey New York Life
-                                </span>
-                            </b>
-                        </span>
-                        <br>
-                    </p>
+                    
                     <p style="margin: 5px 0px 10px;">
                         <span class="colour" style="color:rgb(85, 85, 85)">
                             <span class="size" style="font-size: 13px; margin: 5px 0px 10px;">
@@ -160,9 +151,9 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Configurar el email
     const mailOptions = {
-      from: `"Seguros Monterrey New York Life" <${import.meta.env.FROM_EMAIL}>`,
+      from: `"Despacho Ramirez y Plascencia" <${import.meta.env.FROM_EMAIL}>`,
       to: email,
-      subject: 'Confirmación de Solicitud - Seguros Monterrey New York Life',
+      subject: 'Despacho Ramirez y Plascencia - Confirmación de Solicitud',
       html: getEmailTemplate(),
     };
 
