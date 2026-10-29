@@ -176,8 +176,9 @@ const advisors = [
           </p>
             <a 
               href="https://wa.me/524461354113?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Segubeca%20para%20asegurar%20la%20educación%20de%20mi%20hijo" 
-              target="_blank",
+              target="_blank"
               id="segubeca_whatsapp"
+              data-wa-self-tracked="segubeca_whatsapp"
               onclick="
                 console.log('Click en WhatsApp - Enviando evento segubeca_whatsapp');
                 
@@ -189,8 +190,8 @@ const advisors = [
                 }
                 
                 // Enviar evento a dataLayer para GTM
-                if (typeof window.dataLayer !== 'undefined') {
-                  window.dataLayer.push({
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
                     'event': 'segubeca_whatsapp',
                     'event_category': 'conversion',
                     'event_label': 'Segubeca WhatsApp Contact',
@@ -198,7 +199,6 @@ const advisors = [
                     'currency': 'MXN'
                   });
                   console.log('Evento segubeca_whatsapp enviado a dataLayer');
-                }
                 
                 // También enviar a GA4 directamente si está disponible
                 if (typeof window.gtag !== 'undefined') {

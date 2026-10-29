@@ -420,19 +420,21 @@ import YouTubeFacade from '../../components/YouTubeFacade.astro';
           <a
             id="vidamujer_whatsapp"
             href="https://wa.me/524461354113"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-self-tracked="vidamujer_whatsapp"
             onclick="
-              if (typeof window.dataLayer !== 'undefined') {
-                window.dataLayer.push({
-                  event: 'vidamujer_whatsapp',
-                  event_category: 'conversion',
-                  event_label: 'Vida Mujer WhatsApp CTA',
-                  campaign: 'SEM Google Ads - Vida Mujer',
-                  source: 'Landing Vida Mujer',
-                  value: 1,
-                  currency: 'MXN',
-                  page_location: window.location.href
-                });
-              }
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                event: 'vidamujer_whatsapp',
+                event_category: 'conversion',
+                event_label: 'Vida Mujer WhatsApp CTA',
+                campaign: 'SEM Google Ads - Vida Mujer',
+                source: 'Landing Vida Mujer',
+                value: 1,
+                currency: 'MXN',
+                page_location: window.location.href
+              });
               if (typeof window.gtag !== 'undefined') {
                 window.gtag('event', 'vidamujer_whatsapp', {
                   event_category: 'conversion',

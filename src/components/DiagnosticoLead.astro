@@ -384,7 +384,7 @@ const {
         ${quien && tier !== 'C' ? `<p class="dx-help">Como esta decisión la tomas con ${esc(quien)}, invítale a la sesión.</p>` : ''}
         <div class="dx-ctas">
           ${tier !== 'C' ? `<a class="dx-btn dx-primary" href="${cal.toString()}" target="_blank" rel="noopener">${esc(cierre[0])}</a>` : ''}
-          <a class="dx-btn ${tier === 'C' ? 'dx-primary' : ''}" href="${wa}" target="_blank" rel="noopener">${tier === 'C' ? 'Recibir la guía por WhatsApp' : 'Prefiero escribir por WhatsApp'}</a>
+          <a class="dx-btn ${tier === 'C' ? 'dx-primary' : ''}" href="${wa}" target="_blank" rel="noopener" data-wa-track="off">${tier === 'C' ? 'Recibir la guía por WhatsApp' : 'Prefiero escribir por WhatsApp'}</a>
         </div>
         ${tier !== 'C' ? `<ol class="dx-steps"><li>Eliges tu horario (videollamada de 30 min).</li><li>Te confirmamos por WhatsApp.</li><li>En la sesión revisamos tu cifra. Sin compromiso.</li></ol>` : ''}
         <p class="dx-fine">${esc(d.fine)} Es una estimación, no una garantía ni una oferta; tu plan se define en la asesoría.</p>`;
