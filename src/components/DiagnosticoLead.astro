@@ -190,8 +190,18 @@ const {
     function track(evento: string, datos?: Record<string, unknown>) {
       try {
         const w = window as any;
-        if (w.fbq) w.fbq('trackCustom', evento, datos || {});
+        if (w.rpMeta) w.rpMeta.trackCustom(evento, datos || {});
+        else if (w.fbq) w.fbq('trackCustom', evento, datos || {});
         if (w.dataLayer) w.dataLayer.push({ event: evento, ...datos });
+      } catch {}
+    }
+
+    // Evento estándar de conversión de Meta (optimización de campañas)
+    function trackLead(datos: Record<string, unknown>) {
+      try {
+        const w = window as any;
+        if (w.rpMeta) w.rpMeta.track('Lead', datos);
+        else if (w.fbq) w.fbq('track', 'Lead', datos);
       } catch {}
     }
 
@@ -320,6 +330,7 @@ const {
 
       if (!sent) {
         sent = true;
+        let entregado = false;
         const payload = {
           nombre: ans.nombre,
           email: ans.mail,
@@ -334,11 +345,12 @@ const {
           pageUrl: location.href,
         };
         try {
-          await fetch('/api/diagnostico', {
+          const res = await fetch('/api/diagnostico', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
+          entregado = res.ok;
         } catch {}
         try {
           await fetch('/api/sendToSheet', {
@@ -356,6 +368,14 @@ const {
         } catch {}
         track(root.dataset.track || 'diagnostico_form', { perfil: tier, puntos: score, objetivo: objetivo.key });
         track('Perfil_' + tier, { puntos: score, objetivo: objetivo.key });
+        if (entregado) {
+          trackLead({
+            content_name: root.dataset.track || 'diagnostico_form',
+            content_category: objetivo.key,
+            perfil: tier,
+            puntos: score,
+          });
+        }
       }
 
       const wa = `https://wa.me/${DX_CONFIG.whatsapp}?text=${encodeURIComponent(

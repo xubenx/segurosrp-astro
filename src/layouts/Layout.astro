@@ -4,6 +4,7 @@ import '../styles/global.css';
 import ModalAd from '../components/ModalAd.astro';
 import WhatsApp from '../components/Whasa.astro';
 import WhatsAppClickTracking from '../components/WhatsAppClickTracking.astro';
+import MetaPixel from '../components/MetaPixel.astro';
 
 export interface Props {
 	title: string;
@@ -272,10 +273,8 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		
-		<!-- Meta Pixel (noscript) -->
-		<noscript><img height="1" width="1" style="display:none"
-		src="https://www.facebook.com/tr?id=292484572612457&ev=PageView&noscript=1"
-		/></noscript>
+		<!-- Meta Pixel (se omite en el panel interno /sistema) -->
+		<MetaPixel enabled={!Astro.url.pathname.startsWith('/sistema')} />
 		
 		<slot />
 		{!minimal && <OptimizedLoading />}
@@ -300,18 +299,6 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
 					window.gtag = gtag;
 					gtag('js', new Date());
 					gtag('config', 'G-Y67F0BJRHL');
-					
-					// Meta Pixel
-					!function(f,b,e,v,n,t,s)
-					{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-					n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-					if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-					n.queue=[];t=b.createElement(e);t.async=!0;
-					t.src=v;s=b.getElementsByTagName(e)[0];
-					s.parentNode.insertBefore(t,s)}(window, document,'script',
-					'https://connect.facebook.net/en_US/fbevents.js');
-					fbq('init', '292484572612457');
-					fbq('track', 'PageView');
 					
 					removeListeners();
 				}

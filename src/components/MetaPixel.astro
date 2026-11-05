@@ -1,0 +1,144 @@
+---
+/**
+ * Meta Pixel (Facebook Pixel) — único punto de instalación.
+ *
+ * Cómo funciona:
+ *  1. Instala el stub oficial de `fbq` de forma inmediata (sin red, ~1KB inline)
+ *     y encola `init` + `PageView`. Así cualquier evento disparado antes de que
+ *     cargue fbevents.js se envía en el orden correcto (init → PageView → evento).
+ *  2. Carga `fbevents.js` de forma diferida: primera interacción (scroll, click,
+ *     touch, keydown), requestIdleCallback o fallback a los 3 s.
+ *  3. Expone una API global para no depender de `fbq` en el resto del código:
+ *       window.rpMeta.track('Lead', { content_name: 'contacto_form' })
+ *       window.rpMeta.trackCustom('InicioDiagnostico', { objetivo: 'retiro' })
+ *  4. Envía el evento estándar `Contact` en clics de WhatsApp y teléfono.
+ *
+ * NOTA: el contenedor GTM-5C5DGHJC no tiene tags de Meta, por lo que no hay
+ * riesgo de doble PageView. Si algún día agregas el pixel en GTM, elimina este
+ * componente de `Layout.astro` para no duplicar.
+ */
+export interface Props {
+  /** ID del pixel de Meta. */
+  pixelId?: string;
+  /** Enviar `Contact` al hacer clic en enlaces de WhatsApp o `tel:`. */
+  trackClicks?: boolean;
+  /** Desactiva la instalación (páginas internas, previews, etc.). */
+  enabled?: boolean;
+}
+
+const {
+  pixelId = '292484572612457',
+  trackClicks = true,
+  enabled = true,
+} = Astro.props;
+---
+
+{
+  enabled && (
+    <>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style="display:none"
+          alt=""
+          src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+        />
+      </noscript>
+      <script is:inline define:vars={{ PIXEL_ID: pixelId, TRACK_CLICKS: trackClicks }}>
+        (function () {
+          if (window.__rpPixelInstalled) return;
+          window.__rpPixelInstalled = true;
+
+          /* --- Stub oficial de Meta: no descarga nada, solo encola --- */
+          !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+              n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+          })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+          /* init + PageView quedan encolados y se procesan en orden cuando
+             fbevents.js termine de cargar. */
+          window.fbq('init', PIXEL_ID);
+          window.fbq('track', 'PageView');
+
+          /* --- API pública del sitio --- */
+          window.rpMeta = {
+            track: function (event, params, options) {
+              try {
+                window.fbq('track', event, params || {}, options || {});
+              } catch (err) {}
+            },
+            trackCustom: function (event, params) {
+              try {
+                window.fbq('trackCustom', event, params || {});
+              } catch (err) {}
+            },
+          };
+          window.trackMeta = window.rpMeta.track;
+
+          /* --- Carga diferida de fbevents.js --- */
+          var requested = false;
+          var EVENTS = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
+
+          function loadPixel() {
+            if (requested) return;
+            requested = true;
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+            document.head.appendChild(script);
+            EVENTS.forEach(function (ev) {
+              window.removeEventListener(ev, loadPixel);
+            });
+          }
+
+          function setup() {
+            EVENTS.forEach(function (ev) {
+              window.addEventListener(ev, loadPixel, { passive: true, once: true });
+            });
+            if ('requestIdleCallback' in window) {
+              window.requestIdleCallback(loadPixel, { timeout: 2500 });
+            }
+            setTimeout(loadPixel, 3000);
+          }
+
+          if (document.readyState === 'complete') setup();
+          else window.addEventListener('load', setup);
+
+          /* --- Contact en clics de WhatsApp / teléfono --- */
+          if (TRACK_CLICKS) {
+            document.addEventListener(
+              'click',
+              function (ev) {
+                var node = ev.target;
+                if (!node || !node.closest) return;
+                var link = node.closest('a[href]');
+                if (!link) return;
+                var href = link.getAttribute('href') || '';
+                if (/wa\.me|api\.whatsapp\.com|whatsapp:/i.test(href)) {
+                  window.rpMeta.track('Contact', {
+                    content_name: 'whatsapp',
+                    content_category: 'cta',
+                  });
+                } else if (/^tel:/i.test(href)) {
+                  window.rpMeta.track('Contact', {
+                    content_name: 'telefono',
+                    content_category: 'cta',
+                  });
+                }
+              },
+              true,
+            );
+          }
+        })();
+      </script>
+    </>
+  )
+}
