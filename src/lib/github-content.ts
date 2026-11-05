@@ -198,6 +198,10 @@ export async function savePost(slug: string, data: BlogPostData, images: Uploade
       [{ path: jsonPath, content: Buffer.from(json, 'utf8') }, ...imageFiles],
       post.draft ? `Borrador: ${post.title}` : `Blog: ${post.title}`,
     );
+  } else if (process.env.VERCEL) {
+    throw new Error(
+      'En Vercel no se puede guardar en disco. Configura GITHUB_TOKEN (y opcional GITHUB_REPO) en las variables de entorno del proyecto y redespliega.',
+    );
   } else {
     await saveLocal(jsonPath, Buffer.from(json, 'utf8'));
     for (const file of imageFiles) await saveLocal(file.path, file.content);
@@ -224,6 +228,11 @@ export async function deletePost(slug: string) {
       }),
     });
     return;
+  }
+  if (process.env.VERCEL) {
+    throw new Error(
+      'En Vercel no se puede borrar del disco. Configura GITHUB_TOKEN en las variables de entorno y redespliega.',
+    );
   }
   await unlink(path.join(process.cwd(), jsonPath)).catch(() => undefined);
 }
