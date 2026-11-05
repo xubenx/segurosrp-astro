@@ -8,7 +8,6 @@ const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/diagnostico', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog', changefreq: 'weekly', priority: '0.9' },
   { path: '/asesores-seguros-monterrey', changefreq: 'monthly', priority: '0.7' },
-  { path: '/asesores-seguros-monterrey-nyl', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida', changefreq: 'weekly', priority: '0.9' },
   { path: '/seguros-vida/imagina-ser', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida/nuevo-plenitud', changefreq: 'monthly', priority: '0.7' },
@@ -25,8 +24,6 @@ const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/seguro-de-vida-mujer', changefreq: 'monthly', priority: '0.8' },
   { path: '/seguros-monterrey-en-celaya-gto', changefreq: 'monthly', priority: '0.6' },
   { path: '/seguros-monterrey-en-queretaro', changefreq: 'monthly', priority: '0.6' },
-  { path: '/segubecalanding', changefreq: 'weekly', priority: '0.7' },
-  { path: '/vidamujerlanding', changefreq: 'weekly', priority: '0.7' },
 ];
 
 function loc(path: string) {
@@ -36,12 +33,14 @@ function loc(path: string) {
 
 export async function buildSitemapXml(): Promise<string> {
   const posts = await getPublishedPosts();
-  const today = new Date().toISOString();
 
+  // Sin <lastmod> para las páginas estáticas: si siempre se declara "hoy",
+  // Google y Bing dejan de confiar en la señal y la ignoran. Es más preciso
+  // omitirla que mentir. Los artículos del blog sí llevan su fecha real, que
+  // es lo que permite reenviar sólo lo que cambió vía IndexNow.
   const staticUrls = STATIC_PAGES.map(
     (page) => `  <url>
     <loc>${loc(page.path)}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`,

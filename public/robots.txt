@@ -32,3 +32,6 @@ User-agent: Googlebot-Extended
 Allow: /
 
 Sitemap: https://segurosrp.com/sitemap.xml
+
+# IndexNow — verificación en /7b2792d350ea15d1fb03a7d957c48e05.txt
+

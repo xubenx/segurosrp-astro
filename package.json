@@ -7,7 +7,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "optimize:team": "node scripts/optimize-team-image.js",
-    "optimize:all": "node scripts/optimize-images.js"
+    "optimize:all": "node scripts/optimize-images.js",
+    "indexnow": "node scripts/indexnow.mjs --all",
+    "indexnow:dry": "node scripts/indexnow.mjs --all --dry-run"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
