@@ -11,7 +11,7 @@ import { cnsfCredential, CONTACT_EMAIL } from '../../lib/agency-credential';
 const site = 'https://segurosrp.com';
 const canonical = `${site}/seguros-vida/vida-mujer`;
 const pageTitle = 'Vida Mujer — Seguro de Vida para Mujer | Seguros Monterrey New York Life';
-const pageDescription = 'Vida Mujer de Seguros Monterrey New York Life: protección integral diseñada para la mujer con cobertura por fallecimiento, invalidez y diagnóstico de enfermedades graves. Cotiza gratis.';
+const pageDescription = 'Vida Mujer de Seguros Monterrey New York Life: fallecimiento, cáncer femenino, ahorro desde el 5.º año y anticipos. Asesoría en todo México.';
 
 const serviceData = {
   '@context': 'https://schema.org',
@@ -40,11 +40,19 @@ const vidaMujerFaqs = [
   },
   {
     question: '¿Vida Mujer incluye ahorro?',
-    answer: 'Sí. Puedes recibir parte de tu ahorro a partir del quinto año. El plan garantiza el 115% de rendimiento de tu suma asegurada al vencimiento.',
+    answer: 'Sí. A partir del 5.º año se entregan porcentajes de la suma asegurada (por ejemplo 5% en los años 5, 7, 9, 11, 13, 15 y 17) y se mantiene la protección por fallecimiento. El plan garantiza el 115% de rendimiento de la suma asegurada al vencimiento. Las primas suelen ser niveladas durante 20 años.',
   },
   {
-    question: '¿Para quién está diseñado?',
-    answer: 'Es un seguro diseñado para la mujer, sin importar su edad ni el momento de vida en el que se encuentre. La asesoría de Ramírez & Plascencia está disponible en todo México.',
+    question: '¿Qué cubre la protección por cáncer femenino?',
+    answer: 'Indemniza un porcentaje de la suma asegurada según el órgano y el estadio: mama maligno 100% o 47% si está localizado, ovario maligno 38%, útero maligno 21% o 12% localizado, trompas de Falopio 12% y tumores benignos de vagina o vulva 9%. Hay carencia de 6 meses, la cobertura llega hasta los 70 años o el fin del periodo de pago, y el pago es en una sola exhibición. Los porcentajes son ilustrativos según la versión de la póliza.',
+  },
+  {
+    question: '¿Hay anticipos por matrimonio, nacimiento o un padecimiento grave?',
+    answer: 'Entre el 4.º y el 5.º año puede solicitarse un anticipo del 5% de la suma asegurada por matrimonio o por nacimiento o adopción. El beneficio de Apoyo en Vida anticipa hasta el 25% de la suma asegurada o $700,000 MXN, lo que resulte menor, en padecimientos graves definidos. Los anticipos reducen la suma asegurada en la misma proporción.',
+  },
+  {
+    question: '¿Desde qué edad y en qué moneda se contrata?',
+    answer: 'La contratación es de 18 a 55 años, según evaluación. Hay versiones en UDIS o USD, con mínimos de referencia de 10,000 USD o 35,000 UDIS. La asesoría de Ramírez & Plascencia está disponible en todo México, con firma electrónica.',
   },
 ];
 
@@ -158,7 +166,7 @@ const breadcrumbData = {
           </div>
           <div>
             <p class="text-black text-center">
-              Vida Mujer es el seguro más completo que toda mujer debería tener, sin importar su edad y momento de su vida en el que se encuentre.
+              Vida Mujer es un seguro diseñado para la mujer en distintas etapas de su vida.
           </div>
         </div>
       </div>
@@ -396,6 +404,62 @@ const breadcrumbData = {
         </div>
       </div>
     </section>
+    <section id="cancer-femenino" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Protección por cáncer femenino</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Indemnización según el órgano y el estadio. No se piden exámenes adicionales para contratarla.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <article class="bg-pink-50 rounded-2xl p-6 md:p-8 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Porcentajes de referencia</h3>
+            <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-700">
+              <dt class="font-semibold">Mama (maligno)</dt><dd>100% de la suma asegurada</dd>
+              <dt class="font-semibold">Mama localizado</dt><dd>47% de la suma asegurada</dd>
+              <dt class="font-semibold">Ovario (maligno)</dt><dd>38% de la suma asegurada</dd>
+              <dt class="font-semibold">Útero (maligno)</dt><dd>21% de la suma asegurada</dd>
+              <dt class="font-semibold">Útero localizado</dt><dd>12% de la suma asegurada</dd>
+              <dt class="font-semibold">Trompas de Falopio</dt><dd>12% de la suma asegurada</dd>
+              <dt class="font-semibold">Benignos de vagina o vulva</dt><dd>9% de la suma asegurada</dd>
+            </dl>
+            <p class="text-xs text-gray-500 mt-4">Porcentajes ilustrativos según las condiciones del plan. La cotización entrega la tabla de tu versión.</p>
+          </article>
+          <article class="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-pink-100">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Condiciones de esta cobertura</h3>
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li>Contratación de 18 a 55 años, según evaluación. La cobertura llega hasta los 70 años o el fin del periodo de pago.</li>
+              <li>Carencia de 6 meses para padecimientos nuevos cubiertos.</li>
+              <li>Una recurrencia en el mismo órgano dentro de 3 años se considera el mismo evento.</li>
+              <li>El pago es en una sola exhibición y no puede exceder la suma asegurada del plan básico.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ahorro-anticipos" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Ahorro, anticipos y contratación</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Entregas en vida, anticipos por eventos familiares y las condiciones para contratar.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <article class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Entregas por año póliza</h3>
+            <p class="text-gray-700">A partir del año 5 se entregan porcentajes de la suma asegurada, por ejemplo 5% en los años 5, 7, 9, 11, 13, 15 y 17, y se conserva la protección por fallecimiento. Las primas suelen ser niveladas durante 20 años.</p>
+          </article>
+          <article class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Anticipos</h3>
+            <p class="text-gray-700">Entre el 4.º y el 5.º año, anticipo del 5% de la suma asegurada por matrimonio o por nacimiento o adopción. Apoyo en Vida anticipa hasta el 25% de la suma asegurada o $700,000 MXN, lo que resulte menor, en padecimientos graves definidos. Cada anticipo reduce la suma asegurada en la misma proporción.</p>
+          </article>
+          <article class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Edad, moneda y firma</h3>
+            <p class="text-gray-700">Contratación de 18 a 55 años. Versiones en UDIS o USD, con mínimos de referencia de 10,000 USD o 35,000 UDIS. La asesoría es en todo México y la firma puede ser electrónica.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <FaqList
       title="Preguntas frecuentes de Vida Mujer"
       intro="Seguro de vida para la mujer, con asesoría en todo México."
