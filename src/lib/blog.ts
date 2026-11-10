@@ -1,4 +1,5 @@
 import { z } from 'astro/zod';
+import { cnsfCredential } from './agency-credential';
 
 export const SITE_URL = 'https://segurosrp.com';
 export const DEFAULT_AUTHOR = 'Ramírez & Plascencia';
@@ -161,6 +162,7 @@ export function articleSchema(post: BlogPost) {
           '@type': 'InsuranceAgency',
           '@id': `${SITE_URL}/#organization`,
           name: 'SegurosRP — Ramírez & Plascencia',
+          hasCredential: cnsfCredential,
           logo: {
             '@type': 'ImageObject',
             url: `${SITE_URL}/logo_ryp.png`,

@@ -3,11 +3,11 @@ import { getPublishedPosts } from '../lib/blog-collection';
 import { SITE_URL } from '../lib/blog';
 
 const BASE = `# SegurosRP — Ramírez & Plascencia
-> Despacho independiente de asesores certificados de Seguros Monterrey New York Life. Cobertura en todo México (nacional), no limitada a una ciudad. Fundado en 1998. Oficinas en Santiago de Querétaro, Qro. y Celaya, Gto.; el resto del país se atiende por videollamada y WhatsApp. Especialistas en seguro de vida, gastos médicos mayores, planes de retiro y seguros educativos (SeguBeca).
+> Despacho independiente de asesores certificados de Seguros Monterrey New York Life, con más de 30 años de experiencia. Cobertura en todo México (nacional), no limitada a una ciudad. Oficinas en Santiago de Querétaro, Qro. y Celaya, Gto.; el resto del país se atiende por videollamada y WhatsApp. Especialistas en seguro de vida, gastos médicos mayores, planes de retiro y seguros educativos (SeguBeca).
 
 ## Sobre el despacho
 
-Ramírez & Plascencia es un despacho de asesores independientes certificados por la Comisión Nacional de Seguros y Fianzas (CNSF), con más de 25 años de experiencia asesorando a familias y empresas en todo México. Comercializamos exclusivamente productos de Seguros Monterrey New York Life, una de las aseguradoras más sólidas de México con respaldo internacional. «Monterrey» es la marca de la aseguradora, no una plaza: el despacho atiende clientes en todo el país.
+Ramírez & Plascencia es un despacho de asesores independientes certificados por la Comisión Nacional de Seguros y Fianzas (CNSF), con más de 30 años de experiencia asesorando a familias y empresas en todo México. Comercializamos exclusivamente productos de Seguros Monterrey New York Life, una de las aseguradoras más sólidas de México con respaldo internacional. «Monterrey» es la marca de la aseguradora, no una plaza: el despacho atiende clientes en todo el país.
 
 ## Productos que asesoramos
 
@@ -57,7 +57,7 @@ ${posts
 ## Contacto y ubicaciones
 
 - Teléfono / WhatsApp: +52 446 135 4113
-- Email: info@segurosrp.com
+- Email: michelle@segurosrp.com
 - Querétaro: Nouvalia, Local 106 Planta Baja, Piso 6, Santiago de Querétaro, Qro.
 - Celaya: Av. Ferrocarril Central #709, Planta Baja, Local 22, Los Laureles, Celaya, Gto.
 - Horario: Lunes a viernes 9:00–18:00
@@ -68,6 +68,10 @@ ${posts
 - Instagram: https://www.instagram.com/ramirezplascencia_/
 - LinkedIn: https://www.linkedin.com/company/ramirez-plascencia-despacho-de-seguros/
 - YouTube: https://www.youtube.com/channel/UCkQ6zjjpXuHfIrRS1MFFIJA
+
+## Autorización CNSF
+
+Agente de seguros autorizado por la CNSF — José Ramírez Barajas, Cédula H415872, Tipo A (Riesgos personales y familiares), vigente hasta 04/05/2029.
 `;
 
   return new Response(`${BASE}${blogSection}${footer}`, {

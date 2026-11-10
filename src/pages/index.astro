@@ -14,6 +14,7 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import ModalAd from '../components/ModalAd.astro';
 import FaqList from '../components/FaqList.astro';
+import { cnsfCredential, CONTACT_EMAIL, joseRamirezPerson } from '../lib/agency-credential';
 
 const pageTitle = "Seguros Monterrey NYL | Asesores certificados en México";
 const pageDescription = "Asesores independientes certificados de Seguros Monterrey New York Life. Vida, gastos médicos, retiro y educación para todo México. Cotiza sin costo.";
@@ -48,11 +49,11 @@ const homeFaqs = [
         "@type": "InsuranceAgency",
         "@id": "https://segurosrp.com/#organization",
         "name": "SegurosRP — Ramírez & Plascencia",
-        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life. Especialistas en seguro de vida, gastos médicos mayores, plan de retiro y seguro educativo en México.",
+        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life, con más de 30 años de experiencia. Especialistas en seguro de vida, gastos médicos mayores, plan de retiro y seguro educativo en México.",
         "url": "https://segurosrp.com",
         "telephone": "+52 446 135 4113",
-        "email": "info@segurosrp.com",
-        "foundingDate": "1998",
+        "email": CONTACT_EMAIL,
+        "hasCredential": cnsfCredential,
         "areaServed": "México",
         "logo": "https://segurosrp.com/logo_ryp.png",
         "sameAs": [
@@ -95,7 +96,8 @@ const homeFaqs = [
           "name": item.question,
           "acceptedAnswer": { "@type": "Answer", "text": item.answer }
         }))
-      }
+      },
+      joseRamirezPerson
     ]
   })} />
 

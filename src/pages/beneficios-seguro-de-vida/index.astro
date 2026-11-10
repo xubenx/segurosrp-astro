@@ -2,6 +2,7 @@
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 import MetaPixel from "../../components/MetaPixel.astro";
+import { cnsfCredential } from "../../lib/agency-credential";
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/beneficios-seguro-de-vida`;
@@ -13,7 +14,7 @@ const business = {
   name: "Seguros Monterrey New York Life — Despacho de Asesores Ramírez y Plascencia",
   legalName: "Seguros Monterrey New York Life (asesoría independiente)",
   phone: "+52 446 135 4113",
-  email: "info@segurosrp.com",
+  email: "michelle@segurosrp.com",
   url: canonical,
   areaServed: ["México"],
 };
@@ -92,6 +93,7 @@ const business = {
       "areaServed": business.areaServed,
       "telephone": business.phone,
       "email": business.email,
+      "hasCredential": cnsfCredential,
       "url": business.url,
       "image": `${site}/images/og/beneficios-seguro-de-vida.jpg`,
       "sameAs": [

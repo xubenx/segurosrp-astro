@@ -1,4 +1,6 @@
 ---
+import { CNSF_LICENSE_TEXT, CONTACT_EMAIL } from '../lib/agency-credential';
+
 // Footer component
 
 const socialLinks = [
@@ -41,6 +43,9 @@ const socialLinks = [
           />
         </div>
         <p class="text-gray-300 text-sm md:text-base">© 2026 Ramírez & Plascencia</p>
+        <p class="mt-2">
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-gray-300 hover:text-white text-sm">{CONTACT_EMAIL}</a>
+        </p>
       </div>
 
       <div class="text-center md:text-left">
@@ -67,5 +72,6 @@ const socialLinks = [
         </div>
       </div>
     </div>
+    <p class="mt-8 text-center text-xs text-gray-300 max-w-3xl mx-auto leading-relaxed">{CNSF_LICENSE_TEXT}</p>
   </div>
 </footer>

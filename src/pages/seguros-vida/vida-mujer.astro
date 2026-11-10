@@ -6,6 +6,7 @@ import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
 import FaqList from '../../components/FaqList.astro';
 import { faqPageSchema } from '../../lib/faq-schema';
+import { cnsfCredential, CONTACT_EMAIL } from '../../lib/agency-credential';
 
 const site = 'https://segurosrp.com';
 const canonical = `${site}/seguros-vida/vida-mujer`;
@@ -25,6 +26,8 @@ const serviceData = {
     name: 'SegurosRP — Ramírez & Plascencia',
     url: site,
     telephone: '+52 446 135 4113',
+    email: CONTACT_EMAIL,
+    hasCredential: cnsfCredential,
     areaServed: 'México',
   },
   brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
