@@ -180,16 +180,6 @@ const advisors = [
               id="segubeca_whatsapp"
               data-wa-self-tracked="segubeca_whatsapp"
               onclick="
-                console.log('Click en WhatsApp - Enviando evento segubeca_whatsapp');
-                
-                // Asegurar que GA4 esté configurado
-                if (typeof window.gtag !== 'undefined') {
-                  window.gtag('config', 'G-Y67F0BJRHL', {
-                    'send_page_view': false
-                  });
-                }
-                
-                // Enviar evento a dataLayer para GTM
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     'event': 'segubeca_whatsapp',
@@ -198,19 +188,6 @@ const advisors = [
                     'value': 1,
                     'currency': 'MXN'
                   });
-                  console.log('Evento segubeca_whatsapp enviado a dataLayer');
-                
-                // También enviar a GA4 directamente si está disponible
-                if (typeof window.gtag !== 'undefined') {
-                  window.gtag('event', 'segubeca_whatsapp', {
-                    'event_category': 'conversion',
-                    'event_label': 'Segubeca WhatsApp Contact',
-                    'value': 1,
-                    'currency': 'MXN'
-                  });
-                  console.log('Evento segubeca_whatsapp enviado a gtag');
-                }
-                
                 return true;
               "
               style="

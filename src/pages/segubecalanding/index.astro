@@ -50,7 +50,6 @@ import MetaPixel from '../../components/MetaPixel.astro';
 
     interface WindowWithGtag extends Window {
       dataLayer: unknown[];
-      gtagSendEvent?: (url: string) => boolean;
       requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
     }
 
@@ -90,24 +89,6 @@ import MetaPixel from '../../components/MetaPixel.astro';
       globalWindow.addEventListener('load', ensureGtagLoaded);
     }
 
-    // Helper function to delay opening a URL until a gtag event is sent.
-    // Call it in response to an action that should navigate to a URL.
-    function gtagSendEvent(url) {
-      ensureGtagLoaded();
-      const callback = function () {
-        if (typeof url === 'string') {
-          globalWindow.location.href = url;
-        }
-      };
-      gtag('event', 'click_whatsapp', {
-        event_callback: callback,
-        event_timeout: 2000,
-        // <event_parameters>
-      });
-      return false;
-    }
-
-    globalWindow.gtagSendEvent = gtagSendEvent;
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

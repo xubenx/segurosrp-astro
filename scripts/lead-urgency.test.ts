@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { questions } from '../src/lib/diagnostico.ts';
+import { LEAD_INTENT_TELEGRAM } from '../src/lib/lead-intent.ts';
 import {
   CUANDO_OPTIONS,
+  URGENCIA_TELEGRAM,
   classifyUrgencia,
   isAsesoresCalificado,
 } from '../src/lib/lead-urgency.ts';
@@ -23,6 +25,20 @@ test('maps each timing answer to urgencia', () => {
   assert.equal(classifyUrgencia(undefined), 'sin_dato');
   assert.equal(classifyUrgencia(null), 'sin_dato');
   assert.equal(classifyUrgencia(9), 'sin_dato');
+});
+
+test('telegram labels are plain uppercase text', () => {
+  assert.deepEqual(URGENCIA_TELEGRAM, {
+    caliente: 'CALIENTE',
+    tibio: 'TIBIO',
+    frio: 'FRÍO',
+    sin_dato: 'SIN DATO',
+  });
+  assert.equal(LEAD_INTENT_TELEGRAM.vida_ahorro_retiro, 'VIDA/AHORRO/RETIRO');
+  assert.equal(LEAD_INTENT_TELEGRAM.gmm, 'GMM');
+  assert.equal(LEAD_INTENT_TELEGRAM.sin_definir, 'SIN DEFINIR');
+  const labels = [...Object.values(URGENCIA_TELEGRAM), ...Object.values(LEAD_INTENT_TELEGRAM)];
+  assert.equal(labels.some((label) => /\p{Extended_Pictographic}/u.test(label)), false);
 });
 
 test('asesores_form_calificado only for vida leads that are caliente or tibio', () => {

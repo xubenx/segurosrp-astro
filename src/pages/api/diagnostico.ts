@@ -36,7 +36,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const tier = String(perfil || 'B').toUpperCase();
-    const flag = tier === 'A' ? '🔥 PERFIL A — PRIORIDAD' : tier === 'C' ? '❄️ PERFIL C — Nurturing' : '📋 PERFIL B — seguimiento';
+    const flag = tier === 'A' ? 'PERFIL A — PRIORIDAD' : tier === 'C' ? 'PERFIL C — Nurturing' : 'PERFIL B — seguimiento';
     const intent = isLeadIntent(leadTipo) ? leadTipo : null;
     const intentLine = intent ? LEAD_INTENT_TELEGRAM[intent] : '';
     const urgencia = isUrgencia(urgenciaRaw) ? urgenciaRaw : 'sin_dato';
@@ -49,23 +49,23 @@ export const POST: APIRoute = async ({ request }) => {
     const telegramMessage = `
 ${headerLine}
 ${flag}
-⭐ Puntos: ${puntos ?? '—'}
-📦 Oferta: ${oferta || 'Diagnóstico patrimonial'}
+Puntos: ${puntos ?? '—'}
+Oferta: ${oferta || 'Diagnóstico patrimonial'}
 
-👤 Nombre: ${nombre}
-📧 Email: ${email}
-📱 WhatsApp: ${telefono}
+Nombre: ${nombre}
+Email: ${email}
+WhatsApp: ${telefono}
 
-📊 Diagnóstico: ${diagnostico || '—'}
+Diagnóstico: ${diagnostico || '—'}
 
-🧾 Respuestas:
+Respuestas:
 ${answersBlock}
 
-🌐 Fuente: ${source || 'web'}
-📣 Campaña: ${campaign || '—'}
-🔗 URL: ${pageUrl || '—'}
+Fuente: ${source || 'web'}
+Campaña: ${campaign || '—'}
+URL: ${pageUrl || '—'}
 
-⏰ ${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })}
+${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })}
     `.trim();
 
     await persistLead({
@@ -104,7 +104,7 @@ ${answersBlock}
 
         await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
           reply_markup: {
-            inline_keyboard: [[{ text: `💬 Contactar a ${nombre}`, url: whatsappUrl }]],
+            inline_keyboard: [[{ text: `Contactar a ${nombre}`, url: whatsappUrl }]],
           },
         });
       } catch (error) {

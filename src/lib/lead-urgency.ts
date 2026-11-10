@@ -7,9 +7,9 @@ export const CUANDO_OPTIONS = ['Este mes', 'En 1 a 3 meses', 'Solo estoy explora
 export type Urgencia = 'caliente' | 'tibio' | 'frio' | 'sin_dato';
 
 export const URGENCIA_TELEGRAM: Record<Urgencia, string> = {
-  caliente: '🔥 CALIENTE',
-  tibio: '🌤️ TIBIO',
-  frio: '❄️ FRÍO',
+  caliente: 'CALIENTE',
+  tibio: 'TIBIO',
+  frio: 'FRÍO',
   sin_dato: 'SIN DATO',
 };
 
