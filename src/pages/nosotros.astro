@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { CNSF_LICENSE_TEXT, cnsfCredential, CONTACT_EMAIL, joseRamirezPerson } from '../lib/agency-credential';
 
 ---
 
-<Layout title="Nosotros — Ramírez & Plascencia | Asesores Seguros Monterrey New York Life" description="Conoce a Ramírez & Plascencia, despacho de asesores certificados de Seguros Monterrey New York Life desde 1998. Más de 25 años protegiendo familias en México." canonical="https://segurosrp.com/nosotros">
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+<Layout title="Nosotros — Ramírez & Plascencia | Asesores Seguros Monterrey New York Life" description="Conoce a Ramírez & Plascencia, despacho de asesores certificados de Seguros Monterrey New York Life. Más de 30 años de experiencia protegiendo familias en México." canonical="https://segurosrp.com/nosotros">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -14,10 +15,10 @@ import Footer from '../components/Footer.astro';
         "@id": "https://segurosrp.com/#organization",
         "name": "SegurosRP — Ramírez & Plascencia",
         "url": "https://segurosrp.com",
-        "foundingDate": "1998",
-        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life con más de 25 años de experiencia. Especialistas en seguro de vida, gastos médicos, retiro y educación.",
-        "telephone": "+52-446-135-4113",
-        "email": "info@segurosrp.com",
+        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life con más de 30 años de experiencia. Especialistas en seguro de vida, gastos médicos, retiro y educación.",
+        "telephone": "+52 446 135 4113",
+        "email": CONTACT_EMAIL,
+        "hasCredential": cnsfCredential,
         "areaServed": "México",
         "employee": [
           {
@@ -31,11 +32,12 @@ import Footer from '../components/Footer.astro';
             "name": "María Plascencia",
             "jobTitle": "Directora Comercial",
             "worksFor": { "@id": "https://segurosrp.com/#organization" }
-          }
+          },
+          joseRamirezPerson
         ]
       }
     ]
-  })}</script>
+  })} />
   <Header />
   <main class="pt-20">
     <!-- Hero Section -->
@@ -62,7 +64,7 @@ import Footer from '../components/Footer.astro';
                 Nuestra Historia
               </h2>
               <p class="text-lg text-gray-700 mb-6">
-                Fundada en 1998, Ramírez & Plascencia nació con la visión de democratizar el acceso a seguros de calidad en México. Lo que comenzó como un pequeño despacho familiar, se ha convertido en una de las firmas de seguros más confiables del país.
+                Ramírez & Plascencia nació con la visión de democratizar el acceso a seguros de calidad en México. Lo que comenzó como un pequeño despacho familiar, se ha convertido en una de las firmas de seguros más confiables del país.
               </p>
               <p class="text-lg text-gray-700 mb-6">
                 A lo largo de estos más de 30 años, hemos acompañado a más de 1,500 familias y empresas en los momentos más importantes de sus vidas, brindando no solo productos de seguros, sino tranquilidad y seguridad.
@@ -74,7 +76,7 @@ import Footer from '../components/Footer.astro';
             <div class="text-center">
               <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl">
                 <div class="text-6xl mb-6">🏢</div>
-                <h3 class="text-2xl font-bold text-blue-800 mb-4">30+ Años</h3>
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">+30 años</h3>
                 <p class="text-gray-600">de experiencia protegiendo lo que más importa</p>
               </div>
             </div>
@@ -184,6 +186,7 @@ import Footer from '../components/Footer.astro';
           <p class="text-xl text-gray-600 max-w-3xl mx-auto">
             Profesionales certificados comprometidos con tu tranquilidad
           </p>
+          <p class="text-sm text-gray-500 max-w-3xl mx-auto mt-4">{CNSF_LICENSE_TEXT}</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -194,7 +197,7 @@ import Footer from '../components/Footer.astro';
             <h3 class="text-xl font-bold text-gray-800 mb-2">Luis Ram&iacute;rez</h3>
             <p class="text-blue-600 font-semibold mb-4">Director General</p>
             <p class="text-gray-600">
-              30+ a&ntilde;os de experiencia en el sector asegurador. Especialista en seguros de vida y salud.
+              +30 a&ntilde;os de experiencia en el sector asegurador. Especialista en seguros de vida y salud.
             </p>
           </div>
 
@@ -237,8 +240,8 @@ import Footer from '../components/Footer.astro';
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
-            <div class="text-4xl font-bold text-blue-600 mb-2">30+</div>
-            <p class="text-gray-700 font-semibold">Años de experiencia</p>
+            <div class="text-4xl font-bold text-blue-600 mb-2">+30</div>
+            <p class="text-gray-700 font-semibold">años de experiencia</p>
           </div>
 
           <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
@@ -315,7 +318,7 @@ import Footer from '../components/Footer.astro';
                 <svg class="w-5 h-5 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                 </svg>
-                <a href="tel:+524461354113" class="text-blue-600 hover:text-blue-800 font-semibold">+52 (446) 135 4113</a>
+                <a href="tel:+524461354113" class="text-blue-600 hover:text-blue-800 font-semibold">+52 446 135 4113</a>
               </div>
             </div>
           </div>
@@ -333,7 +336,7 @@ import Footer from '../components/Footer.astro';
                 <svg class="w-5 h-5 text-green-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                 </svg>
-                <a href="tel:+524461354113" class="text-green-600 hover:text-green-800 font-semibold">+52 (446) 135 4113</a>
+                <a href="tel:+524461354113" class="text-green-600 hover:text-green-800 font-semibold">+52 446 135 4113</a>
               </div>
             </div>
           </div>

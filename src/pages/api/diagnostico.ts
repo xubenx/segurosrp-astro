@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import { rateLimitMiddleware } from '../../lib/rate-limiter';
 import { persistLead } from '../../lib/leads-store';
 import { answersToRecord } from '../../lib/leads';
+import { LEAD_INTENT_TELEGRAM, isLeadIntent } from '../../lib/lead-intent';
 
 config();
 
@@ -25,6 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
       source,
       campaign,
       pageUrl,
+      leadTipo,
     } = body;
 
     if (!nombre || !email || !telefono) {
@@ -33,12 +35,14 @@ export const POST: APIRoute = async ({ request }) => {
 
     const tier = String(perfil || 'B').toUpperCase();
     const flag = tier === 'A' ? '🔥 PERFIL A — PRIORIDAD' : tier === 'C' ? '❄️ PERFIL C — Nurturing' : '📋 PERFIL B — seguimiento';
+    const intent = isLeadIntent(leadTipo) ? leadTipo : null;
+    const intentLine = intent ? LEAD_INTENT_TELEGRAM[intent] : '';
     const answersBlock = respuestas && typeof respuestas === 'object'
       ? Object.entries(respuestas).map(([k, v]) => `• ${k}: ${v}`).join('\n')
       : 'Sin detalle';
 
     const telegramMessage = `
-${flag}
+${intentLine ? `${intentLine}\n` : ''}${flag}
 ⭐ Puntos: ${puntos ?? '—'}
 📦 Oferta: ${oferta || 'Diagnóstico patrimonial'}
 
@@ -67,7 +71,10 @@ ${answersBlock}
       puntos: String(puntos ?? ''),
       oferta: oferta || 'Diagnóstico patrimonial',
       diagnostico: diagnostico || '',
-      answers: answersToRecord(respuestas),
+      answers: {
+        ...answersToRecord(respuestas),
+        ...(intentLine ? { 'Tipo de lead': intentLine } : {}),
+      },
       source: source || 'web',
       campaign: campaign || '',
       pageUrl: pageUrl || '',

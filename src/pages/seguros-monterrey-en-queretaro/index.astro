@@ -3,6 +3,7 @@ import Contact from '../../components/Contact.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import MetaPixel from '../../components/MetaPixel.astro';
+import { cnsfCredential } from '../../lib/agency-credential';
 
 const site = "https://segurosrp.com";
 const canonical = `${site}/seguros-monterrey-en-queretaro`;
@@ -14,7 +15,7 @@ const business = {
   name: "SegurosRP — Despacho de Asesores Ramírez y Plascencia",
   legalName: "Seguros Monterrey New York Life (asesoría independiente)",
   phone: "+52 446 135 4113",
-  email: "info@segurosrp.com",
+  email: "michelle@segurosrp.com",
   address: {
     street: "Nouvalia, Local 106 Planta Baja, Piso 6",
     locality: "Santiago de Querétaro",
@@ -101,6 +102,7 @@ const business = {
       "areaServed": ["Querétaro, Querétaro", "México"],
       "telephone": business.phone,
       "email": business.email,
+      "hasCredential": cnsfCredential,
       "image": `${site}/images/og/seguros-monterrey-Querétaro.jpg`,
       "url": canonical,
       "address": {
@@ -285,8 +287,8 @@ const business = {
               <!-- Stats rápidas -->
               <div class="grid grid-cols-3 gap-4 pt-8">
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-rp-orange">30+</div>
-                  <div class="text-sm text-blue-200">Años de experiencia</div>
+                  <div class="text-2xl font-bold text-rp-orange">+30</div>
+                  <div class="text-sm text-blue-200">años de experiencia</div>
                 </div>
                 <div class="text-center">
                   <div class="text-2xl font-bold text-rp-orange">1000+</div>
@@ -328,8 +330,8 @@ const business = {
             <!-- Stats móvil -->
             <div class="grid grid-cols-3 gap-3 pt-6">
               <div class="text-center">
-                <div class="text-xl font-bold text-rp-orange">30+</div>
-                <div class="text-xs text-blue-200">Años</div>
+                <div class="text-xl font-bold text-rp-orange">+30</div>
+                <div class="text-xs text-blue-200">años</div>
               </div>
               <div class="text-center">
                 <div class="text-xl font-bold text-rp-orange">1000+</div>

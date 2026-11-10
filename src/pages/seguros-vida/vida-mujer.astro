@@ -4,10 +4,65 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
+import FaqList from '../../components/FaqList.astro';
+import { faqPageSchema } from '../../lib/faq-schema';
+import { cnsfCredential, CONTACT_EMAIL } from '../../lib/agency-credential';
 
+const site = 'https://segurosrp.com';
+const canonical = `${site}/seguros-vida/vida-mujer`;
+const pageTitle = 'Vida Mujer — Seguro de Vida para Mujer | Seguros Monterrey New York Life';
+const pageDescription = 'Vida Mujer de Seguros Monterrey New York Life: protección integral diseñada para la mujer con cobertura por fallecimiento, invalidez y diagnóstico de enfermedades graves. Cotiza gratis.';
+
+const serviceData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Vida Mujer',
+  serviceType: 'Seguro de vida para la mujer',
+  description: 'Seguro de Seguros Monterrey New York Life diseñado para la mujer. Incluye respaldo por fallecimiento, invalidez o pérdidas orgánicas; ahorro con entregas a partir del quinto año; coberturas por cáncer de mama, cáncer de ovario y complicaciones del embarazo; y asistencia ante diagnóstico de enfermedades graves. Garantiza el 115% de rendimiento de la suma asegurada al vencimiento.',
+  url: canonical,
+  areaServed: { '@type': 'Country', name: 'México' },
+  provider: {
+    '@type': 'InsuranceAgency',
+    name: 'SegurosRP — Ramírez & Plascencia',
+    url: site,
+    telephone: '+52 446 135 4113',
+    email: CONTACT_EMAIL,
+    hasCredential: cnsfCredential,
+    areaServed: 'México',
+  },
+  brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
+};
+
+const vidaMujerFaqs = [
+  {
+    question: '¿Qué protege Vida Mujer?',
+    answer: 'Ofrece respaldo financiero en caso de fallecimiento, invalidez o pérdidas orgánicas, y coberturas para cáncer de mama, cáncer de ovario, complicaciones en el embarazo y complicaciones en el recién nacido.',
+  },
+  {
+    question: '¿Vida Mujer incluye ahorro?',
+    answer: 'Sí. Puedes recibir parte de tu ahorro a partir del quinto año. El plan garantiza el 115% de rendimiento de tu suma asegurada al vencimiento.',
+  },
+  {
+    question: '¿Para quién está diseñado?',
+    answer: 'Es un seguro diseñado para la mujer, sin importar su edad ni el momento de vida en el que se encuentre. La asesoría de Ramírez & Plascencia está disponible en todo México.',
+  },
+];
+
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${site}/` },
+    { '@type': 'ListItem', position: 2, name: 'Seguros de Vida', item: `${site}/seguros-vida` },
+    { '@type': 'ListItem', position: 3, name: 'Vida Mujer', item: canonical },
+  ],
+};
 ---
 
-<Layout title="Vida Mujer — Seguro de Vida para Mujer | Seguros Monterrey New York Life" description="Vida Mujer de Seguros Monterrey New York Life: protección integral diseñada para la mujer con cobertura por fallecimiento, invalidez y diagnóstico de enfermedades graves. Cotiza gratis." canonical="https://segurosrp.com/seguros-vida/vida-mujer">
+<Layout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqPageSchema(vidaMujerFaqs))} />
   <main class="">
     <Header/>
     <!-- Hero Section -->
@@ -341,6 +396,11 @@ import YouTubeFacade from '../../components/YouTubeFacade.astro';
         </div>
       </div>
     </section>
+    <FaqList
+      title="Preguntas frecuentes de Vida Mujer"
+      intro="Seguro de vida para la mujer, con asesoría en todo México."
+      items={vidaMujerFaqs}
+    />
     <section id="contacto" class="bg-white py-12">
       <div class="container mx-auto px-4 max-w-3xl">
         <div class="rounded-2xl border border-pink-100 shadow-lg p-6 md:p-8">

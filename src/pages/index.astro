@@ -13,26 +13,47 @@ import Certifications from '../components/Certifications.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import ModalAd from '../components/ModalAd.astro';
+import FaqList from '../components/FaqList.astro';
+import { cnsfCredential, CONTACT_EMAIL, joseRamirezPerson } from '../lib/agency-credential';
 
-const pageTitle = "Seguros Monterrey New York Life | Seguros RP";
-const pageDescription = "Especialistas en Seguros Monterrey New York Life, seguros de vida, gastos médicos mayores y más. Con más de 25 años de experiencia, protegemos lo que más valoras.";
+const pageTitle = "Seguros Monterrey NYL | Asesores certificados en México";
+const pageDescription = "Asesores independientes certificados de Seguros Monterrey New York Life. Vida, gastos médicos, retiro y educación para todo México. Cotiza sin costo.";
 export const prerender = true;
+
+const homeFaqs = [
+  {
+    question: '¿Qué es Seguros Monterrey New York Life?',
+    answer: 'Seguros Monterrey New York Life es una de las aseguradoras de vida y salud más importantes de México, con respaldo de New York Life, una de las aseguradoras más antiguas y sólidas del mundo. Ofrece seguros de vida, gastos médicos mayores, planes de retiro y seguros educativos.',
+  },
+  {
+    question: '¿Atienden en Querétaro y Celaya?',
+    answer: 'Sí. Ramírez & Plascencia tiene oficinas físicas en Santiago de Querétaro (Nouvalia, Local 106) y en Celaya, Gto. (Av. Ferrocarril Central #709). También ofrecemos asesoría nacional por videollamada y WhatsApp al +52 446 135 4113.',
+  },
+  {
+    question: '¿Puedo contratar un seguro a distancia?',
+    answer: 'Sí. Realizamos cotización, asesoría y contratación de forma completamente digital mediante videollamada y firma digital. Atendemos clientes en todo México sin necesidad de acudir a una oficina.',
+  },
+  {
+    question: '¿Cuánto cuesta un seguro de gastos médicos mayores?',
+    answer: 'El costo de un seguro de gastos médicos mayores depende de la edad, perfil de salud, deducible elegido y suma asegurada. Nuestros planes Alfa Medical, Alfa Medical Flex y Alfa Medical Internacional se adaptan a distintos presupuestos. Contáctanos para una cotización gratuita y personalizada.',
+  },
+];
 ---
 
 
 <Layout title={pageTitle} description={pageDescription} canonical="https://segurosrp.com/">
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "InsuranceAgency",
         "@id": "https://segurosrp.com/#organization",
         "name": "SegurosRP — Ramírez & Plascencia",
-        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life. Especialistas en seguro de vida, gastos médicos mayores, plan de retiro y seguro educativo en México.",
+        "description": "Despacho de asesores certificados de Seguros Monterrey New York Life, con más de 30 años de experiencia. Especialistas en seguro de vida, gastos médicos mayores, plan de retiro y seguro educativo en México.",
         "url": "https://segurosrp.com",
-        "telephone": "+52-446-135-4113",
-        "email": "info@segurosrp.com",
-        "foundingDate": "1998",
+        "telephone": "+52 446 135 4113",
+        "email": CONTACT_EMAIL,
+        "hasCredential": cnsfCredential,
         "areaServed": "México",
         "logo": "https://segurosrp.com/logo_ryp.png",
         "sameAs": [
@@ -70,43 +91,15 @@ export const prerender = true;
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "¿Qué es Seguros Monterrey New York Life?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Seguros Monterrey New York Life es una de las aseguradoras de vida y salud más importantes de México, con respaldo de New York Life, una de las aseguradoras más antiguas y sólidas del mundo. Ofrece seguros de vida, gastos médicos mayores, planes de retiro y seguros educativos."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Atienden en Querétaro y Celaya?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sí. Ramírez & Plascencia tiene oficinas físicas en Santiago de Querétaro (Nouvalia, Local 106) y en Celaya, Gto. (Av. Ferrocarril Central #709). También ofrecemos asesoría nacional por videollamada y WhatsApp al +52 446 135 4113."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Puedo contratar un seguro a distancia?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sí. Realizamos cotización, asesoría y contratación de forma completamente digital mediante videollamada y firma digital. Atendemos clientes en todo México sin necesidad de acudir a una oficina."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cuánto cuesta un seguro de gastos médicos mayores?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "El costo de un seguro de gastos médicos mayores depende de la edad, perfil de salud, deducible elegido y suma asegurada. Nuestros planes Alfa Medical, Alfa Medical Flex y Alfa Medical Internacional se adaptan a distintos presupuestos. Contáctanos para una cotización gratuita y personalizada."
-            }
-          }
-        ]
-      }
+        "mainEntity": homeFaqs.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+        }))
+      },
+      joseRamirezPerson
     ]
-  })}</script>
+  })} />
 
   <Header />
   <Hero />
@@ -116,6 +109,11 @@ export const prerender = true;
   {/*<About /> */}
   <Blog />
   <Certifications />
+  <FaqList
+    title="Preguntas frecuentes"
+    intro="Asesores certificados de Seguros Monterrey New York Life, con atención en todo México."
+    items={homeFaqs}
+  />
   <Contact />
   <Footer />
 </Layout>

@@ -80,11 +80,40 @@ test('segubeca and vida mujer pages use their own events', () => {
   assert.equal(resolveWhatsAppClick('/vidamujerlanding', anchor({}))?.event, 'vidamujer_whatsapp');
 });
 
-test('other pages and non-WhatsApp links push nothing', () => {
-  assert.equal(resolveWhatsAppClick('/', anchor({ href: 'https://api.whatsapp.com/send/?phone=524461354113' })), null);
-  assert.equal(resolveWhatsAppClick('/contacto', anchor({})), null);
+test('other pages push lead_whatsapp with page and section; phones and hashes do not', () => {
+  assert.deepEqual(
+    resolveWhatsAppClick('/', anchor({ href: 'https://api.whatsapp.com/send/?phone=524461354113' })),
+    {
+      event: 'lead_whatsapp',
+      event_category: 'conversion',
+      event_label: 'WhatsApp',
+      page: '/',
+      section: 'page',
+      value: 1,
+      currency: 'MXN',
+    },
+  );
+  assert.equal(resolveWhatsAppClick('/contacto/', anchor({}))?.event, 'lead_whatsapp');
+  assert.equal(
+    (resolveWhatsAppClick('/seguros-vida/orvi', anchor({})) as { page: string }).page,
+    '/seguros-vida/orvi',
+  );
+  assert.equal(resolveWhatsAppClick('/sistema/leads', anchor({})), null);
   assert.equal(resolveWhatsAppClick('/asesores-seguros-monterrey-nyl', anchor({ href: 'tel:+524461354113' })), null);
   assert.equal(resolveWhatsAppClick('/asesores-seguros-monterrey-nyl', anchor({ href: '#contacto' })), null);
+});
+
+test('floating WhatsApp uses the floating section and an explicit section wins', () => {
+  const floating = anchor({});
+  const originalClosest = floating.closest.bind(floating);
+  floating.closest = (selector: string) =>
+    selector === '.floating-whatsapp' ? { floating: true } : originalClosest(selector);
+  assert.equal((resolveWhatsAppClick('/contacto', floating) as { section: string }).section, 'floating');
+
+  const labeled = anchor({});
+  const originalGet = labeled.getAttribute.bind(labeled);
+  labeled.getAttribute = (name: string) => (name === 'data-wa-section' ? 'hero' : originalGet(name));
+  assert.equal((resolveWhatsAppClick('/', labeled) as { section: string }).section, 'hero');
 });
 
 test('diagnostic result links and self-tracked buttons are not counted again', () => {

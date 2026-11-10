@@ -25,14 +25,13 @@ const ENDPOINTS = [
 ];
 
 /**
- * Rutas bloqueadas en robots.txt (landing pages de campaña con noindex).
- * No deben aparecer en el sitemap ni enviarse a IndexNow: sería contradictorio
- * y los buscadores rechazan URLs que ellas mismas tienen prohibidas.
+ * Rutas bloqueadas en robots.txt (landings de campaña con noindex y rutas
+ * privadas). No deben aparecer en el sitemap ni enviarse a IndexNow.
+ * /asesores-seguros-monterrey-nyl sí se indexa.
  */
 const NON_INDEXABLE_PREFIXES = [
   '/segubecalanding',
   '/vidamujerlanding',
-  '/asesores-seguros-monterrey-nyl',
   '/sistema',
   '/login',
   '/ssr',

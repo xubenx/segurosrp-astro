@@ -4,10 +4,69 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
+import FaqList from '../../components/FaqList.astro';
+import { faqPageSchema } from '../../lib/faq-schema';
+import { cnsfCredential, CONTACT_EMAIL } from '../../lib/agency-credential';
 
+const site = 'https://segurosrp.com';
+const canonical = `${site}/seguros-vida/segubeca`;
+const pageTitle = 'SeguBeca: cotiza el seguro educativo | Seguros RP';
+const pageDescription = 'SeguBeca de Seguros Monterrey New York Life protege la universidad de tus hijos: ahorro, vida e invalidez. Cotiza con asesores en todo México.';
+
+const serviceData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SeguBeca',
+  serviceType: 'Seguro educativo',
+  description: 'Seguro educativo de Seguros Monterrey New York Life que asegura el futuro educativo de los hijos y protege a la familia. El plan se adapta a la capacidad de pago, puede ser mancomunado para ambos padres e incluye coberturas adicionales de seguro de vida, doble indemnización por muerte accidental y pérdidas orgánicas, e invalidez total o permanente.',
+  url: canonical,
+  areaServed: { '@type': 'Country', name: 'México' },
+  provider: {
+    '@type': 'InsuranceAgency',
+    name: 'SegurosRP — Ramírez & Plascencia',
+    url: site,
+    telephone: '+52 446 135 4113',
+    email: CONTACT_EMAIL,
+    hasCredential: cnsfCredential,
+    areaServed: 'México',
+  },
+  brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
+};
+
+const segubecaFaqs = [
+  {
+    question: '¿Qué es SeguBeca?',
+    answer: 'SeguBeca es el seguro educativo de Seguros Monterrey New York Life que asegura el futuro educativo de tus hijos mientras protege a tu familia. El plan se adapta a tu capacidad de pago.',
+  },
+  {
+    question: '¿Qué coberturas adicionales incluye?',
+    answer: 'Incluye seguro de vida para tu familia en caso de fallecimiento, doble indemnización en caso de muerte accidental y pérdidas orgánicas, e invalidez total o permanente.',
+  },
+  {
+    question: '¿Puede cubrir a ambos padres?',
+    answer: 'Sí. El plan mancomunado ofrece protección conjunta para ambos padres, de modo que el plan continúe independientemente de las adversidades.',
+  },
+  {
+    question: '¿Dónde puedo cotizarlo?',
+    answer: 'Puedes cotizarlo con los asesores de Ramírez & Plascencia por WhatsApp al +52 446 135 4113. Hay oficinas en Querétaro y Celaya, y la asesoría está disponible en todo México.',
+  },
+];
+
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${site}/` },
+    { '@type': 'ListItem', position: 2, name: 'Seguros de Vida', item: `${site}/seguros-vida` },
+    { '@type': 'ListItem', position: 3, name: 'SeguBeca', item: canonical },
+  ],
+};
 ---
 
-<Layout title="SeguBeca — Seguro Educativo para Hijos | Seguros Monterrey New York Life" description="SeguBeca garantiza la educación de tus hijos aunque faltes. Seguro educativo de Seguros Monterrey New York Life con ahorro garantizado y protección en caso de fallecimiento o invalidez." canonical="https://segurosrp.com/seguros-vida/segubeca">
+<Layout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqPageSchema(segubecaFaqs))} />
   <main class="">
     <Header/>
     <!-- Hero Section -->
@@ -327,6 +386,11 @@ import YouTubeFacade from '../../components/YouTubeFacade.astro';
         </div>
       </div>
     </section>
+    <FaqList
+      title="Preguntas frecuentes de SeguBeca"
+      intro="Seguro educativo de Seguros Monterrey New York Life, con asesoría en todo México."
+      items={segubecaFaqs}
+    />
     <section id="contacto" class="bg-white py-12">
       <div class="container mx-auto px-4 max-w-3xl">
         <div class="rounded-2xl border border-gray-100 shadow-lg p-6 md:p-8">

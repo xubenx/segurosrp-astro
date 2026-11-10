@@ -8,26 +8,37 @@ export const WHATSAPP_CLICK_EVENTS = {
   asesores: 'asesores_whatsapp',
   segubeca: 'segubeca_whatsapp',
   vidamujer: 'vidamujer_whatsapp',
+  lead: 'lead_whatsapp',
 } as const;
 
 export type WhatsAppClickEventName =
   (typeof WHATSAPP_CLICK_EVENTS)[keyof typeof WHATSAPP_CLICK_EVENTS];
 
 export interface WhatsAppClickPayload {
-  event: WhatsAppClickEventName;
+  event: Exclude<WhatsAppClickEventName, 'lead_whatsapp'>;
   event_category: 'conversion';
   event_label: string;
   value: 1;
   currency: 'MXN';
 }
 
-const EVENT_LABELS: Record<WhatsAppClickEventName, string> = {
+export interface LeadWhatsAppPayload {
+  event: 'lead_whatsapp';
+  event_category: 'conversion';
+  event_label: 'WhatsApp';
+  page: string;
+  section: string;
+  value: 1;
+  currency: 'MXN';
+}
+
+const EVENT_LABELS: Record<Exclude<WhatsAppClickEventName, 'lead_whatsapp'>, string> = {
   asesores_whatsapp: 'Asesores Monterrey WhatsApp Contact',
   segubeca_whatsapp: 'Segubeca WhatsApp Contact',
   vidamujer_whatsapp: 'Vida Mujer WhatsApp CTA',
 };
 
-const PATH_EVENTS: Record<string, WhatsAppClickEventName> = {
+const PATH_EVENTS: Record<string, Exclude<WhatsAppClickEventName, 'lead_whatsapp'>> = {
   '/asesores-seguros-monterrey': 'asesores_whatsapp',
   '/asesores-seguros-monterrey-nyl': 'asesores_whatsapp',
   '/seguros-vida/segubeca': 'segubeca_whatsapp',
@@ -82,8 +93,23 @@ export function normalizePath(pathname: string): string {
   return path;
 }
 
-export function whatsappClickEventForPath(pathname: string): WhatsAppClickEventName | null {
+export function whatsappClickEventForPath(
+  pathname: string,
+): Exclude<WhatsAppClickEventName, 'lead_whatsapp'> | null {
   return PATH_EVENTS[normalizePath(pathname)] ?? null;
+}
+
+function isCrmPath(pathname: string): boolean {
+  const path = normalizePath(pathname);
+  return path === '/sistema' || path.startsWith('/sistema/');
+}
+
+function sectionFor(anchor: WhatsAppAnchor): string {
+  const explicit = anchor.getAttribute('data-wa-section');
+  if (explicit && explicit.trim()) return explicit.trim();
+  if (anchor.closest('.floating-whatsapp')) return 'floating';
+  if (anchor.closest('header')) return 'header';
+  return 'page';
 }
 
 export function isWhatsAppUrl(href: string, base = 'https://segurosrp.com/'): boolean {
@@ -98,7 +124,7 @@ export function isWhatsAppUrl(href: string, base = 'https://segurosrp.com/'): bo
   }
 }
 
-function payload(event: WhatsAppClickEventName): WhatsAppClickPayload {
+function payload(event: Exclude<WhatsAppClickEventName, 'lead_whatsapp'>): WhatsAppClickPayload {
   return {
     event,
     event_category: 'conversion',
@@ -117,7 +143,7 @@ export function resolveWhatsAppClick(
   pathname: string,
   anchor: WhatsAppAnchor,
   base?: string,
-): WhatsAppClickPayload | null {
+): WhatsAppClickPayload | LeadWhatsAppPayload | null {
   const href = anchor.getAttribute('href') || '';
   if (!isWhatsAppUrl(href, base)) return null;
   if (anchor.getAttribute('data-wa-track') === 'off') return null;
@@ -125,13 +151,25 @@ export function resolveWhatsAppClick(
   if (anchor.closest('[data-wa-track="off"]')) return null;
 
   const event = whatsappClickEventForPath(pathname);
-  if (!event) return null;
-
   if (anchor.hasAttribute('data-wa-self-tracked')) return null;
   const onclick = anchor.getAttribute('onclick') || '';
-  if (onclick.includes(event)) return null;
+  if (event) {
+    if (onclick.includes(event)) return null;
+    return payload(event);
+  }
 
-  return payload(event);
+  if (isCrmPath(pathname)) return null;
+  if (onclick.includes('lead_whatsapp')) return null;
+
+  return {
+    event: 'lead_whatsapp',
+    event_category: 'conversion',
+    event_label: 'WhatsApp',
+    page: normalizePath(pathname),
+    section: sectionFor(anchor),
+    value: 1,
+    currency: 'MXN',
+  };
 }
 
 function anchorFromTarget(target: EventTarget | null): WhatsAppAnchor | null {
