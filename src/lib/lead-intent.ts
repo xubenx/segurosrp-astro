@@ -6,6 +6,7 @@ const RETIRO = 0;
 const EDU = 1;
 const PATRIMONIO = 2;
 const FAMILIA = 3;
+const EMPRESA = 4;
 const GMM = 5;
 
 /** Intent for the advisors diagnostic. Priority wins over secondary interests. */
@@ -23,16 +24,16 @@ export const LEAD_INTENT_TELEGRAM: Record<LeadIntent, string> = {
   sin_definir: 'SIN DEFINIR',
 };
 
-const VIDA = new Set<number>([RETIRO, EDU, PATRIMONIO, FAMILIA]);
+const VIDA = new Set<number>([RETIRO, EDU, PATRIMONIO, FAMILIA, EMPRESA]);
 
 export function isLeadIntent(value: unknown): value is LeadIntent {
   return value === 'vida_ahorro_retiro' || value === 'gmm' || value === 'sin_definir';
 }
 
 /**
- * vida/ahorro/retiro/educación/protección familiar → vida_ahorro_retiro.
+ * vida/ahorro/retiro/educación/familia/empresa → vida_ahorro_retiro.
  * Prioridad "gastos médicos" → gmm.
- * Empresa-only, or no single priority, → sin_definir (asesores_form_otro).
+ * No single priority → sin_definir (asesores_form_otro).
  * "¿Tienes seguro de gastos médicos mayores?" is current coverage, not intent.
  */
 export function classifyLeadIntent(ans: {
