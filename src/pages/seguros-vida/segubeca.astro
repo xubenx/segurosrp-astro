@@ -5,9 +5,43 @@ import Footer from '../../components/Footer.astro';
 import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
 
+const site = 'https://segurosrp.com';
+const canonical = `${site}/seguros-vida/segubeca`;
+const pageTitle = 'SeguBeca: cotiza el seguro educativo | Seguros RP';
+const pageDescription = 'SeguBeca de Seguros Monterrey New York Life protege la universidad de tus hijos: ahorro, vida e invalidez. Cotiza con asesores en todo México.';
+
+const serviceData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SeguBeca',
+  serviceType: 'Seguro educativo',
+  description: 'Seguro educativo de Seguros Monterrey New York Life que asegura el futuro educativo de los hijos y protege a la familia. El plan se adapta a la capacidad de pago, puede ser mancomunado para ambos padres e incluye coberturas adicionales de seguro de vida, doble indemnización por muerte accidental y pérdidas orgánicas, e invalidez total o permanente.',
+  url: canonical,
+  areaServed: { '@type': 'Country', name: 'México' },
+  provider: {
+    '@type': 'InsuranceAgency',
+    name: 'SegurosRP — Ramírez & Plascencia',
+    url: site,
+    telephone: '+52-446-135-4113',
+    areaServed: 'México',
+  },
+  brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
+};
+
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${site}/` },
+    { '@type': 'ListItem', position: 2, name: 'Seguros de Vida', item: `${site}/seguros-vida` },
+    { '@type': 'ListItem', position: 3, name: 'SeguBeca', item: canonical },
+  ],
+};
 ---
 
-<Layout title="SeguBeca — Seguro Educativo para Hijos | Seguros Monterrey New York Life" description="SeguBeca garantiza la educación de tus hijos aunque faltes. Seguro educativo de Seguros Monterrey New York Life con ahorro garantizado y protección en caso de fallecimiento o invalidez." canonical="https://segurosrp.com/seguros-vida/segubeca">
+<Layout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbData)} />
   <main class="">
     <Header/>
     <!-- Hero Section -->

@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /segubecalanding/
-Disallow: /asesores-seguros-monterrey-nyl/
 Disallow: /vidamujerlanding/
 Disallow: /ssr
 Disallow: /ssr-with-swr-caching
@@ -28,7 +27,7 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Googlebot-Extended
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://segurosrp.com/sitemap.xml

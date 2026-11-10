@@ -5,9 +5,43 @@ import Footer from '../../components/Footer.astro';
 import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
 
+const site = 'https://segurosrp.com';
+const canonical = `${site}/seguros-vida/vida-mujer`;
+const pageTitle = 'Vida Mujer — Seguro de Vida para Mujer | Seguros Monterrey New York Life';
+const pageDescription = 'Vida Mujer de Seguros Monterrey New York Life: protección integral diseñada para la mujer con cobertura por fallecimiento, invalidez y diagnóstico de enfermedades graves. Cotiza gratis.';
+
+const serviceData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Vida Mujer',
+  serviceType: 'Seguro de vida para la mujer',
+  description: 'Seguro de Seguros Monterrey New York Life diseñado para la mujer. Incluye respaldo por fallecimiento, invalidez o pérdidas orgánicas; ahorro con entregas a partir del quinto año; coberturas por cáncer de mama, cáncer de ovario y complicaciones del embarazo; y asistencia ante diagnóstico de enfermedades graves. Garantiza el 115% de rendimiento de la suma asegurada al vencimiento.',
+  url: canonical,
+  areaServed: { '@type': 'Country', name: 'México' },
+  provider: {
+    '@type': 'InsuranceAgency',
+    name: 'SegurosRP — Ramírez & Plascencia',
+    url: site,
+    telephone: '+52-446-135-4113',
+    areaServed: 'México',
+  },
+  brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
+};
+
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${site}/` },
+    { '@type': 'ListItem', position: 2, name: 'Seguros de Vida', item: `${site}/seguros-vida` },
+    { '@type': 'ListItem', position: 3, name: 'Vida Mujer', item: canonical },
+  ],
+};
 ---
 
-<Layout title="Vida Mujer — Seguro de Vida para Mujer | Seguros Monterrey New York Life" description="Vida Mujer de Seguros Monterrey New York Life: protección integral diseñada para la mujer con cobertura por fallecimiento, invalidez y diagnóstico de enfermedades graves. Cotiza gratis." canonical="https://segurosrp.com/seguros-vida/vida-mujer">
+<Layout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbData)} />
   <main class="">
     <Header/>
     <!-- Hero Section -->

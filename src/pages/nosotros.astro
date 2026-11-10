@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Nosotros — Ramírez & Plascencia | Asesores Seguros Monterrey New York Life" description="Conoce a Ramírez & Plascencia, despacho de asesores certificados de Seguros Monterrey New York Life desde 1998. Más de 25 años protegiendo familias en México." canonical="https://segurosrp.com/nosotros">
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -35,7 +35,7 @@ import Footer from '../components/Footer.astro';
         ]
       }
     ]
-  })}</script>
+  })} />
   <Header />
   <main class="pt-20">
     <!-- Hero Section -->

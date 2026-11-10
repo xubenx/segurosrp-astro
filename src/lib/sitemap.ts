@@ -1,6 +1,8 @@
 import { getPublishedPosts } from './blog-collection';
 import { SITE_URL } from './blog';
 
+// Las landings noindex (/segubecalanding, /vidamujerlanding) y las rutas
+// privadas (/sistema, /login, /ssr) no se listan: robots.txt las bloquea.
 const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/nosotros', changefreq: 'monthly', priority: '0.8' },
@@ -8,6 +10,7 @@ const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/diagnostico', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog', changefreq: 'weekly', priority: '0.9' },
   { path: '/asesores-seguros-monterrey', changefreq: 'monthly', priority: '0.7' },
+  { path: '/asesores-seguros-monterrey-nyl', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida', changefreq: 'weekly', priority: '0.9' },
   { path: '/seguros-vida/imagina-ser', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida/nuevo-plenitud', changefreq: 'monthly', priority: '0.7' },
