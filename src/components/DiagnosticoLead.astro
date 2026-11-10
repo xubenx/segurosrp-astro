@@ -168,6 +168,7 @@ const {
     type DxQuestion,
   } from '../lib/diagnostico';
   import { formDataLayerPayload } from '../lib/lead-events';
+  import { LEAD_INTENT_EVENT, classifyLeadIntent } from '../lib/lead-intent';
 
   function boot(root: HTMLElement) {
     const preset = presetIndex(root.dataset.preset || '');
@@ -342,6 +343,7 @@ const {
           oferta: objetivo.oferta,
           diagnostico: d.resumen,
           respuestas: answers,
+          leadTipo: classifyLeadIntent(ans),
           source: root.dataset.source,
           campaign: root.dataset.campaign,
           pageUrl: location.href,
@@ -370,12 +372,21 @@ const {
         } catch {}
         const evento = root.dataset.track || 'diagnostico_form';
         const datos = { perfil: tier, puntos: score, objetivo: objetivo.key };
+        const leadTipo = classifyLeadIntent(ans);
         try {
           const w = window as any;
           if (w.rpMeta) w.rpMeta.trackCustom(evento, datos);
           else if (w.fbq) w.fbq('trackCustom', evento, datos);
           w.dataLayer = w.dataLayer || [];
-          w.dataLayer.push(formDataLayerPayload(evento, location.pathname, root.dataset.source || 'form', datos));
+          const extra = evento === 'asesores_form' ? { ...datos, lead_type: leadTipo } : datos;
+          w.dataLayer.push(formDataLayerPayload(evento, location.pathname, root.dataset.source || 'form', extra));
+          if (evento === 'asesores_form') {
+            w.dataLayer.push({
+              event: LEAD_INTENT_EVENT[leadTipo],
+              lead_type: leadTipo,
+              ...datos,
+            });
+          }
         } catch {}
         track('Perfil_' + tier, { puntos: score, objetivo: objetivo.key });
         if (entregado) {
