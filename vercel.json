@@ -8,6 +8,18 @@
       "schedule": "0 6 * * *"
     }
   ],
+  "redirects": [
+    {
+      "source": "/seguro-de-vida-mujer",
+      "destination": "/seguros-vida/vida-mujer",
+      "statusCode": 301
+    },
+    {
+      "source": "/seguro-de-vida-mujer/",
+      "destination": "/seguros-vida/vida-mujer",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

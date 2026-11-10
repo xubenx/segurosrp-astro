@@ -27,8 +27,7 @@ Ramírez & Plascencia es un despacho de asesores independientes certificados por
 - [Beneficios del Seguro de Vida](${SITE_URL}/beneficios-seguro-de-vida/): Guía completa de coberturas de vida con FAQ
 - [Plan de Retiro](${SITE_URL}/plan-de-retiro-seguros-monterrey/): Planes Imagina Ser y Nuevo Plenitud
 - [SeguBeca](${SITE_URL}/seguros-vida/segubeca): Seguro educativo para la universidad de los hijos, con vida e invalidez
-- [Vida Mujer](${SITE_URL}/seguros-vida/vida-mujer): Seguro de vida para la mujer, con ahorro y coberturas de salud femenina
-- [Seguro de Vida para Mujer](${SITE_URL}/seguro-de-vida-mujer/): Guía de Vida Mujer con preguntas frecuentes
+- [Vida Mujer](${SITE_URL}/seguros-vida/vida-mujer): Seguro de vida para la mujer, con cáncer femenino, ahorro desde el 5.º año, anticipos y preguntas frecuentes
 - [Seguros en Querétaro](${SITE_URL}/seguros-monterrey-en-queretaro/): Oficina en Santiago de Querétaro; la asesoría también es nacional
 - [Seguros en Celaya](${SITE_URL}/seguros-monterrey-en-celaya-gto/): Oficina en Celaya, Guanajuato; la asesoría también es nacional
 - [Alfa Medical](${SITE_URL}/seguros-salud/alfa-medical/): Seguro de gastos médicos con cobertura de maternidad
