@@ -4,6 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
+import FaqList from '../../components/FaqList.astro';
+import { faqPageSchema } from '../../lib/faq-schema';
 
 const site = 'https://segurosrp.com';
 const canonical = `${site}/seguros-vida/segubeca`;
@@ -22,11 +24,30 @@ const serviceData = {
     '@type': 'InsuranceAgency',
     name: 'SegurosRP — Ramírez & Plascencia',
     url: site,
-    telephone: '+52-446-135-4113',
+    telephone: '+52 446 135 4113',
     areaServed: 'México',
   },
   brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
 };
+
+const segubecaFaqs = [
+  {
+    question: '¿Qué es SeguBeca?',
+    answer: 'SeguBeca es el seguro educativo de Seguros Monterrey New York Life que asegura el futuro educativo de tus hijos mientras protege a tu familia. El plan se adapta a tu capacidad de pago.',
+  },
+  {
+    question: '¿Qué coberturas adicionales incluye?',
+    answer: 'Incluye seguro de vida para tu familia en caso de fallecimiento, doble indemnización en caso de muerte accidental y pérdidas orgánicas, e invalidez total o permanente.',
+  },
+  {
+    question: '¿Puede cubrir a ambos padres?',
+    answer: 'Sí. El plan mancomunado ofrece protección conjunta para ambos padres, de modo que el plan continúe independientemente de las adversidades.',
+  },
+  {
+    question: '¿Dónde puedo cotizarlo?',
+    answer: 'Puedes cotizarlo con los asesores de Ramírez & Plascencia por WhatsApp al +52 446 135 4113. Hay oficinas en Querétaro y Celaya, y la asesoría está disponible en todo México.',
+  },
+];
 
 const breadcrumbData = {
   '@context': 'https://schema.org',
@@ -42,6 +63,7 @@ const breadcrumbData = {
 <Layout title={pageTitle} description={pageDescription} canonical={canonical}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceData)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqPageSchema(segubecaFaqs))} />
   <main class="">
     <Header/>
     <!-- Hero Section -->
@@ -361,6 +383,11 @@ const breadcrumbData = {
         </div>
       </div>
     </section>
+    <FaqList
+      title="Preguntas frecuentes de SeguBeca"
+      intro="Seguro educativo de Seguros Monterrey New York Life, con asesoría en todo México."
+      items={segubecaFaqs}
+    />
     <section id="contacto" class="bg-white py-12">
       <div class="container mx-auto px-4 max-w-3xl">
         <div class="rounded-2xl border border-gray-100 shadow-lg p-6 md:p-8">

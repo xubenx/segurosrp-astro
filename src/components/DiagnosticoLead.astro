@@ -167,6 +167,7 @@ const {
     type DxAnswers,
     type DxQuestion,
   } from '../lib/diagnostico';
+  import { formDataLayerPayload } from '../lib/lead-events';
 
   function boot(root: HTMLElement) {
     const preset = presetIndex(root.dataset.preset || '');
@@ -192,7 +193,8 @@ const {
         const w = window as any;
         if (w.rpMeta) w.rpMeta.trackCustom(evento, datos || {});
         else if (w.fbq) w.fbq('trackCustom', evento, datos || {});
-        if (w.dataLayer) w.dataLayer.push({ event: evento, ...datos });
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: evento, ...datos });
       } catch {}
     }
 
@@ -366,7 +368,15 @@ const {
             body: JSON.stringify({ email: ans.mail }),
           });
         } catch {}
-        track(root.dataset.track || 'diagnostico_form', { perfil: tier, puntos: score, objetivo: objetivo.key });
+        const evento = root.dataset.track || 'diagnostico_form';
+        const datos = { perfil: tier, puntos: score, objetivo: objetivo.key };
+        try {
+          const w = window as any;
+          if (w.rpMeta) w.rpMeta.trackCustom(evento, datos);
+          else if (w.fbq) w.fbq('trackCustom', evento, datos);
+          w.dataLayer = w.dataLayer || [];
+          w.dataLayer.push(formDataLayerPayload(evento, location.pathname, root.dataset.source || 'form', datos));
+        } catch {}
         track('Perfil_' + tier, { puntos: score, objetivo: objetivo.key });
         if (entregado) {
           trackLead({

@@ -4,6 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
+import FaqList from '../../components/FaqList.astro';
+import { faqPageSchema } from '../../lib/faq-schema';
 
 const site = 'https://segurosrp.com';
 const canonical = `${site}/seguros-vida/vida-mujer`;
@@ -22,11 +24,26 @@ const serviceData = {
     '@type': 'InsuranceAgency',
     name: 'SegurosRP — Ramírez & Plascencia',
     url: site,
-    telephone: '+52-446-135-4113',
+    telephone: '+52 446 135 4113',
     areaServed: 'México',
   },
   brand: { '@type': 'Brand', name: 'Seguros Monterrey New York Life' },
 };
+
+const vidaMujerFaqs = [
+  {
+    question: '¿Qué protege Vida Mujer?',
+    answer: 'Ofrece respaldo financiero en caso de fallecimiento, invalidez o pérdidas orgánicas, y coberturas para cáncer de mama, cáncer de ovario, complicaciones en el embarazo y complicaciones en el recién nacido.',
+  },
+  {
+    question: '¿Vida Mujer incluye ahorro?',
+    answer: 'Sí. Puedes recibir parte de tu ahorro a partir del quinto año. El plan garantiza el 115% de rendimiento de tu suma asegurada al vencimiento.',
+  },
+  {
+    question: '¿Para quién está diseñado?',
+    answer: 'Es un seguro diseñado para la mujer, sin importar su edad ni el momento de vida en el que se encuentre. La asesoría de Ramírez & Plascencia está disponible en todo México.',
+  },
+];
 
 const breadcrumbData = {
   '@context': 'https://schema.org',
@@ -42,6 +59,7 @@ const breadcrumbData = {
 <Layout title={pageTitle} description={pageDescription} canonical={canonical}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceData)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbData)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqPageSchema(vidaMujerFaqs))} />
   <main class="">
     <Header/>
     <!-- Hero Section -->
@@ -375,6 +393,11 @@ const breadcrumbData = {
         </div>
       </div>
     </section>
+    <FaqList
+      title="Preguntas frecuentes de Vida Mujer"
+      intro="Seguro de vida para la mujer, con asesoría en todo México."
+      items={vidaMujerFaqs}
+    />
     <section id="contacto" class="bg-white py-12">
       <div class="container mx-auto px-4 max-w-3xl">
         <div class="rounded-2xl border border-pink-100 shadow-lg p-6 md:p-8">

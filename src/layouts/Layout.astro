@@ -34,6 +34,7 @@ const {
 const site = "https://segurosrp.com";
 const resolvedCanonical = canonical ?? (site + Astro.url.pathname);
 const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
+const isCrm = Astro.url.pathname === '/sistema' || Astro.url.pathname.startsWith('/sistema/');
 ---
 
 <!DOCTYPE html>
@@ -51,8 +52,8 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
     delayInSeconds={32}
   />
 		)}
-		<!-- Google Tag Manager - Carga Diferida Optimizada -->
-		<script is:inline>
+		<!-- Google Tag Manager - Carga Diferida Optimizada. No corre en /sistema. -->
+		{!isCrm && <script is:inline>
 			(function() {
 				let gtmLoaded = false;
 				
@@ -123,15 +124,15 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
 					setTimeout(loadGTM, 5000);
 				}
 			})();
-		</script>
+		</script>}
 		<!-- End Google Tag Manager -->
 		
 		<!-- DNS prefetch for external domains -->
-		<link rel="dns-prefetch" href="//www.googletagmanager.com">
+		{!isCrm && <link rel="dns-prefetch" href="//www.googletagmanager.com" />}
 		<link rel="dns-prefetch" href="//connect.facebook.net">
 		
 		<!-- Preconnect to external domains -->
-		<link rel="preconnect" href="https://www.googletagmanager.com">
+		{!isCrm && <link rel="preconnect" href="https://www.googletagmanager.com" />}
 		<link rel="preconnect" href="https://connect.facebook.net">
 		
 		<!-- Critical CSS inlined -->
@@ -268,10 +269,10 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
 		<slot name="head" />
 	</head>
 	<body>
-		<!-- Google Tag Manager (noscript) -->
+		{!isCrm && (
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5DGHJC"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
+		)}
 		
 		<!-- Meta Pixel (se omite en el panel interno /sistema) -->
 		<MetaPixel enabled={!Astro.url.pathname.startsWith('/sistema')} />
@@ -279,8 +280,7 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
 		<slot />
 		{!minimal && <OptimizedLoading />}
 		
-		<!-- Scripts de Analytics - Carga Diferida -->
-		<script is:inline>
+		{!isCrm && <script is:inline>
 			(function() {
 				let analyticsLoaded = false;
 				
@@ -341,7 +341,7 @@ const resolvedOgImage = ogImage ?? `${site}/logo_ryp.png`;
 					setTimeout(loadAnalytics, 3000);
 				}
 			})();
-		</script>
+		</script>}
 		{!minimal && <WhatsAppClickTracking />}
 		{!minimal && <WhatsApp />}
 	</body>
