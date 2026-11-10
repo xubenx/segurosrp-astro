@@ -637,24 +637,6 @@ import MetaPixel from '../../components/MetaPixel.astro';
     gtag('config', 'G-Y67F0BJRHL');
   </script>
 
-  <!-- Google tag (gtag.js) event - delayed navigation helper -->
-  <script>
-    // Helper function to delay opening a URL until a gtag event is sent.
-    // Call it in response to an action that should navigate to a URL.
-    function gtagSendEvent(url) {
-      var callback = function () {
-        if (typeof url === 'string') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'click_whatsapp', {
-        'event_callback': callback,
-        'event_timeout': 2000,
-      });
-      return false;
-    }
-  </script>
-
   <!-- Cargar CSS no crítico al final -->
   <link rel="stylesheet" href="/css/fonts.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="/css/fonts.css" /></noscript>

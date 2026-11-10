@@ -435,17 +435,6 @@ import YouTubeFacade from '../../components/YouTubeFacade.astro';
                 currency: 'MXN',
                 page_location: window.location.href
               });
-              if (typeof window.gtag !== 'undefined') {
-                window.gtag('event', 'vidamujer_whatsapp', {
-                  event_category: 'conversion',
-                  event_label: 'Vida Mujer WhatsApp CTA',
-                  campaign: 'SEM Google Ads - Vida Mujer',
-                  source: 'Landing Vida Mujer',
-                  value: 1,
-                  currency: 'MXN',
-                  page_location: window.location.href
-                });
-              }
               return true;
             "
             class="border-2 border-white text-white hover:bg-white hover:text-pink-700 font-semibold py-4 px-10 rounded-full transition-all duration-300"

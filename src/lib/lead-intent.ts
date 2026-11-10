@@ -19,7 +19,7 @@ export const LEAD_INTENT_EVENT: Record<LeadIntent, string> = {
 };
 
 export const LEAD_INTENT_TELEGRAM: Record<LeadIntent, string> = {
-  vida_ahorro_retiro: '🟢 VIDA/AHORRO/RETIRO',
+  vida_ahorro_retiro: 'VIDA/AHORRO/RETIRO',
   gmm: 'GMM',
   sin_definir: 'SIN DEFINIR',
 };

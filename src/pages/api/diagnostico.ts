@@ -5,6 +5,7 @@ import { rateLimitMiddleware } from '../../lib/rate-limiter';
 import { persistLead } from '../../lib/leads-store';
 import { answersToRecord } from '../../lib/leads';
 import { LEAD_INTENT_TELEGRAM, isLeadIntent } from '../../lib/lead-intent';
+import { URGENCIA_TELEGRAM, isUrgencia } from '../../lib/lead-urgency';
 
 config();
 
@@ -27,6 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
       campaign,
       pageUrl,
       leadTipo,
+      urgencia: urgenciaRaw,
     } = body;
 
     if (!nombre || !email || !telefono) {
@@ -34,32 +36,36 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const tier = String(perfil || 'B').toUpperCase();
-    const flag = tier === 'A' ? '🔥 PERFIL A — PRIORIDAD' : tier === 'C' ? '❄️ PERFIL C — Nurturing' : '📋 PERFIL B — seguimiento';
+    const flag = tier === 'A' ? 'PERFIL A — PRIORIDAD' : tier === 'C' ? 'PERFIL C — Nurturing' : 'PERFIL B — seguimiento';
     const intent = isLeadIntent(leadTipo) ? leadTipo : null;
     const intentLine = intent ? LEAD_INTENT_TELEGRAM[intent] : '';
+    const urgencia = isUrgencia(urgenciaRaw) ? urgenciaRaw : 'sin_dato';
+    const urgenciaLine = URGENCIA_TELEGRAM[urgencia];
+    const headerLine = [intentLine, urgenciaLine].filter(Boolean).join(' · ');
     const answersBlock = respuestas && typeof respuestas === 'object'
       ? Object.entries(respuestas).map(([k, v]) => `• ${k}: ${v}`).join('\n')
       : 'Sin detalle';
 
     const telegramMessage = `
-${intentLine ? `${intentLine}\n` : ''}${flag}
-⭐ Puntos: ${puntos ?? '—'}
-📦 Oferta: ${oferta || 'Diagnóstico patrimonial'}
+${headerLine}
+${flag}
+Puntos: ${puntos ?? '—'}
+Oferta: ${oferta || 'Diagnóstico patrimonial'}
 
-👤 Nombre: ${nombre}
-📧 Email: ${email}
-📱 WhatsApp: ${telefono}
+Nombre: ${nombre}
+Email: ${email}
+WhatsApp: ${telefono}
 
-📊 Diagnóstico: ${diagnostico || '—'}
+Diagnóstico: ${diagnostico || '—'}
 
-🧾 Respuestas:
+Respuestas:
 ${answersBlock}
 
-🌐 Fuente: ${source || 'web'}
-📣 Campaña: ${campaign || '—'}
-🔗 URL: ${pageUrl || '—'}
+Fuente: ${source || 'web'}
+Campaña: ${campaign || '—'}
+URL: ${pageUrl || '—'}
 
-⏰ ${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })}
+${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })}
     `.trim();
 
     await persistLead({
@@ -74,6 +80,7 @@ ${answersBlock}
       answers: {
         ...answersToRecord(respuestas),
         ...(intentLine ? { 'Tipo de lead': intentLine } : {}),
+        Urgencia: urgenciaLine,
       },
       source: source || 'web',
       campaign: campaign || '',
@@ -97,7 +104,7 @@ ${answersBlock}
 
         await bot.sendMessage(TELEGRAM_CHAT_ID, telegramMessage, {
           reply_markup: {
-            inline_keyboard: [[{ text: `💬 Contactar a ${nombre}`, url: whatsappUrl }]],
+            inline_keyboard: [[{ text: `Contactar a ${nombre}`, url: whatsappUrl }]],
           },
         });
       } catch (error) {
