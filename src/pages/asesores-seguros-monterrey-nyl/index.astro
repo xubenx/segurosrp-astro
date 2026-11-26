@@ -6,14 +6,15 @@ import DiagnosticoLead from '../../components/DiagnosticoLead.astro';
 import { Image } from 'astro:assets';
 
 // SEO optimizado para SEM Google Ads
-const title = 'Asesores Seguros Monterrey - New York Life | Seguros RP';
-const description = 'Asesores especializados en seguros Monterrey New York Life. Protección de vida, salud y patrimonio. Cotiza gratis con expertos certificados en seguros.';
+const canonical = 'https://segurosrp.com/asesores-seguros-monterrey-nyl';
+const title = 'Asesores Seguros Monterrey en todo México | NYL';
+const description = 'Asesores certificados de Seguros Monterrey New York Life en todo México. Cotiza gratis vida, salud, retiro y educación con Ramírez & Plascencia.';
 
 // Palabras clave para tracking
-const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new york life monterrey, seguros vida monterrey, asesores seguros new york life';
+const keywords = 'asesores seguros monterrey, asesores en todo México, seguros monterrey new york life, cotización gratis';
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} canonical={canonical}>
 	<Header />
 	
 	<!-- Hero Section completamente responsivo -->
@@ -399,7 +400,7 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 		"@context": "https://schema.org",
 		"@type": "InsuranceAgency",
 		"name": "SegurosRP — Ramírez & Plascencia, Asesores Seguros Monterrey New York Life",
-		"description": "Despacho de asesores certificados de Seguros Monterrey New York Life. Especialistas en seguro de vida, gastos médicos, retiro y educación. Atención nacional.",
+		"description": "Asesores certificados de Seguros Monterrey New York Life en todo México. Cotiza gratis vida, salud, retiro y educación con Ramírez & Plascencia.",
 		"url": "https://segurosrp.com/asesores-seguros-monterrey-nyl",
 		"telephone": "+52 446 135 4113",
 		"email": "michelle@segurosrp.com",
@@ -430,7 +431,10 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 			"longitude": "-100.3899"
 		},
 		"openingHours": "Mo-Fr 09:00-18:00",
-		"areaServed": "México",
+		"areaServed": {
+			"@type": "Country",
+			"name": "México"
+		},
 		"sameAs": [
 			"https://www.facebook.com/segurosrp/",
 			"https://www.linkedin.com/company/ramirez-plascencia-despacho-de-seguros/",
@@ -447,6 +451,6 @@ const keywords = 'asesores seguros monterrey, seguros monterrey asesores, new yo
 
 	<Fragment slot="head">
 		<meta name="keywords" content={keywords}>
-		<link rel="alternate" hreflang="es-mx" href="https://segurosrp.com/asesores-seguros-monterrey-nyl/">
+		<link rel="alternate" hreflang="es-MX" href={canonical}>
 	</Fragment>
 </Layout>
