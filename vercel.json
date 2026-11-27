@@ -18,6 +18,31 @@
       "source": "/seguro-de-vida-mujer/",
       "destination": "/seguros-vida/vida-mujer",
       "statusCode": 301
+    },
+    {
+      "source": "/asesores-seguros-monterrey",
+      "destination": "/asesores-seguros-monterrey-nyl",
+      "statusCode": 301
+    },
+    {
+      "source": "/asesores-seguros-monterrey/",
+      "destination": "/asesores-seguros-monterrey-nyl",
+      "statusCode": 301
+    },
+    {
+      "source": "/asesores-seguros-monterrey-nyl/",
+      "destination": "/asesores-seguros-monterrey-nyl",
+      "statusCode": 301
+    },
+    {
+      "source": "/seguros-monterrey-en-celaya",
+      "destination": "/seguros-monterrey-en-celaya-gto",
+      "statusCode": 301
+    },
+    {
+      "source": "/seguros-monterrey-en-celaya/",
+      "destination": "/seguros-monterrey-en-celaya-gto",
+      "statusCode": 301
     }
   ],
   "headers": [

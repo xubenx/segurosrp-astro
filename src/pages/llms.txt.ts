@@ -19,8 +19,7 @@ Ramírez & Plascencia es un despacho de asesores independientes certificados por
 ## Páginas clave
 
 - [Inicio](${SITE_URL}/): Asesores certificados de Seguros Monterrey New York Life con cobertura en todo México
-- [Asesores Seguros Monterrey NYL](${SITE_URL}/asesores-seguros-monterrey-nyl): Asesoría y cotización de vida, salud y educación con asesores certificados
-- [Asesores Certificados](${SITE_URL}/asesores-seguros-monterrey/): Información del equipo asesor
+- [Asesores Seguros Monterrey NYL](${SITE_URL}/asesores-seguros-monterrey-nyl): Asesores certificados de Seguros Monterrey New York Life en todo México. Cotización de vida, salud, retiro y educación
 - [Contacto](${SITE_URL}/contacto): Teléfono, WhatsApp y oficinas; atención en todo México
 - [Diagnóstico patrimonial](${SITE_URL}/diagnostico): Preguntas en 2 minutos y cifra personalizada, sin costo
 - [Blog](${SITE_URL}/blog): Guías de seguros de vida, salud, retiro y educación
@@ -29,7 +28,7 @@ Ramírez & Plascencia es un despacho de asesores independientes certificados por
 - [SeguBeca](${SITE_URL}/seguros-vida/segubeca): Seguro educativo para la universidad de los hijos, con vida e invalidez
 - [Vida Mujer](${SITE_URL}/seguros-vida/vida-mujer): Seguro de vida para la mujer, con cáncer femenino, ahorro desde el 5.º año, anticipos y preguntas frecuentes
 - [Seguros en Querétaro](${SITE_URL}/seguros-monterrey-en-queretaro/): Oficina en Santiago de Querétaro; la asesoría también es nacional
-- [Seguros en Celaya](${SITE_URL}/seguros-monterrey-en-celaya-gto/): Oficina en Celaya, Guanajuato; la asesoría también es nacional
+- [Seguros en Celaya](${SITE_URL}/seguros-monterrey-en-celaya-gto): Oficina en Celaya, Guanajuato; la asesoría también es nacional
 - [Alfa Medical](${SITE_URL}/seguros-salud/alfa-medical/): Seguro de gastos médicos con cobertura de maternidad
 - [Alfa Medical Flex](${SITE_URL}/seguros-salud/alfa-medical-flex/): GMM con libre elección de hospital
 - [Alfa Medical Internacional](${SITE_URL}/seguros-salud/alfa-medical-internacional/): GMM con cobertura mundial

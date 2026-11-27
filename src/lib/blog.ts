@@ -3,7 +3,7 @@ import { cnsfCredential } from './agency-credential';
 
 export const SITE_URL = 'https://segurosrp.com';
 export const DEFAULT_AUTHOR = 'Ramírez & Plascencia';
-export const DEFAULT_OG = `${SITE_URL}/logo_ryp.png`;
+export const DEFAULT_OG = `${SITE_URL}/og-default.png`;
 
 export const BLOG_CATEGORIES = [
   'Vida',
