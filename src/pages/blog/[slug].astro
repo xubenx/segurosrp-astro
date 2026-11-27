@@ -7,7 +7,10 @@ import BlogArticle from '../../components/blog/BlogArticle.astro';
 import { articleSchema, ogImage, SITE_URL, type BlogPost } from '../../lib/blog';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('blog', ({ data }) => data.draft !== true);
+  const entries = await getCollection(
+    'blog',
+    ({ data }) => data.draft !== true && data.section !== 'segubeca',
+  );
   return entries.map((entry) => ({
     params: { slug: entry.id },
     props: { post: { ...entry.data, slug: entry.id } satisfies BlogPost },

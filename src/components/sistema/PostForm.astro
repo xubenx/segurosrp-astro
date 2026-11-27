@@ -1,6 +1,8 @@
 ---
 import {
   BLOG_CATEGORIES,
+  BLOG_SECTIONS,
+  BLOG_SECTION_META,
   BLOG_TEMPLATES,
   TEMPLATE_META,
   DEFAULT_AUTHOR,
@@ -153,6 +155,19 @@ const field = 'field';
       </select>
     </label>
         </div>
+        <label class="block">
+          <span class="label">Dónde se publica</span>
+          <select name="section" class={field}>
+            {BLOG_SECTIONS.map((id) => (
+              <option value={id} selected={post ? post.section === id : id === 'blog'}>
+                {BLOG_SECTION_META[id].name}
+              </option>
+            ))}
+          </select>
+          <span class="hint">
+            Blog general: /blog. Blog de SeguBeca: /seguros-vida/segubeca/blog. El mismo editor y el mismo archivo JSON.
+          </span>
+        </label>
         <label class="block">
           <span class="label">Etiquetas</span>
           <input name="tags" value={post?.tags?.join(', ') ?? ''} placeholder="vida, familia, guía" class={field} />
@@ -872,6 +887,7 @@ const field = 'field';
           publishedAt: String(fd.get('publishedAt')),
           updatedAt: new Date().toISOString().slice(0, 10),
           category: String(fd.get('category')),
+          section: String(fd.get('section') || 'blog'),
           tags: String(fd.get('tags') || '')
             .split(',')
             .map((t) => t.trim())

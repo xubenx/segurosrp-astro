@@ -14,6 +14,9 @@ export const BLOG_CATEGORIES = [
   'Guías',
 ] as const;
 
+/** Dónde se publica el artículo. `blog` es el blog general del sitio. */
+export const BLOG_SECTIONS = ['blog', 'segubeca'] as const;
+
 export const BLOG_TEMPLATES = [
   'hero',
   'mid-image',
@@ -25,6 +28,12 @@ export const BLOG_TEMPLATES = [
 
 export type BlogTemplate = (typeof BLOG_TEMPLATES)[number];
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
+export type BlogSection = (typeof BLOG_SECTIONS)[number];
+
+export const BLOG_SECTION_META: Record<BlogSection, { name: string; path: string }> = {
+  blog: { name: 'Blog general', path: '/blog' },
+  segubeca: { name: 'Blog de SeguBeca', path: '/seguros-vida/segubeca/blog' },
+};
 
 export const TEMPLATE_META: Record<
   BlogTemplate,
@@ -73,6 +82,7 @@ export const blogPostSchema = z.object({
   publishedAt: z.string(),
   updatedAt: z.string().optional(),
   category: z.string(),
+  section: z.enum(BLOG_SECTIONS).default('blog'),
   tags: z.array(z.string()).default([]),
   template: z.enum(BLOG_TEMPLATES),
   coverImage: z.string(),
@@ -131,8 +141,21 @@ export function readingMinutes(post: Pick<BlogPostData, 'intro' | 'body'>): numb
   return Math.max(1, Math.round(words / 200));
 }
 
-export function postUrl(slug: string): string {
-  return `${SITE_URL}/blog/${slug}`;
+export function sectionOf(post: { section?: string | null }): BlogSection {
+  return post.section === 'segubeca' ? 'segubeca' : 'blog';
+}
+
+/** Ruta pública del artículo, sin dominio y sin barra final. */
+export function postPath(post: { slug: string; section?: string | null }): string {
+  if (sectionOf(post) === 'segubeca') {
+    return `/seguros-vida/segubeca/blog/${post.slug}`;
+  }
+  return `/blog/${post.slug}`;
+}
+
+export function postUrl(postOrSlug: { slug: string; section?: string | null } | string): string {
+  if (typeof postOrSlug === 'string') return `${SITE_URL}/blog/${postOrSlug}`;
+  return `${SITE_URL}${postPath(postOrSlug)}`;
 }
 
 export function ogImage(post: Pick<BlogPostData, 'coverImage'>): string {
@@ -147,7 +170,7 @@ export function articleSchema(post: BlogPost) {
     '@graph': [
       {
         '@type': 'BlogPosting',
-        '@id': `${postUrl(post.slug)}#article`,
+        '@id': `${postUrl(post)}#article`,
         headline: post.title,
         description: post.description,
         image: ogImage(post),
@@ -170,7 +193,7 @@ export function articleSchema(post: BlogPost) {
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': postUrl(post.slug),
+          '@id': postUrl(post),
         },
         articleSection: post.category,
         keywords: post.tags.join(', '),
@@ -181,11 +204,35 @@ export function articleSchema(post: BlogPost) {
       },
       {
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
-          { '@type': 'ListItem', position: 3, name: post.title, item: postUrl(post.slug) },
-        ],
+        itemListElement:
+          sectionOf(post) === 'segubeca'
+            ? [
+                { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Seguros de Vida',
+                  item: `${SITE_URL}/seguros-vida`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: 'SeguBeca',
+                  item: `${SITE_URL}/seguros-vida/segubeca`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  name: 'Blog',
+                  item: `${SITE_URL}/seguros-vida/segubeca/blog`,
+                },
+                { '@type': 'ListItem', position: 5, name: post.title, item: postUrl(post) },
+              ]
+            : [
+                { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+                { '@type': 'ListItem', position: 3, name: post.title, item: postUrl(post) },
+              ],
       },
       ...(post.faq?.length
         ? [

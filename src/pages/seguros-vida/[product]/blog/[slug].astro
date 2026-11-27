@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../../layouts/Layout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BlogArticle from '../../../../components/blog/BlogArticle.astro';
+import DiagnosticoLead from '../../../../components/DiagnosticoLead.astro';
+import { articleSchema, ogImage, SITE_URL, type BlogPost } from '../../../../lib/blog';
+
+// Misma razón que el listado: la ficha vive en segubeca.astro, así que el
+// artículo no puede ir en una carpeta segubeca/. Solo se generan slugs de
+// la sección SeguBeca.
+export async function getStaticPaths() {
+  const entries = await getCollection(
+    'blog',
+    ({ data }) => data.draft !== true && data.section === 'segubeca',
+  );
+  return entries.map((entry) => ({
+    params: { product: 'segubeca', slug: entry.id },
+    props: { post: { ...entry.data, slug: entry.id } satisfies BlogPost },
+  }));
+}
+
+export const prerender = true;
+
+const { post } = Astro.props;
+const canonical = `${SITE_URL}/seguros-vida/segubeca/blog/${post.slug}`;
+---
+
+<Layout
+  title={`${post.title} | Blog SeguBeca`}
+  description={post.description}
+  canonical={canonical}
+  ogImage={ogImage(post)}
+  ogType="article"
+  articlePublishedTime={post.publishedAt}
+  articleModifiedTime={post.updatedAt || post.publishedAt}
+  articleAuthor={post.author}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema(post))} />
+  <Header />
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <nav class="text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-rp-orange">Inicio</a>
+        <span class="mx-2">/</span>
+        <a href="/seguros-vida" class="hover:text-rp-orange">Seguros de vida</a>
+        <span class="mx-2">/</span>
+        <a href="/seguros-vida/segubeca" class="hover:text-rp-orange">SeguBeca</a>
+        <span class="mx-2">/</span>
+        <a href="/seguros-vida/segubeca/blog" class="hover:text-rp-orange">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-700">{post.title}</span>
+      </nav>
+      <BlogArticle
+        post={post}
+        cta={{
+          title: '¿Quieres cotizar SeguBeca?',
+          text: 'Un asesor certificado de Seguros Monterrey New York Life te explica el seguro educativo para la universidad de tus hijos, sin compromiso y con atención en todo México.',
+          href: '/seguros-vida/segubeca#contacto',
+          label: 'Volver a SeguBeca',
+        }}
+      />
+      <section id="contacto" class="mt-12">
+        <div class="rounded-2xl border border-gray-100 shadow-lg p-6 md:p-8 bg-white">
+          <DiagnosticoLead
+            preset="universidad"
+            theme="segubeca"
+            source="SeguBeca producto"
+            campaign="Seguros Educativos"
+            trackingEvent="segubeca_form"
+            heading="Plan Universidad Segura"
+          />
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>

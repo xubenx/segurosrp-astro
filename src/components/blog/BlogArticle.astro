@@ -11,9 +11,21 @@ import {
 interface Props {
   post: BlogPost;
   example?: boolean;
+  cta?: {
+    title?: string;
+    text?: string;
+    href?: string;
+    label?: string;
+  };
 }
 
-const { post, example = false } = Astro.props;
+const { post, example = false, cta } = Astro.props;
+const ctaTitle = cta?.title ?? '¿Quieres una cotización a tu medida?';
+const ctaText =
+  cta?.text ??
+  'Un asesor certificado de Seguros Monterrey New York Life te explica opciones de vida, salud, retiro o educación sin compromiso.';
+const ctaHref = cta?.href ?? '/contacto';
+const ctaLabel = cta?.label ?? 'Hablar con un asesor';
 const bodyHtml = renderBlogBody(post.body);
 const video = youtubeId(post.videoUrl);
 const minutes = readingMinutes(post);
@@ -155,15 +167,13 @@ const dateLabel = formatDate(post.publishedAt);
   )}
 
   <aside class="mt-12 rounded-2xl bg-rp-blue text-white p-8">
-    <h2 class="text-2xl font-bold mb-3">¿Quieres una cotización a tu medida?</h2>
-    <p class="text-blue-100 mb-6">
-      Un asesor certificado de Seguros Monterrey New York Life te explica opciones de vida, salud, retiro o educación sin compromiso.
-    </p>
+    <h2 class="text-2xl font-bold mb-3">{ctaTitle}</h2>
+    <p class="text-blue-100 mb-6">{ctaText}</p>
     <a
-      href="/contacto"
+      href={ctaHref}
       class="inline-block bg-rp-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition"
     >
-      Hablar con un asesor
+      {ctaLabel}
     </a>
   </aside>
 </article>
