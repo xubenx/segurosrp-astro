@@ -9,7 +9,7 @@ const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/contacto', changefreq: 'monthly', priority: '0.8' },
   { path: '/diagnostico', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog', changefreq: 'weekly', priority: '0.9' },
-  { path: '/asesores-seguros-monterrey', changefreq: 'monthly', priority: '0.7' },
+  // /asesores-seguros-monterrey redirige 301 aquí. Sólo el canónico, sin barra final.
   { path: '/asesores-seguros-monterrey-nyl', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida', changefreq: 'weekly', priority: '0.9' },
   { path: '/seguros-vida/imagina-ser', changefreq: 'monthly', priority: '0.7' },
