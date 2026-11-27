@@ -1,8 +1,8 @@
 ---
-import { getPublishedPosts } from '../lib/blog-collection';
+import { getPostsBySection } from '../lib/blog-collection';
 import BlogCard from './blog/BlogCard.astro';
 
-const posts = (await getPublishedPosts()).slice(0, 3);
+const posts = (await getPostsBySection('blog')).slice(0, 3);
 ---
 
 <section id="blog" class="py-20 bg-white">

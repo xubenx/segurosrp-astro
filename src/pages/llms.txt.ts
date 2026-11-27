@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getPublishedPosts } from '../lib/blog-collection';
-import { SITE_URL } from '../lib/blog';
+import { postPath, sectionOf, SITE_URL } from '../lib/blog';
 
 const BASE = `# SegurosRP — Ramírez & Plascencia
 > Despacho independiente de asesores certificados de Seguros Monterrey New York Life, con más de 30 años de experiencia. Cobertura en todo México (nacional), no limitada a una ciudad. Oficinas en Santiago de Querétaro, Qro. y Celaya, Gto.; el resto del país se atiende por videollamada y WhatsApp. Especialistas en seguro de vida, gastos médicos mayores, planes de retiro y seguros educativos (SeguBeca).
@@ -35,20 +35,32 @@ Ramírez & Plascencia es un despacho de asesores independientes certificados por
 - [Nosotros](${SITE_URL}/nosotros/): Historia, misión y equipo del despacho
 `;
 
+function articleList(posts: Awaited<ReturnType<typeof getPublishedPosts>>): string {
+  return posts
+    .map((post) => `- [${post.title}](${SITE_URL}${postPath(post)}): ${post.description}`)
+    .join('\n');
+}
+
 export const GET: APIRoute = async () => {
   const posts = await getPublishedPosts();
+  const general = posts.filter((post) => sectionOf(post) === 'blog');
+  const segubeca = posts.filter((post) => sectionOf(post) === 'segubeca');
   const blogSection =
-    posts.length === 0
+    general.length === 0
       ? ''
       : `
 ## Artículos del blog
 
-${posts
-  .map(
-    (post) =>
-      `- [${post.title}](${SITE_URL}/blog/${post.slug}): ${post.description}`,
-  )
-  .join('\n')}
+${articleList(general)}
+`;
+  const segubecaSection =
+    segubeca.length === 0
+      ? ''
+      : `
+## Blog de SeguBeca
+
+- [Blog de SeguBeca](${SITE_URL}/seguros-vida/segubeca/blog): Guías del seguro educativo SeguBeca, de Seguros Monterrey New York Life
+${articleList(segubeca)}
 `;
 
   const footer = `
@@ -72,7 +84,7 @@ ${posts
 Agente de seguros autorizado por la CNSF — José Ramírez Barajas, Cédula H415872, Tipo A (Riesgos personales y familiares), vigente hasta 04/05/2029.
 `;
 
-  return new Response(`${BASE}${blogSection}${footer}`, {
+  return new Response(`${BASE}${blogSection}${segubecaSection}${footer}`, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600',

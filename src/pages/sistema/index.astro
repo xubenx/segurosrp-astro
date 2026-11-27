@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SistemaShell from '../../components/sistema/SistemaShell.astro';
 import { listPosts } from '../../lib/github-content';
-import { formatDate, TEMPLATE_META, type BlogTemplate } from '../../lib/blog';
+import { BLOG_SECTION_META, formatDate, postPath, TEMPLATE_META, type BlogTemplate } from '../../lib/blog';
 
 const posts = await listPosts();
 ---
@@ -36,6 +36,7 @@ const posts = await listPosts();
           <thead class="bg-slate-50 text-left">
             <tr>
               <th class="px-4 py-3">Título</th>
+              <th class="px-4 py-3">Sección</th>
               <th class="px-4 py-3">Plantilla</th>
               <th class="px-4 py-3">Estado</th>
               <th class="px-4 py-3">Fecha</th>
@@ -46,12 +47,13 @@ const posts = await listPosts();
             {posts.map((post) => (
               <tr class="border-t">
                 <td class="px-4 py-3 font-medium">{post.title}</td>
+                <td class="px-4 py-3">{BLOG_SECTION_META[post.section]?.name ?? 'Blog general'}</td>
                 <td class="px-4 py-3">{TEMPLATE_META[post.template as BlogTemplate]?.name ?? post.template}</td>
                 <td class="px-4 py-3">{post.draft ? 'Borrador' : 'Publicado'}</td>
                 <td class="px-4 py-3">{formatDate(post.publishedAt)}</td>
                 <td class="px-4 py-3 text-right space-x-3">
                   {!post.draft && (
-                    <a class="text-rp-orange" href={`/blog/${post.slug}`} target="_blank">Ver</a>
+                    <a class="text-rp-orange" href={postPath(post)} target="_blank">Ver</a>
                   )}
                   <a class="text-rp-blue font-semibold" href={`/sistema/editar/${post.slug}`}>Editar</a>
                   <button

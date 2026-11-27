@@ -1,4 +1,4 @@
-import { SITE_URL } from './blog';
+import { postPath, SITE_URL } from './blog';
 
 /**
  * IndexNow — protocolo de notificación instantánea de URLs a buscadores.
@@ -110,7 +110,7 @@ export async function getRecentUrls(days = 3): Promise<string[]> {
     return Number.isFinite(stamp) && stamp >= cutoff;
   });
 
-  return sanitizeUrls(fresh.map((post) => `${SITE_URL}/blog/${post.slug}`)).filter(isIndexable);
+  return sanitizeUrls(fresh.map((post) => `${SITE_URL}${postPath(post)}`)).filter(isIndexable);
 }
 
 function chunk<T>(items: T[], size: number): T[][] {

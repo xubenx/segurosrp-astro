@@ -1,5 +1,5 @@
 import { getPublishedPosts } from './blog-collection';
-import { SITE_URL } from './blog';
+import { postPath, SITE_URL } from './blog';
 
 // Las landings noindex (/segubecalanding, /vidamujerlanding) y las rutas
 // privadas (/sistema, /login, /ssr) no se listan: robots.txt las bloquea.
@@ -16,6 +16,7 @@ const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/seguros-vida/nuevo-plenitud', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida/orvi', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida/segubeca', changefreq: 'monthly', priority: '0.7' },
+  { path: '/seguros-vida/segubeca/blog', changefreq: 'weekly', priority: '0.8' },
   { path: '/seguros-vida/star-dotal', changefreq: 'monthly', priority: '0.7' },
   { path: '/seguros-vida/vida-mujer', changefreq: 'monthly', priority: '0.8' },
   { path: '/seguros-salud', changefreq: 'weekly', priority: '0.9' },
@@ -50,7 +51,7 @@ export async function buildSitemapXml(): Promise<string> {
 
   const postUrls = posts.map(
     (post) => `  <url>
-    <loc>${loc(`/blog/${post.slug}`)}</loc>
+    <loc>${loc(postPath(post))}</loc>
     <lastmod>${post.updatedAt || post.publishedAt}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
